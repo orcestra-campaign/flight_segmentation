@@ -3,38 +3,42 @@ mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240821a
 segments:
+# Missing short segment with rapidly changing heading after takeoff
 - kinds:
   - straight_leg
-  name: ec_approach
+  name: EC track approach
   segment_id: HALO-20240821a_l1
   start: 2024-08-21 12:27:00
-  end: 2024-08-21 12:59:00
-  irregularities: []
-- kinds:
+  end: 2024-08-21 12:59:39
+  irregularities:
+    - air plane ascending
+- kinds: 
   - straight_leg
   name: EC underpass
   segment_id: HALO-20240821a_l2
-  start: 2024-08-21 13:00:00
+  start: 2024-08-21 13:01:43
   end: 2024-08-21 14:07:00
   irregularities:
     - leg extension abandoned due to time constraints
+    - altitude increase at about 14:29:00
 - kinds:
   - circle
-  name: circle south
+  name: circle south clockwise
   segemnt_id: HALO-20240821a_cs
   start: 2024-08-21 14:10:00
   end: 2024-08-21 15:06:00
   irregularities: []
 - kinds:
   - straight_leg
-  name: south to mid circle connection
+  name: connection south to mid circle
   segment_id: HALO-20240821a_l3
-  start: 2024-08-21 15:06:01
-  end: 2024-08-21 15:15:59
-  irregularities: []
+  start: 2024-08-21 15:09:00
+  end: 2024-08-21 15:13:59
+  irregularities: 
+    - altitude increase at around 15:09:00
 - kinds:
   - circle
-  name: circle mid
+  name: circle mid counterclockwise
   segment_id: HALO-20240821a_cm
   start: 2024-08-21 15:16:00
   end: 2024-08-21 16:12:00
@@ -49,21 +53,22 @@ segments:
   irregularities: []
 - kinds:
   - circle
-  name: circle north
+  name: circle north clockwise
   segment_id: HALO-20240821a_cn
   start: 2024-08-21 16:54:00
   end: 2024-08-21 17:41:00
   irregularities: []
+  # somewhat strange wiggles in the end, check
 - kinds:
   - circle
-  name: circle extra
+  name: circle extra counterclockwise
   segment_id: HALO-20240821a_cex
   start: 2024-08-21 17:55:00
   end: 2024-08-21 18:51:00
   irregularities: []
 - kinds:
   - straight_leg
-  name: 
+  name: #missing
   segment_id: HALO-20240821a_l5
   start: 2024-08-21 18:55:00
   end: 2024-08-21 19:05:00
@@ -74,11 +79,15 @@ segments:
   segment_id: HALO-20240821a_l6
   start: 2024-08-21 19:07:00
   end: 2024-08-21 19:36:00
-  irregularities: []
+  irregularities: 
+    - altitude decrease starting from 19:22:00
 - kinds:
   - straight_leg
-  name: 
+  # roll angle not yet checked
+  name: #missing
   segment_id: HALO-20240821a_l7
   start: 2024-08-21 19:37:00
   end: 2024-08-21 19:48:00
   irregularities: []
+
+  #Strange heading profile in last ~5min, likely due to landing maneuver
