@@ -1,0 +1,44 @@
+nickname: EarthCARE echo
+mission: ORCESTRA
+platform: HALO
+flight_id: HALO-20240816a
+segments:
+- kinds:
+  - straight_leg
+  name: super curtain
+  segment_id: HALO-20240816a_l1
+  start: 2024-08-16 12:54:10
+  end: 2024-08-16 13:53:10
+  irregularities: [increasing altitude with flight]
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle south
+  segemnt_id: HALO-20240816a_cs
+  start: 2024-08-16 13:56:40
+  end: 2024-08-16 14:52:40
+  irregularities: []
+- kinds:
+  - circle
+  name: circle mid
+  segment_id: HALO-20240816a_cm
+  start: 2024-08-16 15:07:00
+  end: 2024-08-16 16:01:40
+  irregularities: []
+- kinds:
+  - circle
+  name: circle north
+  segment_id: HALO-20240816a_cn
+  start: 2024-08-16 16:54:50
+  end: 2024-08-16 17:49:30
+  irregularities: []
+- kinds:
+  - circle
+  name: circle ATR
+  segment_id: HALO-20240816a_ca
+  start: 2024-08-16 19:06:00
+  end: 2024-08-16 19:40:10
+  irregularities: []
