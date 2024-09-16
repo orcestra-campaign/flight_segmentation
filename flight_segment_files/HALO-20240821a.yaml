@@ -8,86 +8,131 @@ segments:
   - straight_leg
   name: EC track approach
   segment_id: HALO-20240821a_l1
-  start: 2024-08-21 12:27:00
+  start: 2024-08-21 12:26:07
   end: 2024-08-21 12:59:39
   irregularities:
-    - air plane ascending
+    - continuous ascent
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds: 
   - straight_leg
   name: EC underpass
   segment_id: HALO-20240821a_l2
-  start: 2024-08-21 13:01:43
-  end: 2024-08-21 14:07:00
+  start: 2024-08-21 13:01:38
+  end: 2024-08-21 14:07:06
   irregularities:
     - leg extension abandoned due to time constraints
-    - altitude increase at about 14:29:00
+    - rapid ascent at about 14:29:00
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - circle
   name: circle south clockwise
-  segemnt_id: HALO-20240821a_cs
-  start: 2024-08-21 14:10:00
-  end: 2024-08-21 15:06:00
+  segment_id: HALO-20240821a_cs
+  start: 2024-08-21 14:09:50
+  end: 2024-08-21 15:06:27
   irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - straight_leg
   name: connection south to mid circle
   segment_id: HALO-20240821a_l3
-  start: 2024-08-21 15:09:00
-  end: 2024-08-21 15:13:59
+  start: 2024-08-21 15:09:04
+  end: 2024-08-21 15:13:01
   irregularities: 
-    - altitude increase at around 15:09:00
+    - rapid ascent at around 15:09:00
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - circle
   name: circle mid counterclockwise
   segment_id: HALO-20240821a_cm
-  start: 2024-08-21 15:16:00
-  end: 2024-08-21 16:12:00
+  start: 2024-08-21 15:16:11
+  end: 2024-08-21 16:12:25
   irregularities:
     - no sondes dropped due to air traffic
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - straight_leg
   name: mid to north circle connection
   segment_id: HALO-20240821a_l4
-  start: 2024-08-21 16:15:01
-  end: 2024-08-21 16:52:00
-  irregularities: []
+  start: 2024-08-21 16:15:18
+  end: 2024-08-21 16:51:15
+  irregularities: []  
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - circle
   name: circle north clockwise
   segment_id: HALO-20240821a_cn
-  start: 2024-08-21 16:54:00
-  end: 2024-08-21 17:41:00
+  start: 2024-08-21 16:54:19
+  end: 2024-08-21 17:41:14
   irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
   # somewhat strange wiggles in the end, check
 - kinds:
   - circle
   name: circle extra counterclockwise
   segment_id: HALO-20240821a_cex
-  start: 2024-08-21 17:55:00
-  end: 2024-08-21 18:51:00
+  start: 2024-08-21 17:54:50
+  end: 2024-08-21 18:51:27
   irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - straight_leg
   name: #missing
   segment_id: HALO-20240821a_l5
-  start: 2024-08-21 18:55:00
-  end: 2024-08-21 19:05:00
-  irregularities: []
+  start: 2024-08-21 18:55:10
+  end: 2024-08-21 19:05:15
+  irregularities: []  
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - straight_leg
   name: 
   segment_id: HALO-20240821a_l6
-  start: 2024-08-21 19:07:00
-  end: 2024-08-21 19:36:00
+  start: 2024-08-21 19:06:52
+  end: 2024-08-21 19:36:23
   irregularities: 
-    - altitude decrease starting from 19:22:00
+    - continuous descent after around 19:22:00
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 - kinds:
   - straight_leg
   # roll angle not yet checked
   name: #missing
   segment_id: HALO-20240821a_l7
-  start: 2024-08-21 19:37:00
-  end: 2024-08-21 19:48:00
-  irregularities: []
+  start: 2024-08-21 19:37:14
+  end: 2024-08-21 19:48:19
+  irregularities:
+    - continuous descent
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
 
   #Strange heading profile in last ~5min, likely due to landing maneuver
