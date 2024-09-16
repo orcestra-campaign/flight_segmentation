@@ -7,9 +7,9 @@ segments:
   - straight_leg
   name: straight_ascent
   segment_id: HALO-20240816a_l01
-  start: 2024-08-16 11:39:20
+  start: 2024-08-16 11:39:10
   end: 2024-08-16 12:07:00
-  irregularities:
+  irregularities: []
   dropsondes:
     GOOD: []
     BAD: []
@@ -27,9 +27,9 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
-  name: itcz_cut_sw1
+  name: itcz_cut_southward1
   segment_id: HALO-20240816a_l03
-  start: 2024-08-16 12:54:10
+  start: 2024-08-16 12:53:30
   end: 2024-08-16 13:11:30
   irregularities: []
   dropsondes:
@@ -38,7 +38,7 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
-  name: itcz_cut_sw2
+  name: itcz_cut_southward2
   segment_id: HALO-20240816a_l04
   start: 2024-08-16 13:13:30
   end: 2024-08-16 13:40:50
@@ -49,7 +49,7 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
-  name: itcz_cut_sw3
+  name: itcz_cut_southward3
   segment_id: HALO-20240816a_l05
   start: 2024-08-16 13:44:40
   end: 2024-08-16 13:53:10
@@ -59,11 +59,11 @@ segments:
     BAD: []
     UGLY: []
 - kinds:
-  - straight_leg
-  name: itcz_cut_nw1
-  segment_id: HALO-20240816a_l06
-  start: 2024-08-16 14:55:40
-  end: 2024-08-16 15:04:00
+  - circle
+  name: circle_south
+  segment_id: HALO-20240816a_cs
+  start: 2024-08-16 13:55:40
+  end: 2024-08-16 14:52:40
   irregularities: []
   dropsondes:
     GOOD: []
@@ -71,7 +71,29 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
-  name: itcz_cut_nw2
+  name: itcz_cut_northward1
+  segment_id: HALO-20240816a_l06
+  start: 2024-08-16 14:55:00
+  end: 2024-08-16 15:04:00
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle_mid
+  segment_id: HALO-20240816a_cm
+  start: 2024-08-16 15:06:00
+  end: 2024-08-16 16:01:40
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: itcz_cut_northward2
   segment_id: HALO-20240816a_l07
   start: 2024-08-16 16:12:30
   end: 2024-08-16 16:51:00
@@ -81,11 +103,33 @@ segments:
     BAD: []
     UGLY: []
 - kinds:
+  - circle
+  name: circle_north
+  segment_id: HALO-20240816a_cn
+  start: 2024-08-16 16:54:30
+  end: 2024-08-16 17:49:40
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
   - straight_leg
   name: ferry_home1
   segment_id: HALO-20240816a_l08
-  start: 2024-08-16 17:54:40
+  start: 2024-08-16 17:54:50
   end: 2024-08-16 18:51:40
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle_ATR
+  segment_id: HALO-20240816a_ca
+  start: 2024-08-16 19:05:20
+  end: 2024-08-16 19:40:18
   irregularities: []
   dropsondes:
     GOOD: []
@@ -97,36 +141,8 @@ segments:
   segment_id: HALO-20240816a_l09
   start: 2024-08-16 19:43:30
   end: 2024-08-16 19:58:00
-  irregularities:
+  irregularities: []
   dropsondes:
     GOOD: []
     BAD: []
     UGLY: []
-- kinds:
-  - circle
-  name: circle_south
-  segemnt_id: HALO-20240816a_cs
-  start: 2024-08-16 13:56:40
-  end: 2024-08-16 14:52:40
-  irregularities: []
-- kinds:
-  - circle
-  name: circle_mid
-  segment_id: HALO-20240816a_cm
-  start: 2024-08-16 15:07:00
-  end: 2024-08-16 16:01:40
-  irregularities: []
-- kinds:
-  - circle
-  name: circle_north
-  segment_id: HALO-20240816a_cn
-  start: 2024-08-16 16:54:50
-  end: 2024-08-16 17:49:30
-  irregularities: []
-- kinds:
-  - circle
-  name: circle_ATR
-  segment_id: HALO-20240816a_ca
-  start: 2024-08-16 19:06:00
-  end: 2024-08-16 19:40:10
-  irregularities: []
