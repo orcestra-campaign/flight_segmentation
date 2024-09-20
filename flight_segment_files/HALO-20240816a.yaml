@@ -29,6 +29,7 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
+  - ec_underpass
   name: EC_underpass_southward01
   segment_id: HALO-20240816a_sl03
   start: 2024-08-16 12:53:26
@@ -41,8 +42,22 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
+  - ec_underpass
   name: EC_underpass_southward02
   segment_id: HALO-20240816a_sl04
+  start: 2024-08-16 13:11:30
+  end: 2024-08-16 13:13:31
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  - ec_underpass
+  name: EC_underpass_southward03
+  segment_id: HALO-20240816a_sl05
   start: 2024-08-16 13:13:31
   end: 2024-08-16 13:40:56
   irregularities: []
@@ -53,8 +68,22 @@ segments:
     UGLY: []
 - kinds:
   - straight_leg
-  name: EC_underpass_southward03
-  segment_id: HALO-20240816a_sl05
+  - ec_underpass
+  name: EC_underpass_southward04
+  segment_id: HALO-20240816a_sl06
+  start: 2024-08-16 13:40:56
+  end: 2024-08-16 13:44:38
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  - ec_underpass
+  name: EC_underpass_southward05
+  segment_id: HALO-20240816a_sl07
   start: 2024-08-16 13:44:38
   end: 2024-08-16 13:53:12
   irregularities: []
@@ -78,7 +107,7 @@ segments:
 - kinds:
   - straight_leg
   name: from_c01_to_c02
-  segment_id: HALO-20240816a_sl06
+  segment_id: HALO-20240816a_sl08
   start: 2024-08-16 14:54:41
   end: 2024-08-16 15:04:01
   irregularities: []
@@ -102,7 +131,7 @@ segments:
 - kinds:
   - straight_leg
   name: from_c02_to_c03
-  segment_id: HALO-20240816a_sl07
+  segment_id: HALO-20240816a_sl09
   start: 2024-08-16 16:12:30
   end: 2024-08-16 16:51:04
   irregularities: []
@@ -126,7 +155,7 @@ segments:
 - kinds:
   - straight_leg
   name: from_c03_to_c04
-  segment_id: HALO-20240816a_sl08
+  segment_id: HALO-20240816a_sl10
   start: 2024-08-16 17:54:45
   end: 2024-08-16 18:51:46
   irregularities: []
@@ -150,7 +179,7 @@ segments:
 - kinds:
   - straight_leg
   name: ferry_descent
-  segment_id: HALO-20240816a_sl09
+  segment_id: HALO-20240816a_sl11
   start: 2024-08-16 19:43:26
   end: 2024-08-16 19:58:02
   irregularities: []
