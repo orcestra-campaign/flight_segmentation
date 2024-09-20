@@ -22,13 +22,7 @@ segments:
   segment_id: HALO-20240821a_l2
   start: 2024-08-21 13:01:38
   end: 2024-08-21 14:07:06
-  irregularities:
-    - leg extension abandoned due to time constraints
-    - rapid ascent at about 14:29:00
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  irregularities: []
 - kinds:
   - circle
   name: circle south clockwise
