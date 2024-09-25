@@ -22,7 +22,7 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward01
+  name: EC_track_southward_const_alt01
   segment_id: HALO-20240816a_03
   start: 2024-08-16 12:53:26
   end: 2024-08-16 13:11:30
@@ -31,7 +31,7 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward02
+  name: EC_track_southward_ascent01
   segment_id: HALO-20240816a_04
   start: 2024-08-16 13:11:30
   end: 2024-08-16 13:13:31
@@ -40,7 +40,7 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward03
+  name: EC_track_southward_const_alt02
   segment_id: HALO-20240816a_05
   start: 2024-08-16 13:13:31
   end: 2024-08-16 13:40:56
@@ -49,7 +49,7 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward04
+  name: EC_track_southward_ascent02
   segment_id: HALO-20240816a_06
   start: 2024-08-16 13:40:56
   end: 2024-08-16 13:44:38
@@ -58,7 +58,7 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward05
+  name: EC_track_southward_const_alt03
   segment_id: HALO-20240816a_07
   start: 2024-08-16 13:44:38
   end: 2024-08-16 13:53:12
@@ -74,7 +74,7 @@ segments:
   comments: []
 - kinds:
   - straight_leg
-  name: EC_track_northward01
+  name: EC_track_northward_const_alt01
   segment_id: HALO-20240816a_09
   start: 2024-08-16 14:54:41
   end: 2024-08-16 15:04:01
@@ -90,7 +90,7 @@ segments:
   comments: []
 - kinds:
   - straight_leg
-  name: EC_track_northward02
+  name: EC_track_northward_const_alt02
   segment_id: HALO-20240816a_11
   start: 2024-08-16 16:12:30
   end: 2024-08-16 16:51:04
