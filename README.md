@@ -1,69 +1,79 @@
 ## Segmentation of flights during ORCESTRA
 
-The Research Flights (RFs) during ORCESTRA can be divided into different segments.
-For example circles and straight legs were purposefully conducted maneuvers during which
-a distinct sampling behaviour of the various instruments can be assumed. For future analyses
-based on specific kinds of flight segments (e.g. only based on circles) it is desired to use a
-common set of start- and end-times to assure consistency between the studies. This repository
-provides files listing the start- and end-times of  flight segments for selected platforms and 
-for each flight. Further information on the respective flight can be found in the
-[flight reports](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports).
+The PERCUSION research flights conducted during ORCESTRA can be divided into 
+segments. A segment is a continuos interval of the flight path that has a set 
+of associated characteristics, such as flight manuevers, Earthcare underpasses,
+or instrument calibration procedures carried during the segment. 
 
-Flight segments need not be unique or complete: a given time during a flight may belong to
-any number of segments or none at all. Segments may overlap (i.e. a segment of kind `straight_leg`
-may include a segments of kind `ec_underpass`). This allows flights to be segmented
-in multiple ways and at multiple levels of granulatiry.
+Flight segments need not be unique nor complete: a given time during a flight 
+may belong to any number of segments or none at all. Segments may overlap, 
+allowing for flights to be segmented in multiple ways and at multiple levels of 
+granularity.
 
-The segmentation copies and adapts many ideas from the [flight segmentation](https://github.com/eurec4a/flight-phase-separation) conducted for the EUREC4A field campaign.
+The characteristics that can be associated with a segment are clearly defined, 
+and correspond exclusively to one or more of the following:
 
-### Common vocabulary - broad sampling strategy
-Following are names of segments assembled from a range of platforms describing broad sampling strategies. Many will contain subsets
-e.g. `cloud` segments will likely contain `subcloud layer` and `cloud layer` segments.
-Data providers are encouraged to use these names, especially those in the first, where applicable.
-Feel free to add to the list (e.g. with a Github pull request) if needed.
-* ground
-* transit
-* circle
-* cloud
-* calibration
-* profile
-* axbt
-* rectangle
-* sawtooth
-* racetrack
+| Characteristic    | Type            | Description                                                  |
+| ----------------- | --------------- | -----------------------------------------                    |
+| straight_leg      | Flight Geometry | A straight leg of the flight path.                           |
+| circle            | Flight Geometry | A segment of the flight path circling a predefined center.   | 
 
-### Common vocabulary - subsets/refinements and super-sets
-* upward: primarily ascending, could be used as further detail for `profile` segments
-* downward: primarily descending, could be used as further detail for `profile` segments
+A segment is thus completely defined by an id, start, end timestamp, and a set 
+of associated characteristics. For ease of interpreting the segments a name and
+multiple comments can also be associated with the segment.
 
-### Platform-specific subsets
-Platforms are free to adopt other conventions exploiting the ability for a segment to have more than one kind associated with it.
+Defining flight segments is important as the analysis of the data collected 
+by each of the PERCUSION flights depends on characteristics of the segments. 
+Moreover, having a common definition is important to assure consistency between 
+these analyses.
 
-* [HALO specific segmentation](HALO-segmentation-notes.md)
-
-## Conventions
-Flight segmentation is designed to be flexible and unstructured, but we propose that data providers follow the convention that
-_a time or time window may not belong to more than one segment of the same kind_
-
-## Handling of time ranges
-
-Time ranges are defined as semi-open intervals. So the start time is part of the time range while the end time is excluded from the range. This way, it is possible to define exactly consecutive segments without any ambiguities regarding the instance in between.
-
-## Segment irregularities
-
-If some irregularities are found within a segment (i.e. a diversion from the planned route, starting time of a circle not one minute before a sonde), these should be recorded in the `irregularities` field. In general, this field is meant to be a free text field, such that people using the dataset get a proper explanation. However, for automatic checking it may also be useful to have some standardized *irregularity tags* which can be interpreted by a script. These tags should be prepended to the explanatory string of the irregularity.
+This repository provides files listing all of the segments that have been 
+identified for each of the PERCUSION flights. Further information on the 
+respective flights can be found in the [flight reports](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) webpage.
 
 ## Reading the files
 
 The flight segmentation data is provided in YAML files. YAML is a text based
-human readable data format that uses python-like indentation for structuring its contents. It is often used for configuration
-files and due to its great human readability very suited for version control, which is one reason we wanted to use it here.
-For python users, the module [PyYAML](https://pyyaml.org) (included in Anaconda)
-offers an easy to use way to read the data from the yaml files into plane python objects like lists and dictionaries.
+human readable data format that uses python-like indentation for structuring its contents. 
+
+
+Yaml files start with a header that describes the flight and continue with a 
+list of the identified segments. The following is an example of a flight with 
+two segments:
+
+```yaml
+nickname: EarthCARE echo
+mission: ORCESTRA
+platform: HALO
+flight_id: HALO-20240816a
+segments:
+- segment_id: HALO-20240816a_01
+  name: ferry_ascent
+  start: 2024-08-16 11:39:05
+  end: 2024-08-16 12:06:58
+  kinds:
+  - straight_leg
+  comments: []
+- segment_id: HALO-20240816a_02
+  kinds:
+  - straight_leg
+  name: ferry_const_alt
+  start: 2024-08-16 12:06:58
+  end: 2024-08-16 12:51:55
+  comments: [strange spike in roll angle at 12:19:37UTC]
+```
+
+For python users, the module [PyYAML](https://pyyaml.org) offers an easy to use 
+way to read the data from the yaml files into plane python objects like lists 
+and dictionaries.
+
 Here is an example to read a file and print the circle start and end times from that file:
 
-```
+```python
 import yaml
 flightinfo = yaml.load(open("HALO_20240813a.yaml"))
 print([(c["start"], c["end"]) for c in flightinfo["segments"] if "circle" in c["kinds"]])
 ```
+
+### Notes
+The segmentation copies and adapts many ideas from the [flight segmentation](https://github.com/eurec4a/flight-phase-separation) conducted for the EUREC4A field campaign.
