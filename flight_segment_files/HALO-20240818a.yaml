@@ -57,7 +57,7 @@ segments:
   - circle
   name: inside_itcz
   segment_id: HALO-20240818a_07
-  start: 2024-08-18 12:54:13
+  start: 2024-08-18 12:53:01
   end: 2024-08-18 13:47:17
   irregularities: [temporarily strong turbulence leading to substantial noise in pitch and roll angles]
   comments: []
@@ -74,7 +74,7 @@ segments:
   - circle
   name: edge_itcz_south
   segment_id: HALO-20240818a_09
-  start: 2024-08-18 14:28:53
+  start: 2024-08-18 14:28:14
   end: 2024-08-18 15:24:10
   irregularities: []
   comments: []
