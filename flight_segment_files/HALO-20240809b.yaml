@@ -1,0 +1,162 @@
+nickname: foo
+mission: ORCESTRA
+platform: HALO
+flight_id: HALO-20240809b
+segments:
+- kinds:
+  - straight_leg
+  name: ferry_ascent
+  segment_id: HALO-20240809b_sl01
+  start: 2024-08-09 09:52:38
+  end: 2024-08-09 10:08:03
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt01
+  segment_id: HALO-20240809b_sl02
+  start: 2024-08-09 10:08:03
+  end: 2024-08-09 11:01:24
+  irregularities: [spike in roll angle at 10:21:23,
+  spike in roll angle at 10:34:31]
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt02
+  segment_id: HALO-20240809b_sl03
+  start: 2024-08-09 11:02:20
+  end: 2024-08-09 11:08:21
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt03
+  segment_id: HALO-20240809b_sl04
+  start: 2024-08-09 11:09:18
+  end: 2024-08-09 11:15:50
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt04
+  segment_id: HALO-20240809b_sl05
+  start: 2024-08-09 11:16:49
+  end: 2024-08-09 11:43:52
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt05
+  segment_id: HALO-20240809b_sl06
+  start: 2024-08-09 11:45:00
+  end: 2024-08-09 12:14:29
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt06
+  segment_id: HALO-20240809b_sl07
+  start: 2024-08-09 12:15:25
+  end: 2024-08-09 13:07:32
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt07
+  segment_id: HALO-20240809b_sl08
+  start: 2024-08-09 13:08:40
+  end: 2024-08-09 13:24:23
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt08
+  segment_id: HALO-20240809b_sl09
+  start: 2024-08-09 13:26:30
+  end: 2024-08-09 13:58:35
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt09
+  segment_id: HALO-20240809b_sl10
+  start: 2024-08-09 14:02:36
+  end: 2024-08-09 15:03:38
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_const_alt10
+  segment_id: HALO-20240809b_sl11
+  start: 2024-08-09 15:04:51
+  end: 2024-08-09 15:25:34
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_descent01
+  segment_id: HALO-20240809b_sl12
+  start: 2024-08-09 15:28:29
+  end: 2024-08-09 15:33:06
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: ferry_descent02
+  segment_id: HALO-20240809b_sl13
+  start: 2024-08-09 15:34:00
+  end: 2024-08-09 15:51:28
+  irregularities: []
+  comments: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
