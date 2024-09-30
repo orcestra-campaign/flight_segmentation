@@ -1,0 +1,104 @@
+nickname: foo
+mission: ORCESTRA
+platform: HALO
+flight_id: HALO-20240916a
+segments:
+- kinds:
+  - straight_leg
+  name: leg 1
+  segment_id: HALO-20240916a_l1
+  start: 2024-09-16 12:09:00
+  end: 2024-09-16 12:56:50
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: leg 2
+  segment_id: HALO-20240916a_l2
+  start: 2024-09-16 12:58:00
+  end: 2024-09-16 13:16:30
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: leg 3
+  segment_id: HALO-20240916a_l3
+  start: 2024-09-16 16:25:30
+  end: 2024-09-16 16:42:30
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: leg 4
+  segment_id: HALO-20240916a_l4
+  start: 2024-09-16 16:53:00
+  end: 2024-09-16 17:50:00
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - straight_leg
+  name: leg 5
+  segment_id: HALO-20240916a_l5
+  start: 2024-09-16 19:15:00
+  end: 2024-09-16 20:15:00
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle 1
+  segment_id: HALO-20240916a_c1
+  start: 2024-09-16 13:24:00
+  end: 2024-09-16 14:19:45
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle 2
+  segment_id: HALO-20240916a_c2
+  start: 2024-09-16 14:32:45
+  end: 2024-09-16 15:00:12
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle 3 
+  segment_id: HALO-20240916a_c3
+  start: 2024-09-16 15:21:15
+  end: 2024-09-16 15:46:32
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
+- kinds:
+  - circle
+  name: circle 4
+  segment_id: HALO-20240916a_c4
+  start: 2024-09-16 17:53:25
+  end: 2024-09-16 19:10:50
+  irregularities: []
+  dropsondes:
+    GOOD: []
+    BAD: []
+    UGLY: []
