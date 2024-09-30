@@ -9,22 +9,10 @@ def get_navdata_HALO(flight):
     :param flight: flight id
     """
     import xarray as xr
-    from intake import open_catalog
-    import orcestra.postprocess.level0
 
-    root = "ipns://latest.orcestra-campaign.org"
-    #ds = xr.open_dataset(f"{root}/products/HALO/position_attitude/{flight}.zarr", engine="zarr")#.pipe(orcestra.postprocess.level0.bahamas)
-    ds = xr.open_dataset(f"{root}/products/HALO/position_attitude/{flight}.zarr", engine="zarr")
-
-    return xr.Dataset({
-        "time": ds.time,
-        "lat": ds.lat,
-        "lon": ds.lon,
-        "alt": ds.alt,
-        "roll": ds["roll"],
-        "pitch": ds.pitch,
-        "heading": ds.heading,
-    })
+    #root = "ipns://latest.orcestra-campaign.org/products/HALO/position_attitude"
+    root = "ipfs://QmP1ragFLB3jbjBj9tU3piitkADPqBUjqgydhcFjFGXrii"
+    return xr.open_dataset(f"{root}/{flight}.zarr", engine="zarr").reset_coords().resample(time="1s").mean()
 
 NAVDATA_GETTERS = {
     "HALO": get_navdata_HALO,
