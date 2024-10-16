@@ -2,11 +2,14 @@ nickname: EarthCARE echo
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240816a
+takeoff: 2024-08-16 11:35:40
+landing: 2024-08-16 20:03:21
 segments:
 - kinds:
   - straight_leg
+  - ascent
   name: ferry_ascent
-  segment_id: HALO-20240816a_01
+  segment_id: HALO-20240816a_a852
   start: 2024-08-16 11:39:05
   end: 2024-08-16 12:06:58
   irregularities: []
@@ -14,16 +17,17 @@ segments:
 - kinds:
   - straight_leg
   name: ferry_const_alt
-  segment_id: HALO-20240816a_02
+  segment_id: HALO-20240816a_5ddf
   start: 2024-08-16 12:06:58
   end: 2024-08-16 12:51:55
-  irregularities: [strange spike in roll angle at 12:19:37UTC]
+  irregularities:
+  - strange spike in roll angle at 12:19:37UTC
   comments: []
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward_const_alt01
-  segment_id: HALO-20240816a_03
+  name: EC_track_southward_const_alt
+  segment_id: HALO-20240816a_deb1
   start: 2024-08-16 12:53:26
   end: 2024-08-16 13:11:30
   irregularities: []
@@ -31,8 +35,9 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward_ascent01
-  segment_id: HALO-20240816a_04
+  - ascent
+  name: EC_track_southward_ascent
+  segment_id: HALO-20240816a_9255
   start: 2024-08-16 13:11:30
   end: 2024-08-16 13:13:31
   irregularities: []
@@ -40,8 +45,8 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward_const_alt02
-  segment_id: HALO-20240816a_05
+  name: EC_track_southward_const_alt
+  segment_id: HALO-20240816a_3dd9
   start: 2024-08-16 13:13:31
   end: 2024-08-16 13:40:56
   irregularities: []
@@ -49,8 +54,9 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward_ascent02
-  segment_id: HALO-20240816a_06
+  - ascent
+  name: EC_track_southward_ascent
+  segment_id: HALO-20240816a_8e09
   start: 2024-08-16 13:40:56
   end: 2024-08-16 13:44:38
   irregularities: []
@@ -58,48 +64,50 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_southward_const_alt03
-  segment_id: HALO-20240816a_07
+  name: EC_track_southward_const_alt
+  segment_id: HALO-20240816a_9f52
   start: 2024-08-16 13:44:38
   end: 2024-08-16 13:53:12
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: edge_itcz_south
-  segment_id: HALO-20240816a_08
+  name: circle south
+  segment_id: HALO-20240816a_1371
   start: 2024-08-16 13:55:24
   end: 2024-08-16 14:52:40
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
-  name: EC_track_northward_const_alt01
-  segment_id: HALO-20240816a_09
+  - ec_track
+  name: EC_track_northward_const_alt
+  segment_id: HALO-20240816a_1d8d
   start: 2024-08-16 14:54:41
   end: 2024-08-16 15:04:01
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: inside_itcz
-  segment_id: HALO-20240816a_10
+  name: circle mid
+  segment_id: HALO-20240816a_550d
   start: 2024-08-16 15:05:52
   end: 2024-08-16 16:01:44
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
-  name: EC_track_northward_const_alt02
-  segment_id: HALO-20240816a_11
+  - ec_track
+  name: EC_track_northward_const_alt
+  segment_id: HALO-20240816a_b4aa
   start: 2024-08-16 16:12:30
   end: 2024-08-16 16:51:04
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: edge_itcz_north
-  segment_id: HALO-20240816a_12
+  name: circle north
+  segment_id: HALO-20240816a_1302
   start: 2024-08-16 16:53:59
   end: 2024-08-16 17:49:40
   irregularities: []
@@ -107,23 +115,25 @@ segments:
 - kinds:
   - straight_leg
   name: ferry_const_alt
-  segment_id: HALO-20240816a_13
+  segment_id: HALO-20240816a_9275
   start: 2024-08-16 17:54:45
   end: 2024-08-16 18:51:46
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: circle_atr
-  segment_id: HALO-20240816a_14
+  - atr_coordination
+  name: ATR circle
+  segment_id: HALO-20240816a_b83f
   start: 2024-08-16 19:05:14
   end: 2024-08-16 19:40:19
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
+  - descent
   name: ferry_descent
-  segment_id: HALO-20240816a_15
+  segment_id: HALO-20240816a_de5e
   start: 2024-08-16 19:43:26
   end: 2024-08-16 19:58:02
   irregularities: []
