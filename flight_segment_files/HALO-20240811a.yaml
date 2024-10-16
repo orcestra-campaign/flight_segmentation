@@ -2,20 +2,24 @@ nickname: Firsts (or alien on board)
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240811a
+takeoff: 2024-08-11 11:59:34
+landing: 2024-08-11 20:35:56
 segments:
 - kinds:
   - straight_leg
+  - ascent
   name: ferry_ascent
-  segment_id: HALO-20240811a_01
+  segment_id: HALO-20240811a_2cda
   start: 2024-08-11 12:01:59
   end: 2024-08-11 12:22:54
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
+  - ascent
   - ec_track
   name: EC_track_southward_ascent
-  segment_id: HALO-20240811a_02
+  segment_id: HALO-20240811a_e1f0
   start: 2024-08-11 12:24:13
   end: 2024-08-11 12:30:00
   irregularities: []
@@ -24,7 +28,7 @@ segments:
   - straight_leg
   - ec_track
   name: EC_track_southward_const_alt
-  segment_id: HALO-20240811a_03
+  segment_id: HALO-20240811a_49fc
   start: 2024-08-11 12:30:00
   end: 2024-08-11 14:03:40
   irregularities: []
@@ -32,41 +36,41 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_northward_const_alt01
-  segment_id: HALO-20240811a_04
+  name: EC_track_northward_const_alt
+  segment_id: HALO-20240811a_86d6
   start: 2024-08-11 14:09:46
   end: 2024-08-11 14:14:59
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: edge_itcz_south
-  segment_id: HALO-20240811a_05
-  start: 2024-08-11 14:18:02
+  name: circle south
+  segment_id: HALO-20240811a_33db
+  start: 2024-08-11 14:17:00
   end: 2024-08-11 15:16:18
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_northward_const_alt02
-  segment_id: HALO-20240811a_06
+  name: EC_track_northward_const_alt
+  segment_id: HALO-20240811a_5489
   start: 2024-08-11 15:22:36
   end: 2024-08-11 16:09:28
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: inside_itcz
-  segment_id: HALO-20240811a_07
-  start: 2024-08-11 16:15:12
+  name: circle mid
+  segment_id: HALO-20240811a_92f7
+  start: 2024-08-11 16:14:35
   end: 2024-08-11 17:12:53
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: edge_itcz_north
-  segment_id: HALO-20240811a_08
+  name: circle north
+  segment_id: HALO-20240811a_22d5
   start: 2024-08-11 17:22:35
   end: 2024-08-11 18:18:33
   irregularities: []
@@ -74,8 +78,8 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
-  name: EC_track_northward_const_alt03
-  segment_id: HALO-20240811a_09
+  name: EC_track_northward_const_alt
+  segment_id: HALO-20240811a_0978
   start: 2024-08-11 18:20:08
   end: 2024-08-11 18:56:06
   irregularities: []
@@ -83,8 +87,9 @@ segments:
 - kinds:
   - straight_leg
   - ec_track
+  - descent
   name: EC_track_northward_descent
-  segment_id: HALO-20240811a_10
+  segment_id: HALO-20240811a_25a8
   start: 2024-08-11 18:56:06
   end: 2024-08-11 19:00:49
   irregularities: []
@@ -92,23 +97,25 @@ segments:
 - kinds:
   - straight_leg
   name: ferry_const_alt
-  segment_id: HALO-20240811a_11
+  segment_id: HALO-20240811a_ba82
   start: 2024-08-11 19:05:31
   end: 2024-08-11 19:11:25
   irregularities: []
   comments: []
 - kinds:
   - circle
-  name: circle_atr
-  segment_id: HALO-20240811a_12
-  start: 2024-08-11 19:17:37
+  - atr_coordination
+  name: ATR circle
+  segment_id: HALO-20240811a_ab80
+  start: 2024-08-11 19:16:33
   end: 2024-08-11 19:58:02
   irregularities: []
   comments: []
 - kinds:
   - straight_leg
+  - descent
   name: ferry_descent
-  segment_id: HALO-20240811a_13
+  segment_id: HALO-20240811a_12ca
   start: 2024-08-11 20:03:31
   end: 2024-08-11 20:30:34
   irregularities: []
