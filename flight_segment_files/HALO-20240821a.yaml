@@ -2,20 +2,20 @@ nickname: foo
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240821a
+takeoff: 2024-08-21 12:23:35
+landing: 2024-08-21 19:52:40
 segments:
 # Missing short segment with rapidly changing heading after takeoff
 - kinds:
   - straight_leg
+  - ascent
   name: EC track approach
   segment_id: HALO-20240821a_l1
-  start: 2024-08-21 12:26:07
-  end: 2024-08-21 12:59:39
+  start: 2024-08-21 12:26:22
+  end: 2024-08-21 12:54:23
   irregularities:
     - continuous ascent
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds: 
   - straight_leg
   name: EC underpass
@@ -23,6 +23,7 @@ segments:
   start: 2024-08-21 13:01:38
   end: 2024-08-21 14:07:06
   irregularities: []
+  comments:
 - kinds:
   - circle
   name: circle south clockwise
@@ -30,10 +31,7 @@ segments:
   start: 2024-08-21 14:09:50
   end: 2024-08-21 15:06:27
   irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - straight_leg
   name: connection south to mid circle
@@ -42,10 +40,7 @@ segments:
   end: 2024-08-21 15:13:01
   irregularities: 
     - rapid ascent at around 15:09:00
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - circle
   name: circle mid counterclockwise
@@ -54,10 +49,7 @@ segments:
   end: 2024-08-21 16:12:25
   irregularities:
     - no sondes dropped due to air traffic
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - straight_leg
   name: mid to north circle connection
@@ -65,10 +57,7 @@ segments:
   start: 2024-08-21 16:15:18
   end: 2024-08-21 16:51:15
   irregularities: []  
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - circle
   name: circle north clockwise
@@ -76,10 +65,7 @@ segments:
   start: 2024-08-21 16:54:19
   end: 2024-08-21 17:41:14
   irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
   # somewhat strange wiggles in the end, check
 - kinds:
   - circle
@@ -88,10 +74,7 @@ segments:
   start: 2024-08-21 17:54:50
   end: 2024-08-21 18:51:27
   irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - straight_leg
   name: #missing
@@ -99,10 +82,7 @@ segments:
   start: 2024-08-21 18:55:10
   end: 2024-08-21 19:05:15
   irregularities: []  
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - straight_leg
   name: 
@@ -111,10 +91,7 @@ segments:
   end: 2024-08-21 19:36:23
   irregularities: 
     - continuous descent after around 19:22:00
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 - kinds:
   - straight_leg
   # roll angle not yet checked
@@ -124,9 +101,6 @@ segments:
   end: 2024-08-21 19:48:19
   irregularities:
     - continuous descent
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
+  comments:
 
   #Strange heading profile in last ~5min, likely due to landing maneuver
