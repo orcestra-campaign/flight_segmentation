@@ -1,3 +1,4 @@
+# check straight legs for EC_track & under/overpasses
 nickname: foo
 mission: ORCESTRA
 platform: HALO
@@ -5,33 +6,69 @@ flight_id: HALO-20240821a
 takeoff: 2024-08-21 12:23:35
 landing: 2024-08-21 19:52:40
 segments:
-# Missing short segment with rapidly changing heading after takeoff
 - kinds:
   - straight_leg
   - ascent
-  name: EC track approach
-  segment_id: HALO-20240821a_l1
+  name: ascending ferry to EC track
+  segment_id: HALO-20240821a_
   start: 2024-08-21 12:26:22
   end: 2024-08-21 12:54:23
-  irregularities:
-    - continuous ascent
-  comments:
-- kinds: 
-  - straight_leg
-  name: EC underpass
-  segment_id: HALO-20240821a_l2
-  start: 2024-08-21 13:01:38
-  end: 2024-08-21 14:07:06
   irregularities: []
   comments:
+
+- kinds:
+  - straight_leg
+  name: ferry to EC track
+  segment_id: HALO-20240821a_
+  start: 2024-08-21 12:54:24
+  end: 2024-08-21 12:59:39
+  irregularities: []
+  comments: 
+
+- kinds:
+  - straight_leg
+  name: ferry to EC track
+  segment_id: HALO-20240821a_
+  start: 2024-08-21 13:01:44
+  end: 2024-08-21 13:28:01
+  irregularities: []
+  comments:
+
+- kinds:
+  - straight_leg
+  - ascent
+  name: ascending ferry to EC track
+  segment_id: HALO-20240821a_
+  start: 2024-08-21 13:28:02
+  end: 2024-08-21 13:30:01
+  irregularities: []
+  comments:
+
+- kinds:
+  - straight_leg
+  name: ferry to EC track
+  segment_id: HALO-20240821a_
+  start: 2024-08-21 13:30:02
+  end: 2024-08-21 14:07:09
+  irregularities:
+  - turbulences around 13:46:36 #radar_calibration?
+  comments:
+
 - kinds:
   - circle
   name: circle south clockwise
   segment_id: HALO-20240821a_cs
-  start: 2024-08-21 14:09:50
-  end: 2024-08-21 15:06:27
+  start: 2024-08-21 14:09:53
+  end: 2024-08-21 15:06:30
   irregularities: []
   comments:
+
+
+
+
+
+
+
 - kinds:
   - straight_leg
   name: connection south to mid circle
