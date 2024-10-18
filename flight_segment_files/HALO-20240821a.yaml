@@ -7,153 +7,153 @@ flight_id: HALO-20240821a
 takeoff: 2024-08-21 12:23:35
 landing: 2024-08-21 19:52:40
 segments:
-- kinds: 1
+- kinds: 
   - straight_leg
   - ascent
   name: ascending ferry to EC track
-  segment_id: HALO-20240821a_
+  segment_id: 1
   start: 2024-08-21 12:26:22
   end: 2024-08-21 12:54:23
   irregularities: []
   comments:
 
-- kinds: 2
+- kinds: 
   - straight_leg
   name: ferry to EC track
-  segment_id: HALO-20240821a_
+  segment_id: 2
   start: 2024-08-21 12:54:24
   end: 2024-08-21 12:59:39
   irregularities: []
   comments: 
 
-- kinds: 3
+- kinds:
   - straight_leg
   name: ferry to EC track
-  segment_id: HALO-20240821a_
+  segment_id: 3
   start: 2024-08-21 13:01:44
   end: 2024-08-21 13:28:01
   irregularities: []
   comments:
 
-- kinds: 4
+- kinds: 
   - straight_leg
   - ascent
   name: ascending ferry to EC track
-  segment_id: HALO-20240821a_
+  segment_id: 4
   start: 2024-08-21 13:28:02
   end: 2024-08-21 13:30:01
   irregularities: []
   comments:
 
-- kinds: 5
+- kinds: 
   - straight_leg
   name: ferry to EC track
-  segment_id: HALO-20240821a_
+  segment_id: 5
   start: 2024-08-21 13:30:02
   end: 2024-08-21 14:07:09
   irregularities:
   - turbulences around 13:46:36 #radar_calibration?
   comments:
 
-- kinds: 6
+- kinds: 
   - circle
   name: southern circle clockwise
-  segment_id: HALO-20240821a_cs
+  segment_id: 6
   start: 2024-08-21 14:09:53
   end: 2024-08-21 15:06:30
   irregularities: []
   comments:
 
-- kinds: 7
+- kinds: 
   - straight_leg
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 7
   start: 2024-08-21 15:10:35
   end: 2024-08-21 15:12:53
   irregularities: []
   comments:
 
-- kinds: 8
+- kinds: 
   - circle
   name: mid circle counterclockwise
-  segment_id: 
+  segment_id: 8
   start: 2024-08-21 15:15:38
   end: 2024-08-21 16:12:30
   irregularities: 
   - no sondes dropped due to air traffic
   comments:
 
-- kinds: 9
+- kinds: 
   - straight_leg
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 9
   start: 2024-08-21 16:15:26
   end: 2024-08-21 16:51:44
   irregularities: []
   comments:
 
-- kinds: 10
+- kinds: 
   - circle
   name: northern circle clockwise
-  segment_id: 
+  segment_id: 10
   start: 2024-08-21 16:54:41
   end: 2024-08-21 17:50:18
   irregularities:
   - slight deviation from circular path from 17:41:12 to 17:45:54
   comments:
 
-- kinds: 11
+- kinds: 
   - circle
   name: extra circle counterclockwise
-  segment_id: 
+  segment_id: 11
   start: 2024-08-21 17:54:24
   end: 2024-08-21 18:51:27
   irregularities: []
   comments:
 
-- kinds: 12
+- kinds: 
   - straight_leg
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 12
   start: 2024-08-21 18:55:03
   end: 2024-08-21 19:05:17
   irregularities: []
   comments:
 
-- kinds: 13
+- kinds: 
   - straight_leg
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 13
   start: 2024-08-21 19:06:55
   end: 2024-08-21 19:22:43
   irregularities: []
   comments:
 
-- kinds: 14
+- kinds: 
   - straight_leg
   - descent
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 14
   start: 2024-08-21 19:22:43
   end: 2024-08-21 19:36:26
   irregularities: []
   comments:
 
-- kinds: 15
+- kinds:
   - straight_leg
   - descent
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 15
   start: 2024-08-21 19:37:03
   end: 2024-08-21 19:48:21
   irregularities: []
   comments:
 
-- kinds: 16
+- kinds:
   - straight_leg
   - descent
   name: 
-  segment_id: HALO-20240821a_
+  segment_id: 16
   start: 2024-08-21 19:49:28
   end: 2024-08-21 19:52:38
   irregularities: []
