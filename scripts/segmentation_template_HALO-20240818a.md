@@ -148,96 +148,105 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 sl1 = (
     slice("2024-08-18T10:09:30", "2024-08-18T10:36:16"),
-    ["straight_leg", "ascent"], "ferry_ascent", [], []
+    ["straight_leg", "ascent"], "ferry_ascent", [],
 )
 
 sl2 = (
     slice("2024-08-18T10:36:16", "2024-08-18T10:41:08"),
-    ["straight_leg"], "ferry_const_alt", [], []
+    ["straight_leg"], "ferry_const_alt", [],
 )
 
 sl3 = (
     slice("2024-08-18T10:42:21", "2024-08-18T10:57:57"),
-    ["straight_leg"], "ferry_const_alt", [], []
+    ["straight_leg"], "ferry_const_alt", [],
 )
 
 ec1 = (
     slice("2024-08-18T10:59:40", "2024-08-18T11:18:10"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [], []
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
 )
 
 c1 = (
     slice("2024-08-18T11:24:25", "2024-08-18T12:18:04"),
-    ["circle"], "circle north", [], []
+    ["circle"], "circle north", [],
 )
 
 ec2 = (
     slice("2024-08-18T12:23:52", "2024-08-18T12:48:00"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["temporarily strong turbulence leading to substantial noise in pitch and roll angles"], []
+    ["turbulence: 2024-08-18T12:26:45 - 2024-08-18T12:31:00",
+     "turbulence: 2024-08-18T12:38:15 - 2024-08-18T12:48:00"],
 )
 
 c2 = (
-    slice("2024-08-18T12:53:01", "2024-08-18T13:47:17"),
+    slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
     ["circle"], "circle mid",
-    ["temporarily strong turbulence leading to substantial noise in pitch and roll angles"]
+    ["turbulence: 2024-08-18T12:53:12 - 2024-08-18T13:10:30",
+     "turbulence: 2024-08-18T13:31:10 - 2024-08-18T13:35:10",
+     "turbulence: 2024-08-18T13:37:50 - 2024-08-18T13:47:18"],
 )
 
 ec3 = (
     slice("2024-08-18T13:52:25", "2024-08-18T14:25:26"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["temporarily strong turbulence leading to substantial noise in pitch and roll angles"], []
+    ["turbulence: 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
 )
 
 c3 = (
-    slice("2024-08-18T14:28:14", "2024-08-18T15:24:10"),
-    ["circle"], "circle south", [], []
+    slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
+    ["circle"], "circle south", [],
 )
 
 ec4 = (
-    slice("2024-08-18T15:37:35", "2024-08-18T16:28:36"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [], []
+    slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
 )
 
 c_bm1 = (
     slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
-    ["circle"], "BM_pirouette_small", [], []
+    ["circle"], "BM_pirouette_small", [],
 )
 
 c_bm2 = (
-    slice("2024-08-18T17:02:11", "2024-08-18T17:33:22"),
-    ["circle"], "BM_pirouette_large", [], []
+    slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
+    ["circle"], "BM_pirouette_large", [],
 )
 
 sl4 = (
-    slice("2024-08-18T17:35:36", "2024-08-18T17:40:28"),
-    ["straight_leg"], "ferry_const_alt", [], []
+    slice("2024-08-18T17:35:35", "2024-08-18T17:40:29"),
+    ["straight_leg"], "ferry_const_alt", [],
 )
 
 ec5 = (
     slice("2024-08-18T17:43:52", "2024-08-18T17:54:26"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [], []
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
 )
 
 sl5 = (
-    slice("2024-08-18T17:56:02", "2024-08-18T18:20:31"),
-    ["straight_leg"], "ferry_const_alt", [], []
+    slice("2024-08-18T17:56:01", "2024-08-18T18:20:31"),
+    ["straight_leg"], "ferry_const_alt", [],
+)
+
+rc1 = (
+    slice("2024-08-18T18:20:31", "2024-08-18T18:21:55"),
+    ["radar_calibration"], "radar calibration", [],
 )
 
 sl6 = (
-    slice("2024-08-18T18:30:05", "2024-08-18T18:58:17"),
-    ["straight_leg", "descent"], "ferry_descent", [], []
+    slice("2024-08-18T18:30:22", "2024-08-18T18:58:17"),
+    ["straight_leg", "descent"], "ferry_descent",
+    ["constant roll angle of -0.5deg from 18:30:22 until 18:36:58, before switching to 0deg. Heading constant in whole segment."],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [sl1, sl2, sl3, ec1, c1, ec2, c2, ec3, c3, ec4, c_bm1, c_bm2, sl4, ec5, sl5, sl6]
+segments = [sl1, sl2, sl3, ec1, c1, ec2, c2, ec3, c3, ec4, c_bm1, c_bm2, sl4, ec5, sl5, rc1, sl6]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+seg=parse_segment(sl6)
 add_previous_seg = False
 
 ###########################
@@ -277,7 +286,8 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+#sl1, sl2, sl3, ec1, c1, ec2, c2, ec3, c3, ec4, c_bm1, c_bm2, sl4, ec5, sl5, sl6
+seg = parse_segment(sl6)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -304,12 +314,6 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "example",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
-    }
 ]
 events
 ```
@@ -320,4 +324,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```

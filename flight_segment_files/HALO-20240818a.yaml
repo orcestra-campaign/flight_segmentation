@@ -1,145 +1,163 @@
-nickname: White Dragon
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240818a
 takeoff: 2024-08-18 10:04:39
 landing: 2024-08-18 19:03:56
+events:
+- event_id: HALO-20240818a_968c
+  name: EC meeting point
+  time: 2024-08-18 16:03:59.419906
+  kinds:
+  - ec_underpass
+  remarks: []
+  distance: 111
 segments:
-- kinds:
-  - straight_leg
-  - ascent
+- segment_id: HALO-20240818a_d8bd
   name: ferry_ascent
-  segment_id: HALO-20240818a_d8bd
   start: 2024-08-18 10:09:30
   end: 2024-08-18 10:36:16
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
+  - ascent
+  remarks: []
+- segment_id: HALO-20240818a_7a27
   name: ferry_const_alt
-  segment_id: HALO-20240818a_7a27
   start: 2024-08-18 10:36:16
   end: 2024-08-18 10:41:08
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
+  remarks: []
+- segment_id: HALO-20240818a_6a4c
   name: ferry_const_alt
-  segment_id: HALO-20240818a_6a4c
   start: 2024-08-18 10:42:21
   end: 2024-08-18 10:57:57
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
-  - ec_track
+  remarks: []
+- segment_id: HALO-20240818a_cb44
   name: EC_track_southward_const_alt
-  segment_id: HALO-20240818a_cb44
   start: 2024-08-18 10:59:40
   end: 2024-08-18 11:18:10
-  irregularities: []
-  comments: []
-- kinds:
-  - circle
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks: []
+- segment_id: HALO-20240818a_949c
   name: circle north
-  segment_id: HALO-20240818a_949c
   start: 2024-08-18 11:24:25
   end: 2024-08-18 12:18:04
-  irregularities: []
-  comments: []
-- kinds:
-  - straight_leg
-  - ec_track
+  kinds:
+  - circle
+  remarks: []
+  clat: 11.999460926036601
+  clon: -28.71839082048517
+  radius: 133159.14975950043
+- segment_id: HALO-20240818a_ce50
   name: EC_track_southward_const_alt
-  segment_id: HALO-20240818a_ce50
   start: 2024-08-18 12:23:52
   end: 2024-08-18 12:48:00
-  irregularities:
-  - temporarily strong turbulence leading to substantial noise in pitch and roll angles
-  comments: []
-- kinds:
-  - circle
-  name: circle mid
-  segment_id: HALO-20240818a_efa8
-  start: 2024-08-18 12:53:01
-  end: 2024-08-18 13:47:17
-  irregularities:
-  - temporarily strong turbulence leading to substantial noise in pitch and roll angles
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
   - ec_track
+  remarks:
+  - 'turbulence: 2024-08-18T12:26:45 - 2024-08-18T12:31:00'
+  - 'turbulence: 2024-08-18T12:38:15 - 2024-08-18T12:48:00'
+- segment_id: HALO-20240818a_f5f5
+  name: circle mid
+  start: 2024-08-18 12:53:12
+  end: 2024-08-18 13:47:18
+  kinds:
+  - circle
+  remarks:
+  - 'turbulence: 2024-08-18T12:53:12 - 2024-08-18T13:10:30'
+  - 'turbulence: 2024-08-18T13:31:10 - 2024-08-18T13:35:10'
+  - 'turbulence: 2024-08-18T13:37:50 - 2024-08-18T13:47:18'
+  clat: 8.049242566813142
+  clon: -29.46962912052101
+  radius: 133141.54691012675
+- segment_id: HALO-20240818a_3859
   name: EC_track_southward_const_alt
-  segment_id: HALO-20240818a_3859
   start: 2024-08-18 13:52:25
   end: 2024-08-18 14:25:26
-  irregularities:
-  - temporarily strong turbulence leading to substantial noise in pitch and roll angles
-  comments: []
-- kinds:
-  - circle
-  name: circle south
-  segment_id: HALO-20240818a_6475
-  start: 2024-08-18 14:28:14
-  end: 2024-08-18 15:24:10
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
   - ec_track
-  name: EC_track_northward_const_alt
-  segment_id: HALO-20240818a_aa04
-  start: 2024-08-18 15:37:35
-  end: 2024-08-18 16:28:36
-  irregularities: []
-  comments: []
-- kinds:
+  remarks:
+  - 'turbulence: 2024-08-18T12:52:25 - 2024-08-18T14:09:55'
+- segment_id: HALO-20240818a_9920
+  name: circle south
+  start: 2024-08-18 14:28:14
+  end: 2024-08-18 15:24:08
+  kinds:
   - circle
+  remarks: []
+  clat: 2.9990867840482145
+  clon: -30.416138485578024
+  radius: 133127.43225517994
+- segment_id: HALO-20240818a_b8df
+  name: EC_track_northward_const_alt
+  start: 2024-08-18 15:37:14
+  end: 2024-08-18 16:28:37
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks: []
+- segment_id: HALO-20240818a_ff90
   name: BM_pirouette_small
-  segment_id: HALO-20240818a_ff90
   start: 2024-08-18 16:35:28
   end: 2024-08-18 16:57:56
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - circle
+  remarks: []
+  clat: 10.02792657813729
+  clon: -28.109804372095883
+  radius: 49891.44223098132
+- segment_id: HALO-20240818a_3429
   name: BM_pirouette_large
-  segment_id: HALO-20240818a_bdd0
   start: 2024-08-18 17:02:11
-  end: 2024-08-18 17:33:22
-  irregularities: []
-  comments: []
-- kinds:
-  - straight_leg
+  end: 2024-08-18 17:33:23
+  kinds:
+  - circle
+  remarks: []
+  clat: 10.027910592790883
+  clon: -28.109738143638936
+  radius: 73928.8582446524
+- segment_id: HALO-20240818a_5854
   name: ferry_const_alt
-  segment_id: HALO-20240818a_434a
-  start: 2024-08-18 17:35:36
-  end: 2024-08-18 17:40:28
-  irregularities: []
-  comments: []
-- kinds:
+  start: 2024-08-18 17:35:35
+  end: 2024-08-18 17:40:29
+  kinds:
   - straight_leg
-  - ec_track
+  remarks: []
+- segment_id: HALO-20240818a_4aa2
   name: EC_track_northward_const_alt
-  segment_id: HALO-20240818a_4aa2
   start: 2024-08-18 17:43:52
   end: 2024-08-18 17:54:26
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
+  - ec_track
+  remarks: []
+- segment_id: HALO-20240818a_7489
   name: ferry_const_alt
-  segment_id: HALO-20240818a_57b7
-  start: 2024-08-18 17:56:02
+  start: 2024-08-18 17:56:01
   end: 2024-08-18 18:20:31
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240818a_9170
+  name: radar calibration
+  start: 2024-08-18 18:20:31
+  end: 2024-08-18 18:21:55
+  kinds:
+  - radar_calibration
+  remarks: []
+- segment_id: HALO-20240818a_5270
+  name: ferry_descent
+  start: 2024-08-18 18:30:22
+  end: 2024-08-18 18:58:17
+  kinds:
   - straight_leg
   - descent
-  name: ferry_descent
-  segment_id: HALO-20240818a_596c
-  start: 2024-08-18 18:30:05
-  end: 2024-08-18 18:58:17
-  irregularities: []
-  comments: []
+  remarks:
+  - constant roll angle of -0.5deg from 18:30:22 until 18:36:58, before switching
+    to 0deg. Heading constant in whole segment.
