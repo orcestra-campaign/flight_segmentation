@@ -1,7 +1,6 @@
 # some untility functions for defining segments
 
 __all__ = [
-    "get_PACE_track",
     "get_sondes_l1",
     "get_overpass_point",
     "plot_overpass_point",
@@ -18,17 +17,6 @@ __all__ = [
     "to_yaml",
     "ransac_fit_circle",
 ]
-
-
-def get_PACE_track(flight_id, ds):
-    import orcestra.sat
-    takeoff, landing, _ = get_takeoff_landing(flight_id, ds)
-    _pace_track = orcestra.sat.pace_track_loader().get_track_for_day(flight_id2datestr(flight_id))
-    pace_track = _pace_track.where(
-        (_pace_track.lat > ds.lat.min()) & (_pace_track.lat < ds.lat.max()) &
-        (_pace_track.lon > ds.lon.min()) & (_pace_track.lon < ds.lon.max()),
-        drop=True).sel(time=slice(takeoff, landing))
-    return pace_track
 
 
 def get_sondes_l1(flight_id):
@@ -111,15 +99,24 @@ def flight_id2datestr(flight_id):
 def get_ec_track(flight_id, ds):
     import orcestra.sat
     import numpy as np
+    import warnings
     takeoff, landing, _ = get_takeoff_landing(flight_id, ds)
-    date = takeoff.astype("datetime64[D]")
-    if np.datetime64(date) > np.datetime64("2024-09-07T00:00:00"):
+    valid_date = takeoff.astype("datetime64[D]")
+    issue_dates = [valid_date - np.timedelta64(i, 'D') for i in range(0, 6)]
+    if np.datetime64(valid_date) > np.datetime64("2024-09-07T00:00:00"):
         roi = "BARBADOS" # region of interest
     else:
         roi = "CAPE_VERDE"
-    ec_track = orcestra.sat.SattrackLoader("EARTHCARE", date, kind="PRE",roi=roi) \
-                                            .get_track_for_day(date)\
-                                            .sel(time=slice(takeoff, landing))
+    for issue_date in issue_dates:
+        try:
+            ec_track = orcestra.sat.SattrackLoader(
+                "EARTHCARE", issue_date, kind="PRE",roi=roi
+            ).get_track_for_day(valid_date).sel(time=slice(takeoff, landing))
+            break
+        except:
+            warnings.warn("No sattrack forecast issued on flightday, " +
+                          "I will use an older sattrack forecast!")
+            continue
     return ec_track
 
 
