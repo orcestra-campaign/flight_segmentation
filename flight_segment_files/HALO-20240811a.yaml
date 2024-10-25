@@ -1,122 +1,148 @@
-nickname: Firsts (or alien on board)
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240811a
 takeoff: 2024-08-11 11:59:34
 landing: 2024-08-11 20:35:56
+events:
+- event_id: HALO-20240811a_243c
+  name: EC meeting point
+  time: 2024-08-11 15:51:53.745187
+  kinds:
+  - ec_underpass
+  remarks: []
+  distance: 1123
+- event_id: HALO-20240811a_4cb2
+  name: CVAO overpass
+  time: 2024-08-11 19:12:15
+  kinds:
+  - cvao_overpass
+  remarks: []
+  distance: 558
 segments:
-- kinds:
-  - straight_leg
-  - ascent
+- segment_id: HALO-20240811a_0ebb
   name: ferry_ascent
-  segment_id: HALO-20240811a_2cda
-  start: 2024-08-11 12:01:59
+  start: 2024-08-11 12:01:57
   end: 2024-08-11 12:22:54
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
+  - straight_leg
+  - ascent
+  remarks: []
+- segment_id: HALO-20240811a_168a
+  name: EC_track_southward_ascent
+  start: 2024-08-11 12:24:12
+  end: 2024-08-11 12:29:59
+  kinds:
   - straight_leg
   - ascent
   - ec_track
-  name: EC_track_southward_ascent
-  segment_id: HALO-20240811a_e1f0
-  start: 2024-08-11 12:24:13
-  end: 2024-08-11 12:30:00
-  irregularities: []
-  comments: []
-- kinds:
-  - straight_leg
-  - ec_track
+  remarks: []
+- segment_id: HALO-20240811a_7051
   name: EC_track_southward_const_alt
-  segment_id: HALO-20240811a_49fc
-  start: 2024-08-11 12:30:00
+  start: 2024-08-11 12:29:59
   end: 2024-08-11 14:03:40
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
   - ec_track
+  remarks:
+  - 'turbulence: 2024-08-11T13:02:15 - 2024-08-11T13:12:00'
+- segment_id: HALO-20240811a_86d6
   name: EC_track_northward_const_alt
-  segment_id: HALO-20240811a_86d6
   start: 2024-08-11 14:09:46
   end: 2024-08-11 14:14:59
-  irregularities: []
-  comments: []
-- kinds:
-  - circle
-  name: circle south
-  segment_id: HALO-20240811a_33db
-  start: 2024-08-11 14:17:00
-  end: 2024-08-11 15:16:18
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - straight_leg
   - ec_track
+  remarks: []
+- segment_id: HALO-20240811a_50ca
+  name: circle south
+  start: 2024-08-11 14:17:00
+  end: 2024-08-11 15:16:17
+  kinds:
+  - circle
+  remarks: []
+  clat: 5.000066183128026
+  clon: -26.999928980187303
+  radius: 133094.75108481143
+- segment_id: HALO-20240811a_521f
   name: EC_track_northward_const_alt
-  segment_id: HALO-20240811a_5489
-  start: 2024-08-11 15:22:36
-  end: 2024-08-11 16:09:28
-  irregularities: []
-  comments: []
-- kinds:
-  - circle
+  start: 2024-08-11 15:22:34
+  end: 2024-08-11 16:09:29
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks:
+  - 'turbulence: 2024-08-11T15:59:35 - 20240811T16:09:29'
+  - includes ec_underpass
+- segment_id: HALO-20240811a_549d
   name: circle mid
-  segment_id: HALO-20240811a_92f7
-  start: 2024-08-11 16:14:35
+  start: 2024-08-11 16:15:02
   end: 2024-08-11 17:12:53
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
   - circle
+  remarks:
+  - 'uneven sonde spacing: sonde 11 is not evenly spaced between neighbouring sondes
+    in northeastern circle quadrant'
+  clat: 8.250011617377474
+  clon: -26.388422386880432
+  radius: 133115.5169091075
+- segment_id: HALO-20240811a_22d5
   name: circle north
-  segment_id: HALO-20240811a_22d5
   start: 2024-08-11 17:22:35
   end: 2024-08-11 18:18:33
-  irregularities: []
-  comments: []
-- kinds:
+  kinds:
+  - circle
+  remarks:
+  - 'sonde missing: eastern circle quadrant'
+  clat: 11.499670675567302
+  clon: -25.771506967418627
+  radius: 133140.33400667796
+- segment_id: HALO-20240811a_4122
+  name: EC_track_northward_const_alt
+  start: 2024-08-11 18:20:06
+  end: 2024-08-11 18:56:07
+  kinds:
   - straight_leg
   - ec_track
-  name: EC_track_northward_const_alt
-  segment_id: HALO-20240811a_0978
-  start: 2024-08-11 18:20:08
-  end: 2024-08-11 18:56:06
-  irregularities: []
-  comments: []
-- kinds:
+  remarks: []
+- segment_id: HALO-20240811a_483d
+  name: EC_track_northward_descent
+  start: 2024-08-11 18:56:07
+  end: 2024-08-11 19:00:49
+  kinds:
   - straight_leg
   - ec_track
   - descent
-  name: EC_track_northward_descent
-  segment_id: HALO-20240811a_25a8
-  start: 2024-08-11 18:56:06
-  end: 2024-08-11 19:00:49
-  irregularities: []
-  comments: []
-- kinds:
+  remarks: []
+- segment_id: HALO-20240811a_831d
+  name: ferry_descent
+  start: 2024-08-11 19:01:56
+  end: 2024-08-11 19:05:20
+  kinds:
   - straight_leg
+  remarks: []
+- segment_id: HALO-20240811a_2d7e
   name: ferry_const_alt
-  segment_id: HALO-20240811a_ba82
-  start: 2024-08-11 19:05:31
-  end: 2024-08-11 19:11:25
-  irregularities: []
-  comments: []
-- kinds:
+  start: 2024-08-11 19:05:20
+  end: 2024-08-11 19:11:19
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240811a_9f65
+  name: ATR circle
+  start: 2024-08-11 19:16:38
+  end: 2024-08-11 19:58:01
+  kinds:
   - circle
   - atr_coordination
-  name: ATR circle
-  segment_id: HALO-20240811a_ab80
-  start: 2024-08-11 19:16:33
-  end: 2024-08-11 19:58:02
-  irregularities: []
-  comments: []
-- kinds:
+  remarks: []
+  clat: 17.74994298535513
+  clon: -24.33303122169228
+  radius: 85063.08377173527
+- segment_id: HALO-20240811a_35c4
+  name: ferry_descent
+  start: 2024-08-11 20:03:28
+  end: 2024-08-11 20:30:34
+  kinds:
   - straight_leg
   - descent
-  name: ferry_descent
-  segment_id: HALO-20240811a_12ca
-  start: 2024-08-11 20:03:31
-  end: 2024-08-11 20:30:34
-  irregularities: []
-  comments: []
+  remarks: []
