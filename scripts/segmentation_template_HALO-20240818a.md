@@ -71,9 +71,22 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ```
 
 ### Get PACE track
+**loading the PACE track for the first time takes 6-7 minutes!**
+Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-pace_track = get_PACE_track(flight_id, ds)
+load_pace = False
+
+if load_pace:
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+    
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 ```
 
 ### Get METEOR track
@@ -92,7 +105,7 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
@@ -176,7 +189,8 @@ c3 = (
 
 ec4 = (
     slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["includes ec_underpass"],
 )
 
 c_bm1 = (
@@ -263,15 +277,14 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-#sl1, sl2, sl3, ec1, c1, ec2, c2, ec3, c3, ec4, c_bm1, c_bm2, sl4, ec5, sl5, sl6
-seg = parse_segment(sl6)
+seg = parse_segment(ec4)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();

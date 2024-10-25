@@ -101,7 +101,8 @@ segments:
   kinds:
   - straight_leg
   - ec_track
-  remarks: []
+  remarks:
+  - includes ec_underpass
 - segment_id: HALO-20240818a_ff90
   name: BM_pirouette_small
   start: 2024-08-18 16:35:28
