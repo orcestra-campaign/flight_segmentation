@@ -145,13 +145,13 @@ def meteor_event(ds, meteor_track, name=None, remarks=None):
 def target_event(ds, target=None, target_lat=None, target_lon=None,
                  name=None, kinds=None, remarks=None):
     if target=="BCO":
-        from orcestra import bco
+        from orcestra.flightplan import bco
         target_lat, target_lon = bco.lat, bco.lon
         target_name = "BCO overpass"
         target_kinds = ["bco_overpass"]
 
     elif target=="CVAO":
-        from orcestra import mindelo
+        from orcestra.flightplan import mindelo
         target_lat, target_lon = mindelo.lat, mindelo.lon
         target_name = "CVAO overpass"
         target_kinds = ["cvao_overpass"]
