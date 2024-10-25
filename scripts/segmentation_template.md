@@ -72,16 +72,21 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 
 ### Get PACE track
 **loading the PACE track for the first time takes 6-7 minutes!**
-Might be worth only if the flight report states a PACE coordination.
+Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-from get_pace import get_pace_track
-_pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+load_pace = True
 
-pace_track = _pace_track.where(
-        (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-        (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-        drop=True)
+if load_pace:
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+    
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 ```
 
 ### Get METEOR track
@@ -100,7 +105,7 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
@@ -251,7 +256,7 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
