@@ -1,4 +1,4 @@
-Amission: ORCESTRA
+mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240816a
 takeoff: 2024-08-16 11:35:40
@@ -137,7 +137,8 @@ segments:
   kinds:
   - straight_leg
   remarks:
-  - 'course correction: 2024-08-16T18:02:36 - 2024-08-16T18:03:27'
+  - constant roll angle of +0.5deg from 17:55:51 until 18:03:16, before switching
+    to 0deg. Heading constant in whole segment.
 - segment_id: HALO-20240816a_7241
   name: ATR circle
   start: 2024-08-16 19:05:28
@@ -145,8 +146,7 @@ segments:
   kinds:
   - circle
   - atr_coordination
-  remarks:
-  - 72km radius
+  remarks: []
   clat: 17.433367417722295
   clon: -23.49954197891177
   radius: 70244.99347411835

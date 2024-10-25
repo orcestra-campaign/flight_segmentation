@@ -200,13 +200,12 @@ c3 = (
 sl3 = (
     slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
     ["straight_leg"], "ferry_const_alt",
-    ["course correction: 2024-08-16T18:02:36 - 2024-08-16T18:03:27"],
+    ["constant roll angle of +0.5deg from 17:55:51 until 18:03:16, before switching to 0deg. Heading constant in whole segment.",],
 )
 
 catr = (
     slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
-    ["circle", "atr_coordination"], "ATR circle",
-    ["72km radius"],
+    ["circle", "atr_coordination"], "ATR circle", [],
 )
 
 sl4 = (
