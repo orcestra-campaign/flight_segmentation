@@ -133,7 +133,7 @@ sl1 = (
 sl2 = (
     slice("2024-08-16T12:06:58", "2024-08-16T12:51:55"),
     ["straight_leg"], "ferry_const_alt",
-    ["course correction (due to unequal wing weight?): 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
+    ["heading correction (required due to antisymmetrical aircraft weight?): 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
 )
 
 ec1 = (

@@ -28,7 +28,8 @@ segments:
   kinds:
   - straight_leg
   remarks:
-  - 'course correction (due to unequal wing weight?): 2024-08-16T12:19:31 - 2024-08-16T12:19:47'
+  - 'heading correction (required due to antisymmetrical aircraft weight?): 2024-08-16T12:19:31
+    - 2024-08-16T12:19:47'
 - segment_id: HALO-20240816a_deb1
   name: EC_track_southward_const_alt
   start: 2024-08-16 12:53:26
