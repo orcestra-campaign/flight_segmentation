@@ -52,7 +52,6 @@ ds = get_navdata_HALO(flight_id)
 ```python
 drops = get_sondes_l1(flight_id)
 ds_drops = ds.sel(time=drops, method="nearest")
-ds_drops
 ```
 
 ### Defining takeoff and landing
@@ -70,9 +69,6 @@ print(f"Flight duration: {int(duration / 60)}:{int(duration % 60)}")
 ```python
 ec_track = get_ec_track(flight_id, ds)
 dist_ec, t_ec = get_overpass_track(ds, ec_track)
-```
-
-```python
 t_ec
 ```
 
@@ -81,13 +77,13 @@ t_ec
 Might be worth only if the flight report states a PACE coordination.
 
 ```python
-from get_pace import get_pace_track
-_pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+# from get_pace import get_pace_track
+# _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
 
-pace_track = _pace_track.where(
-        (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-        (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-        drop=True)
+# pace_track = _pace_track.where(
+#         (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+#         (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+#         drop=True)
 ```
 
 ### Get METEOR track
@@ -100,7 +96,8 @@ meteor_track = get_meteor_track().sel(time=slice(takeoff, landing))
 ```
 
 ```python
-get_overpass_track(ds, meteor_track)
+dist_meteor, t_meteor = get_overpass_track(ds, meteor_track)
+print(dist_meteor, t_meteor)
 ```
 
 ## Overview plot: HALO track, EC meeting point, and dropsonde locations
@@ -119,123 +116,123 @@ plt.legend();
 
 ## Interactive plots
 
-```python
-# Segment starts
-c1 = 'ForestGreen'
-c2 = 'Purple'
-c3 = 'Orange'
-c4 = 'Blue'
-lw = 2
-takeoff = hv.VLine(pd.Timestamp("2024-08-27 09:59:43")).opts(color = c1, line_width = lw)
-landing = hv.VLine(pd.Timestamp("2024-08-27 19:08:18")).opts(color = c1, line_width = lw)
+```python jupyter={"source_hidden": true}
+# # Segment starts
+# c1 = 'ForestGreen'
+# c2 = 'Purple'
+# c3 = 'Orange'
+# c4 = 'Blue'
+# lw = 2
+# takeoff = hv.VLine(pd.Timestamp("2024-08-27 09:59:43")).opts(color = c1, line_width = lw)
+# landing = hv.VLine(pd.Timestamp("2024-08-27 19:08:18")).opts(color = c1, line_width = lw)
 
-# seg1s = hv.VLine(pd.Timestamp("2024-08-27 10:04:14")).opts(color = c2, line_width = lw) #straight_leg ascent
-# seg1e = hv.VLine(pd.Timestamp("2024-08-27 10:29:27")).opts(color = c2, line_width = lw)
+# # seg1s = hv.VLine(pd.Timestamp("2024-08-27 10:04:14")).opts(color = c2, line_width = lw) #straight_leg ascent
+# # seg1e = hv.VLine(pd.Timestamp("2024-08-27 10:29:27")).opts(color = c2, line_width = lw)
 
-# seg2s = hv.VLine(pd.Timestamp("2024-08-27 10:29:27")).opts(color = c3, line_width = lw) #straight_leg   short spike in roll angle at 10:39:42
-# seg2e = hv.VLine(pd.Timestamp("2024-08-27 10:55:11")).opts(color = c3, line_width = lw)
+# # seg2s = hv.VLine(pd.Timestamp("2024-08-27 10:29:27")).opts(color = c3, line_width = lw) #straight_leg   short spike in roll angle at 10:39:42
+# # seg2e = hv.VLine(pd.Timestamp("2024-08-27 10:55:11")).opts(color = c3, line_width = lw)
 
-# seg3s = hv.VLine(pd.Timestamp("2024-08-27 10:56:25")).opts(color = c4, line_width = lw) #straight_leg
-# seg3e = hv.VLine(pd.Timestamp("2024-08-27 11:04:24")).opts(color = c4, line_width = lw)
+# # seg3s = hv.VLine(pd.Timestamp("2024-08-27 10:56:25")).opts(color = c4, line_width = lw) #straight_leg
+# # seg3e = hv.VLine(pd.Timestamp("2024-08-27 11:04:24")).opts(color = c4, line_width = lw)
 
-# seg4s = hv.VLine(pd.Timestamp("2024-08-27 11:04:24")).opts(color = c1, line_width = lw) #straight_leg ascent
-# seg4e = hv.VLine(pd.Timestamp("2024-08-27 11:06:27")).opts(color = c1, line_width = lw)
+# # seg4s = hv.VLine(pd.Timestamp("2024-08-27 11:04:24")).opts(color = c1, line_width = lw) #straight_leg ascent
+# # seg4e = hv.VLine(pd.Timestamp("2024-08-27 11:06:27")).opts(color = c1, line_width = lw)
 
-# seg5s = hv.VLine(pd.Timestamp("2024-08-27 11:06:27")).opts(color = c2, line_width = lw) #straight_leg
-# seg5e = hv.VLine(pd.Timestamp("2024-08-27 11:18:02")).opts(color = c2, line_width = lw)
+# # seg5s = hv.VLine(pd.Timestamp("2024-08-27 11:06:27")).opts(color = c2, line_width = lw) #straight_leg
+# # seg5e = hv.VLine(pd.Timestamp("2024-08-27 11:18:02")).opts(color = c2, line_width = lw)
 
-# seg6s = hv.VLine(pd.Timestamp("2024-08-27 11:18:59")).opts(color = c3, line_width = lw) #straight_leg
-# seg6e = hv.VLine(pd.Timestamp("2024-08-27 11:26:12")).opts(color = c3, line_width = lw)
+# # seg6s = hv.VLine(pd.Timestamp("2024-08-27 11:18:59")).opts(color = c3, line_width = lw) #straight_leg
+# # seg6e = hv.VLine(pd.Timestamp("2024-08-27 11:26:12")).opts(color = c3, line_width = lw)
 
-# seg7s = hv.VLine(pd.Timestamp("2024-08-27 11:26:31")).opts(color = c4, line_width = lw) #straight_leg
-# seg7e = hv.VLine(pd.Timestamp("2024-08-27 11:28:34")).opts(color = c4, line_width = lw)
+# # seg7s = hv.VLine(pd.Timestamp("2024-08-27 11:26:31")).opts(color = c4, line_width = lw) #straight_leg
+# # seg7e = hv.VLine(pd.Timestamp("2024-08-27 11:28:34")).opts(color = c4, line_width = lw)
 
-# seg8s = hv.VLine(pd.Timestamp("2024-08-27 11:31:26")).opts(color = c1, line_width = lw) #straight_leg
-# seg8e = hv.VLine(pd.Timestamp("2024-08-27 11:33:30")).opts(color = c1, line_width = lw)
+# # seg8s = hv.VLine(pd.Timestamp("2024-08-27 11:31:26")).opts(color = c1, line_width = lw) #straight_leg
+# # seg8e = hv.VLine(pd.Timestamp("2024-08-27 11:33:30")).opts(color = c1, line_width = lw)
 
-# seg9s = hv.VLine(pd.Timestamp("2024-08-27 11:33:58")).opts(color = c2, line_width = lw) #straight_leg
-# seg9e = hv.VLine(pd.Timestamp("2024-08-27 11:35:56")).opts(color = c2, line_width = lw)
+# # seg9s = hv.VLine(pd.Timestamp("2024-08-27 11:33:58")).opts(color = c2, line_width = lw) #straight_leg
+# # seg9e = hv.VLine(pd.Timestamp("2024-08-27 11:35:56")).opts(color = c2, line_width = lw)
 
-# seg10s = hv.VLine(pd.Timestamp("2024-08-27 11:38:41")).opts(color = c3, line_width = lw) #straight_leg   slight turn in track with slowly changing roll angle
-# seg10e = hv.VLine(pd.Timestamp("2024-08-27 11:56:44")).opts(color = c3, line_width = lw)
+# # seg10s = hv.VLine(pd.Timestamp("2024-08-27 11:38:41")).opts(color = c3, line_width = lw) #straight_leg   slight turn in track with slowly changing roll angle
+# # seg10e = hv.VLine(pd.Timestamp("2024-08-27 11:56:44")).opts(color = c3, line_width = lw)
 
-# seg11s = hv.VLine(pd.Timestamp("2024-08-27 11:59:20")).opts(color = c4, line_width = lw) #circle   counterclockwise
-# seg11e = hv.VLine(pd.Timestamp("2024-08-27 12:56:08")).opts(color = c4, line_width = lw)
+# # seg11s = hv.VLine(pd.Timestamp("2024-08-27 11:59:20")).opts(color = c4, line_width = lw) #circle   counterclockwise
+# # seg11e = hv.VLine(pd.Timestamp("2024-08-27 12:56:08")).opts(color = c4, line_width = lw)
 
-# seg12s = hv.VLine(pd.Timestamp("2024-08-27 13:14:37")).opts(color = c1, line_width = lw) #circle   counterclockwise   turbulences/spikes 13:36:46-13:38:08 and 14:02:03-14:03:21
-# seg12e = hv.VLine(pd.Timestamp("2024-08-27 14:14:09")).opts(color = c1, line_width = lw)
+# # seg12s = hv.VLine(pd.Timestamp("2024-08-27 13:14:37")).opts(color = c1, line_width = lw) #circle   counterclockwise   turbulences/spikes 13:36:46-13:38:08 and 14:02:03-14:03:21
+# # seg12e = hv.VLine(pd.Timestamp("2024-08-27 14:14:09")).opts(color = c1, line_width = lw)
 
-# seg13s = hv.VLine(pd.Timestamp("2024-08-27 14:17:22")).opts(color = c2, line_width = lw) #straight_leg   slight turn   BAHAMAS measurement gap between 14:37:22 and 14:57:20
-# seg13e = hv.VLine(pd.Timestamp("2024-08-27 14:37:22")).opts(color = c2, line_width = lw)
+# # seg13s = hv.VLine(pd.Timestamp("2024-08-27 14:17:22")).opts(color = c2, line_width = lw) #straight_leg   slight turn   BAHAMAS measurement gap between 14:37:22 and 14:57:20
+# # seg13e = hv.VLine(pd.Timestamp("2024-08-27 14:37:22")).opts(color = c2, line_width = lw)
 
-# seg14s = hv.VLine(pd.Timestamp("2024-08-27 14:57:20")).opts(color = c3, line_width = lw) #circle   counterclockwise   BAHAMAS measurement gap between 14:37:22 and 14:57:20
-# seg14e = hv.VLine(pd.Timestamp("2024-08-27 15:50:27")).opts(color = c3, line_width = lw)
+# # seg14s = hv.VLine(pd.Timestamp("2024-08-27 14:57:20")).opts(color = c3, line_width = lw) #circle   counterclockwise   BAHAMAS measurement gap between 14:37:22 and 14:57:20
+# # seg14e = hv.VLine(pd.Timestamp("2024-08-27 15:50:27")).opts(color = c3, line_width = lw)
 
-# seg15s = hv.VLine(pd.Timestamp("2024-08-27 15:59:45")).opts(color = c4, line_width = lw) #straight_leg    
-# seg15e = hv.VLine(pd.Timestamp("2024-08-27 16:16:37")).opts(color = c4, line_width = lw)
+# # seg15s = hv.VLine(pd.Timestamp("2024-08-27 15:59:45")).opts(color = c4, line_width = lw) #straight_leg    
+# # seg15e = hv.VLine(pd.Timestamp("2024-08-27 16:16:37")).opts(color = c4, line_width = lw)
 
-# seg16s = hv.VLine(pd.Timestamp("2024-08-27 16:21:25")).opts(color = c1, line_width = lw) #straight_leg
-# seg16e = hv.VLine(pd.Timestamp("2024-08-27 17:03:06")).opts(color = c1, line_width = lw)
+# # seg16s = hv.VLine(pd.Timestamp("2024-08-27 16:21:25")).opts(color = c1, line_width = lw) #straight_leg
+# # seg16e = hv.VLine(pd.Timestamp("2024-08-27 17:03:06")).opts(color = c1, line_width = lw)
 
-# seg17s = hv.VLine(pd.Timestamp("2024-08-27 17:03:16")).opts(color = c2, line_width = lw) #steep turn
-# seg17e = hv.VLine(pd.Timestamp("2024-08-27 17:06:15")).opts(color = c2, line_width = lw)
+# # seg17s = hv.VLine(pd.Timestamp("2024-08-27 17:03:16")).opts(color = c2, line_width = lw) #steep turn
+# # seg17e = hv.VLine(pd.Timestamp("2024-08-27 17:06:15")).opts(color = c2, line_width = lw)
 
-# seg18s = hv.VLine(pd.Timestamp("2024-08-27 17:09:09")).opts(color = c3, line_width = lw) #straight_leg   
-# seg18e = hv.VLine(pd.Timestamp("2024-08-27 17:21:24")).opts(color = c3, line_width = lw)
+# # seg18s = hv.VLine(pd.Timestamp("2024-08-27 17:09:09")).opts(color = c3, line_width = lw) #straight_leg   
+# # seg18e = hv.VLine(pd.Timestamp("2024-08-27 17:21:24")).opts(color = c3, line_width = lw)
 
-# seg19s = hv.VLine(pd.Timestamp("2024-08-27 17:21:35")).opts(color = c4, line_width = lw) #steep turn
-# seg19e = hv.VLine(pd.Timestamp("2024-08-27 17:24:39")).opts(color = c4, line_width = lw)
+# # seg19s = hv.VLine(pd.Timestamp("2024-08-27 17:21:35")).opts(color = c4, line_width = lw) #steep turn
+# # seg19e = hv.VLine(pd.Timestamp("2024-08-27 17:24:39")).opts(color = c4, line_width = lw)
 
-# seg20s = hv.VLine(pd.Timestamp("2024-08-27 17:28:06")).opts(color = c1, line_width = lw) #straight_leg   
-# seg20e = hv.VLine(pd.Timestamp("2024-08-27 17:33:37")).opts(color = c1, line_width = lw)
+# # seg20s = hv.VLine(pd.Timestamp("2024-08-27 17:28:06")).opts(color = c1, line_width = lw) #straight_leg   
+# # seg20e = hv.VLine(pd.Timestamp("2024-08-27 17:33:37")).opts(color = c1, line_width = lw)
 
-# seg21s = hv.VLine(pd.Timestamp("2024-08-27 17:33:37")).opts(color = c2, line_width = lw) #straight_leg   descent  
-# seg21e = hv.VLine(pd.Timestamp("2024-08-27 17:39:30")).opts(color = c2, line_width = lw)
+# # seg21s = hv.VLine(pd.Timestamp("2024-08-27 17:33:37")).opts(color = c2, line_width = lw) #straight_leg   descent  
+# # seg21e = hv.VLine(pd.Timestamp("2024-08-27 17:39:30")).opts(color = c2, line_width = lw)
 
-# seg22s = hv.VLine(pd.Timestamp("2024-08-27 17:43:57")).opts(color = c3, line_width = lw) #circle   counterclockwise
-# seg22e = hv.VLine(pd.Timestamp("2024-08-27 18:19:07")).opts(color = c3, line_width = lw)
+# # seg22s = hv.VLine(pd.Timestamp("2024-08-27 17:43:57")).opts(color = c3, line_width = lw) #circle   counterclockwise
+# # seg22e = hv.VLine(pd.Timestamp("2024-08-27 18:19:07")).opts(color = c3, line_width = lw)
 
-# seg23s = hv.VLine(pd.Timestamp("2024-08-27 18:19:07")).opts(color = c4, line_width = lw) #steep turn
-# seg23e = hv.VLine(pd.Timestamp("2024-08-27 18:21:37")).opts(color = c4, line_width = lw)
+# # seg23s = hv.VLine(pd.Timestamp("2024-08-27 18:19:07")).opts(color = c4, line_width = lw) #steep turn
+# # seg23e = hv.VLine(pd.Timestamp("2024-08-27 18:21:37")).opts(color = c4, line_width = lw)
 
-# seg24s = hv.VLine(pd.Timestamp("2024-08-27 18:24:25")).opts(color = c1, line_width = lw) #elongated turn
-# seg24e = hv.VLine(pd.Timestamp("2024-08-27 18:30:51")).opts(color = c1, line_width = lw)
+# # seg24s = hv.VLine(pd.Timestamp("2024-08-27 18:24:25")).opts(color = c1, line_width = lw) #elongated turn
+# # seg24e = hv.VLine(pd.Timestamp("2024-08-27 18:30:51")).opts(color = c1, line_width = lw)
 
-# seg25s = hv.VLine(pd.Timestamp("2024-08-27 18:37:50")).opts(color = c2, line_width = lw) #straight_leg    
-# seg25e = hv.VLine(pd.Timestamp("2024-08-27 18:48:54")).opts(color = c2, line_width = lw)
+# # seg25s = hv.VLine(pd.Timestamp("2024-08-27 18:37:50")).opts(color = c2, line_width = lw) #straight_leg    
+# # seg25e = hv.VLine(pd.Timestamp("2024-08-27 18:48:54")).opts(color = c2, line_width = lw)
 
-seg26s = hv.VLine(pd.Timestamp("2024-08-27 18:54:20")).opts(color = c3, line_width = lw) #straight_leg   descent    
-seg26e = hv.VLine(pd.Timestamp("2024-08-27 19:03:33")).opts(color = c3, line_width = lw)
+# seg26s = hv.VLine(pd.Timestamp("2024-08-27 18:54:20")).opts(color = c3, line_width = lw) #straight_leg   descent    
+# seg26e = hv.VLine(pd.Timestamp("2024-08-27 19:03:33")).opts(color = c3, line_width = lw)
 
-seg27s = hv.VLine(pd.Timestamp("2024-08-27 19:04:09")).opts(color = c4, line_width = lw) #straight_leg   descent    
-seg27e = hv.VLine(pd.Timestamp("2024-08-27 19:08:18")).opts(color = c4, line_width = lw)
+# seg27s = hv.VLine(pd.Timestamp("2024-08-27 19:04:09")).opts(color = c4, line_width = lw) #straight_leg   descent    
+# seg27e = hv.VLine(pd.Timestamp("2024-08-27 19:08:18")).opts(color = c4, line_width = lw)
 ```
 
-```python jupyter={"outputs_hidden": true, "source_hidden": true}
-alt = ds["alt"].hvplot()
+```python jupyter={"source_hidden": true}
+# alt = ds["alt"].hvplot()
 
-alt * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
-    seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
-    seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
-    seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
+# alt * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
+#     seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
+#     seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
+#     seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
 ```
 
-```python jupyter={"source_hidden": true, "outputs_hidden": true}
-heading = ds["heading"].hvplot()
+```python jupyter={"source_hidden": true}
+# heading = ds["heading"].hvplot()
 
-heading * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
-    seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
-    seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
-    seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
+# heading * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
+#     seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
+#     seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
+#     seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
 ```
 
-```python jupyter={"source_hidden": true, "outputs_hidden": true}
-roll = ds["roll"].hvplot()
+```python jupyter={"source_hidden": true}
+# roll = ds["roll"].hvplot()
 
-roll * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
-    seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
-    seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
-    seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
+# roll * takeoff * landing * seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * \
+#     seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * \
+#     seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
+#     seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e * seg24s * seg24e * seg25s * seg25e * seg26s * seg26e * seg27s * seg27e
 ```
 
 ## Segments
@@ -327,7 +324,7 @@ seg12 = (
 seg13 = (
     slice("2024-08-27T14:17:22", "2024-08-27T14:37:22"),
     ["straight_leg", "ec_track"],
-    "leg through middle circle",
+    "northward leg through middle circle",
     ["start of BAHAMAS measurement gap: 14:37:22 and 14:57:20"]
 )
 
@@ -342,6 +339,7 @@ seg15 = (
     slice("2024-08-27T15:59:45", "2024-08-27T16:16:37"),
     ["straight leg", "ec_track"],
     "leg through northern circle",
+    ["contains EC overpass"]
 )
 
 seg16 = (
@@ -481,7 +479,7 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+#plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -503,9 +501,9 @@ events = [
     ec_event(ds, ec_track),
     {"name": "Meteor overpass",
      "kinds": ["meteor_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["distance could not be computed"],
-     "distance": float("nan"),
+     "time": to_dt(t_meteor),
+     "remarks": ["computed time does not match Meteor track plot and report is ambiguous", "distance could not be computed"],
+     "distance": float('nan'),
     }
 ]
 events
