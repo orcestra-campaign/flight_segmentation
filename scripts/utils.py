@@ -145,13 +145,13 @@ def meteor_event(ds, meteor_track, name=None, remarks=None):
 def target_event(ds, target=None, target_lat=None, target_lon=None,
                  name=None, kinds=None, remarks=None):
     if target=="BCO":
-        from orcestra import bco
+        from orcestra.flightplan import bco
         target_lat, target_lon = bco.lat, bco.lon
         target_name = "BCO overpass"
         target_kinds = ["bco_overpass"]
 
     elif target=="CVAO":
-        from orcestra import mindelo
+        from orcestra.flightplan import mindelo
         target_lat, target_lon = mindelo.lat, mindelo.lon
         target_name = "CVAO overpass"
         target_kinds = ["cvao_overpass"]
@@ -255,12 +255,30 @@ def get_takeoff_landing(flight_id, ds):
     which are located at about 89m and 8m above WGS84 respectively.
     """
     import numpy as np
-    if ds.time[0].values > np.datetime64("2024-09-07T00:00:00"):
-        airport_wgs84 = 9
-    else:
-        airport_wgs84 = 90
-    takeoff = ds["time"].where(ds.alt > airport_wgs84, drop=True)[0].values
-    landing = ds["time"].where(ds.alt > airport_wgs84, drop=True)[-1].values
+    # takeoff airport
+    if ds.time[0].values < np.datetime64("2024-08-10T00:00:00"):
+        airport_takeoff_wgs84 = 681   #Memmingen
+    elif (ds.time[0].values >= np.datetime64("2024-08-10T00:00:00") and
+          ds.time[0].values < np.datetime64("2024-09-07T00:00:00")
+         ):
+        airport_takeoff_wgs84 = 90    #Sal
+    elif ds.time[0].values >= np.datetime64("2024-09-07T00:00:00"):
+        airport_takeoff_wgs84 = 9     #Barbados
+    print(f"Takeoff airport WGS84 altitude: {airport_takeoff_wgs84}m")
+    
+    # landing airport
+    if ds.time[-1].values < np.datetime64("2024-09-05T00:00:00"):
+        airport_landing_wgs84 = 90    #Sal
+    elif (ds.time[-1].values >= np.datetime64("2024-09-05T00:00:00") and
+          ds.time[-1].values < np.datetime64("2024-09-29T00:00:00")
+         ):
+        airport_landing_wgs84 = 9     #Barbados
+    elif ds.time[-1].values >= np.datetime64("2024-09-29T00:00:00"):
+        airport_landing_wgs84 = 681   #Memmingen
+    print(f"Landing airport WGS84 altitude: {airport_landing_wgs84}m")
+    
+    takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
+    landing = ds["time"].where(ds.alt > airport_landing_wgs84, drop=True)[-1].values
     duration = (landing - takeoff).astype("timedelta64[m]").astype(int)
     return takeoff, landing, duration
 
