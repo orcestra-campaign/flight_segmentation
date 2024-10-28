@@ -54,7 +54,7 @@ segments:
   - ec_track
   remarks: []
 - segment_id: HALO-20240811a_50ca
-  name: circle south
+  name: circle_south
   start: 2024-08-11 14:17:00
   end: 2024-08-11 15:16:17
   kinds:
@@ -74,7 +74,7 @@ segments:
   - 'turbulence: 2024-08-11T15:59:35 - 20240811T16:09:29'
   - includes ec_underpass
 - segment_id: HALO-20240811a_549d
-  name: circle mid
+  name: circle_mid
   start: 2024-08-11 16:15:02
   end: 2024-08-11 17:12:53
   kinds:
@@ -86,7 +86,7 @@ segments:
   clon: -26.388422386880432
   radius: 133115.5169091075
 - segment_id: HALO-20240811a_22d5
-  name: circle north
+  name: circle_north
   start: 2024-08-11 17:22:35
   end: 2024-08-11 18:18:33
   kinds:
@@ -128,7 +128,7 @@ segments:
   - straight_leg
   remarks: []
 - segment_id: HALO-20240811a_9f65
-  name: ATR circle
+  name: ATR_circle
   start: 2024-08-11 19:16:38
   end: 2024-08-11 19:58:01
   kinds:

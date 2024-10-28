@@ -159,7 +159,7 @@ ec3 = (
 
 c1 = (
     slice("2024-08-11T14:17:00", "2024-08-11T15:16:17"),
-    ["circle"], "circle south", [],
+    ["circle"], "circle_south", [],
 )
 
 ec4 = (
@@ -171,13 +171,13 @@ ec4 = (
 
 c2 = (
     slice("2024-08-11T16:15:02", "2024-08-11T17:12:53"),
-    ["circle"], "circle mid",
+    ["circle"], "circle_mid",
     ["uneven sonde spacing: sonde 11 is not evenly spaced between neighbouring sondes in northeastern circle quadrant"],
 )
 
 c3 = (
     slice("2024-08-11T17:22:35", "2024-08-11T18:18:33"),
-    ["circle"], "circle north",
+    ["circle"], "circle_north",
     ["sonde missing: eastern circle quadrant"],
 )
 
@@ -203,7 +203,7 @@ sl3 = (
 
 catr = (
     slice("2024-08-11T19:16:38", "2024-08-11T19:58:01"),
-    ["circle", "atr_coordination"], "ATR circle", [],
+    ["circle", "atr_coordination"], "ATR_circle", [],
 )
 
 sl4 = (
