@@ -74,7 +74,7 @@ segments:
   - ec_track
   remarks: []
 - segment_id: HALO-20240816a_bed8
-  name: circle south
+  name: circle_south
   start: 2024-08-16 13:56:46
   end: 2024-08-16 14:52:39
   kinds:
@@ -94,7 +94,7 @@ segments:
   - ec_track
   remarks: []
 - segment_id: HALO-20240816a_66dc
-  name: circle mid
+  name: circle_mid
   start: 2024-08-16 15:06:35
   end: 2024-08-16 16:01:44
   kinds:
@@ -122,7 +122,7 @@ segments:
   remarks:
   - ec_underpass
 - segment_id: HALO-20240816a_8c12
-  name: circle north
+  name: circle_north
   start: 2024-08-16 16:53:56
   end: 2024-08-16 17:49:40
   kinds:
@@ -138,10 +138,10 @@ segments:
   kinds:
   - straight_leg
   remarks:
-  - constant roll angle of +0.5deg from 17:55:51 until 18:03:16, before switching
-    to 0deg. Heading constant in whole segment.
+  - constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16,
+    afterwards 0deg. Heading constant in whole segment.
 - segment_id: HALO-20240816a_7241
-  name: ATR circle
+  name: ATR_circle
   start: 2024-08-16 19:05:28
   end: 2024-08-16 19:40:18
   kinds:

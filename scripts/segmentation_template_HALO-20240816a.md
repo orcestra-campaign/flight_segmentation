@@ -164,7 +164,7 @@ ec5 = (
 
 c1 = (
     slice("2024-08-16T13:56:46", "2024-08-16T14:52:39"),
-    ["circle"], "circle south",
+    ["circle"], "circle_south",
     ["turbulence: 2024-08-16T14:01:50 - 2024-08-16T14:05:05",
      "turbulence: 2024-08-16T14:49:50 - 2024-08-16T14:50:25",
     ],
@@ -177,7 +177,7 @@ ec6 = (
 
 c2 = (
     slice("2024-08-16T15:06:35", "2024-08-16T16:01:44"),
-    ["circle"], "circle mid",
+    ["circle"], "circle_mid", [],
 )
 
 ec7 = (
@@ -194,18 +194,18 @@ ec8 = (
 
 c3 = (
     slice("2024-08-16T16:53:56", "2024-08-16T17:49:40"),
-    ["circle"], "circle north", [],
+    ["circle"], "circle_north", [],
 )
 
 sl3 = (
     slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
     ["straight_leg"], "ferry_const_alt",
-    ["constant roll angle of +0.5deg from 17:55:51 until 18:03:16, before switching to 0deg. Heading constant in whole segment.",],
+    ["constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
 )
 
 catr = (
     slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
-    ["circle", "atr_coordination"], "ATR circle", [],
+    ["circle", "atr_coordination"], "ATR_circle", [],
 )
 
 sl4 = (
