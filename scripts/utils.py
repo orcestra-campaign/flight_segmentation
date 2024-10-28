@@ -130,7 +130,8 @@ def ec_event(ds, ec_track, ec_remarks=None):
            }
 
 
-def meteor_event(ds, meteor_track, name=None, remarks=None):
+def meteor_event(ds, meteor_track, seg=None, name=None, remarks=None):
+    if seg: ds = ds.sel(time=parse_segment(seg)["slice"])
     dist, meeting_time = get_overpass_track(ds, meteor_track)
     return {"name": name or "METEOR overpass",
             "time": to_dt(meeting_time),
@@ -143,7 +144,7 @@ def meteor_event(ds, meteor_track, name=None, remarks=None):
 
 
 def target_event(ds, target=None, target_lat=None, target_lon=None,
-                 name=None, kinds=None, remarks=None):
+                 seg=None, name=None, kinds=None, remarks=None):
     if target=="BCO":
         from orcestra.flightplan import bco
         target_lat, target_lon = bco.lat, bco.lon
@@ -162,7 +163,8 @@ def target_event(ds, target=None, target_lat=None, target_lon=None,
     else:
         target_name = "target meeting point"
         target_kinds = ["point_overpass"]
-
+    
+    if seg: ds = ds.sel(time=parse_segment(seg)["slice"])
     dist, time = get_overpass_point(ds, target_lat, target_lon)
 
     return {"name": name or target_name,
