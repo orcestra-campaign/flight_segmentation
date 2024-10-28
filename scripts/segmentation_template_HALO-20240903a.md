@@ -176,7 +176,7 @@ ec3 = (
 ec4 = (
     slice("2024-09-03T14:51:36", "2024-09-03T15:00:08"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    [],
+    ["includes meteor_overpass"],
 )
 
 c2 = (
@@ -227,7 +227,8 @@ catr1 = (
 
 sl5 = (
     slice("2024-09-03T19:14:00", "2024-09-03T19:22:58"),
-    ["straight_leg"], "southward_crossing_catr", ["Crossing ATR circle along its full latitudinal extent"],
+    ["straight_leg"], "southward_crossing_catr",
+    ["Crossing ATR circle along its full latitudinal extent"],
 )
     
 catr2 = (
@@ -259,7 +260,7 @@ segments = [parse_segment(s) for s in
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl8)
+seg=parse_segment(ec6)
 add_previous_seg = False
 
 ###########################
