@@ -151,13 +151,13 @@ ec1 = (
     slice("2024-09-03T12:35:06", "2024-09-03T13:45:02"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
-    ["constant roll angle of +1.0deg during 2024-09-03T12:46:17 - 2024-09-03T13:00:43, before and after 0deg. Heading constant in whole segment.",
+    ["constant roll angle of +1.0deg from 2024-09-03T12:46:17 until 2024-09-03T13:00:43, before and after 0deg. Heading constant in whole segment.",
      "turbulence: 2024-09-03T13:09:37 - 2024-09-03T13:45:02"],
 )
 
 c1 = (
     slice("2024-09-03T13:47:43", "2024-09-03 14:42:01"),
-    ["circle"], "circle south",
+    ["circle"], "circle_south",
     ["partly uneven sonde spacing", "turbulence: 2024-09-03T14:03:50 - 2024-09-03T14:05:00",],
 )
 
@@ -181,7 +181,7 @@ ec4 = (
 
 c2 = (
     slice("2024-09-03T15:02:21", "2024-09-03 15:57:08"),
-    ["circle"], "circle mid",
+    ["circle"], "circle_mid",
     ["turbulence: 2024-09-03T15:17:40 - 2024-09-03T15:29:25",
      "turbulence: 2024-09-03T15:46:16 - 2024-09-03T15:46:25",],
 )
@@ -194,14 +194,14 @@ ec5 = (
 
 c3 = (
     slice("2024-09-03 16:36:35", "2024-09-03 17:31:22"),
-    ["circle"], "circle north",
+    ["circle"], "circle_north",
     ["ascent: 2024-09-03T16:44:14 - 2024-09-03T16:49:36"],
 )
 
 ec6 = (
     slice("2024-09-03T17:38:53", "2024-09-03T17:54:52"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["constant roll angle of +1.0deg during 2024-09-03T17:44:21 - 2024-09-03T17:50:54, before and after 0deg. Heading constant in whole segment."],
+    ["constant roll angle of +1.0deg from 2024-09-03T17:44:21 until 2024-09-03T17:50:54, before and after 0deg. Heading constant in whole segment."],
 )
 
 sl2 = (
@@ -222,7 +222,7 @@ sl4 = (
 catr1 = (
     slice("2024-09-03 19:01:06", "2024-09-03 19:06:37"),
     ["circle", "atr_coordination"],
-    "quarter ATR circle", ["quarter ATR circle: northeastern quadrant"],
+    "quarter_ATR_circle", ["quarter ATR circle: northeastern quadrant"],
 )
 
 sl5 = (
@@ -234,7 +234,7 @@ sl5 = (
 catr2 = (
     slice("2024-09-03 19:24:51", "2024-09-03 19:54:15"),
     ["circle", "atr_coordination"],
-    "ATR circle", ["deviation from circle: 2024-09-03T19:37:56 - 2024-09-03T19:42:08"],
+    "ATR_circle", ["deviation from circle: 2024-09-03T19:37:56 - 2024-09-03T19:42:08"],
 )
 
 sl6 = (

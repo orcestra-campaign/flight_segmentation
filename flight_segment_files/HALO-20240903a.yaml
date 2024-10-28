@@ -53,11 +53,11 @@ segments:
   - straight_leg
   - ec_track
   remarks:
-  - constant roll angle of +1.0deg during 2024-09-03T12:46:17 - 2024-09-03T13:00:43,
+  - constant roll angle of +1.0deg from 2024-09-03T12:46:17 until 2024-09-03T13:00:43,
     before and after 0deg. Heading constant in whole segment.
   - 'turbulence: 2024-09-03T13:09:37 - 2024-09-03T13:45:02'
 - segment_id: HALO-20240903a_0e73
-  name: circle south
+  name: circle_south
   start: 2024-09-03 13:47:43
   end: 2024-09-03 14:42:01
   kinds:
@@ -95,7 +95,7 @@ segments:
   remarks:
   - includes meteor_overpass
 - segment_id: HALO-20240903a_c30f
-  name: circle mid
+  name: circle_mid
   start: 2024-09-03 15:02:21
   end: 2024-09-03 15:57:08
   kinds:
@@ -117,7 +117,7 @@ segments:
   - includes ec_underpass
   - includes meteor_overpass
 - segment_id: HALO-20240903a_3929
-  name: circle north
+  name: circle_north
   start: 2024-09-03 16:36:35
   end: 2024-09-03 17:31:22
   kinds:
@@ -135,7 +135,7 @@ segments:
   - straight_leg
   - ec_track
   remarks:
-  - constant roll angle of +1.0deg during 2024-09-03T17:44:21 - 2024-09-03T17:50:54,
+  - constant roll angle of +1.0deg from 2024-09-03T17:44:21 until 2024-09-03T17:50:54,
     before and after 0deg. Heading constant in whole segment.
 - segment_id: HALO-20240903a_3c09
   name: ferry_const_alt
@@ -152,7 +152,7 @@ segments:
   - straight_leg
   remarks: []
 - segment_id: HALO-20240903a_bda6
-  name: quarter ATR circle
+  name: quarter_ATR_circle
   start: 2024-09-03 19:01:06
   end: 2024-09-03 19:06:37
   kinds:
@@ -172,7 +172,7 @@ segments:
   remarks:
   - Crossing ATR circle along its full latitudinal extent
 - segment_id: HALO-20240903a_71a0
-  name: ATR circle
+  name: ATR_circle
   start: 2024-09-03 19:24:51
   end: 2024-09-03 19:54:15
   kinds:
