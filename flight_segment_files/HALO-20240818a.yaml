@@ -43,7 +43,7 @@ segments:
   - ec_track
   remarks: []
 - segment_id: HALO-20240818a_949c
-  name: circle north
+  name: circle_north
   start: 2024-08-18 11:24:25
   end: 2024-08-18 12:18:04
   kinds:
@@ -63,7 +63,7 @@ segments:
   - 'turbulence: 2024-08-18T12:26:45 - 2024-08-18T12:31:00'
   - 'turbulence: 2024-08-18T12:38:15 - 2024-08-18T12:48:00'
 - segment_id: HALO-20240818a_f5f5
-  name: circle mid
+  name: circle_mid
   start: 2024-08-18 12:53:12
   end: 2024-08-18 13:47:18
   kinds:
@@ -85,7 +85,7 @@ segments:
   remarks:
   - 'turbulence: 2024-08-18T12:52:25 - 2024-08-18T14:09:55'
 - segment_id: HALO-20240818a_9920
-  name: circle south
+  name: circle_south
   start: 2024-08-18 14:28:14
   end: 2024-08-18 15:24:08
   kinds:
@@ -104,21 +104,23 @@ segments:
   remarks:
   - includes ec_underpass
 - segment_id: HALO-20240818a_ff90
-  name: BM_pirouette_small
+  name: CB_pirouette_small
   start: 2024-08-18 16:35:28
   end: 2024-08-18 16:57:56
   kinds:
   - circle
+  - c_pirouette
   remarks: []
   clat: 10.02792657813729
   clon: -28.109804372095883
   radius: 49891.44223098132
 - segment_id: HALO-20240818a_3429
-  name: BM_pirouette_large
+  name: CB_pirouette_large
   start: 2024-08-18 17:02:11
   end: 2024-08-18 17:33:23
   kinds:
   - circle
+  - c_pirouette
   remarks: []
   clat: 10.027910592790883
   clon: -28.109738143638936
@@ -146,7 +148,7 @@ segments:
   - straight_leg
   remarks: []
 - segment_id: HALO-20240818a_9170
-  name: radar calibration
+  name: radar_calibration
   start: 2024-08-18 18:20:31
   end: 2024-08-18 18:21:55
   kinds:
@@ -160,5 +162,5 @@ segments:
   - straight_leg
   - descent
   remarks:
-  - constant roll angle of -0.5deg from 18:30:22 until 18:36:58, before switching
-    to 0deg. Heading constant in whole segment.
+  - constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58,
+    before switching to 0deg. Heading constant in whole segment.

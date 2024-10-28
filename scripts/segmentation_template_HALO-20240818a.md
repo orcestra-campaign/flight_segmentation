@@ -158,7 +158,7 @@ ec1 = (
 
 c1 = (
     slice("2024-08-18T11:24:25", "2024-08-18T12:18:04"),
-    ["circle"], "circle north", [],
+    ["circle"], "circle_north", [],
 )
 
 ec2 = (
@@ -170,7 +170,7 @@ ec2 = (
 
 c2 = (
     slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
-    ["circle"], "circle mid",
+    ["circle"], "circle_mid",
     ["turbulence: 2024-08-18T12:53:12 - 2024-08-18T13:10:30",
      "turbulence: 2024-08-18T13:31:10 - 2024-08-18T13:35:10",
      "turbulence: 2024-08-18T13:37:50 - 2024-08-18T13:47:18"],
@@ -184,7 +184,7 @@ ec3 = (
 
 c3 = (
     slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
-    ["circle"], "circle south", [],
+    ["circle"], "circle_south", [],
 )
 
 ec4 = (
@@ -195,12 +195,12 @@ ec4 = (
 
 c_bm1 = (
     slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
-    ["circle"], "BM_pirouette_small", [],
+    ["circle", "c_pirouette"], "CB_pirouette_small", [],
 )
 
 c_bm2 = (
     slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
-    ["circle"], "BM_pirouette_large", [],
+    ["circle", "c_pirouette"], "CB_pirouette_large", [],
 )
 
 sl4 = (
@@ -220,13 +220,13 @@ sl5 = (
 
 rc1 = (
     slice("2024-08-18T18:20:31", "2024-08-18T18:21:55"),
-    ["radar_calibration"], "radar calibration", [],
+    ["radar_calibration"], "radar_calibration", [],
 )
 
 sl6 = (
     slice("2024-08-18T18:30:22", "2024-08-18T18:58:17"),
     ["straight_leg", "descent"], "ferry_descent",
-    ["constant roll angle of -0.5deg from 18:30:22 until 18:36:58, before switching to 0deg. Heading constant in whole segment."],
+    ["constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58, before switching to 0deg. Heading constant in whole segment."],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
