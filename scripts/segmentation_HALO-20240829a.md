@@ -36,7 +36,7 @@ cvao = mindelo
 
 ```python
 platform = "HALO"
-flight_id = "HALO-20240912a"
+flight_id = "HALO-20240829a"
 ```
 
 ## Loading data
@@ -68,6 +68,7 @@ print(f"Flight duration: {int(duration / 60)}:{int(duration % 60)}")
 ```python
 ec_track = get_ec_track(flight_id, ds)
 dist_ec, t_ec = get_overpass_track(ds, ec_track)
+t_ec
 ```
 
 ### Get PACE track
@@ -75,7 +76,7 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = True
+load_pace = False
 
 if load_pace:
     from get_pace import get_pace_track
@@ -115,15 +116,103 @@ plt.legend();
 ## Interactive plots
 
 ```python
-ds["alt"].hvplot()
+# import holoviews as hv
+# c1 = 'ForestGreen'
+# c2 = 'Purple'
+# c3 = 'Orange'
+# c4 = 'Blue'
+# lw = 2
+
+# tko = hv.VLine(takeoff).opts(color = c1, line_width = lw)
+# ldn = hv.VLine(landing).opts(color = c1, line_width = lw)
+
+# # # segment boundaries  
+# seg1s = hv.VLine(pd.Timestamp("2024-08-29T12:24:02")).opts(color = c2, line_width = lw) # straight_leg ascent
+# seg1e = hv.VLine(pd.Timestamp("2024-08-29T12:48:10")).opts(color = c2, line_width = lw)
+
+# seg2s = hv.VLine(pd.Timestamp("2024-08-29T12:49:30")).opts(color = c3, line_width = lw) # straight_leg
+# seg2e = hv.VLine(pd.Timestamp("2024-08-29T13:19:00")).opts(color = c3, line_width = lw)
+
+# seg3s = hv.VLine(pd.Timestamp("2024-08-29T13:19:00")).opts(color = c4, line_width = lw) # straight_leg ascent
+# seg3e = hv.VLine(pd.Timestamp("2024-08-29T13:21:01")).opts(color = c4, line_width = lw)
+
+# seg4s = hv.VLine(pd.Timestamp("2024-08-29T13:21:01")).opts(color = c1, line_width = lw) # straight_leg
+# seg4e = hv.VLine(pd.Timestamp("2024-08-29T13:32:06")).opts(color = c1, line_width = lw)
+
+# seg5s = hv.VLine(pd.Timestamp("2024-08-29T13:34:03")).opts(color = c2, line_width = lw) #straight_leg with turbulences
+# seg5e = hv.VLine(pd.Timestamp("2024-08-29T13:46:37")).opts(color = c2, line_width = lw)
+
+# seg6s = hv.VLine(pd.Timestamp("2024-08-29T13:49:50")).opts(color = c3, line_width = lw) # straight_leg
+# seg6e = hv.VLine(pd.Timestamp("2024-08-29T14:02:51")).opts(color = c3, line_width = lw)
+
+# seg7s = hv.VLine(pd.Timestamp("2024-08-29T14:05:25")).opts(color = c1, line_width = lw) # counterclockwise circle
+# seg7e = hv.VLine(pd.Timestamp("2024-08-29T15:04:25")).opts(color = c1, line_width = lw)
+
+# seg8s = hv.VLine(pd.Timestamp("2024-08-29T15:10:24")).opts(color = c2, line_width = lw) # straight_leg
+# seg8e = hv.VLine(pd.Timestamp("2024-08-29T15:14:52")).opts(color = c2, line_width = lw)
+
+# seg9s = hv.VLine(pd.Timestamp("2024-08-29T15:14:52")).opts(color = c2, line_width = lw) # straight_leg
+# seg9e = hv.VLine(pd.Timestamp("2024-08-29T15:28:55")).opts(color = c2, line_width = lw)
+
+# seg10s = hv.VLine(pd.Timestamp("2024-08-29T15:34:34")).opts(color = c3, line_width = lw) # straight_leg
+# seg10e = hv.VLine(pd.Timestamp("2024-08-29T16:12:09")).opts(color = c3, line_width = lw)
+
+# seg11s = hv.VLine(pd.Timestamp("2024-08-29T16:14:57")).opts(color = c4, line_width = lw) # clockwise circle with turn between 17:01:29 - 17:10:00 and height increases
+# seg11e = hv.VLine(pd.Timestamp("2024-08-29T17:20:16")).opts(color = c4, line_width = lw)
+
+# seg12s = hv.VLine(pd.Timestamp("2024-08-29T17:25:19")).opts(color = c1, line_width = lw) # straight_leg
+# seg12e = hv.VLine(pd.Timestamp("2024-08-29T17:36:43")).opts(color = c1, line_width = lw)
+
+# seg13s = hv.VLine(pd.Timestamp("2024-08-29T17:39:30")).opts(color = c2, line_width = lw) # counterclockwise circle
+# seg13e = hv.VLine(pd.Timestamp("2024-08-29T18:40:31")).opts(color = c2, line_width = lw)
+
+# seg14s = hv.VLine(pd.Timestamp("2024-08-29T18:42:17")).opts(color = c3, line_width = lw) # straight_leg
+# seg14e = hv.VLine(pd.Timestamp("2024-08-29T18:46:51")).opts(color = c3, line_width = lw)
+
+# seg15s = hv.VLine(pd.Timestamp("2024-08-29T18:46:51")).opts(color = c4, line_width = lw) # straight_leg descent
+# seg15e = hv.VLine(pd.Timestamp("2024-08-29T18:49:36")).opts(color = c4, line_width = lw)
+
+# seg16s = hv.VLine(pd.Timestamp("2024-08-29T18:50:28")).opts(color = c1, line_width = lw) # straight_leg descent
+# seg16e = hv.VLine(pd.Timestamp("2024-08-29T18:53:43")).opts(color = c1, line_width = lw)
+
+# seg17s = hv.VLine(pd.Timestamp("2024-08-29T18:53:43")).opts(color = c2, line_width = lw) # straight_leg
+# seg17e = hv.VLine(pd.Timestamp("2024-08-29T19:06:30")).opts(color = c2, line_width = lw)
+
+# seg18s = hv.VLine(pd.Timestamp("2024-08-29T19:10:02")).opts(color = c3, line_width = lw) # circle ATR_coordination
+# seg18e = hv.VLine(pd.Timestamp("2024-08-29T19:46:12")).opts(color = c3, line_width = lw)
+
+# seg19s = hv.VLine(pd.Timestamp("2024-08-29T19:47:25")).opts(color = c4, line_width = lw) # straight_leg
+# seg19e = hv.VLine(pd.Timestamp("2024-08-29T20:00:54")).opts(color = c4, line_width = lw)
+
+# seg20s = hv.VLine(pd.Timestamp("2024-08-29T20:02:33")).opts(color = c1, line_width = lw) # straight_leg descent
+# seg20e = hv.VLine(pd.Timestamp("2024-08-29T20:16:02")).opts(color = c1, line_width = lw)
+
+# seg21s = hv.VLine(pd.Timestamp("2024-08-29T20:16:37")).opts(color = c2, line_width = lw) # straight_leg descent
+# seg20e = hv.VLine(pd.Timestamp("2024-08-29T20:24:30")).opts(color = c2, line_width = lw)
 ```
 
 ```python
-ds["roll"].hvplot()
+# alt = ds["alt"].hvplot()
+# alt * tko * ldn * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * \
+#  seg19s * seg19e * seg20s * seg20e * seg21s * seg21e
 ```
 
 ```python
-ds["heading"].hvplot()
+# heading = ds["heading"].hvplot()
+# heading * tko * ldn * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * \
+#  seg19s * seg19e * seg20s * seg20e * seg21s * seg21e
+```
+
+```python
+# roll = ds["roll"].hvplot()
+# roll * tko * ldn * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * \
+#  seg19s * seg19e * seg20s * seg20e * seg21s * seg21e
 ```
 
 ## Segments
@@ -136,80 +225,150 @@ defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `rem
 Alternatively, you can also define the segments as dictionaries which also allows to add further attributes to single segments, e.g. a `radius` to a `circle` segment. At the end of the following code block all segments will be normalized by the `parse_segments` function.
 
 ```python
-sl1 = (
-    slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
+seg1 = (
+    slice("2024-08-29T12:24:02", "2024-08-29T12:48:08"),
+    ["straight_leg", "ascent"],
+    "westward ferry to EC track",
+)
+
+seg2 = (
+    slice("2024-08-29T12:49:30", "2024-08-29T13:19:00"),
+    ["straight_leg", "ec_track"],
+    "southward EC track",
+)
+
+seg3 = (
+    slice("2024-08-29T13:19:00", "2024-08-29T13:21:01"),
+    ["straight_leg", "ascent", "ec_track"],
+    "ascent on EC track",
+)
+
+seg4 = (
+    slice("2024-08-29T13:21:01", "2024-08-29T13:32:06"),
     ["straight_leg"],
+    "southward EC track",
 )
 
-ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
+seg5 = (
+    slice("2024-08-29T13:34:03", "2024-08-29T13:46:37"),
     ["straight_leg", "ec_track"],
-    "full EC track",
-    [],
-    ["several height level changes, for details, see subsegments"]
+    "EC track with sonde",
+    ["irregularity: turbulence between 13:35:46 and 13:35:59"],
 )
 
-ec1 = (
-    slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
+seg6 = (
+    slice("2024-08-29T13:49:50", "2024-08-29T14:02:51"),
     ["straight_leg", "ec_track"],
-    "EC track low leg",
+    "leg to southern circle"
 )
 
-ec2 = (
-    slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
+seg7 = (
+    slice("2024-08-29T14:05:25", "2024-08-29T15:04:25"),
+    ["circle"],
+    "counterclockwise southern circle"
+)
+
+seg8 = (
+    slice("2024-08-29T15:10:24", "2024-08-29T15:14:52"),
+    ["straight_leg", "ascent", "ec_track"],
+    "ascent on EC track"
+)
+
+seg9 = (
+    slice("2024-08-29T15:14:52", "2024-08-29T15:28:55"),
     ["straight_leg", "ec_track"],
-    "EC track mid leg",
+    "southmost leg with dropsonde",
+    ["sonde dropped at southmost point at 15:28:40"],
 )
 
-ec3 = (
-    slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
+seg10 = (
+    slice("2024-08-29T15:34:34", "2024-08-29T16:11:49"),
     ["straight_leg", "ec_track"],
-    "EC track high leg",
+    "northward EC track",
+    ["contains EC meeting point"],
 )
 
-sl_south = (
-    slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
+seg11 = (
+    slice("2024-08-29T16:11:49", "2024-08-29T17:20:16"),
+    ["circle"],
+    "middle circle with turn",
+    ["irregularity: circle not completed due to active convection",
+     "irregularity: 180deg turn between between 17:01:29 and 17:10:00", 
+     "irregularity: height increases between 16:58:33 and 17:00:31, and 17:11:05 and 17:13:56",
+     "irregularity: first sonde dropped before entering the circle"],
+)
+
+seg12 = (
+    slice("2024-08-29T17:25:19", "2024-08-29T17:36:43"),
+    ["straight_leg", "ec_track"],
+    "leg to northern circle",
+)
+
+seg13 = (
+    slice("2024-08-29T17:39:30", "2024-08-29T18:40:31"),
+    ["circle"],
+    "counterclockwise northern circle",
+)
+
+seg14 = (
+    slice("2024-08-29T18:42:17", "2024-08-29T18:46:51"),
     ["straight_leg"],
-    "straight leg south",
+    "ferry back to EC track",
 )
 
-c1 = (
-    slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
-    ["circle"],
-    "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+seg15 = (
+    slice("2024-08-29T18:46:51", "2024-08-29T18:49:36"),
+    ["straight_leg", "descent"],
+    "descending ferry to EC track",
 )
 
-c2 = (
-    slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
-    ["circle"],
-    "circle mid",
+seg16 = (
+    slice("2024-08-29T18:50:33", "2024-08-29T18:53:43"),
+    ["straight_leg", "descent", "ec_track"],
+    "descent on EC track",
 )
 
-c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
-    ["circle"],
-    "circle north",
-    ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+seg17 = (
+    slice("2024-08-29T18:53:43", "2024-08-29T19:06:30"),
+    ["straight_leg", "ec_track"],
+    "northward EC track",
 )
 
-catr = (
-    slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
-    ["circle", "atr_coordination"],
+seg18 = (
+    slice("2024-08-29T19:09:55", "2024-08-29T19:46:12"),
+    ["circle", "ATR_coordination"],
     "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
+    ["irregularity: dropsonde failures"],
+)
+
+seg19 = (
+    slice("2024-08-29T19:47:25", "2024-08-29T20:00:54"),
+    ["straight_leg"],
+    "leg to Mindelo",
+    ["contains CVAO overpass"]
+)
+
+seg20 = (
+    slice("2024-08-29T20:02:33", "2024-08-29T20:16:02"),
+    ["straight_leg", "descent"],
+    "descending ferry back to Sal",
+)
+
+seg21 = (
+    slice("2024-08-29T20:16:37", "2024-08-29T20:24:30"),
+    ["straight_leg", "descent"],
+    "descent to airport",
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+seg=parse_segment(seg21)
 add_previous_seg = False
 
 ###########################
@@ -249,7 +408,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(seg21)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -274,13 +433,18 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
+dist_cvao, t_cvao = get_overpass_point(ds, cvao.lat, cvao.lon)
+print(dist_cvao, t_cvao)
+```
+
+```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "example",
+    {"name": "CVAO overpass",
      "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
+     "time": to_dt(t_cvao),
+     "remarks": [],
+     "distance": round(dist_cvao),
     }
 ]
 events
