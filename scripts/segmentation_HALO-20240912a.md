@@ -118,106 +118,88 @@ plt.legend();
 
 ## Interactive plots
 
-```python
-c1 = 'ForestGreen'
-c2 = 'Purple'
-c3 = 'Orange'
-c4 = 'Blue'
-lw = 2
+```python jupyter={"source_hidden": true}
+# c1 = 'ForestGreen'
+# c2 = 'Purple'
+# c3 = 'Orange'
+# c4 = 'Blue'
+# lw = 2
 
-takeoff = hv.VLine(pd.Timestamp("2024-09-12T11:29:50")).opts(color = c1, line_width = lw)
-landing = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c1, line_width = lw)
+# takeoff = hv.VLine(pd.Timestamp("2024-09-12T11:29:50")).opts(color = c1, line_width = lw)
+# landing = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c1, line_width = lw)
 
-# segment boundaries  
-seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
-seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
+# # segment boundaries  
+# seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
+# seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
 
-seg2s = hv.VLine(pd.Timestamp("2024-09-12T11:52:44")).opts(color = c3, line_width = lw) #
-seg2e = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c3, line_width = lw)
+# seg2s = hv.VLine(pd.Timestamp("2024-09-12T11:52:44")).opts(color = c3, line_width = lw) #
+# seg2e = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c3, line_width = lw)
 
-seg3s = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c4, line_width = lw) #
-seg3e = hv.VLine(pd.Timestamp("2024-09-12T12:35:09")).opts(color = c4, line_width = lw)
+# seg3s = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c4, line_width = lw) #
+# seg3e = hv.VLine(pd.Timestamp("2024-09-12T12:35:09")).opts(color = c4, line_width = lw)
 
-seg4s = hv.VLine(pd.Timestamp("2024--09-12T12:36:26")).opts(color = c1, line_width = lw) #
-seg4e = hv.VLine(pd.Timestamp("2024-09-12T13:02:59")).opts(color = c1, line_width = lw)
+# seg4s = hv.VLine(pd.Timestamp("2024--09-12T12:36:26")).opts(color = c1, line_width = lw) #
+# seg4e = hv.VLine(pd.Timestamp("2024-09-12T13:02:59")).opts(color = c1, line_width = lw)
 
-seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #circle
-seg5e = hv.VLine(pd.Timestamp("2024-09-12T14:02:18")).opts(color = c2, line_width = lw)
+# seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #circle
+# seg5e = hv.VLine(pd.Timestamp("2024-09-12T14:02:18")).opts(color = c2, line_width = lw)
 
-seg6s = hv.VLine(pd.Timestamp("2024-09-12T14:06:42")).opts(color = c3, line_width = lw)
-seg6e = hv.VLine(pd.Timestamp("2024-09-12T14:12:06")).opts(color = c3, line_width = lw)
+# seg6s = hv.VLine(pd.Timestamp("2024-09-12T14:06:42")).opts(color = c3, line_width = lw)
+# seg6e = hv.VLine(pd.Timestamp("2024-09-12T14:12:06")).opts(color = c3, line_width = lw)
 
-seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c1, line_width = lw) #circle
-seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c1, line_width = lw)
+# seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c1, line_width = lw) #circle
+# seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c1, line_width = lw)
 
-seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c2, line_width = lw) #
-seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c2, line_width = lw)
+# seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c2, line_width = lw) #
+# seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c2, line_width = lw)
 
-seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c3, line_width = lw) #
-seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c3, line_width = lw)
+# seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c3, line_width = lw) #
+# seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c3, line_width = lw)
 
-# seg10s = hv.VLine(pd.Timestamp("2024-09-12T16:22:30")).opts(color = c4, line_width = lw) #straight_leg
-# seg10e = hv.VLine(pd.Timestamp("2024-09-12T16:28:46")).opts(color = c4, line_width = lw)
+# seg10s = hv.VLine(pd.Timestamp("2024-09-12T15:46:03")).opts(color = c2, line_width = lw) #small circle holding pattern
+# seg10e = hv.VLine(pd.Timestamp("2024-09-12T15:51:48")).opts(color = c2, line_width = lw)
 
-# seg11s = hv.VLine(pd.Timestamp("2024-09-12T16:31:07")).opts(color = c1, line_width = lw) #circle ATR?
-# seg11e = hv.VLine(pd.Timestamp("2024-09-12T17:01:29")).opts(color = c1, line_width = lw)
+# seg11s = hv.VLine(pd.Timestamp("2024-09-12T15:56:35")).opts(color = c4, line_width = lw) #circle
+# seg11e = hv.VLine(pd.Timestamp("2024-09-12T17:03:46")).opts(color = c4, line_width = lw)
 
-# seg12s = hv.VLine(pd.Timestamp("2024-09-12T17:08:06")).opts(color = c2, line_width = lw) #circle
-# seg12e = hv.VLine(pd.Timestamp("2024-09-12T18:02:31")).opts(color = c2, line_width = lw)
+# seg12s = hv.VLine(pd.Timestamp("2024-09-12T17:12:26")).opts(color = c1, line_width = lw) #
+# seg12e = hv.VLine(pd.Timestamp("2024-09-12T17:53:12")).opts(color = c1, line_width = lw)
 
-# seg13s = hv.VLine(pd.Timestamp("2024-09-12T18:04:23")).opts(color = c3, line_width = lw) #straight_leg
-# seg13e = hv.VLine(pd.Timestamp("2024-09-12T18:24:12")).opts(color = c3, line_width = lw)
+# seg13s = hv.VLine(pd.Timestamp("2024-09-12T17:55:29")).opts(color = c2, line_width = lw) #circle
+# seg13e = hv.VLine(pd.Timestamp("2024-09-12T18:55:02")).opts(color = c2, line_width = lw)
 
-# seg14s = hv.VLine(pd.Timestamp("2024-09-12T18:26:40")).opts(color = c4, line_width = lw) #straight_leg
-# seg14e = hv.VLine(pd.Timestamp("2024-09-12T18:35:08")).opts(color = c4, line_width = lw)
+# seg14s = hv.VLine(pd.Timestamp("2024-09-12T18:56:07")).opts(color = c3, line_width = lw) #
+# seg14e = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c3, line_width = lw)
 
-# seg15s = hv.VLine(pd.Timestamp("2024-09-12T18:35:19")).opts(color = c1, line_width = lw) #radar_calibration (?)
-# seg15e = hv.VLine(pd.Timestamp("2024-09-12T18:36:14")).opts(color = c1, line_width = lw)
+# seg15s = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c4, line_width = lw) #
+# seg15e = hv.VLine(pd.Timestamp("2024-09-12T19:45:16")).opts(color = c4, line_width = lw)
 
-# seg16s = hv.VLine(pd.Timestamp("2024-09-12T18:38:46")).opts(color = c2, line_width = lw) #straight_leg descent
-# seg16e = hv.VLine(pd.Timestamp("2024-09-12T18:45:50")).opts(color = c2, line_width = lw)
+# seg16s = hv.VLine(pd.Timestamp("2024-09-12T19:46:30")).opts(color = c1, line_width = lw) #
+# seg16e = hv.VLine(pd.Timestamp("2024-09-12T19:58:55")).opts(color = c1, line_width = lw)
 
-# seg17s = hv.VLine(pd.Timestamp("2024-09-12T18:47:03")).opts(color = c3, line_width = lw) #calibration?
-# seg17e = hv.VLine(pd.Timestamp("2024-09-12T18:47:46")).opts(color = c3, line_width = lw)
-
-# seg18s = hv.VLine(pd.Timestamp("2024-09-12T18:49:37")).opts(color = c4, line_width = lw) #circle irregularity: descent
-# seg18e = hv.VLine(pd.Timestamp("2024-09-12T19:21:23")).opts(color = c4, line_width = lw)
-
-# seg19s = hv.VLine(pd.Timestamp("2024-09-12T19:21:23")).opts(color = c1, line_width = lw) #mini circle during descent
-# seg19e = hv.VLine(pd.Timestamp("2024-09-12T19:23:19")).opts(color = c1, line_width = lw)
-
-# seg20s = hv.VLine(pd.Timestamp("2024-09-12T19:23:20")).opts(color = c2, line_width = lw) #straight_leg descent
-# seg20e = hv.VLine(pd.Timestamp("2024-09-12T19:29:17")).opts(color = c2, line_width = lw)
-
-# seg21s = hv.VLine(pd.Timestamp("2024-09-12T19:29:59")).opts(color = c3, line_width = lw) #straight_leg descent
-# seg21e = hv.VLine(pd.Timestamp("2024-09-12T19:31:35")).opts(color = c3, line_width = lw)
-
-# seg22s = hv.VLine(pd.Timestamp("2024-09-12T19:34:46")).opts(color = c4, line_width = lw) #straight_leg descent
-# seg22e = hv.VLine(pd.Timestamp("2024-09-12T19:40:10")).opts(color = c4, line_width = lw)
+# seg17s = hv.VLine(pd.Timestamp("2024-09-12T20:01:27")).opts(color = c2, line_width = lw) #
+# seg17e = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c2, line_width = lw)
 ```
 
-```python
-alt = ds["alt"].hvplot()
-alt * takeoff * landing * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e #* \
-# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
-# seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s *seg22e
+```python jupyter={"outputs_hidden": true, "source_hidden": true}
+# alt = ds["alt"].hvplot()
+# alt * takeoff * landing * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
-```python
-heading = ds["heading"].hvplot()
-heading * takeoff * landing * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e #* \
-# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
-# seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e
+```python jupyter={"outputs_hidden": true, "source_hidden": true}
+# heading = ds["heading"].hvplot()
+# heading * takeoff * landing * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
-```python
-roll = ds["roll"].hvplot()
-roll * takeoff * landing * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e #* \
-# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
-# seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e
+```python jupyter={"outputs_hidden": true, "source_hidden": true}
+# roll = ds["roll"].hvplot()
+# roll * takeoff * landing * \
+#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
 ## Segments
@@ -230,80 +212,121 @@ defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `rem
 Alternatively, you can also define the segments as dictionaries which also allows to add further attributes to single segments, e.g. a `radius` to a `circle` segment. At the end of the following code block all segments will be normalized by the `parse_segments` function.
 
 ```python
-sl1 = (
-    slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
+seg1 = (
+    slice("2024-09-12T11:33:02", "2024-09-12T11:46:57"),
+    ["straight_leg", "ascent"],
+    "eastward ascending ferry",
+)
+
+seg2 = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    ["straight_leg", "ascent"],
+    "eastward ascending ferry",
+
+)
+
+seg3 = (
+    slice("2024-09-12T12:01:28", "2024-09-12T12:35:09"),
     ["straight_leg"],
+    "long eastward ferry",
 )
 
-ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "full EC track",
-    [],
-    ["several height level changes, for details, see subsegments"]
-)
-
-ec1 = (
-    slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track"],
-    "EC track low leg",
-)
-
-ec2 = (
-    slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
-    ["straight_leg", "ec_track"],
-    "EC track mid leg",
-)
-
-ec3 = (
-    slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "EC track high leg",
-)
-
-sl_south = (
-    slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
+seg4 = (
+    slice("2024--09-12T12:36:26", "2024-09-12T13:02:59"),
     ["straight_leg"],
-    "straight leg south",
+    "leg to first circle"
 )
 
-c1 = (
-    slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
+seg5 = (
+    slice("2024-09-12T13:06:18", "2024-09-12T14:02:18"),
+    ["clockwise eastern circle"],
+    ["sonde failures"]
+)
+
+seg6 = (
+    slice("2024-09-12T14:06:42", "2024-09-12T14:12:06"),
+    ["straight_leg"],
+    "leg to second circle",
+)
+
+seg7 = (
+    slice("2024-09-12T14:18:20", "2024-09-12T15:10:37"),
     ["circle"],
-    "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+    "counterclockwise eastern circle",
 )
 
-c2 = (
-    slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
+seg8 = (
+    slice("2024-09-12T15:13:08", "2024-09-12T15:18:19"),
+    ["straight_leg"],
+    "leg through circle",
+)
+
+seg9 = (
+    slice("2024-09-12T15:22:30", "2024-09-12T15:45:40"),
+    ["straight_leg"],
+    "leg to third circle",
+)
+
+seg10 = (
+    slice("2024-09-12T15:46:03", "2024-09-12T15:51:48"),
     ["circle"],
-    "circle mid",
+    "counterclockwise holding pattern",
+    ["small waiting circle"]
 )
 
-c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
+seg11 = (
+    slice("2024-09-12T15:56:35", "2024-09-12T17:03:46"),
     ["circle"],
-    "circle north",
-    ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+    "counterclockwise western circle",
 )
 
-catr = (
-    slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
-    ["circle", "atr_coordination"],
-    "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
+seg12 = (
+    slice("2024-09-12T17:12:26", "2024-09-12T17:53:12"),
+    ["straight_leg", "ec_track"],
+    "leg on EC track",
+    ["contains EC meeting point"],
 )
+
+seg13 = (
+    slice("2024-09-12T17:55:29", "2024-09-12T18:55:02"),
+    ["circle"],
+    "clockwise western circle",
+)
+
+seg14 = (
+    slice("2024-09-12T18:56:07", "2024-09-12T19:41:13"),
+    ["straight_leg"],
+    "long westward ferry"
+)
+
+seg15 = (
+    slice("2024-09-12T19:41:13", "2024-09-12T19:45:16"),
+    ["straight_leg", "descent"],
+    "westward descending ferry",
+)
+
+seg16 = (
+    slice("2024-09-12T19:46:30", "2024-09-12T19:58:55"),
+    ["straight_leg", "descent"],
+    "westward descending ferry"
+)
+
+seg17 = (
+    slice("2024-09-12T20:01:29", "2024-09-12T20:05:05"),
+    ["straight_leg", "descent"],
+    "final descent",
+)
+
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+seg=parse_segment(seg13)
 add_previous_seg = False
 
 ###########################
@@ -343,7 +366,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(seg11)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -370,12 +393,6 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "example",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
-    }
 ]
 events
 ```
@@ -386,4 +403,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```
