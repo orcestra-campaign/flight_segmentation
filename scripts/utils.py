@@ -28,7 +28,7 @@ def get_sondes_l1(flight_id):
     fs = fsspec.filesystem(day_folder.split(":")[0])
     filenames = fs.ls(day_folder, detail=False)
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
-                for filename in filenames]
+                for filename in filenames if fs.size("ipns://" + filename)]
     return np.array([d["launch_time"].values for d in datasets])
 
 def get_overpass_point(ds, target_lat, target_lon):
