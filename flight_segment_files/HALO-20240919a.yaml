@@ -1,127 +1,123 @@
-nickname: foo
 mission: ORCESTRA
 platform: HALO
 flight_id: HALO-20240919a
+takeoff: 2024-09-19 11:01:16
+landing: 2024-09-19 19:56:20
+events:
+- event_id: HALO-20240919a_5d34
+  name: EC meeting point
+  time: 2024-09-19 17:43:47.657257
+  kinds:
+  - ec_underpass
+  remarks: []
+  distance: 2
 segments:
-- kinds:
-  - straight_leg
-  name: line1
-  segment_id: HALO-20240919a_l1
-  start: 2024-09-19 11:45:17
+- segment_id: HALO-20240919a_1c85
+  name: ferry ascent towards straight leg
+  start: 2024-09-19 11:05:00
+  end: 2024-09-19 11:34:00
+  kinds:
+  - ascent
+  remarks: []
+- segment_id: HALO-20240919a_ec3d
+  name: null
+  start: 2024-09-19 11:34:00
   end: 2024-09-19 12:32:40
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - straight_leg
-  name: line2
-  segment_id: HALO-20240919a_l2
-  start: 2024-09-19 13:33:17
-  end: 2024-09-19 13:56:10
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  remarks: []
+- segment_id: HALO-20240919a_caf1
+  name: pace track northward
+  start: 2024-09-19 13:36:25
+  end: 2024-09-19 13:56:00
+  kinds:
   - straight_leg
-  name: line3
-  segment_id: HALO-20240919a_l3
-  start: 2024-09-19 15:44:30
+  - pace_track
+  remarks: []
+- segment_id: HALO-20240919a_4f12
+  name: null
+  start: 2024-09-19 15:47:30
   end: 2024-09-19 16:27:00
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - straight_leg
-  name: line4
-  segment_id: HALO-20240919a_l4
+  remarks: []
+- segment_id: HALO-20240919a_6c50
+  name: ec track southward
   start: 2024-09-19 17:30:00
-  end: 2024-09-19 17:56:00
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  end: 2024-09-19 17:58:00
+  kinds:
   - straight_leg
-  name: line5
-  segment_id: HALO-20240919a_l5
+  remarks:
+  - spikes in roll angle between 17:36:30 and 17:38:00
+- segment_id: HALO-20240919a_0c43
+  name: null
   start: 2024-09-19 19:06:00
   end: 2024-09-19 19:14:00
-  irregularities: [connected to line6, interrupt due to callibration manoeuvre?]
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - straight_leg
-  name: line6
-  segment_id: HALO-20240919a_l6
+  remarks: []
+- segment_id: HALO-20240919a_e884
+  name: null
   start: 2024-09-19 19:15:00
   end: 2024-09-19 19:24:00
-  irregularities: [connected to line5, interrupt due to callibration manoeuvre?]
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
-  - circle
-  name: circle 1
-  segment_id: HALO-20240919a_c1
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240919a_02eb
+  name: null
+  start: 2024-09-19 19:24:00
+  end: 2024-09-19 19:35:00
+  kinds:
+  - decent
+  remarks: []
+- segment_id: HALO-20240919a_35da
+  name: circle
   start: 2024-09-19 12:35:30
   end: 2024-09-19 13:30:35
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - circle
-  name: circle 2
-  segment_id: HALO-20240919a_c2
+  remarks:
+  - spikes in roll angle between 12:32:30 and 12:48:00
+  clat: 10.039163262544436
+  clon: -47.20244796302012
+  radius: 133039.6934719839
+- segment_id: HALO-20240919a_c457
+  name: circle
   start: 2024-09-19 13:58:32
   end: 2024-09-19 14:53:20
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - circle
-  name: circle 3 
-  segment_id: HALO-20240919a_c3
+  remarks: []
+  clat: 10.85899815223608
+  clon: -50.343234711217505
+  radius: 133079.83172666095
+- segment_id: HALO-20240919a_fb14
+  name: ATR circle
   start: 2024-09-19 15:03:25
-  end: 2024-09-19 15:33:20
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  end: 2024-09-19 15:33:36
+  kinds:
   - circle
-  name: circle 4
-  segment_id: HALO-20240919a_c4
-  start: 2024-09-19 16:30:15
+  remarks: []
+  clat: 11.51191467502287
+  clon: -52.955393058977506
+  radius: 72056.7387734795
+- segment_id: HALO-20240919a_69a2
+  name: circle
+  start: 2024-09-19 16:30:13
   end: 2024-09-19 17:25:15
-  irregularities: []
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-- kinds:
+  kinds:
   - circle
-  name: circle 5
-  segment_id: HALO-20240919a_c5
+  remarks: []
+  clat: 15.592149965324307
+  clon: -53.71651929137671
+  radius: 133180.95230887973
+- segment_id: HALO-20240919a_8abf
+  name: circle
   start: 2024-09-19 18:04:55
   end: 2024-09-19 19:04:15
-  irregularities: [check first and last sonde on circle]
-  dropsondes:
-    GOOD: []
-    BAD: []
-    UGLY: []
-
+  kinds:
+  - circle
+  remarks: []
+  clat: 12.167870932605359
+  clon: -55.57453718396084
+  radius: 133120.84486524708
