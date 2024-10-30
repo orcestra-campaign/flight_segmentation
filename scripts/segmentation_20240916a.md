@@ -138,7 +138,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 ac1 = (
     slice("2024-09-16 11:42:00", "2024-09-16 12:07:45"),
-    ["ascent"],
+    ["straight_leg", "ascent"], "ferry_ascent", [],
 )
 
 sl1 = (
@@ -161,24 +161,25 @@ sl4 = (
     ["straight_leg", "pace_track"], "pace track southward",
 )
 
-sl5 = (
+ec1 = (
     slice("2024-09-16 16:53:00", "2024-09-16 17:50:00"),
-    ["straight_leg", "ec_track"], "ec track northward",
+    ["straight_leg", "ec_track"],
+    "EC_track_southward_const_alt",
 )
 
-sl6 = (
+sl5 = (
     slice("2024-09-16 19:15:00", "2024-09-16 20:20:02"),
     ["straight_leg"],
 )
 
 dc1 = (
     slice("2024-09-16 20:20:02", "2024-09-16 20:27:10"),
-    ["decent"],
+    ["straight_leg", "decent"], "ferry_descent", [],
 )
 
 dc2 = (
     slice("2024-09-16 20:28:30", "2024-09-16 20:44:20"),
-    ["decent"],
+    ["straight_leg", "decent"], "ferry_descent", [],
 )
 
 c1 = (
@@ -202,7 +203,7 @@ c3 = (
 
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, sl1, sl2, sl3, sl4, sl5, sl6, c1, c2, c3]]
+segments = [parse_segment(s) for s in [ac1, dc1, dc2, sl1, sl2, sl3, sl4, ec1, sl5, c1, c2, c3]]
 
 ```
 
@@ -306,7 +307,8 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
-    ec_event(ds, ec_track)
+    ec_event(ds, ec_track),
+    meteor_event(ds, meteor_track)
 ]
 events
 ```
@@ -317,4 +319,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```
