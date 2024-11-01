@@ -171,17 +171,18 @@ sl4 = (
     ["straight_leg"],
 )
 
-sl5 = (
+ec1 = (
     slice("2024-09-21 17:21:00", "2024-09-21 17:48:00"),
-    ["straight_leg", "ec_track"], "ec track northward",
+    ["straight_leg", "ec_track"],
+    "EC_track_northward_const_alt",
 )
 
-sl6 = (
+sl5 = (
     slice("2024-09-21 17:52:00", "2024-09-21 18:15:00"),
     ["straight_leg"],
 )
 
-sl7 = (
+sl6 = (
     slice("2024-09-21 19:26:15", "2024-09-21 19:35:00"),
     ["straight_leg"],
 )
@@ -223,7 +224,8 @@ c5 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, sl1, sl2, sl3, sl4, sl5, sl6, sl7, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, ec1, sl1, sl2, sl3, sl4, sl5, sl6, c1, c2, c3, c4, c5]]
+
 ```
 
 ### Quick plot for working your way through the segments piece by piece
@@ -270,7 +272,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(sl5)
+seg = parse_segment(ec1)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -281,7 +283,6 @@ if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="P
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
-print (t_ec)
 
 ```
 
