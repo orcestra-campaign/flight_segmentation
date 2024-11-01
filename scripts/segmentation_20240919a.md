@@ -144,11 +144,13 @@ ac1 = (
 sl1 = (
     slice("2024-09-19 11:34:00", "2024-09-19 12:32:40"),
     ["straight_leg"],
+    ["includes meteor_overpass"],
 ) 
     
 sl2 = (
     slice("2024-09-19 13:36:25", "2024-09-19 13:56:00"),
     ["straight_leg", "pace_track"], "pace track northward",
+    ["includes meteor_overpass"],
 )     
   
 sl3 = (
@@ -159,7 +161,7 @@ sl3 = (
 sl4 = (
     slice("2024-09-19 17:30:00", "2024-09-19 17:58:00"),
     ["straight_leg"], "ec track southward",
-    ["spikes in roll angle between 17:36:30 and 17:38:00"],
+    ["turbulence: 17:36:30 and 17:38:00"],
 )
 
 sl5 = (
@@ -182,7 +184,7 @@ c1 = (
     slice("2024-09-19 12:35:30", "2024-09-19 13:30:35"),
     ["circle"],
     "circle",
-    ["spikes in roll angle between 12:32:30 and 12:48:00"],
+    ["turbulence 12:32:30 and 12:48:00"],
 )
 
 c2 = (
@@ -260,7 +262,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(sl4)
+seg = parse_segment(sl2)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -288,7 +290,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ### Identify visually which straight_leg segments lie on PACE track
 
 ```python
-seg = parse_segment(sl3)
+seg = parse_segment(sl2)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -304,6 +306,8 @@ plt.legend();
 ```python
 events = [
     ec_event(ds, ec_track),
+    meteor_event(ds, meteor_track),
+    meteor_event(ds, meteor_track, seg=sl2),
 ]
 events
 ```
@@ -314,4 +318,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```

@@ -11,6 +11,24 @@ events:
   - ec_underpass
   remarks: []
   distance: 2
+- event_id: HALO-20240919a_782d
+  name: METEOR overpass
+  time: 2024-09-19 13:46:44.172375
+  kinds:
+  - meteor_overpass
+  remarks: []
+  distance: 511
+  meteor_lat: 10.846532074770833
+  meteor_lon: -50.28490000000001
+- event_id: HALO-20240919a_782d
+  name: METEOR overpass
+  time: 2024-09-19 13:46:44.172375
+  kinds:
+  - meteor_overpass
+  remarks: []
+  distance: 511
+  meteor_lat: 10.846532074770833
+  meteor_lon: -50.28490000000001
 segments:
 - segment_id: HALO-20240919a_1c85
   name: ferry ascent towards straight leg
@@ -20,7 +38,8 @@ segments:
   - ascent
   remarks: []
 - segment_id: HALO-20240919a_ec3d
-  name: null
+  name:
+  - includes meteor_overpass
   start: 2024-09-19 11:34:00
   end: 2024-09-19 12:32:40
   kinds:
@@ -33,7 +52,8 @@ segments:
   kinds:
   - straight_leg
   - pace_track
-  remarks: []
+  remarks:
+  - includes meteor_overpass
 - segment_id: HALO-20240919a_4f12
   name: null
   start: 2024-09-19 15:47:30
@@ -48,7 +68,7 @@ segments:
   kinds:
   - straight_leg
   remarks:
-  - spikes in roll angle between 17:36:30 and 17:38:00
+  - 'turbulence: 17:36:30 and 17:38:00'
 - segment_id: HALO-20240919a_0c43
   name: null
   start: 2024-09-19 19:06:00
@@ -77,7 +97,7 @@ segments:
   kinds:
   - circle
   remarks:
-  - spikes in roll angle between 12:32:30 and 12:48:00
+  - turbulence 12:32:30 and 12:48:00
   clat: 10.039163262544436
   clon: -47.20244796302012
   radius: 133039.6934719839
