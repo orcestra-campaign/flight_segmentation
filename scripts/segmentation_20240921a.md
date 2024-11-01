@@ -136,6 +136,11 @@ defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `rem
 Alternatively, you can also define the segments as dictionaries which also allows to add further attributes to single segments, e.g. a `radius` to a `circle` segment. At the end of the following code block all segments will be normalized by the `parse_segments` function.
 
 ```python
+ac1 = (
+    slice("2024-09-21 11:26:40", "2024-09-21 11:48:25"),
+    ["straight_leg", "ascent"], "ferry_ascent", [],
+)
+
 sl1 = (
     slice("2024-09-21 13:11:40", "2024-09-21 13:52:00"),
     ["straight_leg"],
@@ -156,6 +161,10 @@ sl4 = (
     ["straight_leg"],
 )
 
+dc1 = ( 
+    slice("2024-09-21 19:35:34", "2024-09-21 20:00:56"),
+    ["straight_leg", "descent"], "ferry_descent", [],
+)
 
 c1 = (
     slice("2024-09-21 11:50:36", "2024-09-21 12:47:15"),
@@ -167,7 +176,7 @@ c2 = (
     slice("2024-09-21 13:55:00", "2024-09-21 14:52:00"),
     ["circle"],
     "circle",
-    ["spikes in roll angle between 14:12:00 and 14:20:00"],
+    ["turbulence: 14:12:00 and 14:20:00"],
 )
 
 c3 = (
@@ -189,14 +198,14 @@ c5 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, dc1, sl1, sl2, sl3, sl4, c1, c2, c3, c4, c5]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c5)
+seg=parse_segment(dc1)
 add_previous_seg = False
 
 ###########################
