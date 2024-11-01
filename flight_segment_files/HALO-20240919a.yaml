@@ -37,6 +37,15 @@ segments:
   kinds:
   - ascent
   remarks: []
+- segment_id: HALO-20240919a_6c50
+  name: EC_track_southward_const_alt
+  start: 2024-09-19 17:30:00
+  end: 2024-09-19 17:58:00
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks:
+  - 'turbulence: 17:36:30 and 17:38:00'
 - segment_id: HALO-20240919a_ec3d
   name:
   - includes meteor_overpass
@@ -61,14 +70,6 @@ segments:
   kinds:
   - straight_leg
   remarks: []
-- segment_id: HALO-20240919a_6c50
-  name: ec track southward
-  start: 2024-09-19 17:30:00
-  end: 2024-09-19 17:58:00
-  kinds:
-  - straight_leg
-  remarks:
-  - 'turbulence: 17:36:30 and 17:38:00'
 - segment_id: HALO-20240919a_0c43
   name: null
   start: 2024-09-19 19:06:00
