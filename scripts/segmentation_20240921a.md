@@ -142,21 +142,46 @@ ac1 = (
 )
 
 sl1 = (
+    slice("2024-09-21 12:50:00", "2024-09-21 13:07:00"),
+    ["straight_leg"], ["includes meteor_overpass"],
+)
+
+ac2 = (
+    slice("2024-09-21 13:07:00", "2024-09-21 13:11:40"),
+    ["straight_leg", "ascent"], [],
+)
+
+sl2 = (
     slice("2024-09-21 13:11:40", "2024-09-21 13:52:00"),
     ["straight_leg"],
 )
 
-sl2 = (
+sl3 = (
+    slice("2024-09-21 15:58:00", "2024-09-21 16:07:00"),
+    ["straight_leg"],
+)
+
+ac3 = (
+    slice("2024-09-21 16:07:00", "2024-09-21 16:12:30"),
+    ["straight_leg", "ascent"],
+)
+
+sl4 = (
+    slice("2024-09-21 16:12:30", "2024-09-21 16:16:00"),
+    ["straight_leg"],
+)
+
+sl5 = (
     slice("2024-09-21 17:21:00", "2024-09-21 17:48:00"),
     ["straight_leg", "ec_track"], "ec track northward",
 )
 
-sl3 = (
+sl6 = (
     slice("2024-09-21 17:52:00", "2024-09-21 18:15:00"),
     ["straight_leg"],
 )
 
-sl4 = (
+sl7 = (
     slice("2024-09-21 19:26:15", "2024-09-21 19:35:00"),
     ["straight_leg"],
 )
@@ -198,14 +223,14 @@ c5 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, sl1, sl2, sl3, sl4, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, sl1, sl2, sl3, sl4, sl5, sl6, sl7, c1, c2, c3, c4, c5]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(dc1)
+seg=parse_segment(sl4)
 add_previous_seg = False
 
 ###########################
@@ -245,7 +270,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(sl2)
+seg = parse_segment(sl5)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -274,6 +299,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
+    meteor_event(ds, meteor_track),
 ]
 events
 ```
@@ -284,16 +310,4 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
-```
-
-```python
-
-```
-
-```python
-
-```
-
-```python
-
 ```
