@@ -237,7 +237,7 @@ segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, ec1, cal, sl2, sl3, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl34)
+seg=parse_segment(cal)
 add_previous_seg = False
 
 ###########################
@@ -313,4 +313,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```
