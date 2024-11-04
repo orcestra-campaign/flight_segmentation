@@ -178,12 +178,22 @@ ec1 = (
 )
 
 sl5 = (
-    slice("2024-09-21 17:52:00", "2024-09-21 18:15:00"),
+    slice("2024-09-21 17:52:00", "2024-09-21 18:13:43"),
     ["straight_leg"],
 )
 
+cal = (
+    slice("2024-09-21 18:13:43", "2024-09-21 18:16:23"),
+    ["straight_leg"], ["radar calibration"],
+)
+
 sl6 = (
-    slice("2024-09-21 19:26:15", "2024-09-21 19:35:00"),
+    slice("2024-09-21 18:16:23", "2024-09-21 18:24:00"),
+    ["straight_leg"],
+)
+
+sl7 = (
+    slice("2024-09-21 19:27:15", "2024-09-21 19:35:00"),
     ["straight_leg"],
 )
 
@@ -224,7 +234,7 @@ c5 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, ec1, sl1, sl2, sl3, sl4, sl5, sl6, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, cal, ec1, sl1, sl2, sl3, sl4, sl5, sl6, sl7, c1, c2, c3, c4, c5]]
 
 ```
 
@@ -232,7 +242,7 @@ segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, ec1, sl1, sl2, sl3, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl4)
+seg=parse_segment(sl7)
 add_previous_seg = False
 
 ###########################
@@ -272,7 +282,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(cal)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")

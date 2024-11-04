@@ -53,6 +53,14 @@ segments:
   - straight_leg
   - descent
   remarks: []
+- segment_id: HALO-20240921a_95e9
+  name:
+  - radar calibration
+  start: 2024-09-21 18:13:43
+  end: 2024-09-21 18:16:23
+  kinds:
+  - straight_leg
+  remarks: []
 - segment_id: HALO-20240921a_d8fd
   name: EC_track_northward_const_alt
   start: 2024-09-21 17:21:00
@@ -90,16 +98,23 @@ segments:
   kinds:
   - straight_leg
   remarks: []
-- segment_id: HALO-20240921a_23bf
+- segment_id: HALO-20240921a_6f76
   name: null
   start: 2024-09-21 17:52:00
-  end: 2024-09-21 18:15:00
+  end: 2024-09-21 18:13:43
   kinds:
   - straight_leg
   remarks: []
-- segment_id: HALO-20240921a_95a0
+- segment_id: HALO-20240921a_14a0
   name: null
-  start: 2024-09-21 19:26:15
+  start: 2024-09-21 18:16:23
+  end: 2024-09-21 18:24:00
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240921a_e6ec
+  name: null
+  start: 2024-09-21 19:27:15
   end: 2024-09-21 19:35:00
   kinds:
   - straight_leg
