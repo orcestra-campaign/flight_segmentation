@@ -165,6 +165,12 @@ ec1 = (
     ["turbulence: 17:36:30 and 17:38:00"],
 )
 
+cal = (
+    slice("2024-09-19 17:58:30", "2024-09-19 18:01:50"),
+    ["straight_leg"],
+    "radar calibration",
+)
+
 sl4 = (
     slice("2024-09-19 19:06:00", "2024-09-19 19:14:00"),
     ["straight_leg"],
@@ -215,7 +221,7 @@ c5 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ec1, sl1, sl2, sl3, sl4, sl5, dc1, c1, c2, catr, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3, sl4, sl5, c1, c2, catr, c4, c5]]
 
 ```
 
@@ -223,7 +229,7 @@ segments = [parse_segment(s) for s in [ac1, ec1, sl1, sl2, sl3, sl4, sl5, dc1, c
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c5)
+seg=parse_segment(cal)
 add_previous_seg = False
 
 ###########################

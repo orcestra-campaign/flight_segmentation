@@ -37,6 +37,20 @@ segments:
   kinds:
   - ascent
   remarks: []
+- segment_id: HALO-20240919a_02eb
+  name: null
+  start: 2024-09-19 19:24:00
+  end: 2024-09-19 19:35:00
+  kinds:
+  - decent
+  remarks: []
+- segment_id: HALO-20240919a_19d2
+  name: radar calibration
+  start: 2024-09-19 17:58:30
+  end: 2024-09-19 18:01:50
+  kinds:
+  - straight_leg
+  remarks: []
 - segment_id: HALO-20240919a_6c50
   name: EC_track_southward_const_alt
   start: 2024-09-19 17:30:00
@@ -83,13 +97,6 @@ segments:
   end: 2024-09-19 19:24:00
   kinds:
   - straight_leg
-  remarks: []
-- segment_id: HALO-20240919a_02eb
-  name: null
-  start: 2024-09-19 19:24:00
-  end: 2024-09-19 19:35:00
-  kinds:
-  - decent
   remarks: []
 - segment_id: HALO-20240919a_35da
   name: circle
