@@ -1,0 +1,132 @@
+mission: ORCESTRA
+platform: HALO
+flight_id: HALO-20240928a
+takeoff: 2024-09-28 10:47:02
+landing: 2024-09-28 20:02:35
+events:
+- event_id: HALO-20240928a_d864
+  name: EC meeting point
+  time: 2024-09-28 17:41:56.507359
+  kinds:
+  - ec_underpass
+  remarks: []
+  distance: 20
+segments:
+- segment_id: HALO-20240928a_d35e
+  name: null
+  start: 2024-09-28 11:19:46
+  end: 2024-09-28 12:33:16
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240928a_5726
+  name: null
+  start: 2024-09-28 13:35:00
+  end: 2024-09-28 13:39:40
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240928a_c0dd
+  name: null
+  start: 2024-09-28 14:40:50
+  end: 2024-09-28 15:24:30
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240928a_e82d
+  name: null
+  start: 2024-09-28 16:25:00
+  end: 2024-09-28 16:30:30
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240928a_7433
+  name:
+  - radar calibration 18:04:52 - 18:08:25
+  start: 2024-09-28 17:58:20
+  end: 2024-09-28 18:13:00
+  kinds:
+  - straight_leg
+  remarks: pace underpass
+- segment_id: HALO-20240928a_7b07
+  name: null
+  start: 2024-09-28 19:12:50
+  end: 2024-09-28 19:25:00
+  kinds:
+  - straight_leg
+  remarks: []
+- segment_id: HALO-20240928a_ee6f
+  name: pace underpass
+  start: 2024-09-28 10:51:16
+  end: 2024-09-28 11:19:46
+  kinds:
+  - straight_leg
+  - ascent
+  remarks: []
+- segment_id: HALO-20240928a_a656
+  name:
+  - radar calibration dive 19:41:00
+  start: 2024-09-28 19:25:00
+  end: 2024-09-28 19:47:30
+  kinds:
+  - straight_leg
+  - decent
+  remarks: []
+- segment_id: HALO-20240928a_0fd2
+  name: EC_track_southward_const_alt
+  start: 2024-09-28 17:32:02
+  end: 2024-09-28 17:53:00
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks: []
+- segment_id: HALO-20240928a_1d31
+  name: null
+  start: 2024-09-28 12:34:00
+  end: 2024-09-28 13:32:00
+  kinds:
+  - circle
+  remarks: []
+  clat: 10.164365327670868
+  clon: -44.852095106783764
+  radius: 133105.89400121264
+- segment_id: HALO-20240928a_85a3
+  name: null
+  start: 2024-09-28 13:42:30
+  end: 2024-09-28 14:38:00
+  kinds:
+  - circle
+  remarks: []
+  clat: 10.870117865377274
+  clon: -48.18857525589475
+  radius: 133085.97221518372
+- segment_id: HALO-20240928a_259d
+  name: null
+  start: 2024-09-28 15:27:00
+  end: 2024-09-28 16:23:00
+  kinds:
+  - circle
+  remarks: []
+  clat: 11.539334057277605
+  clon: -51.53833333615901
+  radius: 133095.72831278606
+- segment_id: HALO-20240928a_1592
+  name: pace underpass
+  start: 2024-09-28 16:33:00
+  end: 2024-09-28 17:31:00
+  kinds:
+  - circle
+  remarks: []
+  clat: 12.169850101744188
+  clon: -54.90531521286475
+  radius: 133108.4222793337
+- segment_id: HALO-20240928a_b07a
+  name: pace underpass
+  start: 2024-09-28 18:15:30
+  end: 2024-09-28 19:10:00
+  kinds:
+  - circle
+  remarks: []
+  clat: 10.75802864918785
+  clon: -56.91299874750045
+  radius: 133099.90665928827
