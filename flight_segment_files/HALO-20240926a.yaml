@@ -44,6 +44,21 @@ segments:
   - straight_leg
   - decent
   remarks: []
+- segment_id: HALO-20240926a_90d0
+  name: EC_track_northward_const_alt
+  start: 2024-09-26 17:20:10
+  end: 2024-09-26 18:22:10
+  kinds:
+  - straight_leg
+  - ec_track
+  remarks: []
+- segment_id: HALO-20240926a_cbac
+  name: radar calibration
+  start: 2024-09-26 15:47:25
+  end: 2024-09-26 15:53:33
+  kinds:
+  - straight_leg
+  remarks: []
 - segment_id: HALO-20240926a_dacf
   name: null
   start: 2024-09-26 13:24:40
@@ -85,16 +100,8 @@ segments:
   end: 2024-09-26 19:50:10
   kinds: *id001
   remarks: []
-- segment_id: HALO-20240926a_90d0
-  name: EC_track_northward_const_alt
-  start: 2024-09-26 17:20:10
-  end: 2024-09-26 18:22:10
-  kinds:
-  - straight_leg
-  - ec_track
-  remarks: []
 - segment_id: HALO-20240926a_8195
-  name: circle south
+  name: null
   start: 2024-09-26 12:26:03
   end: 2024-09-26 13:20:10
   kinds:
@@ -104,7 +111,7 @@ segments:
   clon: -56.041392931635215
   radius: 133088.9151197838
 - segment_id: HALO-20240926a_7cb9
-  name: circle mid
+  name: null
   start: 2024-09-26 13:30:59
   end: 2024-09-26 14:24:30
   kinds:
@@ -114,7 +121,7 @@ segments:
   clon: -52.54093945408618
   radius: 133081.02694308897
 - segment_id: HALO-20240926a_5485
-  name: circle north
+  name: null
   start: 2024-09-26 14:49:50
   end: 2024-09-26 15:46:40
   kinds:
@@ -124,7 +131,7 @@ segments:
   clon: -53.08685514040324
   radius: 133096.42724577524
 - segment_id: HALO-20240926a_096d
-  name: []
+  name: null
   start: 2024-09-26 16:06:15
   end: 2024-09-26 17:12:00
   kinds:
@@ -134,7 +141,7 @@ segments:
   clon: -56.614169624645434
   radius: 133098.9941052461
 - segment_id: HALO-20240926a_a5bb
-  name: []
+  name: null
   start: 2024-09-26 18:25:26
   end: 2024-09-26 19:17:46
   kinds:

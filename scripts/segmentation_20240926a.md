@@ -156,6 +156,12 @@ sl3 = (
     ["straight_leg"],
 )
 
+cal = (
+    slice("2024-09-26 15:47:25", "2024-09-26 15:53:33"),
+    ["straight_leg"],
+    "radar calibration",
+)
+
 sl4 = (
     slice("2024-09-26 15:57:10 ", "2024-09-26 16:05:10"),
     ["straight_leg"],
@@ -200,35 +206,30 @@ dc3 = (
 c1 = (
     slice("2024-09-26 12:26:03", "2024-09-26 13:20:10"),
     ["circle"],
-    "circle south",
 )
 
 c2 = (
     slice("2024-09-26 13:30:59", "2024-09-26 14:24:30"),
     ["circle"],
-    "circle mid",
 )
 
 c3 = (
     slice("2024-09-26 14:49:50", "2024-09-26 15:46:40"),
     ["circle"],
-    "circle north",
 )
 
 c4 = (
     slice("2024-09-26 16:06:15", "2024-09-26 17:12:00"),
     ["circle"],
-    [],
 )
 
 c5 = (
     slice("2024-09-26 18:25:26", "2024-09-26 19:17:46"),
     ["circle"],
-    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, sl2, sl3, sl4, sl5, sl6, sl6, ec1, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, ec1, cal, sl2, sl3, sl4, sl5, sl6, sl6, c1, c2, c3, c4, c5]]
 
 ```
 
@@ -236,7 +237,7 @@ segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, sl2, sl3, sl4, sl5, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl6)
+seg=parse_segment(sl34)
 add_previous_seg = False
 
 ###########################
