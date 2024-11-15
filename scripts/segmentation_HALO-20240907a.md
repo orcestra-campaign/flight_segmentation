@@ -189,22 +189,22 @@ seg19e = hv.VLine(pd.Timestamp("2024-09-07T20:40:31")).opts(color = c4, line_wid
 ```python
 alt = ds["alt"].hvplot()
 alt * tko * ldn * \
- seg11s * seg11e #seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- #seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
 ```
 
 ```python
 heading = ds["heading"].hvplot()
 heading * tko * ldn * \
- seg11s * seg11e #seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- #seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
 ```
 
 ```python
 roll = ds["roll"].hvplot()
 roll * tko * ldn * \
- seg11s * seg11e #seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- #seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e
 ```
 
 ## Segments
@@ -360,7 +360,7 @@ segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7,
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
-```python jupyter={"source_hidden": true, "outputs_hidden": true}
+```python jupyter={"source_hidden": true}
 seg=parse_segment(seg19)
 add_previous_seg = False
 
@@ -427,7 +427,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 #Problem with EC track!
-
+events = []
 # events = [
 #     ec_event(ds, ec_track),
 #     {"name": "example",
