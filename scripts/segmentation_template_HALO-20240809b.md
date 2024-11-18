@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240809b
 
 ```python
 import matplotlib
@@ -138,8 +134,8 @@ sl01 = (
 sl02 = (
     slice("2024-08-09T10:08:03", "2024-08-09T11:01:24"),
     ["straight_leg"], "ferry_const_alt",
-    ["heading correction (required due to antisymmetrical aircraft weight?): 2024-08-09T10:21:17 - 2024-08-09T10:21:35",
-     "heading correction (required due to antisymmetrical aircraft weight?): 2024-08-09T10:34:24 - 2024-08-09T10:34:45",
+    ["irregularity: roll angle spike 2024-08-09T10:21:17 - 2024-08-09T10:21:35",
+     "irregularity: roll angle spike 2024-08-09T10:34:24 - 2024-08-09T10:34:45",
     ],
 )
 
@@ -241,10 +237,10 @@ print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(sl13)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
-plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
+#plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
