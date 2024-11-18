@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240816a
 
 ```python
 import matplotlib
@@ -127,13 +123,13 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-08-16T11:39:05", "2024-08-16T12:06:58"),
     ["straight_leg", "ascent"], "ferry_ascent",
-    ["turbulence: 2024-08-16T11:55:55 - 2024-08-16T11:59:10"],
+    ["irregularity: turbulence 2024-08-16T11:55:55 - 2024-08-16T11:59:10"],
 )
 
 sl2 = (
     slice("2024-08-16T12:06:58", "2024-08-16T12:51:55"),
     ["straight_leg"], "ferry_const_alt",
-    ["heading correction (required due to antisymmetrical aircraft weight?): 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
+    ["irregularity: roll angle spike 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
 )
 
 ec1 = (
@@ -149,7 +145,7 @@ ec2 = (
 ec3 = (
     slice("2024-08-16T13:13:31", "2024-08-16T13:40:56"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["turbulence: 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
+    ["irregularity: turbulence 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
 )
 
 ec4 = (
@@ -165,8 +161,7 @@ ec5 = (
 c1 = (
     slice("2024-08-16T13:56:46", "2024-08-16T14:52:39"),
     ["circle"], "circle_south",
-    ["turbulence: 2024-08-16T14:01:50 - 2024-08-16T14:05:05",
-     "turbulence: 2024-08-16T14:49:50 - 2024-08-16T14:50:25",
+    ["irregularity: turbulences up to plus/minus 4 degree roll angle deviation",
     ],
 )
 
@@ -178,6 +173,12 @@ ec6 = (
 c2 = (
     slice("2024-08-16T15:06:35", "2024-08-16T16:01:44"),
     ["circle"], "circle_mid", [],
+)
+
+ec61 = (
+    slice("2024-08-16T16:04:49", "2024-08-16T16:07:31"),
+    ["straight_leg", "ec_track"], "EC_track_northward",
+    [],
 )
 
 ec7 = (
@@ -200,7 +201,7 @@ c3 = (
 sl3 = (
     slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
     ["straight_leg"], "ferry_const_alt",
-    ["constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
+    ["irregularity: constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
 )
 
 catr = (
@@ -214,14 +215,15 @@ sl4 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [sl1, sl2, ec1, ec2, ec3, ec4, ec5, c1, ec6, c2, ec7, ec8, c3, sl3, catr, sl4]
+segments = [sl1, sl2, ec1, ec2, ec3, ec4, ec5, c1, ec6, c2, ec61, ec7, ec8, c3, sl3, catr, sl4]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(ec7)
+segment_name = sl4
+seg=parse_segment(segment_name)
 add_previous_seg = False
 
 ###########################
@@ -236,8 +238,8 @@ ax1.plot(ds.lon.sel(time=seg_drops), ds.lat.sel(time=seg_drops), "C0")
 
 # plot the previous segment as well as the chosen one
 if add_previous_seg:
-    if segments.index(seg) > 0:
-        seg_before = segments[segments.index(seg) - 1]
+    if segments.index(segment_name) > 0:
+        seg_before = parse_segment(segments[segments.index(segment_name) - 1])
         ax1.plot(ds.lon.sel(time=seg_before["slice"]), ds.lat.sel(time=seg_before["slice"]), color="grey")
 ax1.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color="C1")
 
@@ -256,6 +258,10 @@ ds["roll"].sel(time=seg["slice"]).plot(ax=ax3, color="C1")
 #Check dropsonde launch times compared to the segment start and end times
 print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
+```
+
+```python
+
 ```
 
 ### Identify visually which straight_leg segments lie on EC track
