@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240811a
 
 ```python
 import matplotlib
@@ -149,7 +145,7 @@ ec1 = (
 ec2 = (
     slice("2024-08-11T12:29:59", "2024-08-11T14:03:40"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["turbulence: 2024-08-11T13:02:15 - 2024-08-11T13:12:00",],
+    ["irregularity: turbulence 2024-08-11T13:02:15 - 2024-08-11T13:12:00",],
 )
 
 ec3 = (
@@ -165,7 +161,7 @@ c1 = (
 ec4 = (
     slice("2024-08-11T15:22:34", "2024-08-11T16:09:29"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["turbulence: 2024-08-11T15:59:35 - 20240811T16:09:29",
+    ["irregularity: turbulence 2024-08-11T15:59:35 - 20240811T16:09:29",
      "includes ec_underpass"],
 )
 
@@ -193,7 +189,7 @@ ec6 = (
 
 sl2 = (
     slice("2024-08-11T19:01:56", "2024-08-11T19:05:20"),
-    ["straight_leg"], "ferry_descent", [],
+    ["straight_leg", "descent"], "ferry_descent", [],
 )
 
 sl3 = (
