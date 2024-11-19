@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240903a
 
 ```python
 import matplotlib
@@ -144,15 +140,16 @@ sl1 = (
 sl2 = (
     slice("2024-09-03T12:02:28", "2024-09-03T12:26:32"),
     ["straight_leg"], "ferry_const_alt",
-    ["heading correction (required due to antisymmetrical aircraft weight?): 2024-09-03T12:24:27 - 2024-09-03T12:24:42"],
+    ["irregularity: spike in roll angle 2024-09-03T12:24:27 - 2024-09-03T12:24:42"],
 )
 
 ec1 = (
     slice("2024-09-03T12:35:06", "2024-09-03T13:45:02"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
-    ["constant roll angle of +1.0deg from 2024-09-03T12:46:17 until 2024-09-03T13:00:43, before and after 0deg. Heading constant in whole segment.",
-     "turbulence: 2024-09-03T13:09:37 - 2024-09-03T13:45:02"],
+    ["irregularity: constant roll angle of +1.0deg from 2024-09-03T12:46:17 until 2024-09-03T13:00:43, before and after 0deg. Heading constant in whole segment.",
+     "irregularity: minor turbulence 2024-09-03T13:09:37 - 2024-09-03T13:45:02",
+     "includes meteor_overpass"],
 )
 
 c1 = (
@@ -176,14 +173,14 @@ ec3 = (
 ec4 = (
     slice("2024-09-03T14:51:36", "2024-09-03T15:00:08"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["includes meteor_overpass"],
+    [],
 )
 
 c2 = (
     slice("2024-09-03T15:02:21", "2024-09-03 15:57:08"),
     ["circle"], "circle_mid",
-    ["turbulence: 2024-09-03T15:17:40 - 2024-09-03T15:29:25",
-     "turbulence: 2024-09-03T15:46:16 - 2024-09-03T15:46:25",],
+    ["irregularity: turbulence 2024-09-03T15:17:40 - 2024-09-03T15:29:25",
+     "irregularity: turbulence 2024-09-03T15:46:16 - 2024-09-03T15:46:25",],
 )
 
 ec5 = (
@@ -201,20 +198,20 @@ c3 = (
 ec6 = (
     slice("2024-09-03T17:38:53", "2024-09-03T17:54:52"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["constant roll angle of +1.0deg from 2024-09-03T17:44:21 until 2024-09-03T17:50:54, before and after 0deg. Heading constant in whole segment."],
+    ["irregularity: constant roll angle of +1.0deg from 2024-09-03T17:44:21 until 2024-09-03T17:50:54, before and after 0deg. Heading constant in whole segment."],
 )
 
-sl2 = (
+sl3 = (
     slice("2024-09-03T17:57:12", "2024-09-03T18:06:50"),
     ["straight_leg"], "ferry_const_alt", [],
 )
 
-sl3 = (
+sl4 = (
     slice("2024-09-03T18:07:07", "2024-09-03T18:19:11"),
     ["straight_leg"], "ferry_const_alt", [],
 )
 
-sl4 = (
+sl5 = (
     slice("2024-09-03T18:21:32", "2024-09-03T18:58:14"),
     ["straight_leg"], "ferry_const_alt", [],
 )
@@ -225,7 +222,7 @@ catr1 = (
     "quarter_ATR_circle", ["quarter ATR circle: northeastern quadrant"],
 )
 
-sl5 = (
+sl6 = (
     slice("2024-09-03T19:14:00", "2024-09-03T19:22:58"),
     ["straight_leg"], "southward_crossing_catr",
     ["Crossing ATR circle along its full latitudinal extent"],
@@ -234,33 +231,34 @@ sl5 = (
 catr2 = (
     slice("2024-09-03 19:24:51", "2024-09-03 19:54:15"),
     ["circle", "atr_coordination"],
-    "ATR_circle", ["deviation from circle: 2024-09-03T19:37:56 - 2024-09-03T19:42:08"],
+    "ATR_circle", ["irregularity: deviation from circle 2024-09-03T19:37:56 - 2024-09-03T19:42:08"],
 )
 
-sl6 = (
+sl7 = (
     slice("2024-09-03T19:58:56", "2024-09-03T20:06:35"),
     ["straight_leg"], "ferry_const_alt", [],
 )
 
-sl7 = (
+sl8 = (
     slice("2024-09-03T20:06:35", "2024-09-03T20:10:25"),
     ["straight_leg", "descent"], "ferry_descent", [],
 )
 
-sl8 = (
+sl9 = (
     slice("2024-09-03T20:11:30", "2024-09-03T20:19:24"),
     ["straight_leg", "descent"], "ferry_descent", [],
 )
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in
-            [sl1, sl2, ec1, c1, ec2, ec3, ec4, c2, ec5, c3, ec6, sl3, sl4, catr1, sl5, catr2, sl6, sl7, sl8]]
+            [sl1, sl2, ec1, c1, ec2, ec3, ec4, c2, ec5, c3, ec6, sl3, sl4, sl5, catr1, sl6, catr2, sl7, sl8, sl9]]
+
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(ec6)
+seg=parse_segment(sl9)
 add_previous_seg = False
 
 ###########################
