@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240818a
 
 ```python
 import matplotlib
@@ -164,22 +160,19 @@ c1 = (
 ec2 = (
     slice("2024-08-18T12:23:52", "2024-08-18T12:48:00"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["turbulence: 2024-08-18T12:26:45 - 2024-08-18T12:31:00",
-     "turbulence: 2024-08-18T12:38:15 - 2024-08-18T12:48:00"],
+    ["irregularity: turbulence"],
 )
 
 c2 = (
     slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
     ["circle"], "circle_mid",
-    ["turbulence: 2024-08-18T12:53:12 - 2024-08-18T13:10:30",
-     "turbulence: 2024-08-18T13:31:10 - 2024-08-18T13:35:10",
-     "turbulence: 2024-08-18T13:37:50 - 2024-08-18T13:47:18"],
+    ["irregularity: turbulence"],
 )
 
 ec3 = (
     slice("2024-08-18T13:52:25", "2024-08-18T14:25:26"),
     ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
-    ["turbulence: 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
+    ["irregularity: turbulence 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
 )
 
 c3 = (
@@ -190,17 +183,19 @@ c3 = (
 ec4 = (
     slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
     ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["includes ec_underpass"],
+    ["irregularity: minor turbulences",
+     "includes ec_underpass"],
 )
 
 c_bm1 = (
     slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
-    ["circle", "c_pirouette"], "CB_pirouette_small", [],
+    ["circle", "c_pirouette"], "C_pirouette_small", [],
 )
 
 c_bm2 = (
     slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
-    ["circle", "c_pirouette"], "CB_pirouette_large", [],
+    ["circle", "c_pirouette"], "C_pirouette_large",
+    ["irregularity: minor turbulences 2024-08-18T17:20:00 - 2024-08-18T17:33:23"],
 )
 
 sl4 = (
@@ -226,7 +221,7 @@ rc1 = (
 sl6 = (
     slice("2024-08-18T18:30:22", "2024-08-18T18:58:17"),
     ["straight_leg", "descent"], "ferry_descent",
-    ["constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58, before switching to 0deg. Heading constant in whole segment."],
+    ["irregularity: constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58, before switching to 0deg. Heading constant in whole segment."],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
