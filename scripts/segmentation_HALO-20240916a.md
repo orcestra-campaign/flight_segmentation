@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are shown for 2024-09-16. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-2024-09-16a
 
 ```python
 import matplotlib
@@ -137,73 +133,85 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 ac1 = (
-    slice("2024-09-16 11:42:00", "2024-09-16 12:07:45"),
+    slice("2024-09-16T11:42:00", "2024-09-16T12:07:45"),
     ["straight_leg", "ascent"], "ferry_ascent", [],
 )
 
 sl1 = (
-    slice("2024-09-16 12:07:45", "2024-09-16 12:56:50"),
+    slice("2024-09-16T12:07:45", "2024-09-16T12:56:50"),
     ["straight_leg"],
+    "straight_leg_1",
+    ["irregularity: turbulence 2024-09-16T12:46:30 - 2024-09-16T12:56:50"],
 )
 
 sl2 = (
-    slice("2024-09-16 12:58:00", "2024-09-16 13:16:30"),
-    ["straight_leg"],
-)
-
-sl3 = (
-    slice("2024-09-16 16:01:55", "2024-09-16 16:15:00"),
-    ["straight_leg", "pace_track"], "pace track southward",
-)
-
-sl4 = (
-    slice("2024-09-16 16:25:30", "2024-09-16 16:42:30"),
-    ["straight_leg", "pace_track"], "pace track southward",
-)
-
-ec1 = (
-    slice("2024-09-16 16:53:00", "2024-09-16 17:50:00"),
-    ["straight_leg", "ec_track"],
-    "EC_track_southward_const_alt",
-)
-
-sl5 = (
-    slice("2024-09-16 19:15:00", "2024-09-16 20:20:02"),
-    ["straight_leg"],
-)
-
-dc1 = (
-    slice("2024-09-16 20:20:02", "2024-09-16 20:27:10"),
-    ["straight_leg", "decent"], "ferry_descent", [],
-)
-
-dc2 = (
-    slice("2024-09-16 20:28:30", "2024-09-16 20:44:20"),
-    ["straight_leg", "decent"], "ferry_descent", [],
+    slice("2024-09-16T12:58:00", "2024-09-16T13:16:30"),
+    ["straight_leg"], "straight_leg_2",
 )
 
 c1 = (
-    slice("2024-09-16 13:19:37", "2024-09-16 14:19:45"),
+    slice("2024-09-16T13:19:35", "2024-09-16T14:19:45"),
     ["circle"],
-    "circle",
+    "circle_middle",
+    ["irregularity: turbulence 2024-09-16T13:19:35 - 2024-09-16T13:28:00"],
+)
+
+sl3a = (
+    slice("2024-09-16T14:23:32", "2024-09-16T14:31:00"),
+    ["straight_leg"], "straight_leg_to_circle_2",
 )
 
 c2 = (
-    slice("2024-09-16 14:32:45", "2024-09-16 15:46:32"),
+    slice("2024-09-16T14:32:45", "2024-09-16T15:46:32"),
     ["circle"],
-    "circle",
+    "circle_south",
     ["two half circles with straight leg in between"],
 )
 
-c3 = (
-    slice("2024-09-16 17:53:25", "2024-09-16 19:10:50"),
-    ["circle"],
-    "circle",
+sl3 = (
+    slice("2024-09-16T16:01:55", "2024-09-16T16:15:00"),
+    ["straight_leg", "pace_track"], "pace_track_underpass",
+    ["irregularity: ascent 2024-09-16T16:01:55 - 2024-09-16T16:04:20",
+    "includes pace underpass"],
 )
 
+sl4 = (
+    slice("2024-09-16T16:25:30", "2024-09-16T16:43:00"),
+    ["straight_leg", "pace_track"], "pace_track_south",
+)
+
+ec1 = (
+    slice("2024-09-16T16:53:00", "2024-09-16T17:50:00"),
+    ["straight_leg", "ec_track"],
+    "EC_track_southward_const_alt",
+    ["irregularity: unconstant roll angle despite constant heading until 2024-09-16T17:30:00",
+    "includes Meteor overpass"],
+)
+
+c3 = (
+    slice("2024-09-16T17:54:25", "2024-09-16T19:10:50"),
+    ["circle"],
+    "circle_north",
+    ["quarter circle withouth sondes followed by full circle"]
+)
+
+sl5 = (
+    slice("2024-09-16T19:16:00", "2024-09-16T20:20:47"),
+    ["straight_leg"], "straight_leg_3",
+)
+
+dc1 = (
+    slice("2024-09-16T20:20:47", "2024-09-16T20:27:10"),
+    ["straight_leg", "descent"], "ferry_descent", [],
+)
+
+dc2 = (
+    slice("2024-09-16T20:28:30", "2024-09-16T20:44:16"),
+    ["straight_leg", "descent"], "ferry_descent", [],
+)
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, dc2, sl1, sl2, sl3, sl4, ec1, sl5, c1, c2, c3]]
+segments = [parse_segment(s) for s in [ac1, dc1, dc2, sl1, sl2, sl3, sl3a, sl4, ec1, sl5, c1, c2, c3]]
 
 ```
 
@@ -251,7 +259,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on PACE track
 
 ```python
-seg = parse_segment(sl3)
+seg = parse_segment(sl4)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -265,7 +273,7 @@ plt.legend();
 ```
 
 ```python
-seg = parse_segment(sl4)
+seg = parse_segment(ec1)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -281,7 +289,7 @@ plt.legend();
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(sl5)
+seg = parse_segment(sl4)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
