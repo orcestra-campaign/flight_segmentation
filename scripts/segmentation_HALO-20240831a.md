@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240831a
 
 ```python
 import matplotlib
@@ -37,7 +33,7 @@ cvao = mindelo
 
 ```python
 platform = "HALO"
-flight_id = "HALO-20240912a"
+flight_id = "HALO-20240831a"
 ```
 
 ## Loading data
@@ -106,7 +102,7 @@ else:
 
 ```python
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)), label="HALO track")
-plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
+#plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
 if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
@@ -118,19 +114,19 @@ plt.legend();
 
 ## Interactive plots
 
-```python jupyter={"source_hidden": true}
-# c1 = 'ForestGreen'
-# c2 = 'Purple'
-# c3 = 'Orange'
-# c4 = 'Blue'
-# lw = 2
+```python
+c1 = 'ForestGreen'
+c2 = 'Purple'
+c3 = 'Orange'
+c4 = 'Blue'
+lw = 2
 
-# takeoff = hv.VLine(pd.Timestamp("2024-09-12T11:29:50")).opts(color = c1, line_width = lw)
-# landing = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c1, line_width = lw)
+takeoff = hv.VLine(pd.Timestamp(takeoff)).opts(color = c1, line_width = lw)
+landing = hv.VLine(pd.Timestamp(landing)).opts(color = c1, line_width = lw)
 
-# # segment boundaries  
-# seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
-# seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
+# segment boundaries  
+seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
+seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
 
 # seg2s = hv.VLine(pd.Timestamp("2024-09-12T11:52:44")).opts(color = c3, line_width = lw) #
 # seg2e = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c3, line_width = lw)
@@ -141,31 +137,31 @@ plt.legend();
 # seg4s = hv.VLine(pd.Timestamp("2024--09-12T12:36:26")).opts(color = c1, line_width = lw) #
 # seg4e = hv.VLine(pd.Timestamp("2024-09-12T13:02:59")).opts(color = c1, line_width = lw)
 
-# seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #circle
+# seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #
 # seg5e = hv.VLine(pd.Timestamp("2024-09-12T14:02:18")).opts(color = c2, line_width = lw)
 
 # seg6s = hv.VLine(pd.Timestamp("2024-09-12T14:06:42")).opts(color = c3, line_width = lw)
 # seg6e = hv.VLine(pd.Timestamp("2024-09-12T14:12:06")).opts(color = c3, line_width = lw)
 
-# seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c1, line_width = lw) #circle
-# seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c1, line_width = lw)
+# seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c4, line_width = lw) #
+# seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c4, line_width = lw)
 
-# seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c2, line_width = lw) #
-# seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c2, line_width = lw)
+# seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c1, line_width = lw) #
+# seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c1, line_width = lw)
 
-# seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c3, line_width = lw) #
-# seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c3, line_width = lw)
+# seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c2, line_width = lw) #
+# seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c2, line_width = lw)
 
-# seg10s = hv.VLine(pd.Timestamp("2024-09-12T15:46:03")).opts(color = c2, line_width = lw) #small circle holding pattern
-# seg10e = hv.VLine(pd.Timestamp("2024-09-12T15:51:48")).opts(color = c2, line_width = lw)
+# seg10s = hv.VLine(pd.Timestamp("2024-09-12T15:46:03")).opts(color = c3, line_width = lw) #
+# seg10e = hv.VLine(pd.Timestamp("2024-09-12T15:51:48")).opts(color = c3, line_width = lw)
 
-# seg11s = hv.VLine(pd.Timestamp("2024-09-12T15:56:35")).opts(color = c4, line_width = lw) #circle
+# seg11s = hv.VLine(pd.Timestamp("2024-09-12T15:56:35")).opts(color = c4, line_width = lw) #
 # seg11e = hv.VLine(pd.Timestamp("2024-09-12T17:03:46")).opts(color = c4, line_width = lw)
 
 # seg12s = hv.VLine(pd.Timestamp("2024-09-12T17:12:26")).opts(color = c1, line_width = lw) #
 # seg12e = hv.VLine(pd.Timestamp("2024-09-12T17:53:12")).opts(color = c1, line_width = lw)
 
-# seg13s = hv.VLine(pd.Timestamp("2024-09-12T17:55:29")).opts(color = c2, line_width = lw) #circle
+# seg13s = hv.VLine(pd.Timestamp("2024-09-12T17:55:29")).opts(color = c2, line_width = lw) #
 # seg13e = hv.VLine(pd.Timestamp("2024-09-12T18:55:02")).opts(color = c2, line_width = lw)
 
 # seg14s = hv.VLine(pd.Timestamp("2024-09-12T18:56:07")).opts(color = c3, line_width = lw) #
@@ -181,23 +177,23 @@ plt.legend();
 # seg17e = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c2, line_width = lw)
 ```
 
-```python jupyter={"outputs_hidden": true, "source_hidden": true}
-# alt = ds["alt"].hvplot()
-# alt * takeoff * landing * \
+```python
+alt = ds["alt"].hvplot()
+alt * takeoff * landing #* \
 #  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 # seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
-```python jupyter={"outputs_hidden": true, "source_hidden": true}
-# heading = ds["heading"].hvplot()
-# heading * takeoff * landing * \
+```python
+heading = ds["heading"].hvplot()
+heading * takeoff * landing #* \
 #  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 #  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
-```python jupyter={"outputs_hidden": true, "source_hidden": true}
-# roll = ds["roll"].hvplot()
-# roll * takeoff * landing * \
+```python
+roll = ds["roll"].hvplot()
+roll * takeoff * landing #* \
 #  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 #  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
@@ -218,108 +214,79 @@ seg1 = (
     "eastward ascending ferry",
 )
 
-seg2 = (
+seg = (
     slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
-    ["straight_leg", "ascent"],
-    "eastward ascending ferry",
-
+    [],
+    "",
+    []
 )
 
-seg3 = (
-    slice("2024-09-12T12:01:28", "2024-09-12T12:35:09"),
-    ["straight_leg"],
-    "long eastward ferry",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg4 = (
-    slice("2024--09-12T12:36:26", "2024-09-12T13:02:59"),
-    ["straight_leg"],
-    "leg to first circle"
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg5 = (
-    slice("2024-09-12T13:06:18", "2024-09-12T14:02:18"),
-    ["clockwise eastern circle"],
-    ["sonde failures"]
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg6 = (
-    slice("2024-09-12T14:06:42", "2024-09-12T14:12:06"),
-    ["straight_leg"],
-    "leg to second circle",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg7 = (
-    slice("2024-09-12T14:18:20", "2024-09-12T15:10:37"),
-    ["circle"],
-    "counterclockwise eastern circle",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg8 = (
-    slice("2024-09-12T15:13:08", "2024-09-12T15:18:19"),
-    ["straight_leg"],
-    "leg through circle",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg9 = (
-    slice("2024-09-12T15:22:30", "2024-09-12T15:45:40"),
-    ["straight_leg"],
-    "leg to third circle",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg10 = (
-    slice("2024-09-12T15:46:03", "2024-09-12T15:51:48"),
-    ["circle"],
-    "counterclockwise holding pattern",
-    ["small waiting circle"]
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
-seg11 = (
-    slice("2024-09-12T15:56:35", "2024-09-12T17:03:46"),
-    ["circle"],
-    "counterclockwise western circle",
-)
-
-seg12 = (
-    slice("2024-09-12T17:12:26", "2024-09-12T17:53:12"),
-    ["straight_leg", "ec_track"],
-    "leg on EC track",
-    ["contains EC meeting point"],
-)
-
-seg13 = (
-    slice("2024-09-12T17:55:29", "2024-09-12T18:55:02"),
-    ["circle"],
-    "clockwise western circle",
-)
-
-seg14 = (
-    slice("2024-09-12T18:56:07", "2024-09-12T19:41:13"),
-    ["straight_leg"],
-    "long westward ferry"
-)
-
-seg15 = (
-    slice("2024-09-12T19:41:13", "2024-09-12T19:45:16"),
-    ["straight_leg", "descent"],
-    "westward descending ferry",
-)
-
-seg16 = (
-    slice("2024-09-12T19:46:30", "2024-09-12T19:58:55"),
-    ["straight_leg", "descent"],
-    "westward descending ferry"
-)
-
-seg17 = (
-    slice("2024-09-12T20:01:29", "2024-09-12T20:05:05"),
-    ["straight_leg", "descent"],
-    "final descent",
+seg = (
+    slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
+    [],
+    "",
+    []
 )
 
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17]]
+segments = [parse_segment(s) for s in [seg1, seg]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
