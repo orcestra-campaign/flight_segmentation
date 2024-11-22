@@ -14,10 +14,6 @@ jupyter:
 
 # Flight segmentation HALO-20240813a
 
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
-
 ```python
 import matplotlib
 import yaml
@@ -29,9 +25,6 @@ import matplotlib.pyplot as plt
 
 from navdata import get_navdata_HALO
 from utils import *
-
-from orcestra.flightplan import bco, mindelo
-cvao = mindelo
 ```
 
 ```python
@@ -96,6 +89,7 @@ meteor_track = get_meteor_track().sel(time=slice(takeoff, landing))
 ## Overview plot: HALO track, EC meeting point, and dropsonde locations
 
 ```python
+plt.scatter(ds.lon.sel(time=takeoff, method="nearest"), ds.lat.sel(time=takeoff, method="nearest"), marker="*", label="SAL")
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)), label="HALO track")
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
@@ -110,6 +104,9 @@ plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
 ```
+
+***NOTE: BAHAMAS data seems to miss the last bit of the flight before landing. Also obvious from the altitude plot blow.***
+
 
 ## Interactive plots
 
@@ -135,6 +132,7 @@ defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `rem
 Alternatively, you can also define the segments as dictionaries which also allows to add further attributes to single segments, e.g. a `radius` to a `circle` segment. At the end of the following code block all segments will be normalized by the `parse_segments` function.
 
 ```python
+# 2 legs heading north to the EC track
 sl0 = (
     slice("2024-08-13T14:18:23", "2024-08-13T14:44:00"),
     ["straight_leg", "ascent"],
@@ -145,26 +143,48 @@ sl1 = (
     ["straight_leg"],
 )
 
+# EC track time: full track south, won't be saved to the YAML file
 ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
+    slice("2024-08-13T15:04:14", "2024-08-13T17:13:36"),
     ["straight_leg", "ec_track"],
     "full EC track",
-    [],
     ["several height level changes, for details, see subsegments"]
 )
 
+# EC track split into sub-segments
+ec1a = (
+    slice("2024-08-13T15:04:14", "2024-08-13T15:18:00"),
+    ["straight_leg", "ec_track"],
+)
+# in between those two segments there was a holding pattern to wait for EC
+# followed by the decision to descent to lower flight altitude befor meeting EC
+ec1b = (
+    slice("2024-08-13T15:28:11", "2024-08-13T15:32:18"),
+    ["straight_leg", "descent", "ec_track"],
+    "descent to FL360",
+)
+# meeting EC on a low leg due to cirrus clouds
 ec1 = (
     slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "ec_underpass"],
     "EC track low leg",
+    ["intentional low flight altitude to be below cirrus clouds"]
 )
-
+ec1c = (
+    slice("2024-08-13T15:52:22", "2024-08-13T15:57:05"),
+    ["straight_leg", "ascent", "ec_track"],
+    "ascent to FL410",
+)
 ec2 = (
     slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
     ["straight_leg", "ec_track"],
     "EC track mid leg",
 )
-
+ec2a = (
+    slice("2024-08-13T17:01:53", "2024-08-13T17:05:35"),
+    ["straight_leg", "ec_track", "ascent"],
+    "ascent to FL430",
+)
 ec3 = (
     slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
     ["straight_leg", "ec_track"],
@@ -181,7 +201,13 @@ c1 = (
     slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
     ["circle"],
     "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+    ["irregularity: 18:06:02 - 18:12:08 deviation from circle track due to deep convection"],
+)
+
+slc1c2 = (
+    slice("2024-08-13T18:28:22", "2024-08-13T19:12:49"),
+    ["straight_leg"],
+    "leg crossing circle south",
 )
 
 c2 = (
@@ -190,11 +216,28 @@ c2 = (
     "circle mid",
 )
 
+slc2c3 = (
+    slice("2024-08-13T20:17:49", "2024-08-13T21:04:54"),
+    ["straight_leg"],
+    "leg crossing circle mid",
+    ["irregularity: turbulence and roll angle/altitude deviations between 20:27:56 - 20:33:12",
+    "irregularity: roll angle spikes between 20:47:19 - 20:47:49, at 20:57:20 and at 21:00:16"],
+)
+
 c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
+    slice("2024-08-13T21:09:04", "2024-08-13T22:07:31"),
     ["circle"],
     "circle north",
     ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+)
+
+# the below segment has roll angel deviations and two hight level changes such
+# that it is not worth being added to the final segmentation of this flight.
+slc3catr = (
+    slice("2024-08-13T22:09:37", "2024-08-13T22:17:51"),
+    ["straight_leg"],
+    "leg to ATR circle",
+    ["irregularity: roll angel deviation 22:12:41 - 22:13:13"]
 )
 
 catr = (
@@ -206,14 +249,17 @@ catr = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl0, sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [parse_segment(s) for s in [sl0, sl1, ec1a, ec1b, ec1, ec1c,
+                                       ec2, ec2a, ec3, sl_south,
+                                       c1, slc1c2, c2, slc2c3, c3, catr]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl1)
+seg=parse_segment(catr)
+print(seg["kinds"])
 add_previous_seg = True
 
 ###########################
@@ -254,6 +300,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 
 ```python
 seg = parse_segment(ec1)
+print(seg["kinds"])
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -267,15 +314,6 @@ plt.legend();
 ```
 
 ## Events
-events are different from segments in having only **one** timestamp. Examples are the usual "EC meeting points" or station / ship overpasses. In general, events include a mandatory `event_id` and `time`, as well as optional statements on `name`, a list of `kinds`, the `distance` in meters, and a list of `remarks`. Possible `kinds`include:
-- `ec_underpass`
-- `meteor_overpass`
-- `bco_overpass`
-- `cvao_overpass`
-
-The `event_id` will be added when saving it to YAML.
-
-The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
 events = [
@@ -326,8 +364,4 @@ for s in flight["segments"]:
     center = LatLon(s["clat"], s["clon"], label="center")
     FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
     plt.plot(d.lon, d.lat)
-```
-
-```python
-
 ```
