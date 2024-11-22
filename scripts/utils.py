@@ -45,8 +45,8 @@ def get_overpass_point(ds, target_lat, target_lon):
 def plot_overpass_point(ds, target_lat, target_lon):
     import matplotlib.pyplot as plt
     d, t = get_overpass_point(ds, target_lat, target_lon)
-    plt.plot(ds.lon, ds.lat, label="segment track")
-    plt.scatter(ds.lon.isel(time=0), ds.lat.isel(time=0), marker="x", label="segment start")
+    plt.plot(ds.lon, ds.lat, label="track")
+    plt.scatter(ds.lon.isel(time=0), ds.lat.isel(time=0), marker="x", label="track starting point")
     plt.scatter(target_lon, target_lat, c="C1", label="target location")
     plt.plot([ds.lon.sel(time=t), target_lon], [ds.lat.sel(time=t), target_lat], color="C1")
     plt.legend()
