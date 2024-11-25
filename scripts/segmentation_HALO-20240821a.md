@@ -65,6 +65,8 @@ print(f"Flight duration: {int(duration / 60)}:{int(duration % 60)}")
 
 ### Get EC track and EC meeting point
 
+Flight not on EC track.
+
 ```python
 ec_track = get_ec_track(flight_id, ds)
 dist_ec, t_ec = get_overpass_track(ds, ec_track)
@@ -73,7 +75,18 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ### Get PACE track
 
 ```python
-pace_track = get_PACE_track(flight_id, ds)
+load_pace = False
+
+if load_pace:
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+    
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 ```
 
 ### Get METEOR track
@@ -92,8 +105,8 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if meteor_track: plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -148,16 +161,17 @@ seg4 = (
 )
 
 seg5 = (
-    slice("2024-08-21T13:30:02", "2024-08-21T14:07:09"),
+    slice("2024-08-21T13:30:02", "2024-08-21T14:07:08"),
     ["straight_leg"],
     "southward leg",
-    ["irregularity: turbulences around 13:46:36"] # radar calibration?
+    ["irregularity: turbulences around 13:46:36 up to plus/minus 6 degree roll angle deviation"]
 )
 
 seg6 = (
-    slice("2024-08-21T14:09:53", "2024-08-21T15:06:27"),
+    slice("2024-08-21T14:09:58", "2024-08-21T15:06:16"),
     ["circle"],
     "southern clockwise circle",
+    ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation"]
 )
 
 seg7 = (
@@ -167,23 +181,23 @@ seg7 = (
 )
 
 seg8 = (
-    slice("2024-08-21T15:15:38", "2024-08-21T16:12:30"),
+    slice("2024-08-21T15:15:38", "2024-08-21T16:12:19"),
     ["circle"],
     "middle counterclockwise circle",
-    ["no sondes dropped due to air traffic"]
+    ["no sondes dropped due to air traffic", "irregularity: turbulence up to plus/minus 7 degree roll angle deviation"]
 )
 
 seg9 = (
-    slice("2024-08-21T16:15:26", "2024-08-21T16:51:44"),
+    slice("2024-08-21T16:15:26", "2024-08-21T16:51:12"),
     ["straight_leg"],
     "long northward leg", 
 )
 
 seg10 = (
-    slice("2024-08-21T16:54:01", "2024-08-21T17:50:18"),
+    slice("2024-08-21T16:54:01", "2024-08-21T17:50:05"),
     ["circle"],
     "northern clockwise circle",
-    ["slight deviation from circular path from 17:41:12 to 17:45:54"],
+    ["slight deviation from circular path between 17:41:12 and 17:45:54 with up to plus/minus 30 degree roll angle deviation"],
 )
 
 seg11 = (
@@ -193,7 +207,7 @@ seg11 = (
 )
 
 seg12 = (
-    slice("2024-08-21T18:55:03", "2024-08-21T19:05:17"),
+    slice("2024-08-21T18:55:08", "2024-08-21T19:05:17"),
     ["straight_leg"],
     "northward leg", 
 )
@@ -211,7 +225,7 @@ seg14 = (
 )
 
 seg15 = (
-    slice("2024-08-21T19:37:03", "2024-08-21T19:48:21"),
+    slice("2024-08-21T19:37:16", "2024-08-21T19:48:19"),
     ["straight_leg", "descent"],
     "descending eastward ferry", 
 )
@@ -278,7 +292,7 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -296,7 +310,12 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-events = []
+events = [meteor_event(ds, meteor_track)]
+events
+```
+
+```python
+events[0]['remarks'] = ["Meteor bypass during southern circle"]
 events
 ```
 
