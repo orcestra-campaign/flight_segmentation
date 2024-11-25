@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are shown for 2024-09-28. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-2024-09-28a
 
 ```python
 import matplotlib
@@ -145,39 +141,49 @@ ac1 = (
 sl1 = (
     slice("2024-09-28 11:19:46", "2024-09-28 12:33:16"),
     ["straight_leg"],
+    "straight_leg_1"
+)
+
+c1 = (
+    slice("2024-09-28T12:34:00", "2024-09-28T13:32:00"),
+    ["circle"],
+    "cirlce_1",
 )
 
 sl2 = (
     slice("2024-09-28 13:35:00", "2024-09-28 13:39:40"),
     ["straight_leg"],
+    "straight_leg_2"
+)
+
+c2 = (
+    slice("2024-09-28 13:42:30", "2024-09-28 14:38:00"),
+    ["circle"],
+    "cirlce_2",
 )
 
 sl3 = (
     slice("2024-09-28 14:40:50", "2024-09-28 15:24:30"),
     ["straight_leg"],
+    "straight_leg_3"
+)
+
+c3 = (
+    slice("2024-09-28 15:27:00", "2024-09-28 16:23:00"),
+    ["circle"],
+    "cirlce_3",
 )
 
 sl4 = (
     slice("2024-09-28 16:25:00", "2024-09-28 16:30:30"),
     ["straight_leg"],
+    "straight_leg_4"
 )
 
-sl5 = (
-    slice("2024-09-28 17:58:20", "2024-09-28 18:13:00"),
-    ["straight_leg"],
-    ["radar calibration 18:04:52 - 18:08:25"],
-    "pace underpass",
-)
-
-sl6 = (
-    slice("2024-09-28 19:12:50", "2024-09-28 19:25:00"),
-    ["straight_leg"],
-)
-
-dc1 = (
-    slice("2024-09-28 19:25:00", "2024-09-28 19:47:30"),
-    ["straight_leg", "decent"],
-    ["radar calibration dive 19:41:00"],
+c4 = (
+    slice("2024-09-28 16:33:00", "2024-09-28 17:31:00"),
+    ["circle"],
+    ["cirlce_4", "pace underpass"],
 )
 
 ec1 = (
@@ -186,34 +192,33 @@ ec1 = (
     "EC_track_southward_const_alt",
 )
 
-c1 = (
-    slice("2024-09-28T12:34:00", "2024-09-28T13:32:00"),
-    ["circle"],
-)
-
-c2 = (
-    slice("2024-09-28 13:42:30", "2024-09-28 14:38:00"),
-    ["circle"],
-)
-
-c3 = (
-    slice("2024-09-28 15:27:00", "2024-09-28 16:23:00"),
-    ["circle"],
-)
-
-c4 = (
-    slice("2024-09-28 16:33:00", "2024-09-28 17:31:00"),
-    ["circle"], "pace underpass",
+sl5 = (
+    slice("2024-09-28 17:58:20", "2024-09-28 18:13:00"),
+    ["straight_leg"],
+    ["radar calibration 18:04:52 - 18:08:25"],
+    ["straight_leg_6", "pace underpass"],
 )
 
 c5 = (
     slice("2024-09-28 18:15:30", "2024-09-28 19:10:00"),
-    ["circle"], "pace underpass",
+    ["circle"],
+    ["circle_5", "pace underpass"],
+)
+
+sl6 = (
+    slice("2024-09-28 19:12:50", "2024-09-28 19:25:00"),
+    ["straight_leg"],
+    "straight_leg_6"
+)
+
+dc1 = (
+    slice("2024-09-28 19:25:00", "2024-09-28 19:47:30"),
+    ["straight_leg", "decent"],
+    ["radar calibration dive 19:41:00"],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, sl5, sl6, ac1, dc1, ec1, c1, c2, c3, c4, c5]]
-
 
 ```
 
@@ -298,8 +303,4 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
-```
-
-```python
-
 ```
