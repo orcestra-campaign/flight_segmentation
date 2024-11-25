@@ -91,7 +91,7 @@ select maybe only the track from the respective flight day
 
 ```python
 from orcestra.meteor import get_meteor_track
-load_meteor = False
+load_meteor = True
 if load_meteor:
     meteor_track = get_meteor_track().sel(time=slice(takeoff, landing))
 else:
@@ -102,7 +102,7 @@ else:
 
 ```python
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)), label="HALO track")
-#plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
+plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
 if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
@@ -121,80 +121,80 @@ c3 = 'Orange'
 c4 = 'Blue'
 lw = 2
 
-takeoff = hv.VLine(pd.Timestamp(takeoff)).opts(color = c1, line_width = lw)
-landing = hv.VLine(pd.Timestamp(landing)).opts(color = c1, line_width = lw)
+tko = hv.VLine(pd.Timestamp(takeoff)).opts(color = c1, line_width = lw)
+ldn = hv.VLine(pd.Timestamp(landing)).opts(color = c1, line_width = lw)
 
 # segment boundaries  
-seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
-seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
+seg1s = hv.VLine(pd.Timestamp("2024-08-31T08:53:55")).opts(color = c2, line_width = lw) # straight_leg ascent
+seg1e = hv.VLine(pd.Timestamp("2024-08-31T09:03:33")).opts(color = c2, line_width = lw)
 
-# seg2s = hv.VLine(pd.Timestamp("2024-09-12T11:52:44")).opts(color = c3, line_width = lw) #
-# seg2e = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c3, line_width = lw)
+seg2s = hv.VLine(pd.Timestamp("2024-08-31T09:05:37")).opts(color = c3, line_width = lw) # straight_leg ascent
+seg2e = hv.VLine(pd.Timestamp("2024-08-31T09:08:20")).opts(color = c3, line_width = lw)
 
-# seg3s = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c4, line_width = lw) #
-# seg3e = hv.VLine(pd.Timestamp("2024-09-12T12:35:09")).opts(color = c4, line_width = lw)
+seg3s = hv.VLine(pd.Timestamp("2024-08-31T09:08:30")).opts(color = c4, line_width = lw) # straight_leg ascent irregularity: constant roll angle -1.3 degree
+seg3e = hv.VLine(pd.Timestamp("2024-08-31T09:17:39")).opts(color = c4, line_width = lw)
 
-# seg4s = hv.VLine(pd.Timestamp("2024--09-12T12:36:26")).opts(color = c1, line_width = lw) #
-# seg4e = hv.VLine(pd.Timestamp("2024-09-12T13:02:59")).opts(color = c1, line_width = lw)
+# seg4s = hv.VLine(pd.Timestamp("2024-08-31T12:36:26")).opts(color = c1, line_width = lw) #
+# seg4e = hv.VLine(pd.Timestamp("2024-08-31T13:02:59")).opts(color = c1, line_width = lw)
 
-# seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #
-# seg5e = hv.VLine(pd.Timestamp("2024-09-12T14:02:18")).opts(color = c2, line_width = lw)
+# seg5s = hv.VLine(pd.Timestamp("2024-08-31T13:06:18")).opts(color = c2, line_width = lw) #
+# seg5e = hv.VLine(pd.Timestamp("2024-08-31T14:02:18")).opts(color = c2, line_width = lw)
 
-# seg6s = hv.VLine(pd.Timestamp("2024-09-12T14:06:42")).opts(color = c3, line_width = lw)
-# seg6e = hv.VLine(pd.Timestamp("2024-09-12T14:12:06")).opts(color = c3, line_width = lw)
+# seg6s = hv.VLine(pd.Timestamp("2024-08-31T14:06:42")).opts(color = c3, line_width = lw)
+# seg6e = hv.VLine(pd.Timestamp("2024-08-31T14:12:06")).opts(color = c3, line_width = lw)
 
-# seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c4, line_width = lw) #
-# seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c4, line_width = lw)
+# seg7s = hv.VLine(pd.Timestamp("2024-08-31T14:18:20")).opts(color = c4, line_width = lw) #
+# seg7e = hv.VLine(pd.Timestamp("2024-08-31T15:10:37")).opts(color = c4, line_width = lw)
 
-# seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c1, line_width = lw) #
-# seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c1, line_width = lw)
+# seg8s = hv.VLine(pd.Timestamp("2024-08-31T15:13:08")).opts(color = c1, line_width = lw) #
+# seg8e = hv.VLine(pd.Timestamp("2024-08-31T15:18:19")).opts(color = c1, line_width = lw)
 
-# seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c2, line_width = lw) #
-# seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c2, line_width = lw)
+# seg9s = hv.VLine(pd.Timestamp("2024-08-31T15:22:30")).opts(color = c2, line_width = lw) #
+# seg9e = hv.VLine(pd.Timestamp("2024-08-31T15:45:40")).opts(color = c2, line_width = lw)
 
-# seg10s = hv.VLine(pd.Timestamp("2024-09-12T15:46:03")).opts(color = c3, line_width = lw) #
-# seg10e = hv.VLine(pd.Timestamp("2024-09-12T15:51:48")).opts(color = c3, line_width = lw)
+# seg10s = hv.VLine(pd.Timestamp("2024-08-31T15:46:03")).opts(color = c3, line_width = lw) #
+# seg10e = hv.VLine(pd.Timestamp("2024-08-31T15:51:48")).opts(color = c3, line_width = lw)
 
-# seg11s = hv.VLine(pd.Timestamp("2024-09-12T15:56:35")).opts(color = c4, line_width = lw) #
-# seg11e = hv.VLine(pd.Timestamp("2024-09-12T17:03:46")).opts(color = c4, line_width = lw)
+# seg11s = hv.VLine(pd.Timestamp("2024-08-31T15:56:35")).opts(color = c4, line_width = lw) #
+# seg11e = hv.VLine(pd.Timestamp("2024-08-31T17:03:46")).opts(color = c4, line_width = lw)
 
-# seg12s = hv.VLine(pd.Timestamp("2024-09-12T17:12:26")).opts(color = c1, line_width = lw) #
-# seg12e = hv.VLine(pd.Timestamp("2024-09-12T17:53:12")).opts(color = c1, line_width = lw)
+# seg12s = hv.VLine(pd.Timestamp("2024-08-31T17:12:26")).opts(color = c1, line_width = lw) #
+# seg12e = hv.VLine(pd.Timestamp("2024-08-31T17:53:12")).opts(color = c1, line_width = lw)
 
-# seg13s = hv.VLine(pd.Timestamp("2024-09-12T17:55:29")).opts(color = c2, line_width = lw) #
-# seg13e = hv.VLine(pd.Timestamp("2024-09-12T18:55:02")).opts(color = c2, line_width = lw)
+# seg13s = hv.VLine(pd.Timestamp("2024-08-31T17:55:29")).opts(color = c2, line_width = lw) #
+# seg13e = hv.VLine(pd.Timestamp("2024-08-31T18:55:02")).opts(color = c2, line_width = lw)
 
-# seg14s = hv.VLine(pd.Timestamp("2024-09-12T18:56:07")).opts(color = c3, line_width = lw) #
-# seg14e = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c3, line_width = lw)
+# seg14s = hv.VLine(pd.Timestamp("2024-08-31T18:56:07")).opts(color = c3, line_width = lw) #
+# seg14e = hv.VLine(pd.Timestamp("2024-08-31T19:41:13")).opts(color = c3, line_width = lw)
 
-# seg15s = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c4, line_width = lw) #
-# seg15e = hv.VLine(pd.Timestamp("2024-09-12T19:45:16")).opts(color = c4, line_width = lw)
+# seg15s = hv.VLine(pd.Timestamp("2024-08-31T19:41:13")).opts(color = c4, line_width = lw) #
+# seg15e = hv.VLine(pd.Timestamp("2024-08-31T19:45:16")).opts(color = c4, line_width = lw)
 
-# seg16s = hv.VLine(pd.Timestamp("2024-09-12T19:46:30")).opts(color = c1, line_width = lw) #
-# seg16e = hv.VLine(pd.Timestamp("2024-09-12T19:58:55")).opts(color = c1, line_width = lw)
+# seg16s = hv.VLine(pd.Timestamp("2024-08-31T19:46:30")).opts(color = c1, line_width = lw) #
+# seg16e = hv.VLine(pd.Timestamp("2024-08-31T19:58:55")).opts(color = c1, line_width = lw)
 
-# seg17s = hv.VLine(pd.Timestamp("2024-09-12T20:01:27")).opts(color = c2, line_width = lw) #
-# seg17e = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c2, line_width = lw)
+# seg17s = hv.VLine(pd.Timestamp("2024-08-31T20:01:27")).opts(color = c2, line_width = lw) #
+# seg17e = hv.VLine(pd.Timestamp("2024-08-31T20:05:05")).opts(color = c2, line_width = lw)
 ```
 
 ```python
 alt = ds["alt"].hvplot()
-alt * takeoff * landing #* \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+alt * tko * ldn * \
+ seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 # seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
 ```python
 heading = ds["heading"].hvplot()
-heading * takeoff * landing #* \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+heading * tko * ldn * \
+ seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 #  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
 ```python
 roll = ds["roll"].hvplot()
-roll * takeoff * landing #* \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+roll * tko * ldn * \
+ seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
 #  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
 ```
 
