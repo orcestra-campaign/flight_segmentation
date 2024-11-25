@@ -134,68 +134,89 @@ seg2e = hv.VLine(pd.Timestamp("2024-08-31T09:08:20")).opts(color = c3, line_widt
 seg3s = hv.VLine(pd.Timestamp("2024-08-31T09:08:30")).opts(color = c4, line_width = lw) # straight_leg ascent irregularity: constant roll angle -1.3 degree
 seg3e = hv.VLine(pd.Timestamp("2024-08-31T09:17:39")).opts(color = c4, line_width = lw)
 
-# seg4s = hv.VLine(pd.Timestamp("2024-08-31T12:36:26")).opts(color = c1, line_width = lw) #
-# seg4e = hv.VLine(pd.Timestamp("2024-08-31T13:02:59")).opts(color = c1, line_width = lw)
+seg4s = hv.VLine(pd.Timestamp("2024-08-31T09:18:04")).opts(color = c1, line_width = lw) # straight_leg ascent
+seg4e = hv.VLine(pd.Timestamp("2024-08-31T09:21:09")).opts(color = c1, line_width = lw)
 
-# seg5s = hv.VLine(pd.Timestamp("2024-08-31T13:06:18")).opts(color = c2, line_width = lw) #
-# seg5e = hv.VLine(pd.Timestamp("2024-08-31T14:02:18")).opts(color = c2, line_width = lw)
+seg5s = hv.VLine(pd.Timestamp("2024-08-31T09:21:09")).opts(color = c2, line_width = lw) # straight_leg
+seg5e = hv.VLine(pd.Timestamp("2024-08-31T09:43:24")).opts(color = c2, line_width = lw)
 
-# seg6s = hv.VLine(pd.Timestamp("2024-08-31T14:06:42")).opts(color = c3, line_width = lw)
-# seg6e = hv.VLine(pd.Timestamp("2024-08-31T14:12:06")).opts(color = c3, line_width = lw)
+seg6s = hv.VLine(pd.Timestamp("2024-08-31T09:45:02")).opts(color = c3, line_width = lw) # straight_leg
+seg6e = hv.VLine(pd.Timestamp("2024-08-31T11:05:50")).opts(color = c3, line_width = lw)
 
-# seg7s = hv.VLine(pd.Timestamp("2024-08-31T14:18:20")).opts(color = c4, line_width = lw) #
-# seg7e = hv.VLine(pd.Timestamp("2024-08-31T15:10:37")).opts(color = c4, line_width = lw)
+seg7s = hv.VLine(pd.Timestamp("2024-08-31T11:12:08")).opts(color = c4, line_width = lw) # straight_leg ascent
+seg7e = hv.VLine(pd.Timestamp("2024-08-31T11:16:34")).opts(color = c4, line_width = lw)
 
-# seg8s = hv.VLine(pd.Timestamp("2024-08-31T15:13:08")).opts(color = c1, line_width = lw) #
-# seg8e = hv.VLine(pd.Timestamp("2024-08-31T15:18:19")).opts(color = c1, line_width = lw)
+seg8s = hv.VLine(pd.Timestamp("2024-08-31T11:16:34")).opts(color = c1, line_width = lw) # straight_leg
+seg8e = hv.VLine(pd.Timestamp("2024-08-31T11:20:48")).opts(color = c1, line_width = lw)
 
-# seg9s = hv.VLine(pd.Timestamp("2024-08-31T15:22:30")).opts(color = c2, line_width = lw) #
-# seg9e = hv.VLine(pd.Timestamp("2024-08-31T15:45:40")).opts(color = c2, line_width = lw)
+seg9s = hv.VLine(pd.Timestamp("2024-08-31T11:22:22")).opts(color = c2, line_width = lw) # circle counterclockwise
+seg9e = hv.VLine(pd.Timestamp("2024-08-31T12:19:36")).opts(color = c2, line_width = lw)
 
-# seg10s = hv.VLine(pd.Timestamp("2024-08-31T15:46:03")).opts(color = c3, line_width = lw) #
-# seg10e = hv.VLine(pd.Timestamp("2024-08-31T15:51:48")).opts(color = c3, line_width = lw)
+seg10s = hv.VLine(pd.Timestamp("2024-08-31T12:22:31")).opts(color = c3, line_width = lw) # straight_leg
+seg10e = hv.VLine(pd.Timestamp("2024-08-31T12:28:14")).opts(color = c3, line_width = lw)
 
-# seg11s = hv.VLine(pd.Timestamp("2024-08-31T15:56:35")).opts(color = c4, line_width = lw) #
-# seg11e = hv.VLine(pd.Timestamp("2024-08-31T17:03:46")).opts(color = c4, line_width = lw)
+seg11s = hv.VLine(pd.Timestamp("2024-08-31T12:28:23")).opts(color = c4, line_width = lw) # straight_leg irregularity: constant roll angle of about 1.2 degree
+seg11e = hv.VLine(pd.Timestamp("2024-08-31T12:33:34")).opts(color = c4, line_width = lw)
 
-# seg12s = hv.VLine(pd.Timestamp("2024-08-31T17:12:26")).opts(color = c1, line_width = lw) #
-# seg12e = hv.VLine(pd.Timestamp("2024-08-31T17:53:12")).opts(color = c1, line_width = lw)
+seg12s = hv.VLine(pd.Timestamp("2024-08-31T12:34:03")).opts(color = c1, line_width = lw) # straight_leg irregularity: turbulence with up to plus/minus 1.8 degree roll angle deviation
+seg12e = hv.VLine(pd.Timestamp("2024-08-31T12:49:34")).opts(color = c1, line_width = lw)
 
-# seg13s = hv.VLine(pd.Timestamp("2024-08-31T17:55:29")).opts(color = c2, line_width = lw) #
-# seg13e = hv.VLine(pd.Timestamp("2024-08-31T18:55:02")).opts(color = c2, line_width = lw)
+seg13s = hv.VLine(pd.Timestamp("2024-08-31T12:52:25")).opts(color = c2, line_width = lw) # circle counterclockwise irregularity: turbulences with up to plus/minus 4.5 degree roll angle deviation
+seg13e = hv.VLine(pd.Timestamp("2024-08-31T13:48:01")).opts(color = c2, line_width = lw)
 
-# seg14s = hv.VLine(pd.Timestamp("2024-08-31T18:56:07")).opts(color = c3, line_width = lw) #
-# seg14e = hv.VLine(pd.Timestamp("2024-08-31T19:41:13")).opts(color = c3, line_width = lw)
+seg14s = hv.VLine(pd.Timestamp("2024-08-31T13:51:28")).opts(color = c3, line_width = lw) # straight_leg
+seg14e = hv.VLine(pd.Timestamp("2024-08-31T14:17:23")).opts(color = c3, line_width = lw)
 
-# seg15s = hv.VLine(pd.Timestamp("2024-08-31T19:41:13")).opts(color = c4, line_width = lw) #
-# seg15e = hv.VLine(pd.Timestamp("2024-08-31T19:45:16")).opts(color = c4, line_width = lw)
+seg15s = hv.VLine(pd.Timestamp("2024-08-31T14:19:59")).opts(color = c4, line_width = lw) # circle counterclockwise
+seg15e = hv.VLine(pd.Timestamp("2024-08-31T15:16:01")).opts(color = c4, line_width = lw)
 
-# seg16s = hv.VLine(pd.Timestamp("2024-08-31T19:46:30")).opts(color = c1, line_width = lw) #
-# seg16e = hv.VLine(pd.Timestamp("2024-08-31T19:58:55")).opts(color = c1, line_width = lw)
+seg16s = hv.VLine(pd.Timestamp("2024-08-31T15:19:37")).opts(color = c1, line_width = lw) # straight_leg descent
+seg16e = hv.VLine(pd.Timestamp("2024-08-31T15:32:30")).opts(color = c1, line_width = lw)
 
-# seg17s = hv.VLine(pd.Timestamp("2024-08-31T20:01:27")).opts(color = c2, line_width = lw) #
-# seg17e = hv.VLine(pd.Timestamp("2024-08-31T20:05:05")).opts(color = c2, line_width = lw)
+seg17s = hv.VLine(pd.Timestamp("2024-08-31T15:32:30")).opts(color = c2, line_width = lw) # straight_leg
+seg17e = hv.VLine(pd.Timestamp("2024-08-31T16:01:15")).opts(color = c2, line_width = lw)
+
+seg18s = hv.VLine(pd.Timestamp("2024-08-31T16:08:10")).opts(color = c3, line_width = lw) # straight_leg
+seg18e = hv.VLine(pd.Timestamp("2024-08-31T16:24:05")).opts(color = c3, line_width = lw)
+
+seg19s = hv.VLine(pd.Timestamp("2024-08-31T16:27:42")).opts(color = c4, line_width = lw) # circle clockwise
+seg19e = hv.VLine(pd.Timestamp("2024-08-31T17:03:55")).opts(color = c4, line_width = lw)
+
+seg20s = hv.VLine(pd.Timestamp("2024-08-31T17:05:10")).opts(color = c1, line_width = lw) # radar_calibration
+seg20e = hv.VLine(pd.Timestamp("2024-08-31T17:07:39")).opts(color = c1, line_width = lw)
+
+seg21s = hv.VLine(pd.Timestamp("2024-08-31T17:09:16")).opts(color = c2, line_width = lw) # straight_leg descent
+seg21e = hv.VLine(pd.Timestamp("2024-08-31T17:35:47")).opts(color = c2, line_width = lw)
+
+seg22s = hv.VLine(pd.Timestamp("2024-08-31T17:36:32")).opts(color = c3, line_width = lw) # straight_leg
+seg22e = hv.VLine(pd.Timestamp("2024-08-31T17:38:43")).opts(color = c3, line_width = lw)
+
+seg23s = hv.VLine(pd.Timestamp("2024-08-31T17:36:32")).opts(color = c4, line_width = lw) # straight_leg descent irregularity: turbulences up to plus/minus 6.4 degree roll angle deviation shortly before touch down
+seg23e = hv.VLine(pd.Timestamp(landing)).opts(color = c4, line_width = lw)
 ```
 
 ```python
 alt = ds["alt"].hvplot()
 alt * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
+ seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
 ```
 
 ```python
 heading = ds["heading"].hvplot()
 heading * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
+ seg18s * seg18e *  seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
 ```
 
 ```python
 roll = ds["roll"].hvplot()
 roll * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e #* seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
+ seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
+ seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
+ seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
 ```
 
 ## Segments
