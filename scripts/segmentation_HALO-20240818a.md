@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240818a
 
 ```python
 import matplotlib
@@ -36,7 +32,7 @@ cvao = mindelo
 
 ```python
 platform = "HALO"
-flight_id = "HALO-20240813a"
+flight_id = "HALO-20240818a"
 ```
 
 ## Loading data
@@ -75,7 +71,7 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = True
+load_pace = False
 
 if load_pace:
     from get_pace import get_pace_track
@@ -137,79 +133,106 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 sl1 = (
-    slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
-    ["straight_leg"],
+    slice("2024-08-18T10:09:30", "2024-08-18T10:36:16"),
+    ["straight_leg", "ascent"], "ferry_ascent", [],
 )
 
-ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "full EC track",
-    [],
-    ["several height level changes, for details, see subsegments"]
+sl2 = (
+    slice("2024-08-18T10:36:16", "2024-08-18T10:41:08"),
+    ["straight_leg"], "ferry_const_alt", [],
+)
+
+sl3 = (
+    slice("2024-08-18T10:42:21", "2024-08-18T10:57:57"),
+    ["straight_leg"], "ferry_const_alt", [],
 )
 
 ec1 = (
-    slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track"],
-    "EC track low leg",
-)
-
-ec2 = (
-    slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
-    ["straight_leg", "ec_track"],
-    "EC track mid leg",
-)
-
-ec3 = (
-    slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "EC track high leg",
-)
-
-sl_south = (
-    slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
-    ["straight_leg"],
-    "straight leg south",
+    slice("2024-08-18T10:59:40", "2024-08-18T11:18:10"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
 )
 
 c1 = (
-    slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
-    ["circle"],
-    "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+    slice("2024-08-18T11:24:25", "2024-08-18T12:18:04"),
+    ["circle"], "circle_north", [],
+)
+
+ec2 = (
+    slice("2024-08-18T12:23:52", "2024-08-18T12:48:00"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["irregularity: turbulence"],
 )
 
 c2 = (
-    slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
-    ["circle"],
-    "circle mid",
+    slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
+    ["circle"], "circle_mid",
+    ["irregularity: turbulence"],
+)
+
+ec3 = (
+    slice("2024-08-18T13:52:25", "2024-08-18T14:25:26"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["irregularity: turbulence 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
 )
 
 c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
-    ["circle"],
-    "circle north",
-    ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+    slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
+    ["circle"], "circle_south", [],
 )
 
-catr = (
-    slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
-    ["circle", "atr_coordination"],
-    "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
+ec4 = (
+    slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["irregularity: minor turbulences",
+     "includes ec_underpass"],
+)
+
+c_bm1 = (
+    slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
+    ["circle", "c_pirouette"], "C_pirouette_small", [],
+)
+
+c_bm2 = (
+    slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
+    ["circle", "c_pirouette"], "C_pirouette_large",
+    ["irregularity: minor turbulences 2024-08-18T17:20:00 - 2024-08-18T17:33:23"],
+)
+
+sl4 = (
+    slice("2024-08-18T17:35:35", "2024-08-18T17:40:29"),
+    ["straight_leg"], "ferry_const_alt", [],
+)
+
+ec5 = (
+    slice("2024-08-18T17:43:52", "2024-08-18T17:54:26"),
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+)
+
+sl5 = (
+    slice("2024-08-18T17:56:01", "2024-08-18T18:20:31"),
+    ["straight_leg"], "ferry_const_alt", [],
+)
+
+rc1 = (
+    slice("2024-08-18T18:20:31", "2024-08-18T18:21:55"),
+    ["radar_calibration"], "radar_calibration", [],
+)
+
+sl6 = (
+    slice("2024-08-18T18:30:22", "2024-08-18T18:58:17"),
+    ["straight_leg", "descent"], "ferry_descent",
+    ["irregularity: constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58, before switching to 0deg. Heading constant in whole segment."],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [sl1, sl2, sl3, ec1, c1, ec2, c2, ec3, c3, ec4, c_bm1, c_bm2, sl4, ec5, sl5, rc1, sl6]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+seg=parse_segment(sl6)
 add_previous_seg = False
 
 ###########################
@@ -249,7 +272,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(ec4)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -276,12 +299,6 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "example",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
-    }
 ]
 events
 ```
@@ -292,4 +309,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```

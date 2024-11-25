@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240816a
 
 ```python
 import matplotlib
@@ -36,7 +32,7 @@ cvao = mindelo
 
 ```python
 platform = "HALO"
-flight_id = "HALO-20240813a"
+flight_id = "HALO-20240816a"
 ```
 
 ## Loading data
@@ -71,22 +67,10 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ```
 
 ### Get PACE track
-**loading the PACE track for the first time takes 6-7 minutes!**
-Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
+No PACE coordination during this flight.
 
 ```python
-load_pace = True
-
-if load_pace:
-    from get_pace import get_pace_track
-    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
-    
-    pace_track = _pace_track.where(
-            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-            drop=True)
-else:
-    pace_track = None
+pace_track = None
 ```
 
 ### Get METEOR track
@@ -137,79 +121,109 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 sl1 = (
-    slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
-    ["straight_leg"],
+    slice("2024-08-16T11:39:05", "2024-08-16T12:06:58"),
+    ["straight_leg", "ascent"], "ferry_ascent",
+    ["irregularity: turbulence 2024-08-16T11:55:55 - 2024-08-16T11:59:10"],
 )
 
-ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "full EC track",
-    [],
-    ["several height level changes, for details, see subsegments"]
+sl2 = (
+    slice("2024-08-16T12:06:58", "2024-08-16T12:51:55"),
+    ["straight_leg"], "ferry_const_alt",
+    ["irregularity: roll angle spike 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
 )
 
 ec1 = (
-    slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track"],
-    "EC track low leg",
+    slice("2024-08-16T12:53:26", "2024-08-16T13:11:30"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
 )
 
 ec2 = (
-    slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
-    ["straight_leg", "ec_track"],
-    "EC track mid leg",
+    slice("2024-08-16T13:11:30", "2024-08-16T13:13:31"),
+    ["straight_leg", "ec_track", "ascent"], "EC_track_southward_ascent", [],
 )
 
 ec3 = (
-    slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "EC track high leg",
+    slice("2024-08-16T13:13:31", "2024-08-16T13:40:56"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["irregularity: turbulence 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
 )
 
-sl_south = (
-    slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
-    ["straight_leg"],
-    "straight leg south",
+ec4 = (
+    slice("2024-08-16T13:40:56", "2024-08-16T13:44:39"),
+    ["straight_leg", "ec_track", "ascent"], "EC_track_southward_ascent", [],
+)
+
+ec5 = (
+    slice("2024-08-16T13:44:39", "2024-08-16T13:53:13"),
+    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
 )
 
 c1 = (
-    slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
-    ["circle"],
-    "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+    slice("2024-08-16T13:56:46", "2024-08-16T14:52:39"),
+    ["circle"], "circle_south",
+    ["irregularity: turbulences up to plus/minus 4 degree roll angle deviation",
+    ],
+)
+
+ec6 = (
+    slice("2024-08-16T14:54:54", "2024-08-16T15:03:59"),
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
 )
 
 c2 = (
-    slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
-    ["circle"],
-    "circle mid",
+    slice("2024-08-16T15:06:35", "2024-08-16T16:01:44"),
+    ["circle"], "circle_mid", [],
+)
+
+ec61 = (
+    slice("2024-08-16T16:04:49", "2024-08-16T16:07:31"),
+    ["straight_leg", "ec_track"], "EC_track_northward",
+    [],
+)
+
+ec7 = (
+    slice("2024-08-16T16:07:31", "2024-08-16T16:12:30"),
+    ["straight_leg", "ec_track", "ascent"], "EC_track_northward_ascent",
+    [],
+)
+
+ec8 = (
+    slice("2024-08-16T16:12:30", "2024-08-16T16:51:04"),
+    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["ec_underpass"],
 )
 
 c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
-    ["circle"],
-    "circle north",
-    ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+    slice("2024-08-16T16:53:56", "2024-08-16T17:49:40"),
+    ["circle"], "circle_north", [],
+)
+
+sl3 = (
+    slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
+    ["straight_leg"], "ferry_const_alt",
+    ["irregularity: constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
 )
 
 catr = (
-    slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
-    ["circle", "atr_coordination"],
-    "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
+    slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
+    ["circle", "atr_coordination"], "ATR_circle", [],
+)
+
+sl4 = (
+    slice("2024-08-16T19:43:24", "2024-08-16T19:58:00"),
+    ["straight_leg", "descent"], "ferry_descent", []
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [sl1, sl2, ec1, ec2, ec3, ec4, ec5, c1, ec6, c2, ec61, ec7, ec8, c3, sl3, catr, sl4]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+segment_name = sl4
+seg=parse_segment(segment_name)
 add_previous_seg = False
 
 ###########################
@@ -224,8 +238,8 @@ ax1.plot(ds.lon.sel(time=seg_drops), ds.lat.sel(time=seg_drops), "C0")
 
 # plot the previous segment as well as the chosen one
 if add_previous_seg:
-    if segments.index(seg) > 0:
-        seg_before = segments[segments.index(seg) - 1]
+    if segments.index(segment_name) > 0:
+        seg_before = parse_segment(segments[segments.index(segment_name) - 1])
         ax1.plot(ds.lon.sel(time=seg_before["slice"]), ds.lat.sel(time=seg_before["slice"]), color="grey")
 ax1.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color="C1")
 
@@ -246,10 +260,14 @@ print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ```
 
+```python
+
+```
+
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(ec7)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -276,12 +294,6 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "example",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
-    }
 ]
 events
 ```
@@ -292,4 +304,8 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+```python
+
 ```
