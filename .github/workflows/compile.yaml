@@ -27,12 +27,28 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
       - name: install yq
-        run: "wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - | tar xz && sudo mv ${BINARY} /usr/bin/yq"
+        run: "wget -q https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - | tar xz && sudo mv ${BINARY} /usr/bin/yq"
         env:
           VERSION: v4.44.5
           BINARY: yq_linux_amd64
       - name: install make
         run: "sudo apt install -y make"
+      - name: install and run ipfs
+        run: |
+          wget -q https://dist.ipfs.tech/kubo/${IPFS_VERSION}/kubo_${IPFS_VERSION}_linux-amd64.tar.gz
+          tar -xvzf kubo_${IPFS_VERSION}_linux-amd64.tar.gz
+          pushd kubo
+          sudo bash install.sh
+          popd
+          ipfs --version
+          ipfs init --profile server,announce-off
+          wget -q https://raw.githubusercontent.com/orcestra-campaign/ipfs_tools/refs/heads/main/scripts/add_peers.py -O - | python - -f https://raw.githubusercontent.com/orcestra-campaign/ipfs_tools/refs/heads/main/known_peers.yaml
+          touch ipfs.log  # ensure the file exists such that `tail` doesn't fail.
+          ipfs daemon 2>ipfs.log | grep -i -o -m1 'Daemon is ready' & tail -f --pid=$! ipfs.log
+          ipfs cat /ipfs/QmZ4tDuvesekSs4qM5ZBKpXiZGun7S2CYtEZRB3DYXkjGx
+        env:
+          IPFS_VERSION: v0.32.1
+        shell: micromamba-shell {0}
       - name: compile segment files
         run: "make -j"
         shell: micromamba-shell {0}
