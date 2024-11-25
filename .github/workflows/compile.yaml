@@ -1,0 +1,72 @@
+name: Compile Segmentation Files
+
+on:
+  push:
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Single deploy job since we're just deploying
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          micromamba-version: '2.0.4-0' # any version from https://github.com/mamba-org/micromamba-releases
+          environment-file: environment.yaml
+          cache-environment: true
+          post-cleanup: 'all'
+      - name: install yq
+        run: "wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - | tar xz && sudo mv ${BINARY} /usr/bin/yq"
+        env:
+          VERSION: v4.44.5
+          BINARY: yq_linux_amd64
+      - name: install make
+        run: "sudo apt install -y make"
+      - name: compile segment files
+        run: "make -j"
+        shell: micromamba-shell {0}
+      - name: Archive build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: all_flights
+          path: |
+            all_flights.yaml
+  publish:
+    needs: build
+    if: "always() && github.repository_owner == 'orcestra-campaign' && (github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))"
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+    # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    steps:
+      - name: Download compiled artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: all_flights
+          path: all_flights
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'all_flights'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
