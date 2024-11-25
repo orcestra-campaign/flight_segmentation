@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation 2024-09-21a
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are shown for 2024-09-21. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-2024-09-21a
 
 ```python
 import matplotlib
@@ -138,12 +134,21 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 ac1 = (
     slice("2024-09-21 11:26:40", "2024-09-21 11:48:25"),
-    ["straight_leg", "ascent"], "ferry_ascent", [],
+    ["straight_leg", "ascent"],
+    "ferry_ascent", [],
+)
+
+c1 = (
+    slice("2024-09-21 11:50:36", "2024-09-21 12:47:15"),
+    ["circle"],
+    "circle_1",
 )
 
 sl1 = (
     slice("2024-09-21 12:50:00", "2024-09-21 13:07:00"),
-    ["straight_leg"], ["includes meteor_overpass"],
+    ["straight_leg", "meteor_overpass"],
+    "straight_leg_1",
+    ["includes meteor_overpass"],
 )
 
 ac2 = (
@@ -154,11 +159,26 @@ ac2 = (
 sl2 = (
     slice("2024-09-21 13:11:40", "2024-09-21 13:52:00"),
     ["straight_leg"],
+    "straight_leg_2",
+)
+
+c2 = (
+    slice("2024-09-21 13:55:00", "2024-09-21 14:52:00"),
+    ["circle"],
+    "circle_2",
+    ["irregularity: turbulence 14:12:00 and 14:20:00"],
+)
+
+c3 = (
+    slice("2024-09-21 14:52:00", "2024-09-21 15:54:00"),
+    ["circle"],
+    "circle_3",
 )
 
 sl3 = (
     slice("2024-09-21 15:58:00", "2024-09-21 16:07:00"),
     ["straight_leg"],
+    "straight_leg_3",
 )
 
 ac3 = (
@@ -169,6 +189,13 @@ ac3 = (
 sl4 = (
     slice("2024-09-21 16:12:30", "2024-09-21 16:16:00"),
     ["straight_leg"],
+    "straight_leg_4",
+)
+
+c4 = (
+    slice("2024-09-21 16:19:50", "2024-09-21 17:15:10"),
+    ["circle"],
+    "circle_4",
 )
 
 ec1 = (
@@ -180,57 +207,36 @@ ec1 = (
 sl5 = (
     slice("2024-09-21 17:52:00", "2024-09-21 18:13:43"),
     ["straight_leg"],
+    "straight_leg_5",
 )
 
 cal = (
     slice("2024-09-21 18:13:43", "2024-09-21 18:16:23"),
-    ["straight_leg"], ["radar calibration"],
+    ["radar_calibration"], ["radar calibration"],
 )
 
 sl6 = (
     slice("2024-09-21 18:16:23", "2024-09-21 18:24:00"),
     ["straight_leg"],
-)
-
-sl7 = (
-    slice("2024-09-21 19:27:15", "2024-09-21 19:35:00"),
-    ["straight_leg"],
-)
-
-dc1 = ( 
-    slice("2024-09-21 19:35:34", "2024-09-21 20:00:56"),
-    ["straight_leg", "descent"], "ferry_descent", [],
-)
-
-c1 = (
-    slice("2024-09-21 11:50:36", "2024-09-21 12:47:15"),
-    ["circle"],
-    "circle",
-)
-
-c2 = (
-    slice("2024-09-21 13:55:00", "2024-09-21 14:52:00"),
-    ["circle"],
-    "circle",
-    ["turbulence: 14:12:00 and 14:20:00"],
-)
-
-c3 = (
-    slice("2024-09-21 14:52:00", "2024-09-21 15:54:00"),
-    ["circle"],
-    "circle",
-)
-
-c4 = (
-    slice("2024-09-21 16:19:50", "2024-09-21 17:15:10"),
-    ["circle"],
-    "circle",
+    "straight_leg_6",
 )
 
 c5 = (
     slice("2024-09-21 18:26:16", "2024-09-21 19:24:15"),
     ["circle"],
-    "circle",
+    "circle_5",
+)
+
+sl7 = (
+    slice("2024-09-21 19:27:15", "2024-09-21 19:35:00"),
+    ["straight_leg"],
+    "straight_leg_7",
+)
+
+dc1 = ( 
+    slice("2024-09-21 19:35:34", "2024-09-21 20:00:56"),
+    ["straight_leg", "descent"],
+    "ferry_descent", [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
@@ -282,7 +288,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(cal)
+seg = parse_segment(ec1)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
