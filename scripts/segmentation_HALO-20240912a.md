@@ -276,9 +276,9 @@ seg9 = (
 # )
 
 seg11 = (
-    slice("2024-09-12T15:56:35", "2024-09-12T17:03:46"),
+    slice("2024-09-12T16:03:30", "2024-09-12T17:03:44"),
     ["circle"],
-    "counterclockwise western circle",
+    "counterclockwise north-western circle",
 )
 
 seg12 = (
