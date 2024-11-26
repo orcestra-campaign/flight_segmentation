@@ -253,7 +253,7 @@ seg6 = (
 seg7 = (
     slice("2024-09-12T14:18:20", "2024-09-12T15:10:37"),
     ["circle"],
-    "counterclockwise eastern circle",
+    "counterclockwise north-eastern circle",
 )
 
 seg8 = (
