@@ -14,5 +14,12 @@
             {% endfor %}
         </ul>
         {% endfor %}
+
+        <h2>Summary</h2>
+        There are currently
+        <ul>
+            <li> {{ '%.2f' % total_duration }} segmented flight hours</li>
+            <li> {{ circle_count }} segmented circles</li>
+        </ul>
     </body>
 </html>
