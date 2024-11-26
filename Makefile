@@ -18,6 +18,6 @@ reports/%.html: flight_segment_files/%.yaml scripts/report.py scripts/templates/
 	mkdir -p reports
 	python3 scripts/report.py $< $@
 
-reports/index.html: ${ALL_SEGMENT_FILES} Makefile scripts/index.py scripts/templates/index.html
+reports/index.html: reports/all_flights.yaml Makefile scripts/index.py scripts/templates/index.html
 	mkdir -p reports
-	python3 scripts/index.py -o $@ ${ALL_FLIGHTS}
+	python3 scripts/index.py -o $@ -s $<

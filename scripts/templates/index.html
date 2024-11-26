@@ -6,10 +6,13 @@
     <body>
         <h1>Flight Segmentation</h1>
         Compiled segmentation result: <a href="all_flights.yaml">all_flights.yaml</a>
+        {% for platform, flights in meta.items() %}
+        <h2>{{ platform }}</h2>
         <ul>
-            {% for flight_id in flight_ids %}
+            {% for flight_id, flight in flights.items() %}
             <li><a href="{{ flight_id }}.html">{{ flight_id }}</a></li>
             {% endfor %}
         </ul>
+        {% endfor %}
     </body>
 </html>
