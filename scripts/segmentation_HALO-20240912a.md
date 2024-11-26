@@ -247,6 +247,7 @@ seg6 = (
     slice("2024-09-12T14:06:42", "2024-09-12T14:12:06"),
     ["straight_leg"],
     "leg to second circle",
+    ["irregularity: roll angle deviation up to plus/minus 4 degree"],
 )
 
 seg7 = (
