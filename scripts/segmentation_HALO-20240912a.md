@@ -320,7 +320,7 @@ seg17 = (
 
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17]]
+segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg11, seg12, seg13, seg14, seg15, seg16, seg17]] #seg10 removed because currently commented out
 ```
 
 ### Quick plot for working your way through the segments piece by piece
