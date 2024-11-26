@@ -1,0 +1,93 @@
+name: Compile Segmentation Files
+
+on:
+  push:
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Single deploy job since we're just deploying
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          micromamba-version: '2.0.4-0' # any version from https://github.com/mamba-org/micromamba-releases
+          environment-file: environment.yaml
+          cache-environment: true
+          post-cleanup: 'all'
+      - name: install yq
+        run: "wget -q https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - | tar xz && sudo mv ${BINARY} /usr/bin/yq"
+        env:
+          VERSION: v4.44.5
+          BINARY: yq_linux_amd64
+      - name: install make
+        run: "sudo apt install -y make"
+      - name: install IPFS
+        run: |
+          wget -q https://dist.ipfs.tech/kubo/${IPFS_VERSION}/kubo_${IPFS_VERSION}_linux-amd64.tar.gz
+          tar -xvzf kubo_${IPFS_VERSION}_linux-amd64.tar.gz
+          pushd kubo
+          sudo bash install.sh
+          popd
+          ipfs --version
+        env:
+          IPFS_VERSION: v0.32.1
+      - name: init IPFS
+        run: |
+          ipfs init --profile server,announce-off
+      - name: configure known IPFS peers
+        run: |
+          wget -q https://raw.githubusercontent.com/orcestra-campaign/ipfs_tools/refs/heads/main/scripts/add_peers.py -O - | python - -f https://raw.githubusercontent.com/orcestra-campaign/ipfs_tools/refs/heads/main/known_peers.yaml
+        shell: micromamba-shell {0}
+      - name: run IPFS in background
+        run: |
+          touch ipfs.log  # ensure the file exists such that `tail` doesn't fail.
+          ipfs daemon 2>ipfs.log | grep -i -o -m1 'Daemon is ready' & tail -f --pid=$! ipfs.log
+      - name: compile segment files
+        run: "make -j"
+        shell: micromamba-shell {0}
+      - name: Archive build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: all_flights
+          path: |
+            all_flights.yaml
+  publish:
+    needs: build
+    if: "always() && github.repository_owner == 'orcestra-campaign' && (github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))"
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+    # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    steps:
+      - name: Download compiled artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: all_flights
+          path: all_flights
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'all_flights'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
