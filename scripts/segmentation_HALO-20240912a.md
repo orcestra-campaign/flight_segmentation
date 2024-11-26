@@ -285,7 +285,7 @@ seg12 = (
     slice("2024-09-12T17:12:26", "2024-09-12T17:53:12"),
     ["straight_leg", "ec_track"],
     "leg on EC track",
-    ["contains EC meeting point"],
+    ["contains EC underpass"],
 )
 
 seg13 = (
