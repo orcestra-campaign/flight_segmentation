@@ -2,11 +2,12 @@ ALL_FLIGHTS = $(patsubst scripts/segmentation_%.md,%,$(wildcard scripts/segmenta
 ALL_SEGMENT_FILES = $(patsubst %, flight_segment_files/%.yaml, ${ALL_FLIGHTS})
 ALL_REPORTS = $(patsubst %, reports/%.html, ${ALL_FLIGHTS})
 
-all: all_flights.yaml ${ALL_REPORTS}
+all: reports/all_flights.yaml ${ALL_REPORTS}
 
 .PHONY: all
 
-all_flights.yaml: ${ALL_SEGMENT_FILES}
+reports/all_flights.yaml: ${ALL_SEGMENT_FILES}
+	mkdir -p reports
 	yq eval-all '. as $$item ireduce ({}; . *d {$$item.platform:{$$item.flight_id: $$item}})' $^ > $@
 
 flight_segment_files/%.yaml: scripts/segmentation_%.md

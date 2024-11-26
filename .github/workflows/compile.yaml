@@ -63,7 +63,14 @@ jobs:
         with:
           name: all_flights
           path: |
-            all_flights.yaml
+            reports/all_flights.yaml
+      - name: Archive build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            reports
   publish:
     needs: build
     if: "always() && github.repository_owner == 'orcestra-campaign' && (github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main'))"
@@ -80,14 +87,14 @@ jobs:
       - name: Download compiled artifacts
         uses: actions/download-artifact@v4
         with:
-          name: all_flights
-          path: all_flights
+          name: reports
+          path: reports
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'all_flights'
+          path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
