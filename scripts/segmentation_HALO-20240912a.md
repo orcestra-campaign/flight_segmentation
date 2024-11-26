@@ -268,12 +268,12 @@ seg9 = (
     "leg to third circle",
 )
 
-seg10 = (
-    slice("2024-09-12T15:46:03", "2024-09-12T15:51:48"),
-    ["circle"],
-    "counterclockwise holding pattern",
-    ["small waiting circle"]
-)
+# seg10 = (
+#    slice("2024-09-12T15:46:03", "2024-09-12T15:51:48"),
+#    ["circle"],
+#    "counterclockwise holding pattern",
+#    ["small waiting circle"]
+# )
 
 seg11 = (
     slice("2024-09-12T15:56:35", "2024-09-12T17:03:46"),
