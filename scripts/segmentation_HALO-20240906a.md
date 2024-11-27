@@ -139,7 +139,7 @@ sl1 = (
     slice("2024-09-06T10:43:06", "2024-09-06T11:05:05"),
     ["straight_leg", "ascent"],
     "leg 1 climbing and heading west",
-    ["irregularity: roll angle deviation at 11:00:54"],
+    ["irregularity: roll angle deviation up to plus/minus 1.5 degree around 11:00:51"],
 )
 
 sl2 = (
