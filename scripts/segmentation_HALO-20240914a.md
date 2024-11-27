@@ -226,7 +226,7 @@ sl6 = (
     "descending and heading home",
 )
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, c1a, c1b, slc1c2, c2, c3, ec, c4, sl5, sl6]]
+segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, c1a, slc1c2, c2, c3, ec, c4, sl5, sl6]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
