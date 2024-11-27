@@ -165,15 +165,15 @@ c1a = (
 )
 
 # should we even define kind=circle for the below segment?
-c1b = (
-    slice("2024-09-14T13:54:25", "2024-09-14T14:31:38"),
-    ["circle"],
-    "circle 1b",
-    ["irregularity: early circle end after 2/3 of teh circle due to time limitations", 
-     "no dropsondes due to continued problems with dropsonde reck",
-     "irregularity: height level change between 12:55:35 - 14:00:14",
-    ],
-)
+# c1b = (
+#    slice("2024-09-14T13:54:25", "2024-09-14T14:31:38"),
+#    ["circle"],
+#    "circle 1b",
+#    ["irregularity: early circle end after 2/3 of teh circle due to time limitations", 
+#     "no dropsondes due to continued problems with dropsonde reck",
+#    "irregularity: height level change between 12:55:35 - 14:00:14",
+#    ],
+# )
 slc1c2 = (
     slice("2024-09-14T14:34:24", "2024-09-14T14:44:31"),
     ["straight_leg"],
