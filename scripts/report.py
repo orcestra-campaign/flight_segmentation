@@ -201,7 +201,10 @@ def sonde_info_from_ipfs(flight_id):
     root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
     day_folder = root + "/" + flight_id
     fs = fsspec.filesystem(day_folder.split(":")[0])
-    filenames = fs.ls(day_folder, detail=False)
+    try:
+        filenames = fs.ls(day_folder, detail=False)
+    except FileNotFoundError:
+        filenames = []
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
                 for filename in filenames]
     return [ {
