@@ -135,7 +135,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-09-14T11:35:22", "2024-09-14T11:42:01"),
     ["straight_leg", "ascent"],
-    "climbing leg 1 heading south",
+    "ascending leg heading south-east",
 )
 
 sl2 = (
