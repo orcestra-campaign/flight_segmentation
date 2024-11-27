@@ -145,7 +145,7 @@ sl1 = (
 sl2 = (
     slice("2024-09-06T11:09:50", "2024-09-06T11:39:28"),
     ["straight_leg"],
-    "leg2 heading south",
+    "leg 2 heading south-west",
 )
 
 sl3 = (
