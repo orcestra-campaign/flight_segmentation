@@ -238,7 +238,18 @@ sl14 = (
     ["straight_leg"],
     "leg 14 heading north-west",
 )
+sl15 = (
+    slice("2024-09-06T17:30:05", "2024-09-06T17:41:44"),
+    ["straight_leg", "descent"],
+    "leg 15 descending and heading north-west",
+)
 
+sl16 = (
+    slice("2024-09-06T17:42:39", "2024-09-06T17:50:55"),
+    ["straight_leg", "descent"],
+    "leg 16 descending and heading west",
+    ["irregularity: roll angle deviation up to -3.2 degree at 17:49:54"]
+)
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, sl5,
                                        sl6, sl7, sl8, sl9, sl10,
