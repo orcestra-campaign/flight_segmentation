@@ -142,22 +142,44 @@ c1 = (
     slice("2024-09-21 11:50:36", "2024-09-21 12:47:15"),
     ["circle"],
     "circle_1",
+    ["irregularity: ascent until 11:54:12"],
 )
 
-sl1 = (
-    slice("2024-09-21 12:50:00", "2024-09-21 13:07:00"),
-    ["straight_leg", "meteor_overpass"],
-    "straight_leg_1",
-    ["includes meteor_overpass"],
+sl1a = (
+    slice("2024-09-21 12:50:07", "2024-09-21 12:53:30"),
+    ["straight_leg"],
+    "straight_leg_1a",
+)
+
+sl1b = (
+    slice("2024-09-21 12:53:48", "2024-09-21 12:57:37"),
+    ["straight_leg"],
+    "straight_leg_1b",
+    ["irregularity: constant non-zero roll angle of about 1 deg",
+     "includes meteor_overpass"],
+)
+
+sl1c = (
+    slice("2024-09-21 12:59:09", "2024-09-21 13:02:24"),
+    ["straight_leg"],
+    "straight_leg_1c",
+    ["irregularity: constant non-zero roll angle of about 1 deg",
+    "includes one sonde drop"],
+)
+
+sl1d = (
+    slice("2024-09-21 13:05:13", "2024-09-21 13:07:09"),
+    ["straight_leg"],
+    "straight_leg_1d",
 )
 
 ac2 = (
-    slice("2024-09-21 13:07:00", "2024-09-21 13:11:40"),
+    slice("2024-09-21 13:07:09", "2024-09-21 13:11:36"),
     ["straight_leg", "ascent"], [],
 )
 
 sl2 = (
-    slice("2024-09-21 13:11:40", "2024-09-21 13:52:00"),
+    slice("2024-09-21 13:11:36", "2024-09-21 13:52:23"),
     ["straight_leg"],
     "straight_leg_2",
 )
@@ -166,13 +188,14 @@ c2 = (
     slice("2024-09-21 13:55:00", "2024-09-21 14:52:00"),
     ["circle"],
     "circle_2",
-    ["irregularity: turbulence 14:12:00 and 14:20:00"],
+    ["irregularity: deviation from circular path 14:12:00 - 14:20:00 with roll angle deviation up tp +-27.8 deg"],
 )
 
 c3 = (
     slice("2024-09-21 14:52:00", "2024-09-21 15:54:00"),
     ["circle"],
     "circle_3",
+    ["irregularity: deviation from circular path 15:10:13 - 15:16:05 with roll angle deviation up tp +-19.2 deg"],
 )
 
 sl3 = (
@@ -182,12 +205,13 @@ sl3 = (
 )
 
 ac3 = (
-    slice("2024-09-21 16:07:00", "2024-09-21 16:12:30"),
+    slice("2024-09-21 16:07:10", "2024-09-21 16:12:43"),
     ["straight_leg", "ascent"],
+    "ascent to highest level",
 )
 
 sl4 = (
-    slice("2024-09-21 16:12:30", "2024-09-21 16:16:00"),
+    slice("2024-09-21 16:12:43", "2024-09-21 16:16:00"),
     ["straight_leg"],
     "straight_leg_4",
 )
@@ -199,20 +223,22 @@ c4 = (
 )
 
 ec1 = (
-    slice("2024-09-21 17:21:00", "2024-09-21 17:48:00"),
+    slice("2024-09-21 17:21:00", "2024-09-21 17:48:34"),
     ["straight_leg", "ec_track"],
     "EC_track_northward_const_alt",
+    ["contains EC underpass"],  
 )
 
 sl5 = (
-    slice("2024-09-21 17:52:00", "2024-09-21 18:13:43"),
+    slice("2024-09-21 17:51:35", "2024-09-21 18:13:43"),
     ["straight_leg"],
     "straight_leg_5",
 )
 
 cal = (
-    slice("2024-09-21 18:13:43", "2024-09-21 18:16:23"),
-    ["radar_calibration"], ["radar calibration"],
+    slice("2024-09-21 18:13:43", "2024-09-21 18:15:10"),
+    ["radar_calibration"],
+    "radar calibration",
 )
 
 sl6 = (
@@ -227,20 +253,34 @@ c5 = (
     "circle_5",
 )
 
-sl7 = (
-    slice("2024-09-21 19:27:15", "2024-09-21 19:35:00"),
+sl7a = (
+    slice("2024-09-21 19:27:23", "2024-09-21 19:31:15"),
     ["straight_leg"],
-    "straight_leg_7",
+    "straight_leg_7a",
+    ["irregularity: constant non-zero roll angle of about 1 deg"],
 )
 
+sl7b = (
+    slice("2024-09-21 19:31:20", "2024-09-21 19:35:23"),
+    ["straight_leg"],
+    "straight_leg_7b",
+)
+
+
 dc1 = ( 
-    slice("2024-09-21 19:35:34", "2024-09-21 20:00:56"),
+    slice("2024-09-21 19:35:23", "2024-09-21 20:00:56"),
     ["straight_leg", "descent"],
     "ferry_descent", [],
 )
 
+dc2 = ( 
+    slice("2024-09-21 20:03:32", "2024-09-21 20:06:30"),
+    ["straight_leg", "descent"],
+    "final descent to airport", [],
+)
+
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, cal, ec1, sl1, sl2, sl3, sl4, sl5, sl6, sl7, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, dc2, cal, ec1, sl1a, sl1b, sl1c, sl1d, sl2, sl3, sl4, sl5, sl6, sl7a, sl7b, c1, c2, c3, c4, c5]]
 
 ```
 
@@ -248,7 +288,7 @@ segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, cal, ec1, sl1, sl2, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(sl7)
+seg=parse_segment(dc2)
 add_previous_seg = False
 
 ###########################
