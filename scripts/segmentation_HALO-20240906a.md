@@ -182,7 +182,8 @@ sl7 = (
 sl8 = (
     slice("2024-09-06T13:01:59", "2024-09-06T13:07:03"),
     ["straight_leg"],
-    "southern leg 8 meeting METEOR",
+    "southmost leg 8 heading west",
+    ["contains METEOR overpass"]
 )
 
 sl9 = (
