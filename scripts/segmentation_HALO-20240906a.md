@@ -242,7 +242,7 @@ sl14 = (
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, sl5,
                                        sl6, sl7, sl8, sl9, sl10,
-                                       sl11, sl12, sl13_1, sl13_2, c1, c1_1, sl14]]
+                                       sl11, sl12, sl13_1, sl13_2, c1, sl14, sl15, sl16]] #c1_1 removed for now by commenting out
 ```
 
 ### Quick plot for working your way through the segments piece by piece
