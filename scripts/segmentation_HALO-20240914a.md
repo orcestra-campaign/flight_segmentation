@@ -202,7 +202,12 @@ ec = (
     "EC track",
     ["leg crossing circle 3 and meeting EC in the circle center"],
 )
-
+ec2 = (
+    slice("2024-09-14T17:32:21", "2024-09-14T17:37:54"),
+    ["straight_leg", "ec_track"],
+    "tilted EC track",
+    ["leg with constant roll angle of 1.1 degree"],
+)
 c4 = (
     slice("2024-09-14T17:40:41", "2024-09-14T18:36:44"),
     ["circle"],
