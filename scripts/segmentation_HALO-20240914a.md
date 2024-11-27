@@ -198,7 +198,7 @@ c3 = (
 # before turning onto the EC track.
 ec = (
     slice("2024-09-14T17:14:36", "2024-09-14T17:32:09"),
-    ["ec_track", "ec_underpass"],
+    ["straight_leg", "ec_track"],
     "EC track",
     ["leg crossing circle 3 and meeting EC in the circle center"],
 )
