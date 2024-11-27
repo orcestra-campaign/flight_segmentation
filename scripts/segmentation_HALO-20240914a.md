@@ -191,7 +191,7 @@ c3 = (
     slice("2024-09-14T15:54:54", "2024-09-14T16:54:20"),
     ["circle"],
     "circle 3",
-    ["irregularity: roll angle spikes at 16:12:32, 16:17:02, 16:48:04, and 16:50:04"],
+    ["irregularity: roll angle deviations up to 3.4 degree at 16:12:32, 16:17:02, 16:48:04, and 16:50:04"],
 )
 
 # climbing to new flight level until 17:00:34 and continued holding pattern
