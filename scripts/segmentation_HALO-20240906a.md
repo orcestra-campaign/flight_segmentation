@@ -234,9 +234,9 @@ c1 = (
 # )
 
 sl14 = (
-    slice("2024-09-06T16:44:26", "2024-09-06T17:41:44"),
+    slice("2024-09-06T16:44:26", "2024-09-06T17:30:05"),
     ["straight_leg"],
-    "",
+    "leg 14 heading north-west",
 )
 
 # add all segments that you want to save to a yaml file later to the below list
