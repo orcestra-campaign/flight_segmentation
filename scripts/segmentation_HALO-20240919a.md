@@ -71,7 +71,7 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = True
+load_pace = False
 
 if load_pace:
     from get_pace import get_pace_track
@@ -133,13 +133,13 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 ac1 = (
-    slice("2024-09-19 11:05:00", "2024-09-19 11:34:00"),
+    slice("2024-09-19 11:05:00", "2024-09-19 11:33:39"),
     ["straight_leg", "ascent"],
     "ferry_ascent",
 ) 
 
 sl1 = (
-    slice("2024-09-19 11:34:00", "2024-09-19 12:32:40"),
+    slice("2024-09-19 11:33:39", "2024-09-19 12:32:40"),
     ["straight_leg"],    
     "straight_leg_1",
     ["includes Meteor overpass"],
@@ -149,14 +149,14 @@ c1 = (
     slice("2024-09-19 12:35:30", "2024-09-19 13:30:35"),
     ["circle"],
     "circle_1",
-    ["irregularity: turbulence 12:32:30 and 12:48:00"],
+    ["irregularity: turbulence 12:32:30 - 12:48:00 with up to +-25 deg roll angle deviation"],
 )
 
 sl2 = (
     slice("2024-09-19 13:36:25", "2024-09-19 13:56:00"),
-    ["straight_leg", "pace_underpass", "meteor_overpass"],
+    ["straight_leg"],
     "pace track northward",
-    ["includes Meteor overpass"],
+    ["includes Meteor overpass", "includes pace_underpass"],
 )     
 
 c2 = (
@@ -173,10 +173,23 @@ catr = (
     ["circle with 72km radius"],
 )
 
-sl3 = (
-    slice("2024-09-19 15:47:30", "2024-09-19 16:27:00"),
+sl3a = (
+    slice("2024-09-19 15:47:30", "2024-09-19 16:15:11"),
     ["straight_leg"],
-    "straight_leg_3",
+    "straight_leg_3a",
+)
+
+sl3b = (
+    slice("2024-09-19 16:15:11", "2024-09-19 16:21:16"),
+    ["straight_leg"],
+    "straight_leg_3b",
+    ["irregularity: constant non-zero roll angle of about 1 deg"],
+)
+
+sl3c= (
+    slice("2024-09-19 16:21:16", "2024-09-19 16:27:00"),
+    ["straight_leg"],
+    "straight_leg_3c",
 )
 
 c4 = (
@@ -189,11 +202,11 @@ ec1 = (
     slice("2024-09-19 17:30:00", "2024-09-19 17:58:00"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
-    ["irregularity: turbulence 17:36:30 and 17:38:00"],
+    ["irregularity: turbulence 17:36:30 - 17:38:00 with up to +-7.7 deg roll angle deviation"],
 )
 
 cal = (
-    slice("2024-09-19 17:58:30", "2024-09-19 18:01:50"),
+    slice("2024-09-19 17:58:30", "2024-09-19 18:00:58"),
     ["radar_calibration"],
     "radar calibration",
 )
@@ -205,24 +218,31 @@ c5 = (
 )
 
 sl4 = (
-    slice("2024-09-19 19:06:00", "2024-09-19 19:14:00"),
+    slice("2024-09-19 19:06:00", "2024-09-19 19:14:25"),
     ["straight_leg"],
     "straight_leg_4",
 )
 
 sl5 = (
-    slice("2024-09-19 19:15:00", "2024-09-19 19:24:00"),
+    slice("2024-09-19 19:15:00", "2024-09-19 19:24:20"),
     ["straight_leg"],
-    "straight_leg_45,
+    "straight_leg_5",
 )
 
 dc1 = (
-    slice("2024-09-19 19:24:00", "2024-09-19 19:35:00"),
-    ["straight_leg", "decent"],
+    slice("2024-09-19 19:24:20", "2024-09-19 19:35:49"),
+    ["straight_leg", "descent"],
+    "descent to Barbados",
+)
+
+sl6 = (
+    slice("2024-09-19 19:48:08", "2024-09-19 19:51:23"),
+    ["straight_leg"],
+    "approach to Barbados airport",
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3, sl4, sl5, c1, c2, catr, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3a, sl3b, sl3c, sl4, sl5, sl6, c1, c2, catr, c4, c5]]
 
 ```
 
@@ -230,7 +250,7 @@ segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3, sl4, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(cal)
+seg=parse_segment(sl6)
 add_previous_seg = False
 
 ###########################
@@ -320,14 +340,14 @@ events = [
 events
 ```
 
+```python
+# get_overpass_track(ds, pace_track) 
+```
+
 ## Save segments and events to YAML file
 
 ```python
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
-```
-
-```python
-
 ```
