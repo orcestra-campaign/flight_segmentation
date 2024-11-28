@@ -30,11 +30,24 @@ def get_pace_track(t_start, t_end):
     return xr.concat(dss, dim="orb_records").rename({"orb_records": "time", "orb_time": "time", "orb_lon": "lon", "orb_lat": "lat", "orb_alt": "alt"})
 
 def main():
-    from datetime import datetime, UTC
+    from datetime import date, datetime, timedelta, UTC
     import logging
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("date", type=date.fromisoformat)
+    parser.add_argument("-o", "--output")
+    args = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG)
-    print(get_pace_track(datetime(2024,9,20, tzinfo=UTC), datetime(2024,9,20,1, tzinfo=UTC)))
+    start = datetime(args.date.year, args.date.month, args.date.day, tzinfo=UTC)
+    stop_date = args.date + timedelta(days=1)
+    stop = datetime(stop_date.year, stop_date.month, stop_date.day, tzinfo=UTC)
+    pace_track = get_pace_track(start, stop)
+
+    if args.output:
+        pace_track.to_netcdf(args.output)
+    else:
+        print(pace_track)
 
 if __name__ == "__main__":
     exit(main())
