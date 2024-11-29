@@ -204,6 +204,7 @@ c4 = (
     slice("2024-09-26T16:06:15", "2024-09-26T17:12:00"),
     ["circle"],
     "circle_4",
+    ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"]
 )
 
 ec1 = (
