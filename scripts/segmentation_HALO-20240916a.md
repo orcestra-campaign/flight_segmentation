@@ -211,7 +211,7 @@ c3 = (
     slice("2024-09-16T17:54:25", "2024-09-16T19:10:50"),
     ["circle"],
     "circle_north",
-    ["quarter circle withouth sondes followed by full circle"]
+    ["quarter circle without sondes followed by full circle"]
 )
 
 sl5 = (
