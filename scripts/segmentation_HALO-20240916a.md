@@ -293,7 +293,7 @@ plt.legend();
 ```
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(ec1a)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
