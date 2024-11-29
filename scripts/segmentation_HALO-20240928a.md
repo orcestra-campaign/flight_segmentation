@@ -133,13 +133,13 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 ac1 = (
-    slice("2024-09-28 10:51:16", "2024-09-28 11:19:46"),
+    slice("2024-09-28T10:51:16", "2024-09-28T11:19:46"),
     ["straight_leg", "ascent"],
-    "pace underpass",
+    "ascent with pace underpass",
 )
 
 sl1 = (
-    slice("2024-09-28 11:19:46", "2024-09-28 12:33:16"),
+    slice("2024-09-28T11:19:46", "2024-09-28T12:33:16"),
     ["straight_leg"],
     "straight_leg_1"
 )
@@ -151,74 +151,86 @@ c1 = (
 )
 
 sl2 = (
-    slice("2024-09-28 13:35:00", "2024-09-28 13:39:40"),
+    slice("2024-09-28T13:35:00", "2024-09-28T13:39:40"),
     ["straight_leg"],
     "straight_leg_2"
 )
 
 c2 = (
-    slice("2024-09-28 13:42:30", "2024-09-28 14:38:00"),
+    slice("2024-09-28T13:42:30", "2024-09-28T14:38:00"),
     ["circle"],
     "cirlce_2",
 )
 
 sl3 = (
-    slice("2024-09-28 14:40:50", "2024-09-28 15:24:30"),
+    slice("2024-09-28T14:40:50", "2024-09-28T15:24:30"),
     ["straight_leg"],
     "straight_leg_3"
 )
 
 c3 = (
-    slice("2024-09-28 15:27:00", "2024-09-28 16:23:00"),
+    slice("2024-09-28T15:27:00", "2024-09-28T16:23:00"),
     ["circle"],
     "cirlce_3",
 )
 
 sl4 = (
-    slice("2024-09-28 16:25:00", "2024-09-28 16:30:30"),
+    slice("2024-09-28T16:25:00", "2024-09-28T16:30:30"),
     ["straight_leg"],
     "straight_leg_4"
 )
 
 c4 = (
-    slice("2024-09-28 16:33:00", "2024-09-28 17:31:00"),
+    slice("2024-09-28T16:33:00", "2024-09-28T17:31:00"),
     ["circle"],
-    ["cirlce_4", "pace underpass"],
+    "cirlce_4 with pace underpass",
 )
 
 ec1 = (
-    slice("2024-09-28 17:32:02", "2024-09-28 17:53:00"),
+    slice("2024-09-28T17:32:02", "2024-09-28T17:53:00"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
 )
 
-sl5 = (
-    slice("2024-09-28 17:58:20", "2024-09-28 18:13:00"),
+sl5a = (
+    slice("2024-09-28T17:58:20", "2024-09-28T18:04:52"),
     ["straight_leg"],
-    ["radar calibration 18:04:52 - 18:08:25"],
-    ["straight_leg_6", "pace underpass"],
+    "straight_leg_5a with pace underpass",
+)
+
+cal = (
+    slice("2024-09-28T18:04:52", "2024-09-28T18:08:25"),
+    ["radar_calibration"],
+    "radar calibration",
+)
+
+sl5b = (
+    slice("2024-09-28T17:58:20", "2024-09-28T18:13:00"),
+    ["straight_leg"],
+    "straight_leg_5b with pace underpass",
 )
 
 c5 = (
-    slice("2024-09-28 18:15:30", "2024-09-28 19:10:00"),
+    slice("2024-09-28T18:15:30", "2024-09-28T19:10:00"),
     ["circle"],
-    ["circle_5", "pace underpass"],
+    "circle_5 with pace underpass",
 )
 
 sl6 = (
-    slice("2024-09-28 19:12:50", "2024-09-28 19:25:00"),
+    slice("2024-09-28T19:12:50", "2024-09-28T19:25:00"),
     ["straight_leg"],
     "straight_leg_6"
 )
 
 dc1 = (
-    slice("2024-09-28 19:25:00", "2024-09-28 19:47:30"),
+    slice("2024-09-28T19:25:00", "2024-09-28T19:47:30"),
     ["straight_leg", "decent"],
-    ["radar calibration dive 19:41:00"],
+    "decent",
+    ["irregularity: radar calibration dive 19:41:00"],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, sl5, sl6, ac1, dc1, ec1, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4, ec1, sl5a, cal, sl5b, c5, sl6, dc1]]
 
 ```
 
