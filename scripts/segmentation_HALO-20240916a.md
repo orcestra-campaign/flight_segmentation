@@ -185,12 +185,26 @@ sl4 = (
     ["straight_leg", "pace_track"], "pace_track_south",
 )
 
-ec1 = (
-    slice("2024-09-16T16:53:00", "2024-09-16T17:50:00"),
+ec1a = (
+    slice("2024-09-16T16:52:22", "2024-09-16T16:57:40"),
     ["straight_leg", "ec_track"],
-    "EC_track_southward_const_alt",
-    ["irregularity: unconstant roll angle despite constant heading until 2024-09-16T17:30:00",
-    "includes Meteor overpass"],
+    "EC_track_southward_1",
+    ["irregularity: constant nonzero roll angle of about 0.4 deg", "includes one dropsonde launch"],
+)
+
+ec1b = (
+    slice("2024-09-16T16:58:17", "2024-09-16T17:29:33"),
+    ["straight_leg", "ec_track"],
+    "EC_track_with_meteor_overpass",
+    ["irregularity: continuous roll angle decline from -0.23 to -1.7 deg and various spikes due to turbulence",
+    "includes Meteor overpass", "includes two dropsonde launches"],
+)
+
+ec1c = (
+    slice("2024-09-16T17:29:53", "2024-09-16T17:51:02"),
+    ["straight_leg", "ec_track"],
+    "EC_track_southward_2",
+    ["irregularity: constant nonzero roll angle of about 0.3 deg"],
 )
 
 c3 = (
