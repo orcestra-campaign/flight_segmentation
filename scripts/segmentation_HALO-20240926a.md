@@ -224,11 +224,10 @@ c5 = (
 )
 
 sl5 = (
-    slice("2024-09-26T19:19:50", "2024-09-26T19:28:00"),
+    slice("2024-09-26T19:19:50", "2024-09-26T19:27:37"),
     ["straight_leg"],
     "straight_leg_5 towards center of circle_5",
-    ["irregularity: deviation from constant roll angle of +-5 deg 19:33:34 - 19:51:29",
-    "includes one drop sonde launch"],
+    ["includes one drop sonde launch at half the radius of circle_5"],
 )
 
 sl6 = (
