@@ -220,6 +220,7 @@ c5 = (
     slice("2024-09-26T18:25:26", "2024-09-26T19:17:46"),
     ["circle"],
     "circle_5",
+    ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"]
 )
 
 sl5 = (
