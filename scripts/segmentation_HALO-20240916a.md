@@ -165,7 +165,7 @@ c2 = (
     slice("2024-09-16T14:32:45", "2024-09-16T15:46:32"),
     ["circle"],
     "circle_south",
-    ["two half circles with straight leg in between"],
+    ["irregularity: two half circles with straight leg in between"],
 )
 
 sl3 = (
