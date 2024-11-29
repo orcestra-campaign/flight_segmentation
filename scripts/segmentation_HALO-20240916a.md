@@ -216,7 +216,8 @@ c3 = (
 
 sl5 = (
     slice("2024-09-16T19:16:00", "2024-09-16T20:20:47"),
-    ["straight_leg"], "straight_leg_3",
+    ["straight_leg"], "dropsonde_curtain",
+    ["includes twelve dropsonde launches"]
 )
 
 dc1 = (
