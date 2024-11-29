@@ -141,7 +141,7 @@ sl1 = (
     slice("2024-09-16T12:07:45", "2024-09-16T12:56:50"),
     ["straight_leg"],
     "straight_leg_1",
-    ["irregularity: turbulence 2024-09-16T12:46:30 - 2024-09-16T12:56:50"],
+    ["irregularity: turbulence 2024-09-16T12:46:30 - 2024-09-16T12:56:50 with roll angle deviations up to +-6.9 deg"],
 )
 
 sl2 = (
