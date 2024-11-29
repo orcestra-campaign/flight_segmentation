@@ -333,9 +333,16 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
+pace_dist, pace_op_time = get_overpass_track(ds, pace_track)
+
 events = [
     ec_event(ds, ec_track),
-    meteor_event(ds, meteor_track)
+    meteor_event(ds, meteor_track),
+    {'name': 'PACE meeting point',
+    'time': to_dt(pace_op_time),
+    'kinds': ['pace_underpass'],
+    'distance': round(pace_dist),
+    'remarks': []}
 ]
 events
 ```
