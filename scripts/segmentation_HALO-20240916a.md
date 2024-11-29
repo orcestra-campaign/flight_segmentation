@@ -168,11 +168,16 @@ c2 = (
     ["irregularity: two half circles with straight leg in between"],
 )
 
-sl3 = (
-    slice("2024-09-16T16:01:55", "2024-09-16T16:15:00"),
-    ["straight_leg", "pace_track"], "pace_track_underpass",
-    ["irregularity: ascent 2024-09-16T16:01:55 - 2024-09-16T16:04:20",
-    "includes pace underpass"],
+sl3b = (
+    slice("2024-09-16T16:01:55", "2024-09-16T16:04:19"),
+    ["straight_leg", "ascent", "pace_track"], "pace_track_ascent",
+    ["includes one dropsonde launch"],
+)
+
+sl3c = (
+    slice("2024-09-16T16:04:19", "2024-09-16T16:15:38"),
+    ["straight_leg", "pace_track"], "pace_track_with_underpass",
+    ["includes pace underpass", "includes one dropsonde launch"],
 )
 
 sl4 = (
