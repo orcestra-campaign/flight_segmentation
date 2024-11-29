@@ -153,7 +153,7 @@ c1 = (
     slice("2024-09-16T13:19:35", "2024-09-16T14:19:45"),
     ["circle"],
     "circle_middle",
-    ["irregularity: turbulence 2024-09-16T13:19:35 - 2024-09-16T13:28:00"],
+    ["irregularity: turbulence 2024-09-16T13:19:35 - 2024-09-16T13:28:00 with roll angle deviation up to +-3.2 deg"],
 )
 
 sl3a = (
