@@ -133,13 +133,16 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 ac1 = (
-    slice("2024-09-26 11:45:10", "2024-09-26 12:13:40"),
+    slice("2024-09-26 11:44:37", "2024-09-26 12:13:44"),
     ["straight_leg", "ascent"],
+    "ferry ascent",
 )
 
 sl1 = (
-    slice("2024-09-26 12:15:40", "2024-09-26 12:23:10"),
+    slice("2024-09-26 12:16:02", "2024-09-26 12:23:11"),
     ["straight_leg"],
+    "straight_leg_1",
+    ["irregularity: turbulence 12:20:39 - 12:20:55 with roll angle up tp 4 deg"]
 )
 
 c1 = (
@@ -160,8 +163,14 @@ c2 = (
     "circle_2",
 )
 
+ac2 = (
+    slice("2024-09-26 14:25:24", "2024-09-26 14:29:00"),
+    ["straight_leg", "ascent"],
+    "ascent_2",
+)
+
 sl3 = (
-    slice("2024-09-26 14:30:10", "2024-09-26 14:47:20"),
+    slice("2024-09-26 14:29:29", "2024-09-26 14:47:20"),
     ["straight_leg"],
     "straight_leg_3",
 )
@@ -173,13 +182,19 @@ c3 = (
 )
 
 cal = (
-    slice("2024-09-26 15:47:25", "2024-09-26 15:53:33"),
+    slice("2024-09-26 15:49:24", "2024-09-26 15:52:15"),
     ["radar_calibration"],
     "radar calibration",
 )
 
+ac3 = (
+    slice("2024-09-26 15:53:34", "2024-09-26 15:56:56"),
+    ["straight_leg", "ascent"],
+    "ascent_3",
+)
+
 sl4 = (
-    slice("2024-09-26 15:57:10 ", "2024-09-26 16:05:10"),
+    slice("2024-09-26 15:56:56", "2024-09-26 16:05:10"),
     ["straight_leg"],
     "straight_leg_4",
 )
@@ -191,9 +206,12 @@ c4 = (
 )
 
 ec1 = (
-    slice("2024-09-26T17:20:10", "2024-09-26T18:22:10"),
+    slice("2024-09-26T17:20:10", "2024-09-26T18:23:08"),
     ["straight_leg", "ec_track"],
     "EC_track_northward_const_alt",
+    ["irregularity: deviation from constant roll angle of +-3.2 deg 18:15:30 - 18:15:53",
+    "irregularity: deviation from constant roll angle of +-2.6 deg 18:18:40 - 18:18:59",
+    "includes five drop sonde launches"]
 )
 
 c5 = (
@@ -205,17 +223,20 @@ c5 = (
 sl5 = (
     slice("2024-09-26 19:19:50", "2024-09-26 19:28:00"),
     ["straight_leg"],
-    "straight_leg_5",
+    "straight_leg_5 towards center of circle_5",
+    ["irregularity: deviation from constant roll angle of +-5 deg 19:33:34 - 19:51:29",
+    "includes one drop sonde launch"],
 )
 
 sl6 = (
     slice("2024-09-26 19:28:16", "2024-09-26 19:50:10"),
     ["straight_leg"],
-    "straight_leg_6",
+    "straight_leg_6 from center to edge of circle 5",
+    ["includes one drop sonde launch"],
 )
 
 sl7 = (
-    slice("2024-09-26 19:50:10", "2024-09-26 19:53:00"),
+    slice("2024-09-26 19:51:11", "2024-09-26 19:53:00"),
     ["straight_leg"],
     "straight_leg_7",
 )
@@ -223,20 +244,23 @@ sl7 = (
 dc1 = (
     slice("2024-09-26 19:53:10", "2024-09-26 19:56:50"),
     ["straight_leg", "decent"],
+    "decent_1",
 )
 
 dc2 = (
     slice("2024-09-26 19:58:50", "2024-09-26 20:04:00"),
     ["straight_leg", "decent"],
+    "decent_2",
 )
 
 dc3 = (
     slice("2024-09-26 20:06:30", "2024-09-26 20:18:00"),
     ["straight_leg", "decent"],
+    "decent_3",
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, ec1, cal, sl2, sl3, sl4, sl5, sl6, sl6, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, ac2, sl3, c3, cal, ac3, sl4, c4, ec1, c5, sl5, sl6, sl7, dc1, dc2, dc3]]
 
 ```
 
@@ -244,8 +268,8 @@ segments = [parse_segment(s) for s in [ac1, dc1, dc2, dc3, ec1, cal, sl2, sl3, s
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(cal)
-add_previous_seg = False
+seg=parse_segment(dc3)
+add_previous_seg = True
 
 ###########################
 
