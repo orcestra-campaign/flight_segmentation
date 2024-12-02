@@ -23,13 +23,14 @@ def get_sondes_l1(flight_id):
     import fsspec
     import xarray as xr
     import numpy as np
+    import pandas as pd
     root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
     day_folder = root + "/" + flight_id
     fs = fsspec.filesystem(day_folder.split(":")[0])
     filenames = fs.ls(day_folder, detail=False)
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
                 for filename in filenames if fs.size("ipns://" + filename)]
-    return np.array([d["launch_time"].values for d in datasets])
+    return pd.to_datetime(np.array([d["launch_time"].values for d in datasets])).sort_values().values
 
 def get_overpass_point(ds, target_lat, target_lon):
     import numpy as np
