@@ -133,9 +133,9 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 ac1 = (
-    slice("2024-09-28T10:51:16", "2024-09-28T11:19:46"),
+    slice("2024-09-28T10:49:42", "2024-09-28T11:19:46"),
     ["straight_leg", "ascent"],
-    "ascent with pace underpass",
+    "ascent crossing a later pace underpass",
 )
 
 sl1 = (
@@ -145,9 +145,10 @@ sl1 = (
 )
 
 c1 = (
-    slice("2024-09-28T12:34:00", "2024-09-28T13:32:00"),
+    slice("2024-09-28T12:34:43", "2024-09-28T13:32:02"),
     ["circle"],
     "cirlce_1",
+    ["irregularity: early start due to first sonde. Roll angle stable after 12:35:03."],
 )
 
 sl2 = (
@@ -157,9 +158,12 @@ sl2 = (
 )
 
 c2 = (
-    slice("2024-09-28T13:42:30", "2024-09-28T14:38:00"),
+    slice("2024-09-28T13:42:16", "2024-09-28T14:37:51"),
     ["circle"],
     "cirlce_2",
+    ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
+     "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
+    ],
 )
 
 sl3 = (
@@ -169,7 +173,7 @@ sl3 = (
 )
 
 c3 = (
-    slice("2024-09-28T15:27:00", "2024-09-28T16:23:00"),
+    slice("2024-09-28T15:27:44", "2024-09-28T16:23:17"),
     ["circle"],
     "cirlce_3",
 )
@@ -181,13 +185,13 @@ sl4 = (
 )
 
 c4 = (
-    slice("2024-09-28T16:33:00", "2024-09-28T17:31:00"),
+    slice("2024-09-28T16:33:57", "2024-09-28T17:28:58"),
     ["circle"],
     "cirlce_4 with pace underpass",
 )
 
 ec1 = (
-    slice("2024-09-28T17:32:02", "2024-09-28T17:53:00"),
+    slice("2024-09-28T17:31:22", "2024-09-28T17:55:11"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
 )
@@ -211,7 +215,7 @@ sl5b = (
 )
 
 c5 = (
-    slice("2024-09-28T18:15:30", "2024-09-28T19:10:00"),
+    slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
     ["circle"],
     "circle_5 with pace underpass",
 )
