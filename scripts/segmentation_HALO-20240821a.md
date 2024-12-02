@@ -36,7 +36,7 @@ cvao = mindelo
 
 ```python
 platform = "HALO"
-flight_id = "HALO-20240813a"
+flight_id = "HALO-20240821a"
 ```
 
 ## Loading data
@@ -65,17 +65,17 @@ print(f"Flight duration: {int(duration / 60)}:{int(duration % 60)}")
 
 ### Get EC track and EC meeting point
 
+Flight not on EC track.
+
 ```python
 ec_track = get_ec_track(flight_id, ds)
 dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ```
 
 ### Get PACE track
-**loading the PACE track for the first time takes 6-7 minutes!**
-Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = True
+load_pace = False
 
 if load_pace:
     from get_pace import get_pace_track
@@ -106,7 +106,7 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
 if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
+if meteor_track: plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -136,80 +136,116 @@ defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `rem
 Alternatively, you can also define the segments as dictionaries which also allows to add further attributes to single segments, e.g. a `radius` to a `circle` segment. At the end of the following code block all segments will be normalized by the `parse_segments` function.
 
 ```python
-sl1 = (
-    slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
+seg1 = (
+    slice("2024-08-21T12:26:22", "2024-08-21T12:54:23"),
+    ["straight_leg", "ascent"], 
+    "westward ascending ferry",
+)
+
+seg2 = (
+    slice("2024-08-21T12:54:24", "2024-08-21T12:59:39"),
     ["straight_leg"],
+    "westward ferry",
 )
 
-ec = (
-    slice("2024-08-13T15:25:02", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "full EC track",
-    [],
-    ["several height level changes, for details, see subsegments"]
-)
-
-ec1 = (
-    slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track"],
-    "EC track low leg",
-)
-
-ec2 = (
-    slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
-    ["straight_leg", "ec_track"],
-    "EC track mid leg",
-)
-
-ec3 = (
-    slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
-    ["straight_leg", "ec_track"],
-    "EC track high leg",
-)
-
-sl_south = (
-    slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
+seg3 = (
+    slice("2024-08-21T13:01:44", "2024-08-21 13:28:01"),
     ["straight_leg"],
-    "straight leg south",
+    "southward leg",
 )
 
-c1 = (
-    slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
+seg4 = (
+    slice("2024-08-21T13:28:02", "2024-08-21T13:30:01"),
+    ["straight_leg", "ascent"],
+    "ascending southward leg",
+)
+
+seg5 = (
+    slice("2024-08-21T13:30:02", "2024-08-21T14:07:08"),
+    ["straight_leg"],
+    "southward leg",
+    ["irregularity: turbulences around 13:46:36 up to plus/minus 6 degree roll angle deviation"]
+)
+
+seg6 = (
+    slice("2024-08-21T14:09:58", "2024-08-21T15:06:16"),
     ["circle"],
-    "circle south",
-    ["deviation from circle track due to deep convection between 18:06:02 - 18:12:08"],
+    "southern clockwise circle",
+    ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation"]
 )
 
-c2 = (
-    slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
+seg7 = (
+    slice("2024-08-21T15:10:35", "2024-08-21T15:12:53"),
+    ["straight_leg"],
+    "short northward leg", 
+)
+
+seg8 = (
+    slice("2024-08-21T15:15:38", "2024-08-21T16:12:19"),
     ["circle"],
-    "circle mid",
+    "middle counterclockwise circle",
+    ["no sondes dropped due to air traffic", "irregularity: turbulence up to plus/minus 7 degree roll angle deviation"]
 )
 
-c3 = (
-    slice("2024-08-13 21:09:04", "2024-08-13 22:07:31"),
+seg9 = (
+    slice("2024-08-21T16:15:26", "2024-08-21T16:51:12"),
+    ["straight_leg"],
+    "long northward leg", 
+)
+
+seg10 = (
+    slice("2024-08-21T16:54:01", "2024-08-21T17:50:05"),
     ["circle"],
-    "circle north",
-    ["early circle start due to 1st sonde. Roll angle stable after 21:10:04"],
+    "northern clockwise circle",
+    ["slight deviation from circular path between 17:41:12 and 17:45:54 with up to plus/minus 30 degree roll angle deviation"],
 )
 
-catr = (
-    slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
-    ["circle", "atr_coordination"],
-    "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
+seg11 = (
+    slice("2024-08-21T17:54:24", "2024-08-21T18:51:27"),
+    ["circle"],
+    "extra northmost counterclockwise circle",
 )
+
+seg12 = (
+    slice("2024-08-21T18:55:08", "2024-08-21T19:05:17"),
+    ["straight_leg"],
+    "northward leg", 
+)
+
+seg13 = (
+    slice("2024-08-21T19:06:55", "2024-08-21T19:22:43"),
+    ["straight_leg"],
+    "eastward ferry",
+)
+
+seg14 = (
+    slice("2024-08-21T19:22:43", "2024-08-21T19:36:26"),
+    ["straight_leg", "descent"],
+    "descending wastward ferry", 
+)
+
+seg15 = (
+    slice("2024-08-21T19:37:16", "2024-08-21T19:48:19"),
+    ["straight_leg", "descent"],
+    "descending eastward ferry", 
+)
+
+seg16 = (
+    slice("2024-08-21T19:49:28", "2024-08-21T19:52:38"),
+    ["straight_leg", "descent"],
+    "final northward descent",  
+)
+
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, ec1, ec2, ec3, sl_south, c1, c2, c3, catr]]
+segments = [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c3)
+seg=parse_segment(seg16)
 add_previous_seg = False
 
 ###########################
@@ -249,7 +285,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(seg16)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -274,15 +310,12 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-events = [
-    ec_event(ds, ec_track),
-    {"name": "example",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-13T14:55:00",
-     "remarks": ["this is an example event", "it includes the distance to the target in meters"],
-     "distance": 123,
-    }
-]
+events = [meteor_event(ds, meteor_track)]
+events
+```
+
+```python
+events[0]['remarks'] = ["Meteor bypass during southern circle"]
 events
 ```
 
@@ -294,40 +327,6 @@ yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           sort_keys=False)
 ```
 
-## Import YAML and test it
-
 ```python
-flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
-```
 
-```python
-kinds = set(k for s in segments for k in s["kinds"])
-```
-
-```python
-fig, ax = plt.subplots()
-
-for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
-    for s in flight["segments"]:
-        if k in s["kinds"]:
-            t = slice(s["start"], s["end"])
-            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
-ax.set_xlabel("longitude / °")
-ax.set_ylabel("latitude / °");
-```
-
-### Check circle radius
-
-```python
-from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
-
-for s in flight["segments"]:
-    if "circle" not in s["kinds"]: continue
-    d = ds.sel(time=slice(s["start"], s["end"]))
-    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
-    center = LatLon(s["clat"], s["clon"], label="center")
-    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
-    print(f"Radius: {round(s["radius"])} m")
-    plt.plot(d.lon, d.lat, label="HALO track")
-    plt.legend()
 ```

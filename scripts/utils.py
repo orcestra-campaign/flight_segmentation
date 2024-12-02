@@ -23,13 +23,14 @@ def get_sondes_l1(flight_id):
     import fsspec
     import xarray as xr
     import numpy as np
+    import pandas as pd
     root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
     day_folder = root + "/" + flight_id
     fs = fsspec.filesystem(day_folder.split(":")[0])
     filenames = fs.ls(day_folder, detail=False)
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
-                for filename in filenames]
-    return np.array([d["launch_time"].values for d in datasets])
+                for filename in filenames if fs.size("ipns://" + filename)]
+    return pd.to_datetime(np.array([d["launch_time"].values for d in datasets])).sort_values().values
 
 def get_overpass_point(ds, target_lat, target_lon):
     import numpy as np
@@ -45,8 +46,8 @@ def get_overpass_point(ds, target_lat, target_lon):
 def plot_overpass_point(ds, target_lat, target_lon):
     import matplotlib.pyplot as plt
     d, t = get_overpass_point(ds, target_lat, target_lon)
-    plt.plot(ds.lon, ds.lat, label="segment track")
-    plt.scatter(ds.lon.isel(time=0), ds.lat.isel(time=0), marker="x", label="segment start")
+    plt.plot(ds.lon, ds.lat, label="track")
+    plt.scatter(ds.lon.isel(time=0), ds.lat.isel(time=0), marker="x", label="track starting point")
     plt.scatter(target_lon, target_lat, c="C1", label="target location")
     plt.plot([ds.lon.sel(time=t), target_lon], [ds.lat.sel(time=t), target_lat], color="C1")
     plt.legend()
@@ -131,7 +132,8 @@ def ec_event(ds, ec_track, ec_remarks=None):
            }
 
 
-def meteor_event(ds, meteor_track, name=None, remarks=None):
+def meteor_event(ds, meteor_track, seg=None, name=None, remarks=None):
+    if seg: ds = ds.sel(time=parse_segment(seg)["slice"])
     dist, meeting_time = get_overpass_track(ds, meteor_track)
     return {"name": name or "METEOR overpass",
             "time": to_dt(meeting_time),
@@ -144,15 +146,15 @@ def meteor_event(ds, meteor_track, name=None, remarks=None):
 
 
 def target_event(ds, target=None, target_lat=None, target_lon=None,
-                 name=None, kinds=None, remarks=None):
+                 seg=None, name=None, kinds=None, remarks=None):
     if target=="BCO":
-        from orcestra import bco
+        from orcestra.flightplan import bco
         target_lat, target_lon = bco.lat, bco.lon
         target_name = "BCO overpass"
         target_kinds = ["bco_overpass"]
 
     elif target=="CVAO":
-        from orcestra import mindelo
+        from orcestra.flightplan import mindelo
         target_lat, target_lon = mindelo.lat, mindelo.lon
         target_name = "CVAO overpass"
         target_kinds = ["cvao_overpass"]
@@ -163,7 +165,8 @@ def target_event(ds, target=None, target_lat=None, target_lon=None,
     else:
         target_name = "target meeting point"
         target_kinds = ["point_overpass"]
-
+    
+    if seg: ds = ds.sel(time=parse_segment(seg)["slice"])
     dist, time = get_overpass_point(ds, target_lat, target_lon)
 
     return {"name": name or target_name,
@@ -256,12 +259,28 @@ def get_takeoff_landing(flight_id, ds):
     which are located at about 89m and 8m above WGS84 respectively.
     """
     import numpy as np
-    if ds.time[0].values > np.datetime64("2024-09-07T00:00:00"):
-        airport_wgs84 = 9
-    else:
-        airport_wgs84 = 90
-    takeoff = ds["time"].where(ds.alt > airport_wgs84, drop=True)[0].values
-    landing = ds["time"].where(ds.alt > airport_wgs84, drop=True)[-1].values
+    # takeoff airport
+    if ds.time[0].values < np.datetime64("2024-08-10T00:00:00"):
+        airport_takeoff_wgs84 = 681   #Memmingen
+    elif (ds.time[0].values >= np.datetime64("2024-08-10T00:00:00") and
+          ds.time[0].values < np.datetime64("2024-09-07T00:00:00")
+         ):
+        airport_takeoff_wgs84 = 90    #Sal
+    elif ds.time[0].values >= np.datetime64("2024-09-07T00:00:00"):
+        airport_takeoff_wgs84 = 9     #Barbados
+    
+    # landing airport
+    if ds.time[-1].values < np.datetime64("2024-09-05T00:00:00"):
+        airport_landing_wgs84 = 90    #Sal
+    elif (ds.time[-1].values >= np.datetime64("2024-09-05T00:00:00") and
+          ds.time[-1].values < np.datetime64("2024-09-29T00:00:00")
+         ):
+        airport_landing_wgs84 = 9     #Barbados
+    elif ds.time[-1].values >= np.datetime64("2024-09-29T00:00:00"):
+        airport_landing_wgs84 = 681   #Memmingen
+    
+    takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
+    landing = ds["time"].where(ds.alt > airport_landing_wgs84, drop=True)[-1].values
     duration = (landing - takeoff).astype("timedelta64[m]").astype(int)
     return takeoff, landing, duration
 

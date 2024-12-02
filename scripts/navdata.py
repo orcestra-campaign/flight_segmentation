@@ -11,7 +11,7 @@ def get_navdata_HALO(flight, hres=False):
     import xarray as xr
 
     #root = "ipns://latest.orcestra-campaign.org/products/HALO/position_attitude"
-    root = "ipfs://QmP1ragFLB3jbjBj9tU3piitkADPqBUjqgydhcFjFGXrii"
+    root = "ipfs://QmTGwJ6VAn2FTiwsXaAA4BUA82RN2zQPBEJ8rpWrviW4c3"
     if hres:
         ds = xr.open_dataset(f"{root}/{flight}.zarr", engine="zarr").reset_coords()
     else:

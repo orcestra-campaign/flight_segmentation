@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flight Segmentation</title>
+    </head>
+    <body>
+        <h1>Flight Segmentation</h1>
+        Compiled segmentation result: <a href="all_flights.yaml">all_flights.yaml</a>
+        {% for platform, flights in meta.items() %}
+        <h2>{{ platform }}</h2>
+        <ul>
+            {% for flight_id, flight in flights.items() %}
+            <li><a href="{{ flight_id }}.html">{{ flight_id }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+        <h2>Summary</h2>
+        There are currently
+        <ul>
+            <li> {{ '%.2f' % total_duration }} segmented flight hours</li>
+            <li> {{ circle_count }} segmented circles</li>
+        </ul>
+    </body>
+</html>
