@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240822a
 
 ```python
 import matplotlib
@@ -72,16 +68,21 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 
 ### Get PACE track
 **loading the PACE track for the first time takes 6-7 minutes!**
-Might be worth only if the flight report states a PACE coordination.
+Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-from get_pace import get_pace_track
-_pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+load_pace = False
 
-pace_track = _pace_track.where(
-        (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-        (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-        drop=True)
+if load_pace: 
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 ```
 
 ### Get METEOR track
@@ -132,7 +133,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 
 ```python
 seg1 = (
-    slice("2024-08-22T11:26:22", "2024-08-22T11:29:11"),
+    slice("2024-08-22T11:26:37", "2024-08-22T11:29:11"),
     ["straight_leg", "ascent"],
     "ascending ferry",
 )
@@ -146,7 +147,8 @@ seg2 = (
 seg3 = (
     slice("2024-08-22T11:52:44", "2024-08-22T12:47:43"),
     ["straight_leg", "ec_track"],
-    "EC underpass leg"
+    "EC underpass leg",
+    ["irregularity: turbulence 12:31:55 +3.0 deg roll angle deviation"]
 )
 
 seg4 = (
@@ -173,6 +175,7 @@ seg7 = (
     slice("2024-08-22T14:57:17", "2024-08-22T16:04:31"),
     ["straight_leg"],
     "northward leg on EC track",
+    ["irregularity: turbulence between 15:28:10 and 15:28:38 with +3.0 deg roll angle deviation", "includes EC meeting point"]
 )
 
 seg8 = (
@@ -236,12 +239,6 @@ seg17 = (
     "ferry to ATR circle",
 )
 
-seg18 = (
-    slice("2024-08-22T18:47:03", "2024-08-22T18:47:46"),
-    ["calibration"],
-    "probably just a turn (missing flight report)",
-)
-
 seg19 = (
     slice("2024-08-22T18:49:51", "2024-08-22T19:19:55"),
     ["circle"],
@@ -250,12 +247,12 @@ seg19 = (
     "potentially also of kind ATR_coordination (missing flight report)"]
 )
 
-seg20 = (
-    slice("2024-08-22T19:21:29", "2024-08-22T19:23:14"),
-    ["half_circle"],
-    "weird half circle",
-    ["mini half circle during descent, probably no useful segment"]
-)
+# seg20 = (
+#     slice("2024-08-22T19:21:29", "2024-08-22T19:23:14"),
+#     ["half_circle"],
+#     "weird half circle",
+#     ["mini half circle during descent, probably no useful segment"]
+# )
 
 seg21 = (
     slice("2024-08-22T19:23:26", "2024-08-22T19:29:17"),
@@ -276,14 +273,14 @@ seg23 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, seg22, seg23]
+segments = [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17, seg19, seg21, seg22, seg23]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg23)
+seg=parse_segment(seg18)
 add_previous_seg = False
 
 ###########################
