@@ -135,7 +135,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-28T10:49:42", "2024-09-28T11:19:46"),
     ["straight_leg", "ascent"],
-    "ascent crossing a later pace underpass",
+    "ascent",
 )
 
 sl1 = (
@@ -199,43 +199,60 @@ ec1 = (
 sl5a = (
     slice("2024-09-28T17:58:20", "2024-09-28T18:04:52"),
     ["straight_leg"],
-    "straight_leg_5a with pace underpass",
+    "straight_leg_5a",
 )
 
-cal = (
-    slice("2024-09-28T18:04:52", "2024-09-28T18:08:25"),
+cal1 = (
+    slice("2024-09-28T18:04:52", "2024-09-28T18:07:11"),
     ["radar_calibration"],
-    "radar calibration",
+    "radar calibration wiggle",
 )
 
 sl5b = (
-    slice("2024-09-28T17:58:20", "2024-09-28T18:13:00"),
+    slice("2024-09-28T18:08:56", "2024-09-28T18:13:07"),
     ["straight_leg"],
-    "straight_leg_5b with pace underpass",
+    "straight_leg_5b",
 )
 
 c5 = (
     slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
     ["circle"],
-    "circle_5 with pace underpass",
+    "circle_5",
 )
 
 sl6 = (
-    slice("2024-09-28T19:12:50", "2024-09-28T19:25:00"),
+    slice("2024-09-28T19:12:35", "2024-09-28T19:15:05"),
     ["straight_leg"],
-    "straight_leg_6"
+    "straight_leg_6 crossing circle_5 with additional dropsonde"
 )
 
-dc1 = (
-    slice("2024-09-28T19:25:00", "2024-09-28T19:47:30"),
-    ["straight_leg", "decent"],
-    "decent",
-    ["irregularity: radar calibration dive 19:41:00"],
+sl7 = (
+    slice("2024-09-28T19:16:16", "2024-09-28T19:24:49"),
+    ["straight_leg", "descent"],
+    "straight_leg_7",
 )
 
+sl8 = (
+    slice("2024-09-28T19:30:09", "2024-09-28T19:33:46"),
+    ["straight_leg"],
+    "straight_leg_8",
+)
+
+cal2 = (
+    slice("2024-09-28T19:33:46", "2024-09-28T19:47:34"),
+    ["straight_leg", "descent", "radar_calibration"],
+    "radar calibration dive",
+)
+
+sl9 = (
+    slice("2024-09-28T19:48:08", "2024-09-28T19:53:48"),
+    ["straight_leg", "descent"],
+    "straight_leg_9",
+)
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4, ec1, sl5a, cal, sl5b, c5, sl6, dc1]]
-
+segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4,
+                                       ec1, sl5a, cal1, sl5b, c5, sl6, sl7, sl8,
+                                       cal2, sl9]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
@@ -319,4 +336,23 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+kinds = set(k for s in segments for k in s["kinds"])
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
 ```
