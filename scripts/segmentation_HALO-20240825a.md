@@ -110,107 +110,16 @@ plt.legend();
 
 ## Interactive plots
 
-```python
-import holoviews as hv
-c1 = 'ForestGreen'
-c2 = 'Purple'
-c3 = 'Orange'
-c4 = 'Blue'
-lw = 2
-
-tko = hv.VLine(takeoff).opts(color = c1, line_width = lw)
-ldn = hv.VLine(landing).opts(color = c1, line_width = lw)
-
-# segment boundaries  
-seg1s = hv.VLine(pd.Timestamp("2024-08-25T09:18:00")).opts(color = c2, line_width = lw) # straight_leg ascent
-seg1e = hv.VLine(pd.Timestamp("2024-08-25T09:44:45")).opts(color = c2, line_width = lw)
-
-seg2s = hv.VLine(pd.Timestamp("2024-08-25T09:44:46")).opts(color = c3, line_width = lw) # straight_leg
-seg2e = hv.VLine(pd.Timestamp("2024-08-25T09:55:57")).opts(color = c3, line_width = lw)
-
-seg3s = hv.VLine(pd.Timestamp("2024-08-25T09:56:30")).opts(color = c4, line_width = lw) # straight_leg
-seg3e = hv.VLine(pd.Timestamp("2024-08-25T10:28:42")).opts(color = c4, line_width = lw)
-
-seg4s = hv.VLine(pd.Timestamp("2024-08-25T10:30:15")).opts(color = c1, line_width = lw) # straight_leg
-seg4e = hv.VLine(pd.Timestamp("2024-08-25T10:53:01")).opts(color = c1, line_width = lw)
-
-seg5s = hv.VLine(pd.Timestamp("2024-08-25T10:54:07")).opts(color = c2, line_width = lw) # straight_leg
-seg5e = hv.VLine(pd.Timestamp("2024-08-25T11:10:40")).opts(color = c2, line_width = lw)
-
-seg6s = hv.VLine(pd.Timestamp("2024-08-25T11:12:48")).opts(color = c3, line_width = lw) # straight_leg turbulences
-seg6e = hv.VLine(pd.Timestamp("2024-08-25T11:45:49")).opts(color = c3, line_width = lw)
-
-seg7s = hv.VLine(pd.Timestamp("2024-08-25T11:56:28")).opts(color = c4, line_width = lw) # counterclockwise circle
-seg7e = hv.VLine(pd.Timestamp("2024-08-25T12:52:34")).opts(color = c4, line_width = lw)
-
-seg8s = hv.VLine(pd.Timestamp("2024-08-25T12:55:30")).opts(color = c1, line_width = lw) # straight_leg
-seg8e = hv.VLine(pd.Timestamp("2024-08-25T13:16:20")).opts(color = c1, line_width = lw)
-
-seg9s = hv.VLine(pd.Timestamp("2024-08-25T13:18:30")).opts(color = c2, line_width = lw) # counterclockwise circle
-seg9e = hv.VLine(pd.Timestamp("2024-08-25T14:14:36")).opts(color = c2, line_width = lw)
-
-seg10s = hv.VLine(pd.Timestamp("2024-08-25T14:18:06")).opts(color = c3, line_width = lw) # straight_leg
-seg10e = hv.VLine(pd.Timestamp("2024-08-25T14:22:26")).opts(color = c3, line_width = lw)
-
-seg11s = hv.VLine(pd.Timestamp("2024-08-25T14:22:26")).opts(color = c4, line_width = lw) # straight_leg ascent
-seg11e = hv.VLine(pd.Timestamp("2024-08-25T14:27:07")).opts(color = c4, line_width = lw)
-
-seg12s = hv.VLine(pd.Timestamp("2024-08-25T14:27:07")).opts(color = c1, line_width = lw) # straight_leg
-seg12e = hv.VLine(pd.Timestamp("2024-08-25T14:39:07")).opts(color = c1, line_width = lw)
-
-seg13s = hv.VLine(pd.Timestamp("2024-08-25T14:41:42")).opts(color = c2, line_width = lw) # counterclockwise circle
-seg13e = hv.VLine(pd.Timestamp("2024-08-25T15:36:41")).opts(color = c2, line_width = lw)
-
-seg14s = hv.VLine(pd.Timestamp("2024-08-25T15:40:17")).opts(color = c3, line_width = lw) # straight_leg
-seg14e = hv.VLine(pd.Timestamp("2024-08-25T16:36:51")).opts(color = c3, line_width = lw)
-
-seg15s = hv.VLine(pd.Timestamp("2024-08-25T16:38:46")).opts(color = c4, line_width = lw) # straight_leg
-seg15e = hv.VLine(pd.Timestamp("2024-08-25T16:53:19")).opts(color = c4, line_width = lw)
-
-seg16s = hv.VLine(pd.Timestamp("2024-08-25T16:55:01")).opts(color = c1, line_width = lw) # calibration
-seg16e = hv.VLine(pd.Timestamp("2024-08-25T17:04:45")).opts(color = c1, line_width = lw)
-
-seg17s = hv.VLine(pd.Timestamp("2024-08-25T17:06:00")).opts(color = c2, line_width = lw) # straight_leg
-seg17e = hv.VLine(pd.Timestamp("2024-08-25T17:33:58")).opts(color = c2, line_width = lw)
-
-seg18s = hv.VLine(pd.Timestamp("2024-08-25T17:34:47")).opts(color = c3, line_width = lw) # straight_leg
-seg18e = hv.VLine(pd.Timestamp("2024-08-25T17:42:49")).opts(color = c3, line_width = lw)
-
-seg19s = hv.VLine(pd.Timestamp("2024-08-25T17:42:49")).opts(color = c4, line_width = lw) # straight_leg descent slight heading adjustment between 17:46:40 and 17:48:31
-seg19e = hv.VLine(pd.Timestamp("2024-08-25T17:53:13")).opts(color = c4, line_width = lw)
-
-seg20s = hv.VLine(pd.Timestamp("2024-08-25T17:56:30")).opts(color = c1, line_width = lw) # counterclockwise circle atr_coordination (descent starting at 18:34:32)
-seg20e = hv.VLine(pd.Timestamp("2024-08-25T18:34:32")).opts(color = c1, line_width = lw)
-
-seg21s = hv.VLine(pd.Timestamp("2024-08-25T18:39:32")).opts(color = c3, line_width = lw) # straight_leg descent
-seg21e = hv.VLine(pd.Timestamp("2024-08-25T18:53:35")).opts(color = c3, line_width = lw)
-
-seg22s = hv.VLine(pd.Timestamp("2024-08-25T18:54:50")).opts(color = c4, line_width = lw) # straight_leg descent turbulence up to +-2.4 degree roll angle
-seg22e = hv.VLine(pd.Timestamp("2024-08-25T18:58:41")).opts(color = c4, line_width = lw)
+```python jupyter={"source_hidden": true}
+ds["alt"].hvplot()
 ```
 
 ```python jupyter={"source_hidden": true}
-alt = ds["alt"].hvplot()
-alt * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
- seg20s * seg20e * seg21s * seg21e * seg22s * seg22e
+ds["heading"].hvplot()
 ```
 
 ```python jupyter={"source_hidden": true}
-heading = ds["heading"].hvplot()
-heading * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
- seg20s * seg20e * seg21s * seg21e * seg22s * seg22e
-```
-
-```python jupyter={"source_hidden": true}
-roll = ds["roll"].hvplot()
-roll * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e * \
- seg20s * seg20e * seg21s * seg21e * seg22s * seg22e
+ds["roll"].hvplot()
 ```
 
 ## Segments
