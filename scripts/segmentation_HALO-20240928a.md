@@ -119,7 +119,7 @@ ds["roll"].hvplot()
 ```
 
 ```python
-ds["heading"].hvplot()
+ds["pitch"].hvplot()
 ```
 
 # Segments
@@ -238,21 +238,33 @@ sl8 = (
     "straight_leg_8",
 )
 
+sl9 = (
+    slice("2024-09-28T19:33:46", "2024-09-28T19:38:41"),
+    ["straight_leg", "descent"],
+    "straight_leg_9",
+)
+
 cal2 = (
-    slice("2024-09-28T19:33:46", "2024-09-28T19:47:34"),
-    ["straight_leg", "descent", "radar_calibration"],
+    slice("2024-09-28T19:39:41", "2024-09-28T19:42:08"),
+    ["radar_calibration"],
     "radar calibration dive",
 )
 
-sl9 = (
+sl10 = (
+    slice("2024-09-28T19:42:03", "2024-09-28T19:47:34"),
+    ["straight_leg", "descent"],
+    "straight_leg_10",
+)
+
+sl11 = (
     slice("2024-09-28T19:48:08", "2024-09-28T19:53:48"),
     ["straight_leg", "descent"],
-    "straight_leg_9",
+    "straight_leg_11",
 )
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4,
                                        ec1, sl5a, cal1, sl5b, c5, sl6, sl7, sl8,
-                                       cal2, sl9]]
+                                       sl9, cal2, sl10, sl11]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
@@ -348,7 +360,7 @@ kinds = set(k for s in segments for k in s["kinds"])
 ```python
 fig, ax = plt.subplots()
 
-for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+for k, c in zip(['straight_leg', 'circle', "radar_calibration"], ["C0", "C1", "C3"]):
     for s in flight["segments"]:
         if k in s["kinds"]:
             t = slice(s["start"], s["end"])
