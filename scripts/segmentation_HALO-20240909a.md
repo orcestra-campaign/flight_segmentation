@@ -210,7 +210,30 @@ sl5 = (
     ["straight_leg"],
     "long leg heading west"
 )
+sl6 = (
+    slice("2024-09-09T20:15:49", "2024-09-09T20:20:59"),
+    ["straight_leg", "descent"],
+    "leg descending towards Barbados"
+)
 
+sl7 = (
+    slice("2024-09-09T20:22:03", "2024-09-09T20:24:42"),
+    ["straight_leg", "descent"],
+    "leg descending to Barbados"
+)
+
+sl8 = (
+    slice("2024-09-09T20:33:08", "2024-09-09T20:39:59"),
+    ["straight_leg", "descent"],
+    "leg descending to airport"
+)
+
+sl9 = (
+    slice("2024-09-09T20:42:47", "2024-09-09T20:46:32"),
+    ["straight_leg", "descent"],
+    "final descent to runway",
+    ["irregularity: turbulence near surface with roll angle deviations up to +-2.3 degree"]
+)
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, c1, slc1_1, slc1_2, c2, c_climb, ec, ec_south, c3, sl3, sl4, sl5]]
 ```
