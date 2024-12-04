@@ -170,11 +170,11 @@ c2 = (
 )
 
 # should we even give it the "circle" attribute?
-c_climb = (
-    slice("2024-09-09T16:09:12", "2024-09-09T16:24:16"),
-    ["circle", "ascent"],
-    "climbing circle and holding pattern to wait for EC",
-)
+#c_climb = (
+#    slice("2024-09-09T16:09:12", "2024-09-09T16:24:16"),
+#    ["circle", "ascent"],
+#    "climbing circle and holding pattern to wait for EC",
+#)
 
 ec = (
     slice("2024-09-09T16:26:31", "2024-09-09T17:19:47"),
@@ -235,7 +235,7 @@ sl9 = (
     ["irregularity: turbulence near surface with roll angle deviations up to +-2.3 degree"]
 )
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [sl1, sl2, c1, slc1_1, slc1_2, c2, c_climb, ec, ec_south, c3, sl3, sl4, sl5, sl6, sl7, sl8, sl9]]
+segments = [parse_segment(s) for s in [sl1, sl2, c1, slc1_1, slc1_2, c2, ec, ec_south, c3, sl3, sl4, sl5, sl6, sl7, sl8, sl9]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
