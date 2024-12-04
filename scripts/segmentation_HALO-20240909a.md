@@ -142,7 +142,7 @@ sl2 = (
     slice("2024-09-09T12:12:21", "2024-09-09T13:47:15"),
     ["straight_leg"],
     "heading east at constant alt",
-    ["irregularity: roll angle deviations around 12:22:44, 12:40:47, 12:54:38, and 13:00:46"]
+    ["irregularity: roll angle deviations up to +-2.7 degree around 12:22:44, 12:40:47, 12:54:38, and 13:00:46"]
 )
 
 c1 = (
