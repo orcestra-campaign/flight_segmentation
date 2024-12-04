@@ -13,7 +13,7 @@ jupyter:
 ---
 
 # Flight segmentation HALO-20240929a
-This was the transfer flight from Barbados to Oberpfaffenhofen with a stopover in Memmingen (stopover not included in HALO-20240929a).
+This was the transfer flight from Barbados to Memmingen (the final HALO flight from Memmingen to Oberpfaffenhofen is not included).
 
 ```python
 import matplotlib
@@ -199,7 +199,8 @@ seg10 = (
     slice("2024-09-30T02:36:41", "2024-09-30T02:44:22"),
     ["straight_leg", "ascent"],
     "short north-eastward ascending leg",
-    ["irregularity: constant nonzero roll angle of about 0.6 degree", "irregularity: mix of constant altitude and ascent"]
+    ["irregularity: constant nonzero roll angle of about 0.6 degree", 
+     "irregularity: mix of constant altitude and ascent"]
 )
 
 seg11 = (
@@ -275,28 +276,35 @@ seg22 = (
 )
 
 seg23 = (
-    slice("2024-09-30T06:44:04", "2024-09-30T06:57:00"),
-    ["straight_leg", "descent"],
+    slice("2024-09-30T06:44:00", "2024-09-30T06:46:22"),
+    ["straight_leg"],
     "descending north-eastward leg 2",
-    ["irregularity: turbulence with roll angle deviations up to +-1.3 degree"]
 )
 
 seg24 = (
+    slice("2024-09-30T06:46:22", "2024-09-30T06:57:00"),
+    ["straight_leg", "descent"],
+    "descending north-eastward leg 2",
+    ["irregularity: turbulence with roll angle deviations up to +-1.3 degree", 
+     "short section without descent between 06:48:57 and 06:50:16"]
+)
+
+seg25 = (
     slice("2024-09-30T06:58:52", "2024-09-30T07:02:08"),
     ["straight_leg"],
     "short north-eastward leg 13",
     ["irregularity: turbulence with roll angle deviations up to +-1.7 degree"]
 )
 
-seg25 = (
+seg26 = (
     slice("2024-09-30T07:02:08", "2024-09-30T07:05:33"),
     ["straight_leg", "descent"],
     "short descending north-eastward leg 3",
     ["irregularity: turbulence with roll angle deviations up to +-1.8 degree"]
 )
 
-seg26 = (
-    slice("2024-09-30T07:09:50", "2024-09-30T07:13:05"),
+seg27 = (
+    slice("2024-09-30T07:09:52", "2024-09-30T07:13:05"),
     ["straight_leg", "descent"],
     "final descent to Memmingen airport",
     ["irregularity: turbulence with roll angle deviations up to +-1.8 degree"]
@@ -305,14 +313,14 @@ seg26 = (
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, 
                                        seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, 
-                                       seg22, seg23, seg24, seg25, seg26]]
+                                       seg22, seg23, seg24, seg25, seg26, seg27]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg26)
+seg=parse_segment(seg27)
 add_previous_seg = False
 
 ###########################
