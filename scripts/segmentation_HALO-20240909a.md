@@ -208,7 +208,7 @@ sl4 = (
 sl5 = (
     slice("2024-09-09T18:59:15", "2024-09-09T20:14:03"),
     ["straight_leg"],
-    "leg heading west before landing"
+    "long leg heading west"
 )
 
 # add all segments that you want to save to a yaml file later to the below list
