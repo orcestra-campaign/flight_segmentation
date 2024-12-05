@@ -115,108 +115,15 @@ plt.legend();
 ## Interactive plots
 
 ```python
-c1 = 'ForestGreen'
-c2 = 'Purple'
-c3 = 'Orange'
-c4 = 'Blue'
-lw = 2
-
-tko = hv.VLine(pd.Timestamp(takeoff)).opts(color = c1, line_width = lw)
-ldn = hv.VLine(pd.Timestamp(landing)).opts(color = c1, line_width = lw)
-
-# segment boundaries  
-seg1s = hv.VLine(pd.Timestamp("2024-08-31T08:53:55")).opts(color = c2, line_width = lw) # straight_leg ascent
-seg1e = hv.VLine(pd.Timestamp("2024-08-31T09:03:33")).opts(color = c2, line_width = lw)
-
-seg2s = hv.VLine(pd.Timestamp("2024-08-31T09:05:37")).opts(color = c3, line_width = lw) # straight_leg ascent
-seg2e = hv.VLine(pd.Timestamp("2024-08-31T09:08:20")).opts(color = c3, line_width = lw)
-
-seg3s = hv.VLine(pd.Timestamp("2024-08-31T09:08:30")).opts(color = c4, line_width = lw) # straight_leg ascent irregularity: constant roll angle -1.3 degree
-seg3e = hv.VLine(pd.Timestamp("2024-08-31T09:17:39")).opts(color = c4, line_width = lw)
-
-seg4s = hv.VLine(pd.Timestamp("2024-08-31T09:18:04")).opts(color = c1, line_width = lw) # straight_leg ascent
-seg4e = hv.VLine(pd.Timestamp("2024-08-31T09:21:09")).opts(color = c1, line_width = lw)
-
-seg5s = hv.VLine(pd.Timestamp("2024-08-31T09:21:09")).opts(color = c2, line_width = lw) # straight_leg
-seg5e = hv.VLine(pd.Timestamp("2024-08-31T09:43:24")).opts(color = c2, line_width = lw)
-
-seg6s = hv.VLine(pd.Timestamp("2024-08-31T09:45:02")).opts(color = c3, line_width = lw) # straight_leg
-seg6e = hv.VLine(pd.Timestamp("2024-08-31T11:05:50")).opts(color = c3, line_width = lw)
-
-seg7s = hv.VLine(pd.Timestamp("2024-08-31T11:11:50")).opts(color = c4, line_width = lw) # straight_leg ascent
-seg7e = hv.VLine(pd.Timestamp("2024-08-31T11:16:34")).opts(color = c4, line_width = lw)
-
-seg8s = hv.VLine(pd.Timestamp("2024-08-31T11:16:34")).opts(color = c1, line_width = lw) # straight_leg
-seg8e = hv.VLine(pd.Timestamp("2024-08-31T11:20:48")).opts(color = c1, line_width = lw)
-
-seg9s = hv.VLine(pd.Timestamp("2024-08-31T11:22:15")).opts(color = c2, line_width = lw) # circle counterclockwise
-seg9e = hv.VLine(pd.Timestamp("2024-08-31T12:19:36")).opts(color = c2, line_width = lw)
-
-seg10s = hv.VLine(pd.Timestamp("2024-08-31T12:22:31")).opts(color = c3, line_width = lw) # straight_leg
-seg10e = hv.VLine(pd.Timestamp("2024-08-31T12:28:05")).opts(color = c3, line_width = lw)
-
-seg11s = hv.VLine(pd.Timestamp("2024-08-31T12:28:23")).opts(color = c4, line_width = lw) # straight_leg irregularity: constant roll angle of about 1.2 degree
-seg11e = hv.VLine(pd.Timestamp("2024-08-31T12:33:34")).opts(color = c4, line_width = lw)
-
-seg12s = hv.VLine(pd.Timestamp("2024-08-31T12:34:03")).opts(color = c1, line_width = lw) # straight_leg irregularity: turbulence with up to plus/minus 1.8 degree roll angle deviation
-seg12e = hv.VLine(pd.Timestamp("2024-08-31T12:49:34")).opts(color = c1, line_width = lw)
-
-seg13s = hv.VLine(pd.Timestamp("2024-08-31T12:52:25")).opts(color = c2, line_width = lw) # circle counterclockwise irregularity: turbulences with up to plus/minus 4.5 degree roll angle deviation
-seg13e = hv.VLine(pd.Timestamp("2024-08-31T13:48:01")).opts(color = c2, line_width = lw)
-
-seg14s = hv.VLine(pd.Timestamp("2024-08-31T13:51:28")).opts(color = c3, line_width = lw) # straight_leg
-seg14e = hv.VLine(pd.Timestamp("2024-08-31T14:17:23")).opts(color = c3, line_width = lw)
-
-seg15s = hv.VLine(pd.Timestamp("2024-08-31T14:19:59")).opts(color = c4, line_width = lw) # circle counterclockwise
-seg15e = hv.VLine(pd.Timestamp("2024-08-31T15:16:01")).opts(color = c4, line_width = lw)
-
-seg16s = hv.VLine(pd.Timestamp("2024-08-31T15:19:37")).opts(color = c1, line_width = lw) # straight_leg descent
-seg16e = hv.VLine(pd.Timestamp("2024-08-31T15:32:30")).opts(color = c1, line_width = lw)
-
-seg17s = hv.VLine(pd.Timestamp("2024-08-31T15:32:30")).opts(color = c2, line_width = lw) # straight_leg
-seg17e = hv.VLine(pd.Timestamp("2024-08-31T16:01:15")).opts(color = c2, line_width = lw)
-
-seg18s = hv.VLine(pd.Timestamp("2024-08-31T16:08:10")).opts(color = c3, line_width = lw) # straight_leg
-seg18e = hv.VLine(pd.Timestamp("2024-08-31T16:24:05")).opts(color = c3, line_width = lw)
-
-seg19s = hv.VLine(pd.Timestamp("2024-08-31T16:27:42")).opts(color = c4, line_width = lw) # circle clockwise atr_coordination
-seg19e = hv.VLine(pd.Timestamp("2024-08-31T17:03:55")).opts(color = c4, line_width = lw)
-
-seg20s = hv.VLine(pd.Timestamp("2024-08-31T17:05:10")).opts(color = c1, line_width = lw) # radar_calibration
-seg20e = hv.VLine(pd.Timestamp("2024-08-31T17:07:39")).opts(color = c1, line_width = lw)
-
-seg21s = hv.VLine(pd.Timestamp("2024-08-31T17:09:16")).opts(color = c2, line_width = lw) # straight_leg descent
-seg21e = hv.VLine(pd.Timestamp("2024-08-31T17:35:47")).opts(color = c2, line_width = lw)
-
-seg22s = hv.VLine(pd.Timestamp("2024-08-31T17:36:32")).opts(color = c3, line_width = lw) # straight_leg
-seg22e = hv.VLine(pd.Timestamp("2024-08-31T17:38:37")).opts(color = c3, line_width = lw)
-
-seg23s = hv.VLine(pd.Timestamp("2024-08-31T17:38:43")).opts(color = c4, line_width = lw) # straight_leg descent irregularity: turbulences up to plus/minus 2.7 degree roll angle deviation shortly before touch down
-seg23e = hv.VLine(pd.Timestamp("2024-08-31T17:40:58")).opts(color = c4, line_width = lw)
-```
-
-```python jupyter={"source_hidden": true}
-alt = ds["alt"].hvplot()
-alt * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
- seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
+ds["alt"].hvplot()
 ```
 
 ```python
-heading = ds["heading"].hvplot()
-heading * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
- seg18s * seg18e *  seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
+ds["heading"].hvplot()
 ```
 
 ```python
-roll = ds["roll"].hvplot()
-roll * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * \
- seg18s * seg18e * seg19s * seg19e * seg20s * seg20e * seg21s * seg21e * seg22s * seg22e * seg23s * seg23e
+ds["roll"].hvplot()
 ```
 
 ## Segments
@@ -268,7 +175,7 @@ seg6 = (
     slice("2024-08-31T09:45:02", "2024-08-31T11:05:50"),
     ["straight_leg", "ec_track"],
     "long southward EC track",
-    []
+    ["includes one drop sonde launch at southmost point"]
 )
 
 seg7 = (
@@ -324,7 +231,8 @@ seg14 = (
     slice("2024-08-31T13:51:28", "2024-08-31T14:17:23"),
     ["straight_leg", "ec_track"],
     "EC track through circle",
-    ["irregularity: turbulence with up to plus/minus 4.6 degree roll angle deviation"]
+    ["irregularity: turbulence with up to plus/minus 4.6 degree roll angle deviation",
+    "includes one drop sonde launch"]
 )
 
 seg15 = (
@@ -345,7 +253,7 @@ seg17 = (
     slice("2024-08-31T15:32:30", "2024-08-31T16:01:15"),
     ["straight_leg", "ec_track"],
     "northward EC track through ATR cicle",
-    []
+    ["contains EC underpass"]
 )
 
 seg18 = (
@@ -383,23 +291,16 @@ seg22 = (
     []
 )
 
-seg23 = (
-    slice("2024-08-31T17:38:43", "2024-08-31T17:40:58"),
-    ["straight_leg", "descent"],
-    "final descent",
-    ["irregularity: turbulence up to plus/minus 2.7 degree roll angle deviation shortly before touch down", "irregularity: slight change of heading"]
-)
-
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, seg22, seg23]]
+segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, seg22]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg23)
+seg=parse_segment(seg22)
 add_previous_seg = False
 
 ###########################
@@ -439,7 +340,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(seg23)
+seg = parse_segment(seg21)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -476,6 +377,44 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in segments for k in s["kinds"])
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+### Check circle radius
+
+```python
+from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
+
+for s in flight["segments"]:
+    if "circle" not in s["kinds"]: continue
+    d = ds.sel(time=slice(s["start"], s["end"]))
+    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
+    center = LatLon(s["clat"], s["clon"], label="center")
+    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
+    print(f"Radius: {round(s["radius"])} m")
+    plt.plot(d.lon, d.lat, label="HALO track")
+    plt.legend()
 ```
 
 ```python
