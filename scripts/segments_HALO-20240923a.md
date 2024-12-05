@@ -178,6 +178,7 @@ seg6 = (slice("2024-09-23T13:12:20", "2024-09-23T14:07:30"),
 seg7 = (slice("2024-09-23T14:11:01", "2024-09-23T14:26:28"),
         ["straight_leg"],
         "leg crossing circle c_mid",
+        ["irregularity: spike with roll angle deviation of -3 degree"],
        )
 seg8 = (slice("2024-09-23T14:26:28", "2024-09-23T14:31:32"),
          ["straight_leg", "ascent"],
