@@ -119,7 +119,7 @@ ds["roll"].hvplot()
 ```
 
 ```python
-ds["pitch"].hvplot()
+ds["heading"].hvplot()
 ```
 
 # Segments
@@ -138,10 +138,32 @@ ac1 = (
     "ascent",
 )
 
-sl1 = (
-    slice("2024-09-28T11:19:46", "2024-09-28T12:33:16"),
+sl1a = (
+    slice("2024-09-28T11:19:46", "2024-09-28T12:14:51"),
     ["straight_leg"],
-    "straight_leg_1"
+    "straight_leg_1a",
+    ["irregularity: roll angle spike of -5.75 degree at 11:37:15"]
+)
+
+sl1b = (
+    slice("2024-09-28T12:14:51", "2024-09-28T12:22:42"),
+    ["straight_leg"],
+    "straight_leg_1b",
+    ["irregularity: constant nonzero roll angle of about 0.75 degree"]
+)
+
+ac2 = (
+    slice("2024-09-28T12:22:42", "2024-09-28T12:26:46"),
+    ["straight_leg", "ascent"],
+    "ascent 2",
+    ["irregularity: constant nonzero roll angle of about 0.75 degree"]
+)
+
+sl1c = (
+    slice("2024-09-28T12:26:46", "2024-09-28T12:32:49"),
+    ["straight_leg"],
+    "straight_leg_1c",
+    ["irregularity: constant nonzero roll angle of about 0.75 degree"]
 )
 
 c1 = (
@@ -152,7 +174,7 @@ c1 = (
 )
 
 sl2 = (
-    slice("2024-09-28T13:35:00", "2024-09-28T13:39:40"),
+    slice("2024-09-28T13:35:30", "2024-09-28T13:39:35"),
     ["straight_leg"],
     "straight_leg_2"
 )
@@ -175,15 +197,16 @@ sl3a = (
 )
 
 sl3b = (
-    slice("2024-09-28T14:40:50", "2024-09-28T14:55:27"),
-    ["straight_leg"],
-    "straight_leg_3"
+    slice("2024-09-28T14:55:27", "2024-09-28T15:01:38"),
+    ["straight_leg", "ascent"],
+    "straight_leg_3",
 )
 
 sl3c = (
-    slice("2024-09-28T14:40:50", "2024-09-28T15:24:30"),
+    slice("2024-09-28T15:01:38", "2024-09-28T15:24:30"),
     ["straight_leg"],
-    "straight_leg_3"
+    "straight_leg_3",
+    ["includes three dropsonde launches"]
 )
 
 c3 = (
@@ -193,7 +216,7 @@ c3 = (
 )
 
 sl4 = (
-    slice("2024-09-28T16:25:00", "2024-09-28T16:30:30"),
+    slice("2024-09-28T16:26:50", "2024-09-28T16:30:41"),
     ["straight_leg"],
     "straight_leg_4"
 )
@@ -202,16 +225,19 @@ c4 = (
     slice("2024-09-28T16:33:57", "2024-09-28T17:28:58"),
     ["circle"],
     "cirlce_4 with pace underpass",
+    ["circle path crosses PACE track"]
 )
 
 ec1 = (
     slice("2024-09-28T17:31:22", "2024-09-28T17:55:11"),
     ["straight_leg", "ec_track"],
     "EC_track_southward_const_alt",
+    ["includes EC underpass",
+     "includes one dropsonde launch near EC underpass"]
 )
 
 sl5a = (
-    slice("2024-09-28T17:58:20", "2024-09-28T18:04:52"),
+    slice("2024-09-28T17:58:30", "2024-09-28T18:04:52"),
     ["straight_leg"],
     "straight_leg_5a",
 )
@@ -223,7 +249,7 @@ cal1 = (
 )
 
 sl5b = (
-    slice("2024-09-28T18:08:56", "2024-09-28T18:13:07"),
+    slice("2024-09-28T18:09:29", "2024-09-28T18:13:07"),
     ["straight_leg"],
     "straight_leg_5b",
 )
@@ -232,28 +258,39 @@ c5 = (
     slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
     ["circle"],
     "circle_5",
+    ["circle path crosses PACE track"]
 )
 
 sl6 = (
     slice("2024-09-28T19:12:35", "2024-09-28T19:15:05"),
     ["straight_leg"],
-    "straight_leg_6 crossing circle_5 with additional dropsonde"
+    "straight_leg_6 crossing circle_5",
+    ["includes one dropsonde launch inside circle_5"]
 )
 
-sl7 = (
-    slice("2024-09-28T19:16:16", "2024-09-28T19:24:49"),
-    ["straight_leg", "descent"],
+sl7a = (
+    slice("2024-09-28T19:16:11", "2024-09-28T19:24:49"),
+    ["straight_leg"],
     "straight_leg_7",
+    ["leg inside cirlce_5"]
 )
+
+sl7b = (
+    slice("2024-09-28T19:24:49", "2024-09-28T19:30:09"),
+    ["straight_leg", "descent"],
+    "straight_leg_7b",
+    ["leg inside cirlce_5"]
+)
+
 
 sl8 = (
-    slice("2024-09-28T19:30:09", "2024-09-28T19:33:46"),
+    slice("2024-09-28T19:30:09", "2024-09-28T19:33:47"),
     ["straight_leg"],
     "straight_leg_8",
 )
 
 sl9 = (
-    slice("2024-09-28T19:33:46", "2024-09-28T19:38:41"),
+    slice("2024-09-28T19:33:47", "2024-09-28T19:38:41"),
     ["straight_leg", "descent"],
     "straight_leg_9",
 )
@@ -265,7 +302,7 @@ cal2 = (
 )
 
 sl10 = (
-    slice("2024-09-28T19:42:03", "2024-09-28T19:47:34"),
+    slice("2024-09-28T19:42:08", "2024-09-28T19:47:34"),
     ["straight_leg", "descent"],
     "straight_leg_10",
 )
@@ -278,7 +315,7 @@ sl11 = (
 # add all segments that you want to save to a yaml file later to the below list
 
 segments = [parse_segment(s) for s in [ac1, sl1a, sl1b, ac2, sl1c, c1, sl2, c2, sl3a, sl3b, sl3c, c3, sl4, c4,
-                                       ec1, sl5a, cal1, sl5b, c5, sl6, sl7, sl8,
+                                       ec1, sl5a, cal1, sl5b, c5, sl6, sl7a, sl7b, sl8,
                                        sl9, cal2, sl10, sl11]]
 ```
 
@@ -286,8 +323,7 @@ segments = [parse_segment(s) for s in [ac1, sl1a, sl1b, ac2, sl1c, c1, sl2, c2, 
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-
-seg=parse_segment(sl3a)
+seg=parse_segment(sl11)
 add_previous_seg = False
 
 ###########################
@@ -327,7 +363,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(sl2)
+seg = parse_segment(sl7a)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
@@ -383,4 +419,24 @@ for k, c in zip(['straight_leg', 'circle', "radar_calibration"], ["C0", "C1", "C
             ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
 ax.set_xlabel("longitude / °")
 ax.set_ylabel("latitude / °");
+```
+
+### Check circle radius
+
+```python
+from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
+
+for s in flight["segments"]:
+    if "circle" not in s["kinds"]: continue
+    d = ds.sel(time=slice(s["start"], s["end"]))
+    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
+    center = LatLon(s["clat"], s["clon"], label="center")
+    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
+    print(f"Radius: {round(s["radius"])} m")
+    plt.plot(d.lon, d.lat, label="HALO track")
+    plt.legend()
+```
+
+```python
+
 ```
