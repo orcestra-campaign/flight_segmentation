@@ -12,7 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation HALO-2024-09-28a
+# Flight segmentation HALO-20240928a
 
 ```python
 import matplotlib
@@ -166,7 +166,21 @@ c2 = (
     ],
 )
 
-sl3 = (
+sl3a = (
+    slice("2024-09-28T14:41:42", "2024-09-28T14:55:27"),
+    ["straight_leg"],
+    "straight_leg_3",
+    ["irregularity: turbulence with roll angle deviations up to +-1.4 deg",
+     "includes two dropsonde launches"]
+)
+
+sl3b = (
+    slice("2024-09-28T14:40:50", "2024-09-28T14:55:27"),
+    ["straight_leg"],
+    "straight_leg_3"
+)
+
+sl3c = (
     slice("2024-09-28T14:40:50", "2024-09-28T15:24:30"),
     ["straight_leg"],
     "straight_leg_3"
@@ -262,7 +276,8 @@ sl11 = (
     "straight_leg_11",
 )
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4,
+
+segments = [parse_segment(s) for s in [ac1, sl1a, sl1b, ac2, sl1c, c1, sl2, c2, sl3a, sl3b, sl3c, c3, sl4, c4,
                                        ec1, sl5a, cal1, sl5b, c5, sl6, sl7, sl8,
                                        sl9, cal2, sl10, sl11]]
 ```
@@ -271,7 +286,8 @@ segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, sl3, c3, sl4, c4,
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(c4)
+
+seg=parse_segment(sl3a)
 add_previous_seg = False
 
 ###########################
@@ -311,7 +327,7 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(ec1)
+seg = parse_segment(sl2)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
