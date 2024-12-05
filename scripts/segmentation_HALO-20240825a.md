@@ -10,6 +10,8 @@ jupyter:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
+  execution:
+    timeout: 60
 ---
 
 # Flight segmentation HALO-20240825a
