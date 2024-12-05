@@ -142,9 +142,9 @@ seg1 = (slice("2024-09-23T11:17:49", "2024-09-23T11:18:39"),
 
 # climbing circle (with Meteor overpass)
 seg2 = (slice("2024-09-23T11:21:42", "2024-09-23T11:54:32"),
-        ["ascent"],
+        ["ascent", "circle"],
         "climbing circle",
-        ["35nm circle to climb up to FL410", "including 2nd METEOR overpass"],
+        ["circle to climb up to FL410", "including 2nd METEOR overpass"],
        )
 # Meteor measurement circle (with Meteor overpass) on FL410
 seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
