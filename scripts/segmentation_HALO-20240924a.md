@@ -1,6 +1,9 @@
 ---
 jupyter:
+  execution:
+    timeout: 60
   jupytext:
+    notebook_metadata_filter: execution
     text_representation:
       extension: .md
       format_name: markdown

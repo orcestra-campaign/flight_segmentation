@@ -206,7 +206,7 @@ def sonde_info_from_ipfs(flight_id):
     except FileNotFoundError:
         filenames = []
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
-                for filename in filenames]
+                for filename in filenames if fs.size("ipns://" + filename)]
     return [ {
         "launch_time": pd.Timestamp(d["launch_time"].values).to_pydatetime(warn=False),
         "platform": "HALO",
