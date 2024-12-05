@@ -209,6 +209,7 @@ seg11 = (slice("2024-09-23T16:00:47", "2024-09-23T16:55:23"),
 seg12 = (slice("2024-09-23T16:57:01", "2024-09-23T17:12:15"),
          ["straight_leg"],
          "leg towards EC track at ec_south",
+         ["irregularity: roll angle spike up to 5.1 degree"],
         )
 
 seg13 = (slice("2024-09-23T17:15:25", "2024-09-23T17:23:46"),
