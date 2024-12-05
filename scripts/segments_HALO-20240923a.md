@@ -170,9 +170,9 @@ seg4c = (slice("2024-09-23T12:44:10", "2024-09-23T13:08:51"),
        )
 
 seg6 = (slice("2024-09-23T13:12:20", "2024-09-23T14:07:30"),
-        ["circle", "c_mid"],
+        ["circle"],
         "circle c_mid",
-        ["irregularity: deviation in roll angle between 13:21:57 - 13:31:10 due to deep convection"],
+        ["irregularity: deviation from circular path due to deep convection with roll angle deviations up to +-28 degree between 13:21:57 - 13:31:10"],
        )
 
 seg7 = (slice("2024-09-23T14:11:01", "2024-09-23T14:26:28"),
