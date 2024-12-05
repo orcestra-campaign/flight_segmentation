@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation for HALO-20240827a
 
 ```python
 import matplotlib
@@ -255,7 +251,7 @@ seg2 = (
     slice("2024-08-27T10:29:27", "2024-08-27T10:55:11"),
     ["straight_leg"],
     "ferry to EC track",
-    ["irregularity: spike in roll angle at 10:39:42"]
+    ["irregularity: spike in roll angle at 10:39:42 by +4.5 degree"]
 )
 
 seg3 = (
@@ -279,46 +275,56 @@ seg5 = (
 seg6 = (
     slice("2024-08-27T11:18:59", "2024-08-27T11:26:12"),
     ["straight_leg"],
-    "departure from EC track",
+    "departure from EC track - leg 1",
 )
 
 seg7 = (
     slice("2024-08-27T11:26:33", "2024-08-27T11:28:34"),
     ["straight_leg"],
-    "leg away from EC track",
+    "departure from EC track - leg 2",
 )
 
 seg8 = (
     slice("2024-08-27T11:31:26", "2024-08-27T11:33:30"),
     ["straight_leg"],
-    "back towards EC track",
+    "departure from EC track - leg 3",
 )
 
 seg9 = (
     slice("2024-08-27T11:33:58", "2024-08-27T11:35:56"),
     ["straight_leg"],
-    "back to EC track",
+    "departure from EC track - leg 4",
 )
 
 seg10 = (
     slice("2024-08-27T11:38:41", "2024-08-27T11:56:44"),
     ["straight_leg", "ec_track"],
-    "", #any coordination? Why sonde?
-    ["sonde dropped at 11:40:32"]
+    "continued southward EC track", #any coordination? Why sonde?
+    ["additional sonde dropped at 11:40:32"]
 )
 
 seg11 = (
     slice("2024-08-27T11:59:38", "2024-08-27T12:56:05"),
     ["circle"],
     "counterclockwise southern circle",
-    ["dropsonde failures"]
+)
+
+seg11_1 = (
+    slice("2024-08-27T12:59:25", "2024-08-27T13:03:17"),#05:41"),
+    ["straight_leg", "ascent", "ec_track"],
+    "climbing higher on northward EC track",
+)
+seg11_2 = (
+    slice("2024-08-27T13:03:17", "2024-08-27T13:05:41"),
+    ["straight_leg", "ec_track"],
+    "northward EC track towards middle circle",
 )
 
 seg12 = (
     slice("2024-08-27T13:14:37", "2024-08-27T14:14:09"),
     ["circle"],
     "counterclockwise middle circle",
-    ["irregularity due to turbulences: 13:36:46-13:38:08 and 14:02:03-14:03:21"]
+    ["irregularity: due to turbulences at 13:36:46-13:38:08 and 14:02:03-14:03:21"]
 )
 
 seg13 = (
@@ -423,7 +429,7 @@ seg27 = (
 
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, 
-                                       seg9, seg10, seg11, seg12, seg13, seg14, seg15, 
+                                       seg9, seg10, seg11, seg11_1, seg11_2, seg12, seg13, seg14, seg15,
                                        seg16, seg18, seg20, seg21, seg22, seg25, 
                                        seg26, seg27]]
 ```
@@ -515,6 +521,44 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in segments for k in s["kinds"])
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+### Check circle radius
+
+```python
+from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
+
+for s in flight["segments"]:
+    if "circle" not in s["kinds"]: continue
+    d = ds.sel(time=slice(s["start"], s["end"]))
+    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
+    center = LatLon(s["clat"], s["clon"], label="center")
+    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
+    print(f"Radius: {round(s["radius"])} m")
+    plt.plot(d.lon, d.lat, label="HALO track")
+    plt.legend()
 ```
 
 ```python
