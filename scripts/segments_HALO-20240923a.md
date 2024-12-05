@@ -213,7 +213,7 @@ seg12 = (slice("2024-09-23T16:57:01", "2024-09-23T17:12:15"),
         )
 
 seg13 = (slice("2024-09-23T17:15:25", "2024-09-23T17:23:46"),
-         ["straight_leg", "ec_track", "ec_track_northward"],
+         ["straight_leg", "ec_track"],
          "EC track northward",
          ["irregularity: the EC track is very short due to very deep convection in the south and north but covers the meeting point"]
         )
