@@ -27,7 +27,7 @@ def get_sondes_l1(flight_id):
     root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
     day_folder = root + "/" + flight_id
     fs = fsspec.filesystem(day_folder.split(":")[0])
-    filenames = fs.ls(day_folder, detail=False)
+    filenames = fs.glob(day_folder + "/*.nc")
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
                 for filename in filenames if fs.size("ipns://" + filename)]
     return pd.to_datetime(np.array([d["launch_time"].values for d in datasets])).sort_values().values

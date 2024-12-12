@@ -202,7 +202,7 @@ def sonde_info_from_ipfs(flight_id):
     day_folder = root + "/" + flight_id
     fs = fsspec.filesystem(day_folder.split(":")[0])
     try:
-        filenames = fs.ls(day_folder, detail=False)
+        filenames = fs.glob(day_folder + "/*.nc")
     except FileNotFoundError:
         filenames = []
     datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
