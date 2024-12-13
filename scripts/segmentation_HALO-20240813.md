@@ -208,10 +208,23 @@ c1 = (
     ["irregularity: 18:06:02 - 18:12:08 deviation from circle track with roll angle deviations up to +-15 deg due to deep convection"],
 )
 
-slc1c2 = (
-    slice("2024-08-13T18:28:22", "2024-08-13T19:12:49"),
+slc1c2a = (
+    slice("2024-08-13T18:28:22", "2024-08-13T18:52:16"),
     ["straight_leg"],
     "leg crossing circle south",
+)
+
+slc1c2b = (
+    slice("2024-08-13T18:52:16", "2024-08-13T18:57:56"),
+    ["straight_leg", "ascent"],
+    "ascending leg crossing circle south",
+)
+
+slc1c2c = (
+    slice("2024-08-13T18:57:56", "2024-08-13T19:12:49"),
+    ["straight_leg"],
+    "leg to circle 2",
+    ["irregularity: turbulence with roll angle deviations up to +-4.5 deg"],
 )
 
 c2 = (
