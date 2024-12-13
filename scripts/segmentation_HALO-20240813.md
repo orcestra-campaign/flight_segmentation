@@ -233,12 +233,24 @@ c2 = (
     "circle mid",
 )
 
-slc2c3 = (
-    slice("2024-08-13T20:17:49", "2024-08-13T21:04:54"),
+slc2c3a = (
+    slice("2024-08-13T20:17:49", "2024-08-13T20:27:56"),
     ["straight_leg"],
-    "leg crossing circle mid",
-    ["irregularity: turbulence and roll angle/altitude deviations between 20:27:56 - 20:33:12",
-    "irregularity: roll angle spikes between 20:47:19 - 20:47:49, at 20:57:20 and at 21:00:16"],
+    "leg1 crossing circle mid",
+)
+
+slc2c3b = (
+    slice("2024-08-13T20:28:18", "2024-08-13T20:33:12"),
+    ["straight_leg"],
+    "leg2 crossing circle mid",
+    ["irregularity: constant nonzero roll angle of about 1.3 deg"],
+)
+
+slc2c3c = (
+    slice("2024-08-13T20:33:16", "2024-08-13T21:04:54"),
+    ["straight_leg"],
+    "leg to and through circle north",
+    ["irregularity: roll angle spikes between 20:47:19 - 20:47:49, at 20:57:20 and at 21:00:16"],
 )
 
 c3 = (
