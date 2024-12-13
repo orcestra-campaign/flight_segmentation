@@ -168,9 +168,9 @@ ec1b = (
 # meeting EC on a low leg due to cirrus clouds
 ec1 = (
     slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
-    ["straight_leg", "ec_track", "ec_underpass"],
+    ["straight_leg", "ec_track"],
     "EC track low leg",
-    ["intentional low flight altitude to be below cirrus clouds"]
+    ["intentional low flight altitude to be below cirrus clouds", "includes EC underpass"]
 )
 ec1c = (
     slice("2024-08-13T15:52:22", "2024-08-13T15:57:05"),
