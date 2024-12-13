@@ -141,6 +141,7 @@ sl0 = (
 sl1 = (
     slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
     ["straight_leg"],
+    "ferry constant altitude",
 )
 
 # EC track time: full track south, won't be saved to the YAML file
