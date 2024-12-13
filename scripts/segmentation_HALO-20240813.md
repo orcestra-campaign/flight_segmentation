@@ -181,6 +181,7 @@ ec2 = (
     slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
     ["straight_leg", "ec_track"],
     "EC track mid leg",
+    ["includes one dropsonde launch"],
 )
 ec2a = (
     slice("2024-08-13T17:01:53", "2024-08-13T17:05:35"),
