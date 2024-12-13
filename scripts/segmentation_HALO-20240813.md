@@ -156,6 +156,7 @@ ec = (
 ec1a = (
     slice("2024-08-13T15:04:14", "2024-08-13T15:18:00"),
     ["straight_leg", "ec_track"],
+    "southward EC track",
 )
 # in between those two segments there was a holding pattern to wait for EC
 # followed by the decision to descent to lower flight altitude befor meeting EC
