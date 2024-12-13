@@ -278,7 +278,7 @@ catr = (
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl0, sl1, ec1a, ec1b, ec1, ec1c,
                                        ec2, ec2a, ec3, sl_south,
-                                       c1, slc1c2, c2, slc2c3, c3, catr]]
+                                       c1, slc1c2a, slc1c2b, slc1c2c, c2, slc2c3a, slc2c3b, slc2c3c, c3, catr]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
