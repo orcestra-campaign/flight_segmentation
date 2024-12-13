@@ -72,7 +72,18 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ### Get PACE track
 
 ```python
-pace_track = get_PACE_track(flight_id, ds)
+load_pace = False
+
+if load_pace:
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+    
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 ```
 
 ### Get METEOR track
