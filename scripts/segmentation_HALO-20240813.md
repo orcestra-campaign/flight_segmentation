@@ -273,8 +273,6 @@ catr = (
     slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
     ["circle", "atr_coordination"],
     "ATR circle",
-    [],
-    ["circle with ATR coordination and 72km radius"],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
