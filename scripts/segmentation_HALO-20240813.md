@@ -198,6 +198,7 @@ sl_south = (
     slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
     ["straight_leg"],
     "straight leg south",
+    ["irregularity: spikes with roll angle deviation up to +-3.6 deg"],
 )
 
 c1 = (
