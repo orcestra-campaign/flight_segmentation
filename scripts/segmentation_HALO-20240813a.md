@@ -7,9 +7,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.4
   kernelspec:
-    display_name: flight_segment
+    display_name: Python 3 (ipykernel)
     language: python
-    name: flight_segment
+    name: python3
 ---
 
 # Flight segmentation HALO-20240813a
@@ -68,13 +68,18 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 Might be worth only if the flight report states a PACE coordination.
 
 <!-- #raw -->
-from get_pace import get_pace_track
-_pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+load_pace = False
 
-pace_track = _pace_track.where(
-        (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-        (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-        drop=True)
+if load_pace:
+    from get_pace import get_pace_track
+    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+    
+    pace_track = _pace_track.where(
+            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+            drop=True)
+else:
+    pace_track = None
 <!-- #endraw -->
 
 ### Get METEOR track
@@ -277,8 +282,9 @@ catr = (
 
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl0, sl1, ec1a, ec1b, ec1, ec1c,
-                                       ec2, ec2a, ec3, sl_south,
-                                       c1, slc1c2a, slc1c2b, slc1c2c, c2, slc2c3a, slc2c3b, slc2c3c, c3, catr]]
+                                       ec2, ec2a, ec3, sl_south, c1,
+                                       slc1c2a, slc1c2b, slc1c2c, c2,
+                                       slc2c3a, slc2c3b, slc2c3c, c3, catr]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
