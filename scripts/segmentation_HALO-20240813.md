@@ -205,7 +205,7 @@ c1 = (
     slice("2024-08-13 17:21:20", "2024-08-13 18:23:20"),
     ["circle"],
     "circle south",
-    ["irregularity: 18:06:02 - 18:12:08 deviation from circle track due to deep convection"],
+    ["irregularity: 18:06:02 - 18:12:08 deviation from circle track with roll angle deviations up to +-15 deg due to deep convection"],
 )
 
 slc1c2 = (
