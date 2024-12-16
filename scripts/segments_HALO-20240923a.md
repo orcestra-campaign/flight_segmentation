@@ -199,9 +199,9 @@ seg8 = (slice("2024-09-23T14:26:28", "2024-09-23T14:31:32"),
 # straight_leg and circle start still with FL change
 
 seg9 = (slice("2024-09-23T14:37:34", "2024-09-23T15:32:20"),
-        ["circle", "c_ec"],
-        "circle c_ec (on EC track)",
-        ["irregularitiy: late start due to FL change, on circle roughly since 14:32:30"]
+        ["circle"],
+        "circle around EC track",
+        ["irregularitiy: late start due to FL change, on circle roughly since 14:32:30", "irregularity: deviation from circular path due to deep convection with roll angle deviations up to +- 16 degree"]
        )
 
 seg10 = (slice("2024-09-23T15:36:28", "2024-09-23T15:57:14"),
