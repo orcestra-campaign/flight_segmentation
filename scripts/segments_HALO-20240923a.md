@@ -207,7 +207,7 @@ seg9 = (slice("2024-09-23T14:37:34", "2024-09-23T15:32:20"),
 seg10 = (slice("2024-09-23T15:36:28", "2024-09-23T15:57:14"),
          ["straight_leg"],
          "leg crossing circle c_ec",
-         ["irregularity: peak in rool angle to -5.65deg between 15:42:23-15:42:36"]
+         ["irregularity: spike in rool angle up to -5.65deg between 15:42:23-15:42:36"]
         )
 
 seg11 = (slice("2024-09-23T16:00:47", "2024-09-23T16:55:23"),
