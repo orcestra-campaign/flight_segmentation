@@ -290,7 +290,7 @@ seg21c = (slice("2024-09-23T19:42:37", "2024-09-23T19:46:56"),
 seg22 = (slice("2024-09-23T19:46:56", "2024-09-23T19:53:45"),
          ["straight_leg"],
          "straight leg overpassing Meteor at 2km height",
-         ["only BAHAMAS instrument still running"],
+         ["only BAHAMAS instrument still running", "irregularity: roll angle deviations up to +-6.7 degree"],
         )
 # again FL change
 #seg23 = (slice("2024-09-23T19:53:44", "2024-09-23T19:56:41"),)
