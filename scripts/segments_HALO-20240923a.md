@@ -256,7 +256,7 @@ seg18 = (slice("2024-09-23T19:12:57", "2024-09-23T19:16:45"),
          "straight leg 1 crossing c_west"
         )
 
-seg19 = (slice("2024-09-23T19:16:59", "2024-09-23T19:18:09"),
+seg19 = (slice("2024-09-23T19:16:59", "2024-09-23T19:18:43"),
         ["radar_calibration"],
         "radar calibration wiggle within c_west",
          ["pattern within circle west with 12 sondes"],
