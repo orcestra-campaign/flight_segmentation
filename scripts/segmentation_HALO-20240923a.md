@@ -7,9 +7,9 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.16.4
   kernelspec:
-    display_name: flight_segment
+    display_name: Python 3 (ipykernel)
     language: python
-    name: flight_segment
+    name: python3
 ---
 
 # Flight segmentation HALO-20240923a
@@ -102,8 +102,8 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-", label="METEOR track", zorder=20)
+if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if meteor_track: plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-", label="METEOR track", zorder=20)
 plt.ylim([8, 15])
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
