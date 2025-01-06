@@ -105,7 +105,7 @@ def get_ec_track(flight_id, ds):
     takeoff, landing, _ = get_takeoff_landing(flight_id, ds)
     valid_date = takeoff.astype("datetime64[D]")
     issue_dates = [valid_date - np.timedelta64(i, 'D') for i in range(0, 6)]
-    if np.datetime64(valid_date) > np.datetime64("2024-09-07T00:00:00"):
+    if np.datetime64(valid_date) >= np.datetime64("2024-09-07T00:00:00"):
         roi = "BARBADOS" # region of interest
     else:
         roi = "CAPE_VERDE"
