@@ -12,7 +12,7 @@ reports/all_flights.yaml: ${ALL_SEGMENT_FILES}
 
 flight_segment_files/%.yaml: scripts/segmentation_%.md
 	mkdir -p flight_segment_files
-	for i in {1..5}; do jupytext --use-source-timestamp --execute $< && break || sleep 1 && echo "retrying..:"; done
+	for i in $$(seq 1 5); do [ $$i -gt 1 ] && sleep 1; jupytext --use-source-timestamp --execute $< && s=0 && break || s=$$?; done; (exit $$s)
 
 reports/%.html: flight_segment_files/%.yaml scripts/report.py scripts/templates/flight.html
 	mkdir -p reports
