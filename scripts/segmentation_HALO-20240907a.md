@@ -12,11 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
-
-a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
-
-If a flight includes overpasses of a station of the Meteor, you can import and use the function `plot_overpass` from `utils` which will also print the closest time and distance to the target.
+# Flight segmentation HALO-20240907a
 
 ```python
 import matplotlib
@@ -220,21 +216,21 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-09-07T12:56:12", "2024-09-07T13:22:03"),
     ["straight_leg", "ascent"],
-    "eastward ferry",
+    "eastward ferry leg 1",
     []
 )
 
 seg2 = (
     slice("2024-09-07T13:22:03", "2024-09-07T13:53:07"),
     ["straight_leg"],
-    "eastward ferry",
+    "eastward ferry leg 2",
     []
 )
 
 seg3 = (
     slice("2024-09-07T13:53:44", "2024-09-07T13:55:33"),
     ["straight_leg"],
-    "eastward ferry",
+    "eastward ferry leg 3",
     []
 )
 
@@ -250,7 +246,7 @@ seg5 = (
     slice("2024-09-07T14:35:21", "2024-09-07T14:38:38"),
     ["straight_leg"],
     "leg inside circle",
-    []
+    ["searching for developing clouds for specMACS"]
 )
 
 seg6 = (
@@ -264,7 +260,7 @@ seg7 = (
     slice("2024-09-07T14:54:12", "2024-09-07T15:49:25"),
     ["circle"],
     "counterclockwise southern circle",
-    []
+    ["14 sondes, 2 last ones with only 23 sec time difference"]
 )
 
 seg8 = (
