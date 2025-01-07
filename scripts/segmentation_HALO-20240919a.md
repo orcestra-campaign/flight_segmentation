@@ -74,7 +74,7 @@ dist_ec, t_ec = get_overpass_track(ds, ec_track)
 Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = False
+load_pace = True
 
 if load_pace:
     from get_pace import get_pace_track
@@ -86,6 +86,7 @@ if load_pace:
             drop=True)
 else:
     pace_track = None
+dist_pace, t_pace = get_overpass_track(ds, pace_track)
 ```
 
 ### Get METEOR track
@@ -104,7 +105,10 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track:
+    plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":")
+    plt.plot(ds.lon.sel(time=t_pace, method="nearest"), ds.lat.sel(time=t_pace, method="nearest"),
+         marker="*", ls=":", label="PACE meeting point", zorder=20)
 plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
@@ -158,8 +162,8 @@ c1 = (
 sl2 = (
     slice("2024-09-19 13:36:25", "2024-09-19 13:56:00"),
     ["straight_leg"],
-    "pace track northward",
-    ["includes Meteor overpass", "includes pace_underpass"],
+    "leg crossing circle_2",
+    ["includes Meteor overpass"],
 )     
 
 c2 = (
@@ -192,7 +196,8 @@ sl3b = (
 sl3c= (
     slice("2024-09-19 16:21:16", "2024-09-19 16:27:00"),
     ["straight_leg"],
-    "straight_leg_3c",
+    "pace track underpass",
+    ["meeting PACE at 16:23:21"],
 )
 
 c4 = (
@@ -290,7 +295,7 @@ print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ```
 
-### Identify visually which straight_leg segments lie on EC track
+### Identify visually which straight_leg segments lie on EC and PACE track
 
 ```python
 seg = parse_segment(ec1)
@@ -300,7 +305,10 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track:
+    plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":")
+    plt.plot(ds.lon.sel(time=t_pace, method="nearest"), ds.lat.sel(time=t_pace, method="nearest"),
+         marker="*", ls=":", label="PACE meeting point", zorder=20)
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -309,6 +317,7 @@ plt.legend();
 ## Events
 events are different from segments in having only **one** timestamp. Examples are the usual "EC meeting points" or station / ship overpasses. In general, events include a mandatory `event_id` and `time`, as well as optional statements on `name`, a list of `kinds`, the `distance` in meters, and a list of `remarks`. Possible `kinds`include:
 - `ec_underpass`
+- `pace_underpass`
 - `meteor_overpass`
 - `bco_overpass`
 - `cvao_overpass`
@@ -317,34 +326,14 @@ The `event_id` will be added when saving it to YAML.
 
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
-
-### Identify visually which straight_leg segments lie on PACE track
-
-```python
-seg = parse_segment(sl2)
-plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
-plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
-plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
-plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
-plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
-         marker="*", ls=":", label="EC meeting point", zorder=20)
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.xlabel("longitude / °")
-plt.ylabel("latitude / °")
-plt.legend();
-```
-
 ```python
 events = [
     ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
     meteor_event(ds, meteor_track, seg=sl2),
+    pace_event(ds, pace_track),
 ]
 events
-```
-
-```python
-# get_overpass_track(ds, pace_track) 
 ```
 
 ## Save segments and events to YAML file
