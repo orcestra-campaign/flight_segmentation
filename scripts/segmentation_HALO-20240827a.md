@@ -347,11 +347,11 @@ seg15 = (
     "leg through northern circle",
     ["contains EC overpass"]
 )
-
+# 1st crossing over Meteor
 seg16 = (
     slice("2024-08-27T16:21:25", "2024-08-27T17:03:06"),
-    ["straight_leg"],
-    "ferry to ATR circle",
+    ["straight_leg", "meteor_coordination"],
+    "leg 1 overpassing METEOR",
 )
 
 seg17 = (
@@ -360,11 +360,11 @@ seg17 = (
     "steep turn",
     ["steep turn with constant roll angle, perhaps worth a new segment type `turn`?"]
 )
-
+# 2nd crossing over Meteor
 seg18 = (
     slice("2024-08-27T17:09:09", "2024-08-27T17:21:24"),
-    ["straight_leg"],
-    "back track with sonde",
+    ["straight_leg", "meteor_coordination"],
+    "leg 2 (back track) overpassing METEOR",
     ["sonde dropped at 17:13:41"]
 )
 
@@ -374,11 +374,11 @@ seg19 = (
     "name",
     ["another steep turn"]
 )
-
+# 3rd crossing over Meteor
 seg20 = (
     slice("2024-08-27T17:28:06", "2024-08-27T17:33:37"),
-    ["straight leg"],
-    "leg to ATR circle",
+    ["straight leg", "meteor_coordination"],
+    "leg 3 overpassing METEOR",
 )
 
 seg21 = (
@@ -491,6 +491,22 @@ plt.ylabel("latitude / °")
 plt.legend();
 ```
 
+### Meteor coordination
+How far was the Meteor away from the HALO track?
+Overpasses happened within three consecutive straight legs before the ATR coodination circle.
+
+
+#### Plot Meteor overpasses
+
+```python
+for s in [seg16, seg18, seg20]:
+    d = ds.sel(time=parse_segment(s)["slice"])
+    e = meteor_event(d, meteor_track)
+    print(e['meteor_lat'])
+    plt.ylim([12.9, 13.1])
+    plot_overpass_point(d, e['meteor_lat'], e['meteor_lon'])
+```
+
 ## Events
 events are different from segments in having only **one** timestamp. Examples are the usual "EC meeting points" or station / ship overpasses. In general, events include a mandatory `event_id` and `time`, as well as optional statements on `name`, a list of `kinds`, the `distance` in meters, and a list of `remarks`. Possible `kinds`include:
 - `ec_underpass`
@@ -505,12 +521,12 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "Meteor overpass",
-     "kinds": ["meteor_overpass"],
-     "time": to_dt(t_meteor),
-     "remarks": ["computed time does not match Meteor track plot and report is ambiguous", "distance could not be computed"],
-     "distance": float('nan'),
-    }
+    meteor_event(ds.sel(time=parse_segment(seg16)["slice"]), meteor_track,
+                              name="Meteor overpass 1"),
+    meteor_event(ds.sel(time=parse_segment(seg18)["slice"]), meteor_track,
+                              name="Meteor overpass 2", remarks=["dropsonde at 2024-08-27T17:13:41"]),
+    meteor_event(ds.sel(time=parse_segment(seg20)["slice"]), meteor_track,
+                              name="Meteor overpass 3"),
 ]
 events
 ```
