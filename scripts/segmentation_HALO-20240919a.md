@@ -175,9 +175,9 @@ c2 = (
 catr = (
     slice("2024-09-19 15:03:25", "2024-09-19 15:33:36"),
     ["circle"],
-    "ATR_circle",
+    "small circle",
     [],
-    ["circle with 72km radius"],
+    ["smaller radius due to time limitations"],
 )
 
 sl3a = (
@@ -250,8 +250,11 @@ sl6 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3a, sl3b, sl3c, sl4, sl5, sl6, c1, c2, catr, c4, c5]]
-
+#segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3a, sl3b, sl3c, sl4, sl5, sl6, c1, c2, catr, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2,
+                                       catr, sl3a, sl3b, sl3c,
+                                       c4, ec1, cal, c5,
+                                       sl4, sl5, dc1, sl6]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
@@ -328,10 +331,10 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
-    ec_event(ds, ec_track),
-    meteor_event(ds, meteor_track),
+    meteor_event(ds, meteor_track, seg=sl1),
     meteor_event(ds, meteor_track, seg=sl2),
     pace_event(ds, pace_track),
+    ec_event(ds, ec_track),
 ]
 events
 ```
@@ -342,4 +345,46 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in segments for k in s["kinds"])
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+### Check circle radius
+
+```python
+from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
+
+for s in flight["segments"]:
+    if "circle" not in s["kinds"]: continue
+    d = ds.sel(time=slice(s["start"], s["end"]))
+    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
+    center = LatLon(s["clat"], s["clon"], label="center")
+    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
+    print(f"Radius: {round(s["radius"])} m")
+    plt.plot(d.lon, d.lat, label="HALO track")
+    plt.legend()
+```
+
+```python
+
 ```
