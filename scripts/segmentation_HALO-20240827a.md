@@ -331,14 +331,14 @@ seg13 = (
     slice("2024-08-27T14:17:22", "2024-08-27T14:37:22"),
     ["straight_leg", "ec_track"],
     "northward leg through middle circle",
-    ["start of BAHAMAS measurement gap: 14:37:22 and 14:57:20"]
+    ["start of BAHAMAS measurement gap: 14:37:22"]
 )
 
 seg14 = (
     slice("2024-08-27T14:50:53", "2024-08-27T15:50:27"),
     ["circle"],
     "counterclockwise nothern circle",
-    ["end of BAHAMAS measurement gap: 14:37:22 and 14:57:20"]
+    ["end of BAHAMAS measurement gap: 14:57:20"]
 )
 
 seg15 = (
@@ -559,24 +559,4 @@ for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
             ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
 ax.set_xlabel("longitude / °")
 ax.set_ylabel("latitude / °");
-```
-
-### Check circle radius
-
-```python
-from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
-
-for s in flight["segments"]:
-    if "circle" not in s["kinds"]: continue
-    d = ds.sel(time=slice(s["start"], s["end"]))
-    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
-    center = LatLon(s["clat"], s["clon"], label="center")
-    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
-    print(f"Radius: {round(s["radius"])} m")
-    plt.plot(d.lon, d.lat, label="HALO track")
-    plt.legend()
-```
-
-```python
-
 ```
