@@ -7,6 +7,7 @@ __all__ = [
     "get_overpass_track",
     "get_ec_track",
     "ec_event",
+    "pace_event",
     "meteor_event",
     "target_event",
     "to_dt",
@@ -129,6 +130,15 @@ def ec_event(ds, ec_track, ec_remarks=None):
             "kinds": ["ec_underpass"],
             "distance": round(dist), #rounding to full meters
             "remarks": ec_remarks or [],
+           }
+
+def pace_event(ds, pace_track, remarks=None):
+    dist, time = get_overpass_track(ds, pace_track)
+    return {"name": "PACE meeting point",
+            "time": to_dt(time),
+            "kinds": ["pace_underpass"],
+            "distance": round(dist), #rounding to full meters
+            "remarks": remarks or [],
            }
 
 
