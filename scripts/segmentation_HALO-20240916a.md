@@ -86,6 +86,7 @@ if load_pace:
             drop=True)
 else:
     pace_track = None
+dist_pace, t_pace = get_overpass_track(ds, pace_track)
 ```
 
 ### Get METEOR track
@@ -104,7 +105,7 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
@@ -279,47 +280,20 @@ print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ```
 
-### Identify visually which straight_leg segments lie on PACE track
+### Identify visually which straight_leg segments lie on PACE or EC track
 
 ```python
-seg = parse_segment(sl4)
+seg = parse_segment(sl3c)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.xlabel("longitude / °")
-plt.ylabel("latitude / °")
-plt.legend();
-```
-
-```python
-seg = parse_segment(ec1a)
-plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
-plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
-plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
-plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
-plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
-         marker="*", ls=":", label="EC meeting point", zorder=20)
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-plt.xlabel("longitude / °")
-plt.ylabel("latitude / °")
-plt.legend();
-```
-
-### Identify visually which straight_leg segments lie on EC track
-
-```python
-seg = parse_segment(sl4)
-plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
-plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
-plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
-plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
-plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
-         marker="*", ls=":", label="EC meeting point", zorder=20)
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track: 
+    plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":")
+    plt.plot(ds.lon.sel(time=t_pace, method="nearest"), ds.lat.sel(time=t_pace, method="nearest"),
+         marker="*", ls=":", label="PACE meeting point", zorder=20)
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -328,6 +302,7 @@ plt.legend();
 ## Events
 events are different from segments in having only **one** timestamp. Examples are the usual "EC meeting points" or station / ship overpasses. In general, events include a mandatory `event_id` and `time`, as well as optional statements on `name`, a list of `kinds`, the `distance` in meters, and a list of `remarks`. Possible `kinds`include:
 - `ec_underpass`
+- `pace_underpass`
 - `meteor_overpass`
 - `bco_overpass`
 - `cvao_overpass`
@@ -337,16 +312,10 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-pace_dist, pace_op_time = get_overpass_track(ds, pace_track)
-
 events = [
     ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
-    {'name': 'PACE meeting point',
-    'time': to_dt(pace_op_time),
-    'kinds': ['pace_underpass'],
-    'distance': round(pace_dist),
-    'remarks': []}
+    pace_event(ds, pace_track),
 ]
 events
 ```
@@ -357,6 +326,44 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in segments for k in s["kinds"])
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+### Check circle radius
+
+```python
+from orcestra.flightplan import LatLon, FlightPlan, IntoCircle
+
+for s in flight["segments"]:
+    if "circle" not in s["kinds"]: continue
+    d = ds.sel(time=slice(s["start"], s["end"]))
+    start = LatLon(float(d.lat[0]), float(d.lon[0]), label="start")
+    center = LatLon(s["clat"], s["clon"], label="center")
+    FlightPlan([start, IntoCircle(center, s["radius"], 360)]).preview()
+    print(f"Radius: {round(s["radius"])} m")
+    plt.plot(d.lon, d.lat, label="HALO track")
+    plt.legend()
 ```
 
 ```python
