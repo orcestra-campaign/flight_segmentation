@@ -105,7 +105,10 @@ plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+if pace_track:
+    plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":")
+    plt.plot(ds.lon.sel(time=t_pace, method="nearest"), ds.lat.sel(time=t_pace, method="nearest"),
+         marker="*", ls=":", label="PACE meeting point", zorder=20)
 plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
