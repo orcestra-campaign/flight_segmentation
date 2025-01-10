@@ -65,55 +65,25 @@ While `event_id`, `segment_id`, as well as `time`, `start`, and `end` are mandat
 ## Definition of kinds
 Kinds may or may not apply/be adopted for all platforms. For the first version of the segmentation of HALO research flights, one or more of the following kinds are assigned to each segment:
 
-| Kind    | Description |
-| -------- | ------- |
-| circle  |     |
-| February |      |
-| March    |     |
-
-### circle:
-- can be identified by a constant change of aircraft heading, a duration of about 60 min, as well as a roughly constant roll angle of 1.5-3 degrees (positive or negative, depending on turning clockwise or counter-clockwise) for the standard circle with a radius of about 133km. Duration and roll angle change with the chosen circle radius. The smaller ATR circle has a radius of approximately 70km and a larger roll angle of 3-5 degree depending on and varying with the wind speed and direction at the respective altitude.
-- in most cases associated with the launch of dropsondes, typically 12 per circle at every 30&deg; heading. In cases where the first/last dropsonde of the circle was launched before/after the roll angle and change in heading match the circle characteristics described above, the start/end time of the circle segment is taken to be the `launch_time` of the respective dropsonde minus/plus 1 sec. 
-- Circle dropsondes were sometimes droped before/after the roll angle reached its circle value in which case the launch time of the sonde  marks the beginning/end of the circle period (minus/plus a few seconds, so that the sonde is included in the circle segment). 
-- Some circles were highly irregular due to detours around convective towers. In these cases, an irregularity note need to be added.
-
-### ATR_coordination:
-- circle that was also flown by the ATR aircraft on the same day
-
-### straight_leg:
-- can be identified by an approximately constant aircraft heading and a roll angle close to 0&deg; 
-- short-term deviations of the roll angle can occur due to turbulence and extreme cases should be mentioned as irregularities; strong deviations my also be radar calibration maneuvers in which case they need to be listed as a separate `radar_calibration` segment.
-- while segments in which the aircraft was ascending or descending are often of kind `straight_leg`, `straight_leg` segments with roughly constant altitude need to be separated from those with continuous ascent/descent.
-
-### ec_track:
-- straight leg along the EarthCARE track
-
-### ascent:
-- straight leg or circle during which the altitude was constantly increased (slight altitude changes of a few meters do not count)
-
-### descent:
-- straight leg or circle during which the altitude was constantly decreased (slight altitude changes of a few meters do not count)
-
-### radar_calibration:
-- maneuver typically conducted during straight legs, where the aircraft tilts to a roll angle of first about -20&deg; and then +20&deg;.
-- if conducted during a straight leg, the straight leg is split into three flight segments:
-1.) `straight_leg`, 2.) `radar_calibration`, 3.) `straight_leg`.
-- segments start and end at about 0&deg; roll angle.
-
-### ec_underpass:
-- defined as the time when the EC satellite is almost exactly above HALO
-
-### pace_underpass:
-- defined as the time when the PACE satellite is almost exactly above HALO
-
-### meteor_overpass:
-- defined as the time when HALO flies above or passes close by METEOR
-
-### bco_overpass:
-- defined as the time when HALO flies above or passes close by the Barbados Cloud Observatory (BCO)
-
-### mindelo_overpass:
-- defined as the time when HALO flies above or passes close by the Mindelo research station
+| kind | used for | description
+| --------| ------- | ------- |
+| ascent       | segments | assigned to straight legs or circles during which the aircraft altitude was increased systematically by more than a few meters |
+| atr_coordination | segments | assigned to circles that were also flown by the ATR aircraft on the same day |
+| bco_overpass | events | assigned to events where the aircraft almost exactly overpassed the Barbados Cloud Observatory on Barbados |
+| c_pirouette  | segments | assigned to circles that were flown around an individual cloud object |
+| circle       | segments | roughly circular flight pattern, identified by a fairly constant change of aircraft heading at roll angles between ±(1.5 to 5)&deg; roll angle, depending on circle radius; HALO flew two typical circle configurations: a standard circle with a radius of about 133km and a duration of about one hour, and an ATR circle with a radius of about 70km and a duration of about 40min; most circles were associated with the launch of dropsondes, typically 12 per circle at every 30&deg; heading; in cases where the first (last) dropsonde of the circle was launched before (after) the roll angle and change in heading match the circle characteristics described above, the start/end time of the circle segment is taken to be the `launch_time` of the respective dropsonde minus (plus) 1 second; some circles were highly irregular due to deviations around deep convection in which case this is mentioned in an irregularity remark.|
+| cvao_overpass | events | assigned to events where the aircraft almost exactly overpassed the Cape Verde Atmospheric Observatory in Mindelo|
+| descent      | segments | assigned to straight legs or circles during which the aircraft altitude was decreased systematically by more than a few meters |
+| ec_track     | segments | assigned to straight legs during which the aircraft followed the EarthCare track |
+| ec_underpass | events | assigned to events where the aircraft almost exactly underpassed the EarthCARE satellite |
+| meteor_coordination | segments | assigned to circles that were flown around or in the vicinity of the Meteor research vessel |
+| meteor_overpass | events | assigned to events where the aircraft almost exactly overpassed the Meteor research vessel |
+| pace_track | segments | assigned to straight legs during which the aircraft followed the PACE track; note that measurements taken in other segments may also be colocated with PACE due to the satellite's wide swath. |
+| pace_underpass | events | assigned to events where the aircraft almost exactly underpassed the PACE satellite |
+| radar_calibration | segments | flight maneuver typically conducted on a straight leg, where the aircraft's roll angle is alternated once or twice between around ±20&deg;; the segment starts and ends at about 0&deg; roll angle.|
+| straight_leg | segments | flight pattern with approximately constant heading and a roll angle close to 0&deg;; short-term roll angle deviations beyond ±2&deg; due to turbulence are mentioned as irregularities in the remarks attribute|
+| circle_clockwise | segments | assigned to circles that were flown in clockwise direction (i. e. with a positive roll angle) |
+| circle_counterclockwise | segments | assigned to circles that were flown in counterclockwise direction (i. e. with negative roll angle) |
 
 
 ## Workflow for HALO segmentation - general overview
