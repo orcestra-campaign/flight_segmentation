@@ -162,7 +162,7 @@ sl4 = (
 
 c1a = (
     slice("2024-09-14T12:55:49", "2024-09-14T13:54:25"),#55:35
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle 1a",
     ["heavy problems with dropsonde reck resulted in only three dropsonde profiles"]
 )
@@ -186,13 +186,13 @@ slc1c2 = (
 
 c2 = (
     slice("2024-09-14T14:52:41", "2024-09-14T15:50:44"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle 2",
 )
 
 c3 = (
     slice("2024-09-14T15:54:54", "2024-09-14T16:54:20"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle 3",
     ["irregularity: roll angle deviations up to 3.4 degree at 16:12:32, 16:17:02, 16:48:04, and 16:50:04"],
 )
@@ -213,7 +213,7 @@ ec2 = (
 )
 c4 = (
     slice("2024-09-14T17:40:41", "2024-09-14T18:36:44"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle 4",
 )
 

@@ -15,7 +15,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation HALO-2024-09-26a
+# Flight segmentation HALO20240926a
 
 ```python
 import matplotlib
@@ -150,7 +150,7 @@ sl1 = (
 
 c1 = (
     slice("2024-09-26T12:26:03", "2024-09-26T13:20:10"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle_1",
 )
 
@@ -162,7 +162,7 @@ sl2 = (
 
 c2 = (
     slice("2024-09-26T13:30:59", "2024-09-26T14:24:30"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle_2",
     ["irregularity: roll angle deviation of +0.8 between 14:11:10 and 14:19:25"]
 )
@@ -181,7 +181,7 @@ sl3 = (
 
 c3 = (
     slice("2024-09-26T14:49:50", "2024-09-26T15:46:40"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle_3",
 )
 
@@ -205,7 +205,7 @@ sl4 = (
 
 c4 = (
     slice("2024-09-26T16:06:15", "2024-09-26T17:12:00"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle_4",
     ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"]
 )
@@ -221,7 +221,7 @@ ec1 = (
 
 c5 = (
     slice("2024-09-26T18:25:26", "2024-09-26T19:17:46"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle_5",
     ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"]
 )

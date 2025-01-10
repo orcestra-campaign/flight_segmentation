@@ -157,7 +157,7 @@ ec1 = (
 
 c1 = (
     slice("2024-08-18T11:24:25", "2024-08-18T12:18:04"),
-    ["circle"], "circle_north", [],
+    ["circle", "circle_counterclockwise"], "circle_north", [],
 )
 
 ec2 = (
@@ -168,7 +168,7 @@ ec2 = (
 
 c2 = (
     slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
-    ["circle"], "circle_mid",
+    ["circle", "circle_clockwise"], "circle_mid",
     ["irregularity: turbulence"],
 )
 
@@ -180,7 +180,7 @@ ec3 = (
 
 c3 = (
     slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
-    ["circle"], "circle_south", [],
+    ["circle", "circle_clockwise"], "circle_south", [],
 )
 
 ec4 = (
@@ -192,12 +192,12 @@ ec4 = (
 
 c_bm1 = (
     slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
-    ["circle", "c_pirouette"], "C_pirouette_small", [],
+    ["circle", "c_pirouette", "circle_clockwise"], "C_pirouette_small", [],
 )
 
 c_bm2 = (
     slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
-    ["circle", "c_pirouette"], "C_pirouette_large",
+    ["circle", "c_pirouette", "circle_clockwise"], "C_pirouette_large",
     ["irregularity: minor turbulences 2024-08-18T17:20:00 - 2024-08-18T17:33:23"],
 )
 

@@ -179,8 +179,8 @@ seg6 = (
 
 seg7 = (
     slice("2024-08-25T11:56:28", "2024-08-25T12:52:34"),
-    ["circle"],
-    "southern counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "southern circle",
     []
 )
 
@@ -193,8 +193,8 @@ seg8 = (
 
 seg9 = (
     slice("2024-08-25T13:18:30", "2024-08-25T14:14:36"),
-    ["circle"],
-    "middle counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "middle circle",
     []
 )
 
@@ -221,8 +221,8 @@ seg12 = (
 
 seg13 = (
     slice("2024-08-25T14:41:41", "2024-08-25T15:36:41"),
-    ["circle"],
-    "northern counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "northern circle",
     []
 )
 
@@ -270,7 +270,7 @@ seg19 = (
 
 seg20 = (
     slice("2024-08-25T17:56:30", "2024-08-25T18:34:32"),
-    ["circle", "atr_coordination"],
+    ["circle", "atr_coordination", "circle_counterclockwise"],
     "ATR circle",
     []
 )

@@ -168,7 +168,7 @@ sl1c = (
 
 c1 = (
     slice("2024-09-28T12:34:43", "2024-09-28T13:32:02"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "cirlce_1",
     ["irregularity: early start due to first sonde. Roll angle stable after 12:35:03."],
 )
@@ -181,7 +181,7 @@ sl2 = (
 
 c2 = (
     slice("2024-09-28T13:42:16", "2024-09-28T14:37:51"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "cirlce_2",
     ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
      "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
@@ -211,7 +211,7 @@ sl3c = (
 
 c3 = (
     slice("2024-09-28T15:27:44", "2024-09-28T16:23:17"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "cirlce_3",
 )
 
@@ -223,7 +223,7 @@ sl4 = (
 
 c4 = (
     slice("2024-09-28T16:33:57", "2024-09-28T17:28:58"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "cirlce_4 with pace underpass",
     ["circle path crosses PACE track"]
 )
@@ -256,7 +256,7 @@ sl5b = (
 
 c5 = (
     slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle_5",
     ["circle path crosses PACE track"]
 )

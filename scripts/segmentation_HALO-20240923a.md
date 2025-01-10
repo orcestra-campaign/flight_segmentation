@@ -122,9 +122,7 @@ if foto:
         plt.scatter(da_foto.lon, da_foto.lat, color='C1', marker='o', s = 10, zorder=100)
 ```
 
-<!-- #region jp-MarkdownHeadingCollapsed=true -->
 ## Interactive plots
-<!-- #endregion -->
 
 ```python
 ds["alt"].hvplot()
@@ -153,13 +151,13 @@ seg1 = (slice("2024-09-23T11:17:49", "2024-09-23T11:18:39"),
 
 # climbing circle (with Meteor overpass)
 seg2 = (slice("2024-09-23T11:21:42", "2024-09-23T11:54:32"),
-        ["ascent", "circle"],
+        ["ascent", "circle", "circle_clockwise"],
         "climbing circle",
         ["circle to climb up to FL410", "including 2nd METEOR overpass"],
        )
 # Meteor measurement circle (with Meteor overpass) on FL410
 seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
-        ["circle", "meteor_coordination"],
+        ["circle", "meteor_coordination", "circle_clockwise"],
         "Meteor circle",
         ["irregularity: roll angle deviations up to +-6 degree from segment start until 11:56:20 due to deep convection",
          "including 3rd METEOR overpass",
@@ -181,7 +179,7 @@ seg4c = (slice("2024-09-23T12:44:10", "2024-09-23T13:08:51"),
        )
 
 seg6 = (slice("2024-09-23T13:12:20", "2024-09-23T14:07:30"),
-        ["circle"],
+        ["circle", "circle_clockwise"],
         "circle c_mid",
         ["irregularity: deviation from circular path due to deep convection with roll angle deviations up to +-28 degree between 13:21:57 - 13:31:10"],
        )
@@ -199,7 +197,7 @@ seg8 = (slice("2024-09-23T14:26:28", "2024-09-23T14:31:32"),
 # straight_leg and circle start still with FL change
 
 seg9 = (slice("2024-09-23T14:37:34", "2024-09-23T15:32:20"),
-        ["circle"],
+        ["circle", "circle_clockwise"],
         "circle around EC track",
         ["irregularitiy: late start due to FL change, on circle roughly since 14:32:30", "irregularity: deviation from circular path due to deep convection with roll angle deviations up to +- 16 degree"]
        )
@@ -211,7 +209,7 @@ seg10 = (slice("2024-09-23T15:36:28", "2024-09-23T15:57:14"),
         )
 
 seg11 = (slice("2024-09-23T16:00:47", "2024-09-23T16:55:23"),
-         ["circle"],
+         ["circle", "circle_counterclockwise"],
          "circle south",
          ["irregularity: deviation from circular path due to deep convection in southern half, 16:15:30 - 16:18:30, with roll angle deviations up to +-30 degree.",
           "irregularity: deviation from circular path due to deep convection in northern half, from 16:47:06 until the segment ends, with roll angle deviations up to +-28 degree."]
@@ -247,7 +245,7 @@ seg16 = (slice("2024-09-23T18:03:17", "2024-09-23T18:12:36"),
         )
 
 seg17 = (slice("2024-09-23T18:15:51", "2024-09-23T19:10:36"),
-        ["circle"],
+        ["circle", "circle_clockwise"],
         "circle west",
         )
 

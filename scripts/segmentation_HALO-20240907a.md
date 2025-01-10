@@ -111,96 +111,15 @@ plt.legend();
 ## Interactive plots
 
 ```python
-import holoviews as hv
-c1 = 'ForestGreen'
-c2 = 'Purple'
-c3 = 'Orange'
-c4 = 'Blue'
-lw = 2
-
-tko = hv.VLine(takeoff).opts(color = c1, line_width = lw)
-ldn = hv.VLine(landing).opts(color = c1, line_width = lw)
-
-# segment boundaries  
-seg1s = hv.VLine(pd.Timestamp("2024-09-07T12:56:12")).opts(color = c2, line_width = lw) # straight_leg ascent
-seg1e = hv.VLine(pd.Timestamp("2024-09-07T13:22:03")).opts(color = c2, line_width = lw)
-
-seg2s = hv.VLine(pd.Timestamp("2024-09-07T13:22:03")).opts(color = c3, line_width = lw) # straight_leg
-seg2e = hv.VLine(pd.Timestamp("2024-09-07T13:53:07")).opts(color = c3, line_width = lw)
-
-seg3s = hv.VLine(pd.Timestamp("2024-09-07T13:53:44")).opts(color = c4, line_width = lw) # straight_leg
-seg3e = hv.VLine(pd.Timestamp("2024-09-07T13:55:33")).opts(color = c4, line_width = lw)
-
-seg4s = hv.VLine(pd.Timestamp("2024-09-07T13:56:21")).opts(color = c1, line_width = lw) # straight_leg
-seg4e = hv.VLine(pd.Timestamp("2024-09-07T14:27:45")).opts(color = c1, line_width = lw)
-
-seg5s = hv.VLine(pd.Timestamp("2024-09-07T14:35:21")).opts(color = c2, line_width = lw) # straight_leg
-seg5e = hv.VLine(pd.Timestamp("2024-09-07T14:38:38")).opts(color = c2, line_width = lw)
-
-seg6s = hv.VLine(pd.Timestamp("2024-09-07T14:43:35")).opts(color = c3, line_width = lw) # straight_leg
-seg6e = hv.VLine(pd.Timestamp("2024-09-07T14:51:22")).opts(color = c3, line_width = lw)
-
-seg7s = hv.VLine(pd.Timestamp("2024-09-07T14:54:12")).opts(color = c4, line_width = lw) # counterclockwise circle
-seg7e = hv.VLine(pd.Timestamp("2024-09-07T15:49:25")).opts(color = c4, line_width = lw)
-
-seg8s = hv.VLine(pd.Timestamp("2024-09-07T15:53:28")).opts(color = c1, line_width = lw) # straight_leg
-seg8e = hv.VLine(pd.Timestamp("2024-09-07T15:55:18")).opts(color = c1, line_width = lw)
-
-seg9s = hv.VLine(pd.Timestamp("2024-09-07T15:59:33")).opts(color = c2, line_width = lw) # counterclockwise circle
-seg9e = hv.VLine(pd.Timestamp("2024-09-07T17:01:03")).opts(color = c2, line_width = lw)
-
-seg10s = hv.VLine(pd.Timestamp("2024-09-07T17:05:28")).opts(color = c3, line_width = lw) # straight_leg ascent
-seg10e = hv.VLine(pd.Timestamp("2024-09-07T17:08:09")).opts(color = c3, line_width = lw)
-
-seg11s = hv.VLine(pd.Timestamp("2024-09-07T17:10:25")).opts(color = c4, line_width = lw) # straight_leg
-seg11e = hv.VLine(pd.Timestamp("2024-09-07T17:36:23")).opts(color = c4, line_width = lw)
-
-# Inbetween these segments there are a couple of seeminly straight legs where the heading is constant but the roll angle is around 1.2 degrees.
-
-seg12s = hv.VLine(pd.Timestamp("2024-09-07T17:51:40")).opts(color = c1, line_width = lw) # clockwise circle
-seg12e = hv.VLine(pd.Timestamp("2024-09-07T18:59:37")).opts(color = c1, line_width = lw)
-
-seg13s = hv.VLine(pd.Timestamp("2024-09-07T19:02:48")).opts(color = c2, line_width = lw) # straight_leg
-seg13e = hv.VLine(pd.Timestamp("2024-09-07T19:31:16")).opts(color = c2, line_width = lw)
-
-seg14s = hv.VLine(pd.Timestamp("2024-09-07T19:32:37")).opts(color = c3, line_width = lw) # straight_leg
-seg14e = hv.VLine(pd.Timestamp("2024-09-07T19:36:31")).opts(color = c3, line_width = lw)
-
-seg15s = hv.VLine(pd.Timestamp("2024-09-07T19:38:24")).opts(color = c4, line_width = lw) # straight_leg
-seg15e = hv.VLine(pd.Timestamp("2024-09-07T19:46:37")).opts(color = c4, line_width = lw)
-
-seg16s = hv.VLine(pd.Timestamp("2024-09-07T19:47:48")).opts(color = c1, line_width = lw) # straight_leg
-seg16e = hv.VLine(pd.Timestamp("2024-09-07T20:14:41")).opts(color = c1, line_width = lw)
-
-seg17s = hv.VLine(pd.Timestamp("2024-09-07T20:16:46")).opts(color = c2, line_width = lw) # straight_leg descent
-seg17e = hv.VLine(pd.Timestamp("2024-09-07T20:22:00")).opts(color = c2, line_width = lw)
-
-seg18s = hv.VLine(pd.Timestamp("2024-09-07T20:22:19")).opts(color = c3, line_width = lw) # straight_leg descent
-seg18e = hv.VLine(pd.Timestamp("2024-09-07T20:35:50")).opts(color = c3, line_width = lw)
-
-seg19s = hv.VLine(pd.Timestamp("2024-09-07T20:36:50")).opts(color = c4, line_width = lw) # straight_leg descent irregularity: turbulences (roll angles beyond plus/minus 1 degree)
-seg19e = hv.VLine(pd.Timestamp("2024-09-07T20:40:31")).opts(color = c4, line_width = lw)
+ds["alt"].hvplot()
 ```
 
 ```python
-alt = ds["alt"].hvplot()
-alt * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
+ds["heading"].hvplot()
 ```
 
 ```python
-heading = ds["heading"].hvplot()
-heading * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e 
-```
-
-```python
-roll = ds["roll"].hvplot()
-roll * tko * ldn * \
- seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
- seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e * seg18s * seg18e * seg19s * seg19e
+ds["roll"].hvplot()
 ```
 
 ## Segments
@@ -258,8 +177,8 @@ seg6 = (
 
 seg7 = (
     slice("2024-09-07T14:54:12", "2024-09-07T15:49:25"),
-    ["circle"],
-    "counterclockwise southern circle",
+    ["circle", "circle_counterclockwise"],
+    "southern circle",
     ["14 sondes, 2 last ones with only 23 sec time difference"]
 )
 
@@ -272,8 +191,8 @@ seg8 = (
 
 seg9 = (
     slice("2024-09-07T15:59:33", "2024-09-07T17:01:03"),
-    ["circle"],
-    "counterclockwise middle circle",
+    ["circle", "circle_counterclockwise"],
+    "middle circle",
     ["irregularities: permission denied for some sondes which were then dropped on straight leg through circle instead"]
 )
 
@@ -293,8 +212,8 @@ seg11 = (
 
 seg12 = (
     slice("2024-09-07T17:51:40", "2024-09-07T18:59:37"),
-    ["circle"],
-    "clockwise northern circle",
+    ["circle", "circle_clockwise"],
+    "northern circle",
     ["more than full circle"]
 )
 

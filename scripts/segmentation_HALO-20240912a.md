@@ -15,7 +15,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
+# Flight segmentation HALO-20240912a
 
 a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
 
@@ -121,88 +121,16 @@ plt.legend();
 
 ## Interactive plots
 
-```python jupyter={"source_hidden": true}
-# c1 = 'ForestGreen'
-# c2 = 'Purple'
-# c3 = 'Orange'
-# c4 = 'Blue'
-# lw = 2
-
-# takeoff = hv.VLine(pd.Timestamp("2024-09-12T11:29:50")).opts(color = c1, line_width = lw)
-# landing = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c1, line_width = lw)
-
-# # segment boundaries  
-# seg1s = hv.VLine(pd.Timestamp("2024-09-12T11:33:02")).opts(color = c2, line_width = lw) #
-# seg1e = hv.VLine(pd.Timestamp("2024-09-12T11:46:57")).opts(color = c2, line_width = lw)
-
-# seg2s = hv.VLine(pd.Timestamp("2024-09-12T11:52:44")).opts(color = c3, line_width = lw) #
-# seg2e = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c3, line_width = lw)
-
-# seg3s = hv.VLine(pd.Timestamp("2024-09-12T12:01:28")).opts(color = c4, line_width = lw) #
-# seg3e = hv.VLine(pd.Timestamp("2024-09-12T12:35:09")).opts(color = c4, line_width = lw)
-
-# seg4s = hv.VLine(pd.Timestamp("2024--09-12T12:36:26")).opts(color = c1, line_width = lw) #
-# seg4e = hv.VLine(pd.Timestamp("2024-09-12T13:02:59")).opts(color = c1, line_width = lw)
-
-# seg5s = hv.VLine(pd.Timestamp("2024-09-12T13:06:18")).opts(color = c2, line_width = lw) #circle
-# seg5e = hv.VLine(pd.Timestamp("2024-09-12T14:02:18")).opts(color = c2, line_width = lw)
-
-# seg6s = hv.VLine(pd.Timestamp("2024-09-12T14:06:42")).opts(color = c3, line_width = lw)
-# seg6e = hv.VLine(pd.Timestamp("2024-09-12T14:12:06")).opts(color = c3, line_width = lw)
-
-# seg7s = hv.VLine(pd.Timestamp("2024-09-12T14:18:20")).opts(color = c1, line_width = lw) #circle
-# seg7e = hv.VLine(pd.Timestamp("2024-09-12T15:10:37")).opts(color = c1, line_width = lw)
-
-# seg8s = hv.VLine(pd.Timestamp("2024-09-12T15:13:08")).opts(color = c2, line_width = lw) #
-# seg8e = hv.VLine(pd.Timestamp("2024-09-12T15:18:19")).opts(color = c2, line_width = lw)
-
-# seg9s = hv.VLine(pd.Timestamp("2024-09-12T15:22:30")).opts(color = c3, line_width = lw) #
-# seg9e = hv.VLine(pd.Timestamp("2024-09-12T15:45:40")).opts(color = c3, line_width = lw)
-
-# seg10s = hv.VLine(pd.Timestamp("2024-09-12T15:46:03")).opts(color = c2, line_width = lw) #small circle holding pattern
-# seg10e = hv.VLine(pd.Timestamp("2024-09-12T15:51:48")).opts(color = c2, line_width = lw)
-
-# seg11s = hv.VLine(pd.Timestamp("2024-09-12T15:56:35")).opts(color = c4, line_width = lw) #circle
-# seg11e = hv.VLine(pd.Timestamp("2024-09-12T17:03:46")).opts(color = c4, line_width = lw)
-
-# seg12s = hv.VLine(pd.Timestamp("2024-09-12T17:12:26")).opts(color = c1, line_width = lw) #
-# seg12e = hv.VLine(pd.Timestamp("2024-09-12T17:53:12")).opts(color = c1, line_width = lw)
-
-# seg13s = hv.VLine(pd.Timestamp("2024-09-12T17:55:29")).opts(color = c2, line_width = lw) #circle
-# seg13e = hv.VLine(pd.Timestamp("2024-09-12T18:55:02")).opts(color = c2, line_width = lw)
-
-# seg14s = hv.VLine(pd.Timestamp("2024-09-12T18:56:07")).opts(color = c3, line_width = lw) #
-# seg14e = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c3, line_width = lw)
-
-# seg15s = hv.VLine(pd.Timestamp("2024-09-12T19:41:13")).opts(color = c4, line_width = lw) #
-# seg15e = hv.VLine(pd.Timestamp("2024-09-12T19:45:16")).opts(color = c4, line_width = lw)
-
-# seg16s = hv.VLine(pd.Timestamp("2024-09-12T19:46:30")).opts(color = c1, line_width = lw) #
-# seg16e = hv.VLine(pd.Timestamp("2024-09-12T19:58:55")).opts(color = c1, line_width = lw)
-
-# seg17s = hv.VLine(pd.Timestamp("2024-09-12T20:01:27")).opts(color = c2, line_width = lw) #
-# seg17e = hv.VLine(pd.Timestamp("2024-09-12T20:05:05")).opts(color = c2, line_width = lw)
+```python
+ds["alt"].hvplot()
 ```
 
-```python jupyter={"source_hidden": true}
-# alt = ds["alt"].hvplot()
-# alt * takeoff * landing * \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-# seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
+```python
+ds["heading"].hvplot()
 ```
 
-```python jupyter={"source_hidden": true}
-# heading = ds["heading"].hvplot()
-# heading * takeoff * landing * \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
-```
-
-```python jupyter={"source_hidden": true}
-# roll = ds["roll"].hvplot()
-# roll * takeoff * landing * \
-#  seg1s * seg1e * seg2s * seg2e * seg3s * seg3e * seg4s * seg4e * seg5s * seg5e * seg6s * seg6e * seg7s * seg7e * seg8s * seg8e * seg9s * seg9e * \
-#  seg10s * seg10e * seg11s * seg11e * seg12s * seg12e * seg13s * seg13e * seg14s * seg14e * seg15s * seg15e * seg16s * seg16e * seg17s * seg17e
+```python
+ds["roll"].hvplot()
 ```
 
 ## Segments
@@ -242,8 +170,8 @@ seg4 = (
 
 seg5 = (
     slice("2024-09-12T13:06:53", "2024-09-12T14:02:18"),
-    ["circle"],
-    "clockwise eastern circle",
+    ["circle", "circle_clockwise"],
+    "eastern circle",
 )
 
 seg6 = (
@@ -255,8 +183,8 @@ seg6 = (
 
 seg7 = (
     slice("2024-09-12T14:18:20", "2024-09-12T15:10:37"),
-    ["circle"],
-    "counterclockwise north-eastern circle",
+    ["circle", "circle_counterclockwise"],
+    "north-eastern circle",
 )
 
 seg8 = (
@@ -280,8 +208,8 @@ seg9 = (
 
 seg11 = (
     slice("2024-09-12T16:03:30", "2024-09-12T17:03:44"),
-    ["circle"],
-    "counterclockwise north-western circle",
+    ["circle", "circle_counterclockwise"],
+    "north-western circle",
 )
 
 seg12 = (
@@ -293,8 +221,8 @@ seg12 = (
 
 seg13 = (
     slice("2024-09-12T17:56:13", "2024-09-12T18:55:00"),
-    ["circle"],
-    "clockwise western circle",
+    ["circle", "circle_clockwise"],
+    "western circle",
 )
 
 seg14 = (
