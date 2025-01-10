@@ -1,19 +1,27 @@
-<!-- #region -->
-# Segmentation of flights during ORCESTRA
+# Segmentation of HALO research flights
 
-The research flights during ORCESTRA can be divided into segments which are specific time intervals with coherent characteristics during a flight. The coherent characteristics, referred to as "kinds", either refer to the aircraft state during a flight maneuver as read out from the aircraft position and attitude data (e.g. fairly contant heading and roll angle on a `straight_leg` or a fairly circular flight path on a `circle`), or to colocated measurements (in space and/or time) with the EarthCARE (EC) satellite or other campaign platforms such as the ATR aircraft (example kinds would be `ec_track` or `ATR_coordination`). Apart from time intevalls called `segments`, the flight segmentation also contains single points in time referred to as `events` which provide, for instance, the time at which the aircraft was closest in space and time to the EC satellite (`ec_underpass`) or Meteor research vessel (`meteor_overpass`), or at which it directly flew over a ground measurement station such as the CVAO in Mindelo (`cvao_overpass`) or the BCO on Barbados (`bco_overpass`).
+The research flights during ORCESTRA can be divided into segments which are specific time intervals during a flight with coherent characteristics. The coherent characteristics, referred to as "kinds", typically refer to the aircraft's state during a flight maneuver as read out from the aircraft position and flight attitude data, such as a roughly contant heading, altitude, and roll angle on a `straight_leg`, or a fairly circular flight path on a `circle`. Further, kinds may indicate colocated measurements with the EarthCARE (EC) satellite (`ec_track`) or other campaign platforms such as the ATR aircraft (`atr_coordination`). Apart from time *intevals* referred to as `segments`, the flight segmentation also contains *single points in time* referred to as `events` which also get specified by kinds and mark, for instance, the time at which the aircraft was closest in space and time to the EC satellite (`ec_underpass`), the Meteor research vessel (`meteor_overpass`), or ground measurement stations such as the CVAO in Mindelo (`cvao_overpass`) or the BCO on Barbados (`bco_overpass`).
 
-The goal of the flight segmentation is to provide a commonly agreed upon, consistent, and easy-to-use subsampling functionality that can be used by reserachers who work with the ORCESTRA measurement data. For instance, all studies that analyse data taken on circular flight paths can use the flight segmentation to select segments of kind `circle`, and are thereby guaranteed to refer to the same commonly agreed upon subset of the campaign data. The `events` further enable the selection of colocated measurements that can directly be compared with each other.
+The goal of the flight segmentation is to provide a commonly agreed upon, consistent, and easy-to-use subsampling functionality that can be used by reserachers who work with the ORCESTRA measurement data. For instance, studies concerned with the EarthCARE validation can select all segments of kind `ec_track` to obtain all time intervals in which HALO was flying on the EarthCARE track. Similarly, all studies that analyse data taken on circular flight paths can use the flight segmentation to select segments of kind `circle`, and are thereby guaranteed to refer to the same commonly agreed upon subset of the campaign data. The `events` further enable the selection of colocated measurements that can directly be compared with each other.
 
-Segments from all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) (which gets its input from segmentation markdown-files for all individual flights stored in the [flight segmentation github repository](https://github.com/orcestra-campaign/flight_segmentation/tree/main)).
+The segments of all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) which gets its input from segmentation markdown-files for all individual flights. These segmentation files are stored in [scripts](https://github.com/orcestra-campaign/flight_segmentation/tree/main/scripts) and act as the single point of truth for the definition of segments. A Github CI executes all segmentation files and updates the all_flights.yaml upon each commit to this repository. This allows collaborators to add or modify segments and events as they see fit.
+
+A tutorial with practical examples for how to import and use the flight segmentation for data analyses are provided on the [ORCESTRA campaign website](https://orcestra-campaign.org/halo_flight_segmentation.html).
 
 
-belonging to a specific research flight are specified in a yaml-file (stored in [flight_segment_files](flight_segment_files/)) whose name corresponds to the respective flight-ID (e.g. `HALO-20240813a.yaml`). While each segment, defined by a given start and end time, is uniquely labelled with a `segment_id`, any given time during a flight may belong to one or several segments. For instance, segments of kind `ec_underpass` typically lie within another segment of kind `straight_leg`. This allows flights to be segmented in multiple ways and at multiple levels of granularity. However, as a convention, it is advised that a time or time window may not belong to more than one segment _of the same kind_. Apart from the example of overpasses and underpasses, the first version of the flight segmentation will not contain overlapping segments and coarser segments can be added by collaborators lateron as they see fit.
+## Structure of the all_flights.yaml file
+The example excerpt from the all_flights.yaml file below demonstrates the structure of the flight segmentation. 
 
-## Structure of yaml-files
-Every yaml-file begins with a header consisting of the flight's `nickname` taken from [flight reports](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) if available, `mission` (ORCESTRA), `platform` (HALO, ATR, METEOR,..), `flight_id` (e.g. HALO-20240813a), and `segments`. The latter lists all identified flight segments.
+#### File and flight header
+Allowing for other sub-campaigns to include their flight/ship track segmentation, the file begins with a general header stating the campaign platform (HALO, ATR, METEOR,...) followed by the `flight_id` (e.g. HALO-20240811a) of the first segmented flight, and general information about this flight: Its `mission` affiliation (ORCESTRA), `platform`, `flight_id`, as well as `takeoff` and `landing` time. 
 
-The general structure of a segment within the yaml files looks as follows:
+#### Events
+Next, `events` lists all the single points in time when underpasses and overpasses occurred. An event is specified by a *unique* `event_id`, constructed from the `flight_id` and a 4-digit hash computed from the event `time`, a `name`, a `time`, and the event `kinds` (e.g. ec_underpass). [LINK TO KINDS SECTION] The attribute `remarks` may contain custom comments about irregularities or other noteworthy information. Last, the `distance` between HALO and the other platform (e.g. EarthCARE satellite), as projected on the Earth's surface, is provided in meters.
+
+#### Segments
+After the event listing, `segments` lists all identified flight segments which follow a similar structure as `events` with a *unique* `segment_id`, a name, a specification of the time interval by a `start` and `end` time (which both enter the computation of the hash used for `segment_id`), `kinds`, and `remarks`.
+
+#### General remarks on events and segments attributes
 Mandatory components:
 - `segment_id`: unique identifier of the segment, constructed as the combination of the `flight_id` and the last four digits of a hash computed from the start and end time of the segment
 - `start`: start time of the segment in format `YYYY-MM-DD HH:MM:SS`, e.g. 2024-08-13 14:56:37. 
@@ -24,34 +32,45 @@ Optional components:
 - `irregularities`: lists irregularities such as deviations from envisioned flight track due to deep convection, or circles in which no sondes were dropped. Generally meant to be a free text field for proper explanations, this category may contain some standardized *irregularity tags* (**to be decided on**) for automatic checking, and these should be prepended to the explanatory string of the irregularity.
 - `comments`: lists custom comments such as the distance to the exact EC overpass position in the case of an `ec_overpass` segment
 
-First entries of an example file:
+Example excerpt from the all_flights.yaml file:
 ```yaml
-nickname: EarthCARE echo
-mission: ORCESTRA
-platform: HALO
-flight_id: HALO-20240816a
-takeoff: 2024-08-16 11:06:34
-landing: 2024-08-16 21:59:33
-segments:
-- kinds:
-  - straight_leg
-  name: ferry ascent
-  segment_id: HALO-20240816a_kd78
-  start: 2024-08-16 11:39:05
-  end: 2024-08-16 12:06:58
-  irregularities: [strange spike in roll angle at 12:01:37]
-  comments: []
-- kinds:
-  - straight_leg
-  - ec_track
-  name: ec track southwards
-  segment_id: HALO-20240816a_0k2e
-  start: 2024-08-16 12:06:58
-  end: 2024-08-16 12:51:55
-  irregularities: []
-  comments: []
+HALO:
+  HALO-20240811a:
+    mission: ORCESTRA
+    platform: HALO
+    flight_id: HALO-20240811a
+    takeoff: 2024-08-11 11:59:34
+    landing: 2024-08-11 20:35:56
+    events:
+      - event_id: HALO-20240811a_243c
+        name: EC meeting point
+        time: 2024-08-11 15:51:53.745187
+        kinds:
+          - ec_underpass
+        remarks: []
+        distance: 1123
+    segments:
+      - segment_id: HALO-20240811a_7051
+        name: EC_track_southward_const_alt
+        start: 2024-08-11 12:29:59
+        end: 2024-08-11 14:03:40
+        kinds:
+          - straight_leg
+          - ec_track
+        remarks:
+          - 'irregularity: turbulence 2024-08-11T13:02:15 - 2024-08-11T13:12:00'
+      - segment_id: HALO-20240811a_50ca
+        name: circle_south
+        start: 2024-08-11 14:17:00
+        end: 2024-08-11 15:16:17
+        kinds:
+          - circle
+        remarks: []
+        clat: 5.000066183128026
+        clon: -26.999928980187303
+        radius: 133094.75108481143
 ```
-<!-- #endregion -->
+
 
 **Note:** Time ranges are defined as semi-open intervals, i.e. while the start time is inside the segment, the end time is not. This allows for an unambiguous definition of exactly consecutive segments. In the case of underpass and overpass segments, the start and end times are identical.
 
