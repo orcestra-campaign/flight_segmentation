@@ -10,29 +10,8 @@ A tutorial with practical examples for how to import and use the flight segmenta
 
 
 ## Structure of the all_flights.yaml file
-The example excerpt from the all_flights.yaml file below demonstrates the structure of the flight segmentation. 
+The following excerpt from the all_flights.yaml file, further explained below, demonstrates the structure of the flight segmentation:
 
-#### File and flight header
-Allowing for other sub-campaigns to include their flight/ship track segmentation, the file begins with a general header stating the campaign platform (HALO, ATR, METEOR,...) followed by the `flight_id` (e.g. HALO-20240811a) of the first segmented flight, and general information about this flight: Its `mission` affiliation (ORCESTRA), `platform`, `flight_id`, as well as `takeoff` and `landing` time. 
-
-#### Events
-Next, `events` lists all the single points in time when underpasses and overpasses occurred. An event is specified by a *unique* `event_id`, constructed from the `flight_id` and a 4-digit hash computed from the event `time`, a `name`, a `time`, and the event `kinds` (e.g. ec_underpass). [LINK TO KINDS SECTION] The attribute `remarks` may contain custom comments about irregularities or other noteworthy information. Last, the `distance` between HALO and the other platform (e.g. EarthCARE satellite), as projected on the Earth's surface, is provided in meters.
-
-#### Segments
-After the event listing, `segments` lists all identified flight segments which follow a similar structure as `events` with a *unique* `segment_id`, a name, a specification of the time interval by a `start` and `end` time (which both enter the computation of the hash used for `segment_id`), `kinds`, and `remarks`.
-
-#### General remarks on events and segments attributes
-Mandatory components:
-- `segment_id`: unique identifier of the segment, constructed as the combination of the `flight_id` and the last four digits of a hash computed from the start and end time of the segment
-- `start`: start time of the segment in format `YYYY-MM-DD HH:MM:SS`, e.g. 2024-08-13 14:56:37. 
-- `end`: end time of the segment in same format as start time. 
-Optional components:
-- `kinds`: Can be thought of as tags which label coherent characteristics of the flight segment. See a list of all tags currently in use below.
-- `name`: Short (1 - 3 words) qualitative description of the segment, does not have to be unique
-- `irregularities`: lists irregularities such as deviations from envisioned flight track due to deep convection, or circles in which no sondes were dropped. Generally meant to be a free text field for proper explanations, this category may contain some standardized *irregularity tags* (**to be decided on**) for automatic checking, and these should be prepended to the explanatory string of the irregularity.
-- `comments`: lists custom comments such as the distance to the exact EC overpass position in the case of an `ec_overpass` segment
-
-Example excerpt from the all_flights.yaml file:
 ```yaml
 HALO:
   HALO-20240811a:
@@ -71,11 +50,26 @@ HALO:
         radius: 133094.75108481143
 ```
 
+#### File and flight header
+In order to allow other sub-campaigns to add their flight/ship track segmentation, the file begins with a general header stating the campaign platform (HALO, ATR, METEOR,...), followed by the segmentation information for the individual research flights which are each denoted by their `flight_id` (e.g. HALO-20240811a). Each flight has the following attributes: `mission` affiliation (ORCESTRA), `platform`, `flight_id`, `takeoff` and `landing` time, `events`, and `segments`. Times are generally provided in format `YYYY-MM-DD HH:MM:SS`.
 
-**Note:** Time ranges are defined as semi-open intervals, i.e. while the start time is inside the segment, the end time is not. This allows for an unambiguous definition of exactly consecutive segments. In the case of underpass and overpass segments, the start and end times are identical.
+#### Events
+The `events` attribute lists all the single points in time when underpasses and overpasses occurred. An event is specified by a *unique* `event_id`, constructed from the `flight_id` and a 4-digit hash computed from the event `time`, a `name` (a short qualitative description), a `time`, and the event `kinds` (e.g. ec_underpass). The attribute `remarks` may contain custom comments about irregularities or other noteworthy information. Last, the `distance` between HALO and the other platform (e.g. EarthCARE satellite), as projected on the Earth's surface, is provided in meters.
+
+#### Segments
+After the event listing, `segments` lists all identified flight segments which follow a similar structure as `events` with a *unique* `segment_id`, a name, a specification of the time interval by a `start` and `end` time (which both enter the computation of the hash used for `segment_id`), `kinds`, and `remarks`. Note that the time ranges, constructed from `start` and `end` are defined as semi-open intervals, i.e. while the start time is inside the segment, the end time is not. This allows for an unambiguous definition of exactly consecutive segments. For segments of kind `circle`, the latitude and longitude of the circle center, as well as the circle radius in meters are added as additional attributes. As for events, the `remarks` attribute lists free text comments, including irregularities such as deviations from envisioned flight track due to deep convection or roll angle spikes due to turbulence which one may want to exclude from scientific analysis. To enable automated checking, such irregularity remarks start with "irregularity:".
+
+While `event_id`, `segment_id`, as well as `time`, `start`, and `end` are mandatory attributes for events and segments, the other attributes are optional although providing the `kinds` attribute, which can be thought of as tags, is highly recommended because it constitutes the primary filtering criterion. A list of all tags currently in use is provided below.
+
 
 ## Definition of kinds
-Kinds may or may not apply/be adopted for all platforms. For version 1 of the segmentation of HALO flights, one or more of the following kinds are assigned to each segment:
+Kinds may or may not apply/be adopted for all platforms. For the first version of the segmentation of HALO research flights, one or more of the following kinds are assigned to each segment:
+
+| Kind    | Description |
+| -------- | ------- |
+| circle  |     |
+| February |      |
+| March    |     |
 
 ### circle:
 - can be identified by a constant change of aircraft heading, a duration of about 60 min, as well as a roughly constant roll angle of 1.5-3 degrees (positive or negative, depending on turning clockwise or counter-clockwise) for the standard circle with a radius of about 133km. Duration and roll angle change with the chosen circle radius. The smaller ATR circle has a radius of approximately 70km and a larger roll angle of 3-5 degree depending on and varying with the wind speed and direction at the respective altitude.
