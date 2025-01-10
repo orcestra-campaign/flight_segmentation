@@ -4,9 +4,9 @@ The research flights during ORCESTRA can be divided into segments which are spec
 
 The goal of the flight segmentation is to provide a commonly agreed upon, consistent, and easy-to-use subsampling functionality that can be used by reserachers who work with the ORCESTRA measurement data. For instance, studies concerned with the EarthCARE validation can select all segments of kind `ec_track` to obtain all time intervals in which HALO was flying on the EarthCARE track. Similarly, all studies that analyse data taken on circular flight paths can use the flight segmentation to select segments of kind `circle`, and are thereby guaranteed to refer to the same commonly agreed upon subset of the campaign data. The `events` further enable the selection of colocated measurements that can directly be compared with each other.
 
-The segments of all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) which gets its input from segmentation markdown-files for all individual flights. These segmentation files are stored in [scripts](https://github.com/orcestra-campaign/flight_segmentation/tree/main/scripts) and act as the single point of truth for the definition of segments. A Github CI executes all segmentation files and updates the all_flights.yaml upon each commit to this repository. This allows collaborators to add or modify segments and events as they see fit.
+The segments of all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) which gets its input from segmentation markdown-files for all individual flights. These segmentation files are stored in [flight_segmentation/scripts](https://github.com/orcestra-campaign/flight_segmentation/tree/main/scripts) and act as the single point of truth for the definition of segments. A Github CI executes all segmentation files and updates the all_flights.yaml upon each commit to this repository. This allows collaborators to add or modify segments and events as they see fit.
 
-A tutorial with practical examples for how to import and use the flight segmentation for data analyses are provided on the [ORCESTRA campaign website](https://orcestra-campaign.org/halo_flight_segmentation.html).
+A tutorial with practical examples for how to import and use the flight segmentation for data analyses with python are provided on the [ORCESTRA campaign website](https://orcestra-campaign.org/halo_flight_segmentation.html).
 
 
 ## Structure of the all_flights.yaml file
@@ -85,30 +85,31 @@ Kinds may or may not apply/be adopted for all platforms. For the first version o
 | circle_clockwise | segments | assigned to circles that were flown in clockwise direction (i. e. with a positive roll angle) |
 | circle_counterclockwise | segments | assigned to circles that were flown in counterclockwise direction (i. e. with negative roll angle) |
 
+<!-- #region -->
+## HALO segmentation workflow for developers
 
-## Workflow for HALO segmentation - general overview
 The flight segmentation workflow broadly consists of three phases:
 1. Segmentation of a flight
 2. Review of the segmentation in pairs (the person who performed the segmentation + one other colleague)
 3. Handover of the final flight segmentation (along with suggestions for how to improve the flight report where necessary) to the corresponding flight-PI for cross-checking.
 
-### For developers
-The following workflow for generating the flight segmentation YAML files is suggested:
 
-1. Install the requirements noted [here](environment.yaml) as well as the [IPFS Desktop App](https://docs.ipfs.tech/install/ipfs-desktop/), e.g. on Mac via `brew install --cask ipfs`.
-2. Build a respective python environment, e.g. `mamba  env create -f environment.yaml`
-3. Assign yourself to an open segmentation issue of this repository.
-4. Use a copy of the file `scripts/segmentation_template.md`, open it as ipython notebook, and load the BAHAMAS and dropsonde data to determine the individual segments, using a mix of bokeh and other plots of roll angle, altitude, heading or other measures.
-5. Save your segments from the notebook to a YAML file.
-6. test and check the YAML file using the `scripts/report.py`: `python3 scripts/report.py flight_segment_files/HALO-20240813a.yaml reports/HALO-20240813a.html`. This will create an HTML file that you can be opened in any browser and check the details of the flight segments.
-7. If necessary, adjust the times and further info in the notebook and update the YAML file. Redo step 4 until you are satisfied with all segments.
-8. Add your final YAML file to the repository by creating a pull request and assigning a reviewer. Don't add the `reports/*.html` files. THey will be generated automatically when you do the pull request and serve as a first check to validate the new YAML file.
-9. Review your yaml file together with one other colleague
-10. Check for inconsistencies with the flight report and send corresponding suggestions for improvement, together with your reviewed flight segmentation to the respective flight-PI for final feedback.
+How to contribute to the flight segmentation:
 
+1. Fork the flight segmentation repository
+2. Install the requirements noted [here](environment.yaml) as well as the [IPFS Desktop App](https://docs.ipfs.tech/install/ipfs-desktop/), e.g. on Mac via `brew install --cask ipfs`.
+3. Build a respective python environment, e.g. `mamba  env create -f environment.yaml`
+4. Assign yourself to an existing open segmentation issue of this repository or a new one that you created for your development goal.
+5. Make a change to an existing segmentation file in `scripts` by opening it as an ipython notebook, or create a new segmentation file by making a copy of the file `scripts/segmentation_template.md`, renaming it accordingly. In the case of a new file, load the BAHAMAS and dropsonde data to determine the individual segments, using a mix of bokeh and other plots of roll angle, altitude, heading or other measures.
+7. Test the build of the `all_flight.yaml` by executing `make -j` in your terminal
+9. Add your final YAML file to the repository by creating a pull request and assigning a reviewer.
+10. Review your yaml file together with one other colleague
+11. Check for inconsistencies with the [flight report](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) and send corresponding suggestions for improvement, together with your reviewed flight segmentation to the respective flight-PI for final feedback.
+<!-- #endregion -->
 
-## Reading the files
+## Further information
 
+#### YAML files
 The flight segmentation data is provided in YAML files. YAML is a text based, human readable data format that uses python-like indentation for structuring its contents. It is often used for configuration files and due to its great human readability very suited for version control, which is one reason we wanted to use it here.
 For python users, the module [PyYAML](https://pyyaml.org) (included in Anaconda) offers an easy to use way to read the data from the yaml files into plane python objects like lists and dictionaries.
 Here is an example to read a file and print the circle start and end times from that file:
@@ -119,9 +120,9 @@ flightinfo = yaml.load(open("HALO_20240813a.yaml"))
 print([(c["start"], c["end"]) for c in flightinfo["segments"] if "circle" in c["kinds"]])
 ```
 
-## Further information
-
+#### Legacy
 The segmentation copies and adapts many ideas from the [flight segmentation](https://github.com/eurec4a/flight-phase-separation) conducted for the EUREC4A field campaign.
 
-Further information on the respective flight can be found in the
-[flight reports](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports).
+```python
+
+```
