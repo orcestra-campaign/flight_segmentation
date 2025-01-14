@@ -73,30 +73,32 @@ No EC track and EC underpass on this flight.
 
 ```python
 ec_track = get_ec_track(flight_id, ds)
-#dist_ec, t_ec = get_overpass_track(ds, ec_track)
+dist_ec, t_ec = get_overpass_track(ds, ec_track)
 ```
 
 ### Get PACE track
+No coordinationg with PACE during November flights
+
 **loading the PACE track for the first time takes 6-7 minutes!**
 Might be worth only if the flight report states a PACE coordination. Based on your decision, choose `load_pace = True` or `load_pace = False`!
 
 ```python
-load_pace = False
+# load_pace = False
 
-if load_pace:
-    from get_pace import get_pace_track
-    _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
+# if load_pace:
+#     from get_pace import get_pace_track
+#     _pace_track = get_pace_track(to_dt(takeoff), to_dt(landing))
     
-    pace_track = _pace_track.where(
-            (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
-            (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
-            drop=True)
-else:
-    pace_track = None
+#     pace_track = _pace_track.where(
+#             (_pace_track.lat > ds.lat.min()-2) & (_pace_track.lat < ds.lat.max()+2) &
+#             (_pace_track.lon > ds.lon.min()-2) & (_pace_track.lon < ds.lon.max()+2),
+#             drop=True)
+# else:
+#     pace_track = None
 ```
 
 ### Get METEOR track
-No coordination with Meteor anymore on this flight.
+No coordination with Meteor during November flights.
 
 ```python
 #from orcestra.meteor import get_meteor_track
@@ -109,9 +111,9 @@ No coordination with Meteor anymore on this flight.
 ```python
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)), label="HALO track")
 #plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
-#plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
-#plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
-if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
+plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
+plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
+#if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
 #plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
@@ -121,7 +123,26 @@ plt.legend();
 ## Interactive plots
 
 ```python
-ds["alt"].hvplot()
+import holoviews as hv
+
+c1 = 'ForestGreen'
+c2 = 'Purple'
+c3 = 'Orange'
+c4 = 'Blue'
+lw = 2
+```
+
+```python
+tko = hv.VLine(pd.Timestamp("2024-11-05T10:20:07")).opts(color = c1, line_width = lw)
+ldn = hv.VLine(pd.Timestamp("2024-11-05T18:39:04")).opts(color = c1, line_width = lw)
+
+#seg1s = hv.VLine(pd.Timestamp("2024-09-07T12:56:12")).opts(color = c2, line_width = lw) # straight_leg ascent
+#seg1e = hv.VLine(pd.Timestamp("2024-09-07T13:22:03")).opts(color = c2, line_width = lw)
+```
+
+```python
+alt = ds["alt"].hvplot()
+alt * tko * ldn
 ```
 
 ```python
