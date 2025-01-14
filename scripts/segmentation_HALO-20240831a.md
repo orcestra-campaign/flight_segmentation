@@ -197,8 +197,8 @@ seg8 = (
 
 seg9 = (
     slice("2024-08-31T11:22:15", "2024-08-31T12:19:36"),
-    ["circle"],
-    "southern counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "southern circle",
     []
 )
 
@@ -225,8 +225,8 @@ seg12 = (
 
 seg13 = (
     slice("2024-08-31T12:52:25", "2024-08-31T13:48:01"),
-    ["circle"],
-    "middle counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "middle circle",
     ["irregularity: turbulence with up to plus/minus 4.5 degree roll angle deviation"]
 )
 
@@ -240,8 +240,8 @@ seg14 = (
 
 seg15 = (
     slice("2024-08-31T14:19:59", "2024-08-31T15:16:01"),
-    ["circle"],
-    "northern counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "northern circle",
     []
 )
 
@@ -268,7 +268,7 @@ seg18 = (
 
 seg19 = (
     slice("2024-08-31T16:27:38", "2024-08-31T17:03:55"),
-    ["circle", "atr_coordination"],
+    ["circle", "atr_coordination", "circle_clockwise"],
     "ATR circle",
     []
 )

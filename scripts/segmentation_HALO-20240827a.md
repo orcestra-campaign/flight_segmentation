@@ -12,7 +12,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation for HALO-20240827a
+# Flight segmentation HALO-20240827a
 
 ```python
 import matplotlib
@@ -198,8 +198,8 @@ seg10 = (
 
 seg11 = (
     slice("2024-08-27T11:59:38", "2024-08-27T12:56:05"),
-    ["circle"],
-    "counterclockwise southern circle",
+    ["circle", "circle_counterclockwise"],
+    "southern circle",
 )
 
 seg12 = (
@@ -215,8 +215,8 @@ seg13 = (
 
 seg14 = (
     slice("2024-08-27T13:14:37", "2024-08-27T14:14:09"),
-    ["circle"],
-    "counterclockwise middle circle",
+    ["circle", "circle_counterclockwise"],
+    "middle circle",
     ["irregularity: due to turbulences at 13:36:46-13:38:08 and 14:02:03-14:03:21"]
 )
 
@@ -229,8 +229,8 @@ seg15 = (
 
 seg16 = (
     slice("2024-08-27T14:50:53", "2024-08-27T15:50:27"),
-    ["circle"],
-    "counterclockwise nothern circle",
+    ["circle", "circle_counterclockwise"],
+    "nothern circle",
     ["end of BAHAMAS measurement gap: 14:57:20"]
 )
 
@@ -272,8 +272,8 @@ seg21 = (
 
 seg22 = (
     slice("2024-08-27T17:43:57", "2024-08-27T18:19:07"),
-    ["circle", "ATR_coordination"],
-    "counterclockwise ATR circle",
+    ["circle", "ATR_coordination", "circle_counterclockwise"],
+    "ATR circle",
     ["sonde failures"]
 )
 

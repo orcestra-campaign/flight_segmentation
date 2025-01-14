@@ -15,7 +15,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation HALO-2024-09-19a
+# Flight segmentation HALO-20240919a
 
 ```python
 import matplotlib
@@ -154,7 +154,7 @@ sl1 = (
 
 c1 = (
     slice("2024-09-19 12:35:30", "2024-09-19 13:30:35"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle_1",
     ["irregularity: turbulence 12:32:30 - 12:48:00 with up to +-25 deg roll angle deviation"],
 )
@@ -168,13 +168,13 @@ sl2 = (
 
 c2 = (
     slice("2024-09-19 13:58:32", "2024-09-19 14:53:20"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle_2",
 )
 
 catr = (
     slice("2024-09-19 15:03:25", "2024-09-19 15:33:36"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "small circle",
     [],
     ["smaller radius due to time limitations"],
@@ -202,7 +202,7 @@ sl3c= (
 
 c4 = (
     slice("2024-09-19 16:30:13", "2024-09-19 17:25:15"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle_4",
 )
 
@@ -221,7 +221,7 @@ cal = (
 
 c5 = (
     slice("2024-09-19 18:04:55", "2024-09-19 19:04:15"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "circle_5",
 )
 

@@ -163,7 +163,7 @@ ec5 = (
 
 c1 = (
     slice("2024-08-16T13:56:46", "2024-08-16T14:52:39"),
-    ["circle"], "circle_south",
+    ["circle", "circle_counterclockwise"], "circle_south",
     ["irregularity: turbulences up to plus/minus 4 degree roll angle deviation",
     ],
 )
@@ -175,7 +175,7 @@ ec6 = (
 
 c2 = (
     slice("2024-08-16T15:06:35", "2024-08-16T16:01:44"),
-    ["circle"], "circle_mid", [],
+    ["circle", "circle_clockwise"], "circle_mid", [],
 )
 
 ec61 = (
@@ -198,7 +198,7 @@ ec8 = (
 
 c3 = (
     slice("2024-08-16T16:53:56", "2024-08-16T17:49:40"),
-    ["circle"], "circle_north", [],
+    ["circle", "circle_clockwise"], "circle_north", [],
 )
 
 sl3 = (
@@ -209,7 +209,7 @@ sl3 = (
 
 catr = (
     slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
-    ["circle", "atr_coordination"], "ATR_circle", [],
+    ["circle", "atr_coordination", "circle_clockwise"], "ATR_circle", [],
 )
 
 sl4 = (

@@ -177,8 +177,8 @@ seg6 = (
 
 seg7 = (
     slice("2024-08-29T14:05:48", "2024-08-29T15:04:22"),
-    ["circle"],
-    "counterclockwise southern circle"
+    ["circle", "circle_counterclockwise"],
+    "southern circle"
 )
 
 seg8 = (
@@ -204,7 +204,7 @@ seg10 = (
 
 seg11 = (
     slice("2024-08-29T16:11:49", "2024-08-29T17:02:01"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "middle circle with turn",
     ["irregularity: circle not completed due to active convection",
      "irregularity: first sonde dropped before entering the circle",
@@ -219,8 +219,8 @@ seg12 = (
 
 seg13 = (
     slice("2024-08-29T17:39:30", "2024-08-29T18:40:31"),
-    ["circle"],
-    "counterclockwise northern circle",
+    ["circle", "circle_counterclockwise"],
+    "northern circle",
 )
 
 seg14 = (
@@ -251,7 +251,7 @@ seg17 = (
 
 seg18 = (
     slice("2024-08-29T19:09:18", "2024-08-29T19:46:09"),
-    ["circle", "ATR_coordination"],
+    ["circle", "ATR_coordination", "circle_clockwise"],
     "ATR circle",
 )
 

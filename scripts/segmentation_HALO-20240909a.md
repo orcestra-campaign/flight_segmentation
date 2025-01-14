@@ -150,7 +150,7 @@ sl2 = (
 
 c1 = (
     slice("2024-09-09T13:49:10", "2024-09-09T14:45:24"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle south",
 )
 
@@ -168,7 +168,7 @@ slc1_2 = (
 
 c2 = (
     slice("2024-09-09T15:13:57", "2024-09-09T16:09:04"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle mid",
 )
 
@@ -193,7 +193,7 @@ ec_south = (
 
 c3 = (
     slice("2024-09-09T17:35:00", "2024-09-09T18:30:50"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle north",
     ["irregularity: early start of circle due to dropsondes, constant roll angle after 17:35:19"]
 )

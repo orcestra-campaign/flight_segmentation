@@ -15,7 +15,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation template
+# Flight segmentation  HALO-20240821a
 
 a template for flight segmentation developers to work your way through the flight track piece by piece and define segments in time. An EC track and circles are exemplarily shown for 2024-08-13. A YAML file containing the segment time slices as well as optionally specified `kinds`, `name`, `irregularities` or `comments` is generated at the end.
 
@@ -172,8 +172,8 @@ seg5 = (
 
 seg6 = (
     slice("2024-08-21T14:09:58", "2024-08-21T15:06:16"),
-    ["circle"],
-    "southern clockwise circle",
+    ["circle", "circle_clockwise"],
+    "southern circle",
     ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation"]
 )
 
@@ -185,8 +185,8 @@ seg7 = (
 
 seg8 = (
     slice("2024-08-21T15:15:38", "2024-08-21T16:12:19"),
-    ["circle"],
-    "middle counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "middle circle",
     ["no sondes dropped due to air traffic", "irregularity: turbulence up to plus/minus 7 degree roll angle deviation"]
 )
 
@@ -198,15 +198,15 @@ seg9 = (
 
 seg10 = (
     slice("2024-08-21T16:54:01", "2024-08-21T17:50:05"),
-    ["circle"],
+    ["circle", "circle_clockwise"],
     "northern clockwise circle",
     ["slight deviation from circular path between 17:41:12 and 17:45:54 with up to plus/minus 30 degree roll angle deviation"],
 )
 
 seg11 = (
     slice("2024-08-21T17:54:24", "2024-08-21T18:51:27"),
-    ["circle"],
-    "extra northmost counterclockwise circle",
+    ["circle", "circle_counterclockwise"],
+    "extra northmost circle",
 )
 
 seg12 = (

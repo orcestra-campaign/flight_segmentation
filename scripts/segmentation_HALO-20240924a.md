@@ -15,7 +15,7 @@ jupyter:
     name: python3
 ---
 
-# Flight segmentation HALO-2024-09-24a
+# Flight segmentation HALO-20240924a
 
 ```python
 import matplotlib
@@ -167,7 +167,8 @@ sl1 = (
 
 c1 = (
     slice("2024-09-24 16:15:45", "2024-09-24 17:10:30"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
+    "first pancake circle",
     ["irregularity: deviations from circular path due to convection"],
 )
 
@@ -230,14 +231,16 @@ sl5b = (
 
 c2 = (
     slice("2024-09-24 18:56:00", "2024-09-24 20:02:00"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
+    "second pancake circle",
     ["irregularity: deviations from circlular path due to convection"
     "irregularity: ascent between 18:56:58 - 19:05:08"],
 )
 
 c3 = (
     slice("2024-09-24 20:02:00", "2024-09-24 21:06:00"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
+    "third pancake circle",
     ["irregularity: deviations from circlular path due to convection"
     "circle includes only eight drop sonde launches due to air traffic restrictions"],
 )

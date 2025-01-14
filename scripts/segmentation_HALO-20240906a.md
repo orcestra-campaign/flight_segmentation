@@ -227,7 +227,7 @@ sl13_2 = (
 
 c1 = (
     slice("2024-09-06T15:23:12", "2024-09-06T16:21:35"),
-    ["circle"],
+    ["circle", "circle_counterclockwise"],
     "circle west",
 )
 # c1_1 = (
