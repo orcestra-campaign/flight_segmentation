@@ -3,12 +3,21 @@
 **TL;DR: The HALO flight segmentation is available at [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) and from the [orcestra python package](https://github.com/orcestra-campaign/pyorcestra).**
 
 
-The research flights during ORCESTRA can be divided into segments which are specific time intervals during a flight with coherent characteristics. The coherent characteristics, referred to as "kinds", typically refer to the aircraft's state during a flight maneuver as read out from the aircraft position and flight attitude data, such as a roughly constant heading, altitude, and roll angle on a `straight_leg`, or a fairly circular flight path on a `circle`. Further, kinds may indicate colocated measurements with the EarthCARE (EC) satellite (`ec_track`) or other campaign platforms such as the ATR aircraft (`atr_coordination`). Apart from time *intervals* referred to as `segments`, the flight segmentation also contains *single points in time* referred to as `events` which also get specified by kinds and mark, for instance, the time at which the aircraft was closest in space and time to the EC satellite (`ec_underpass`), the Meteor research vessel (`meteor_overpass`), or ground measurement stations such as the CVAO in Mindelo (`cvao_overpass`) or the BCO on Barbados (`bco_overpass`).
+The research flights during ORCESTRA can be divided into segments which are specific time intervals during a flight with coherent characteristics. 
+The coherent characteristics, referred to as "kinds", typically refer to the aircraft's state during a flight maneuver as read out from the aircraft position and flight attitude data, such as a roughly constant heading, altitude, and roll angle on a `straight_leg`, or a fairly circular flight path on a `circle`. 
+Further, kinds may indicate colocated measurements with the EarthCARE (EC) satellite (`ec_track`) or other campaign platforms such as the ATR aircraft (`atr_coordination`).
+Apart from time *intervals* referred to as `segments`, the flight segmentation also contains *single points in time* referred to as `events` which also get specified by kinds and mark, for instance, the time at which the aircraft was closest in space and time to the EC satellite (`ec_underpass`), the Meteor research vessel (`meteor_overpass`), or ground measurement stations such as the CVAO in Mindelo (`cvao_overpass`) or the BCO on Barbados (`bco_overpass`).
 
-The goal of the flight segmentation is to provide a commonly agreed upon, consistent, and easy-to-use subsampling functionality that can be used by reserachers who work with the ORCESTRA measurement data. For instance, studies concerned with the EarthCARE validation can select all segments of kind `ec_track` to obtain all time intervals in which HALO was flying on the EarthCARE track. Similarly, all studies that analyse data taken on circular flight paths can use the flight segmentation to select segments of kind `circle`, and are thereby guaranteed to refer to the same commonly agreed upon subset of the campaign data. The `events` further enable the selection of colocated measurements that can directly be compared with each other.
+The goal of the flight segmentation is to provide a commonly agreed upon, consistent, and easy-to-use subsampling functionality that can be used by reserachers who work with the ORCESTRA measurement data. 
+For instance, studies concerned with the EarthCARE validation can select all segments of kind `ec_track` to obtain all time intervals in which HALO was flying on the EarthCARE track.
+Similarly, all studies that analyse data taken on circular flight paths can use the flight segmentation to select segments of kind `circle`, and are thereby guaranteed to refer to the same commonly agreed upon subset of the campaign data. 
+The `events` further enable the selection of colocated measurements that can directly be compared with each other.
 
 ## Finding the file and working with it
-The segments of all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) which gets its input from segmentation notebooks for all individual flights. Note that these executable notebooks are saved as markdown files to facilitate a reasonable git workflow and track changes. These segmentation files are stored in [flight_segmentation/scripts](https://github.com/orcestra-campaign/flight_segmentation/tree/main/scripts) and act as the single point of truth for the definition of segments. The Github workflows defined in the current repository execute all segmentation files and create and publish the `all_flights.yaml` upon each commit to this repository. Collaborators are encouraged to add or modify segments and events as they see fit.
+The segments of all reasearch flights are specified and stored in a yaml-file called [all_flights.yaml](https://orcestra-campaign.github.io/flight_segmentation/all_flights.yaml) which gets its input from segmentation notebooks for all individual flights. 
+Note that these executable notebooks are saved as markdown files to facilitate a reasonable git workflow and track changes. 
+These segmentation files are stored in [flight_segmentation/scripts](https://github.com/orcestra-campaign/flight_segmentation/tree/main/scripts) and act as the single point of truth for the definition of segments. 
+The Github workflows defined in the current repository execute all segmentation files and create and publish the `all_flights.yaml` upon each commit to this repository. Collaborators are encouraged to add or modify segments and events as they see fit.
 
 A tutorial with practical examples for how to import and use the flight segmentation for data analyses with python are provided on the [ORCESTRA campaign website](https://orcestra-campaign.org/halo_flight_segmentation.html).
 
@@ -54,19 +63,37 @@ HALO:
         radius: 133094.75108481143
 ```
 
-We make use of a typical YAML block style for structuring the segmentation data. In order to allow other sub-campaigns to add their flight/ship track segmentation, the file begins with a general block stating the campaign platform (HALO, ATR, METEOR,...). The second level is formed by blocks containing the segmentation information for individual research flights denoted by their `flight_id` (e.g. HALO-20240811a). Each flight-block includes a mapping of the following attributes: `mission` affiliation (ORCESTRA), `platform`, `flight_id`, `takeoff` and `landing` time, `events`, and `segments`. The two attributes `events`and `segements` are special in the sense that they each include a list of respective events or flight segments from the corresponding research flight. Times are generally provided in format `YYYY-MM-DD HH:MM:SS`.
+We make use of a typical YAML block style for structuring the segmentation data. 
+In order to allow other sub-campaigns to add their flight/ship track segmentation, the file begins with a general block stating the campaign platform (HALO, ATR, METEOR,...). 
+The second level is formed by blocks containing the segmentation information for individual research flights denoted by their `flight_id` (e.g. HALO-20240811a). 
+Each flight-block includes a mapping of the following attributes: `mission` affiliation (ORCESTRA), `platform`, `flight_id`, `takeoff` and `landing` time, `events`, and `segments`. 
+The two attributes `events`and `segements` are special in the sense that they each include a list of respective events or flight segments from the corresponding research flight. 
+Times are generally provided in format `YYYY-MM-DD HH:MM:SS`.
 
 #### Events
-The `events` attribute lists all the single points in time when underpasses and overpasses occurred. An event is specified by a *unique* `event_id`, constructed from the `flight_id` and a hash computed from the event `time`, a `name` (a short qualitative description), a `time`, and the event `kinds` (e.g. ec_underpass). The attribute `remarks` may contain custom comments about irregularities or other noteworthy information. Last, the `distance` between HALO and the other platform (e.g. EarthCARE satellite), as projected on the Earth's surface, is provided in meters. In case of an event that describes a meeting point with another moving platform, e.g. the Meteor ship, the coordinates in the form of latitude and longitude of that second moving platform are stated, too. For instance, in the case of a `meteor_overpass`, the key/value pairs for `meteor_lat`and `meteor_lon` would be added to the event.
+The `events` attribute lists all the single points in time when underpasses and overpasses occurred. 
+An event is specified by a *unique* `event_id`, constructed from the `flight_id` and a hash computed from the event `time`, a `name` (a short qualitative description), a `time`, and the event `kinds` (e.g. ec_underpass). 
+The attribute `remarks` may contain custom comments about irregularities or other noteworthy information. 
+Last, the `distance` between HALO and the other platform (e.g. EarthCARE satellite), as projected on the Earth's surface, is provided in meters. 
+In case of an event that describes a meeting point with another moving platform, e.g. the Meteor ship, the coordinates in the form of latitude and longitude of that second moving platform are stated, too. 
+For instance, in the case of a `meteor_overpass`, the key/value pairs for `meteor_lat`and `meteor_lon` would be added to the event.
 
 #### Segments
-After the event listing, `segments` lists all identified flight segments which follow a similar structure as `events` with a *unique* `segment_id`, a `name`, a specification of the time interval by a `start` and `end` time (which both enter the computation of the hash used for `segment_id`), `kinds`, and `remarks`. Note that the time ranges, constructed from `start` and `end` are defined as semi-open intervals, i.e. while the start time is inside the segment, the end time is not. This allows for an unambiguous definition of exactly consecutive segments. For segments of kind `circle`, the latitude `clat` and longitude `clon` of the circle center, as well as the circle `radius` in meters are added as additional attributes. As for events, the `remarks` attribute lists free text comments, including irregularities such as deviations from the envisioned flight track due to deep convection or roll angle spikes due to turbulence which one may want to exclude from scientific analysis. To enable automated checking, such irregularity remarks start with "irregularity:".
+After the event listing, `segments` lists all identified flight segments which follow a similar structure as `events` with a *unique* `segment_id`, a `name`, a specification of the time interval by a `start` and `end` time (which both enter the computation of the hash used for `segment_id`), `kinds`, and `remarks`. 
+Note that the time ranges, constructed from `start` and `end` are defined as semi-open intervals, i.e. while the start time is inside the segment, the end time is not. 
+This allows for an unambiguous definition of exactly consecutive segments. 
+For segments of kind `circle`, the latitude `clat` and longitude `clon` of the circle center, as well as the circle `radius` in meters are added as additional attributes. 
+As for events, the `remarks` attribute lists free text comments, including irregularities such as deviations from the envisioned flight track due to deep convection or roll angle spikes due to turbulence which one may want to exclude from scientific analysis. 
+To enable automated checking, such irregularity remarks start with "irregularity:".
 
-While `event_id`, `segment_id`, as well as `time`, `start`, and `end` are mandatory attributes for events and segments, all other attributes are optional. Nevertheless, providing the `kinds` attribute, which can be thought of as tags, is highly recommended because it constitutes the primary filtering criterion. A list of all tags currently in use is provided below.
+While `event_id`, `segment_id`, as well as `time`, `start`, and `end` are mandatory attributes for events and segments, all other attributes are optional. 
+Nevertheless, providing the `kinds` attribute, which can be thought of as tags, is highly recommended because it constitutes the primary filtering criterion. 
+A list of all tags currently in use is provided below.
 
 
 ## Definition of kinds
-Kinds may or may not apply/be adopted for all platforms. For the first version of the segmentation of HALO research flights, one or more of the following kinds are assigned to each segment or event:
+Kinds may or may not apply/be adopted for all platforms. 
+For the first version of the segmentation of HALO research flights, one or more of the following kinds are assigned to each segment or event:
 
 | kind | used for | description
 | --------| ------- | ------- |
@@ -103,17 +130,23 @@ How to contribute to the flight segmentation:
 2. Install the requirements noted [here](environment.yaml) as well as the [IPFS Desktop App](https://docs.ipfs.tech/install/ipfs-desktop/), e.g. on Mac via `brew install --cask ipfs`.
 3. Build a respective python environment, e.g. `mamba env create -f environment.yaml`
 4. Assign yourself to an existing open segmentation issue of this repository or a new one that you created for your development goal.
-5. Make a change to an existing segmentation file in `scripts` by opening it as an ipython notebook, or create a new segmentation file by making a copy of the file `scripts/segmentation_template.md`, renaming it accordingly. In the case of a new file, load the BAHAMAS and dropsonde data to determine the individual segments, using a mix of bokeh and other plots of roll angle, altitude, heading or other measures. The corresponding [flight report](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) aids the identification of irregularities and rare flight maneuvers such as instrument calibrations.
+5. Make a change to an existing segmentation file in `scripts` by opening it as an ipython notebook, or create a new segmentation file by making a copy of the file `scripts/segmentation_template.md`, renaming it accordingly. 
+In the case of a new file, load the BAHAMAS and dropsonde data to determine the individual segments, using a mix of bokeh and other plots of roll angle, altitude, heading or other measures. The corresponding [flight report](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) aids the identification of irregularities and rare flight maneuvers such as instrument calibrations.
 7. Test the build of the `all_flight.yaml` by executing `make -j` in the top level folder of your cloned repository.
 9. Add your final notebook file to the repository by creating a pull request and assigning a reviewer.
-10. Review your segmentation together with one other colleague. You can use the automated HTML reports generated by the Makefile. Locally they are available at `/reports/*.html` after executing `make -j`. When a PR is merged, the GitHub workflows generate and publish all files from the `/reports` folder at https://orcestra-campaign.github.io/flight_segmentation/.
+10. Review your segmentation together with one other colleague. 
+You can use the automated HTML reports generated by the Makefile. 
+Locally they are available at `/reports/*.html` after executing `make -j`.
+When a PR is merged, the GitHub workflows generate and publish all files from the `/reports` folder at https://orcestra-campaign.github.io/flight_segmentation/.
 11. Check for inconsistencies with the [flight report](https://github.com/orcestra-campaign/book/tree/main/orcestra_book/reports) and send corresponding suggestions for improvement, together with your reviewed flight segmentation to the respective flight-PI for final feedback.
 <!-- #endregion -->
 
 ## Further information
 
 #### YAML files
-The flight segmentation data is provided in YAML files. YAML is a text based, human readable data format that uses python-like indentation for structuring its contents. It is often used for configuration files and due to its great human readability very suited for version control, which is one reason we wanted to use it here.
+The flight segmentation data is provided in YAML files. 
+YAML is a text based, human readable data format that uses python-like indentation for structuring its contents. 
+It is often used for configuration files and due to its great human readability very suited for version control, which is one reason we wanted to use it here.
 For python users, the module [PyYAML](https://pyyaml.org) (included in Anaconda) offers an easy to use way to read the data from the yaml files into plane python objects like lists and dictionaries.
 Here is an example to read a file and print the circle start and end times from that file:
 
