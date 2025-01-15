@@ -298,7 +298,7 @@ def get_takeoff_landing(flight_id, ds):
         airport_landing_wgs84 = 681   #Memmingen
     
     takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
-    if not ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True): # handle exception of missing BAHAMAS data at end of flight
+    if len(ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)) == 0: # handle exception of missing BAHAMAS data at end of flight
         landing = ds["time"][-1].values
     else:
         landing = ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)[0].values
