@@ -275,9 +275,9 @@ def get_takeoff_landing(flight_id, ds):
     if (ds.time[0].values < np.datetime64("2024-08-10T00:00:00") or                     # Transfer flight to Sal
         (ds.time[0].values > np.datetime64("2024-11-01T00:00:00") and "b" in flight_id) # Two November flights
         ):
-        airport_takeoff_wgs84 = 684   #Memmingen
+        airport_takeoff_wgs84 = 681   #Memmingen
     elif ds.time[0].values > np.datetime64("2024-11-01T00:00:00"):                       # All other November flights
-        airport_takeoff_wgs84 = 635   #Oberpfaffenhofen
+        airport_takeoff_wgs84 = 630   #Oberpfaffenhofen
     elif (ds.time[0].values >= np.datetime64("2024-08-10T00:00:00") and                  
           ds.time[0].values < np.datetime64("2024-09-07T00:00:00")
          ):
@@ -293,9 +293,9 @@ def get_takeoff_landing(flight_id, ds):
          ):
         airport_landing_wgs84 = 9     #Barbados
     elif ds.time[-1].values > np.datetime64("2024-11-01T00:00:00"):                     # All other November flights
-        airport_landing_wgs84 = 635   #Oberpfaffenhofen
+        airport_landing_wgs84 = 630   #Oberpfaffenhofen
     elif ds.time[-1].values >= np.datetime64("2024-09-30T00:00:00") and ds.time[-1].values <= np.datetime64("2024-09-30T23:59:59"):                          # Transfer back from Barbados
-        airport_landing_wgs84 = 684   #Memmingen
+        airport_landing_wgs84 = 681   #Memmingen
     
     takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
     landing = ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)[0].values
