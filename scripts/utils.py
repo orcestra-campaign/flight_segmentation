@@ -265,43 +265,50 @@ def to_dt(dt64):
     import pandas as pd
     return pd.Timestamp(dt64).to_pydatetime(warn=False)
 
+def wgs84_altitude_takeoff(flight_id, ds):
+    import numpy as np
+    if (ds.time[0].values < np.datetime64("2024-08-10T00:00:00") or                     # Transfer flight to Sal
+        (ds.time[0].values > np.datetime64("2024-11-01T00:00:00") and "b" in flight_id) # Two November flights
+        ):
+        wgs84_altitude_takeoff = 681   #Memmingen
+    elif ds.time[0].values > np.datetime64("2024-11-01T00:00:00"):                       # All other November flights
+        wgs84_altitude_takeoff = 630   #Oberpfaffenhofen
+    elif (ds.time[0].values >= np.datetime64("2024-08-10T00:00:00") and                  
+          ds.time[0].values < np.datetime64("2024-09-07T00:00:00")
+         ):
+        wgs84_altitude_takeoff = 90    #Sal
+    elif ds.time[0].values >= np.datetime64("2024-09-07T00:00:00"):
+        wgs84_altitude_takeoff = 9     #Barbados
+    return wgs84_altitude_takeoff
+
+def wgs84_altitude_landing(flight_id, ds):
+    import numpy as np
+    if ds.time[-1].values < np.datetime64("2024-09-05T00:00:00"):
+        wgs84_altitude_landing = 90    #Sal
+    elif (ds.time[-1].values >= np.datetime64("2024-09-05T00:00:00") and
+          ds.time[-1].values < np.datetime64("2024-09-29T00:00:00")
+         ):
+        wgs84_altitude_landing = 9     #Barbados
+    elif ds.time[-1].values > np.datetime64("2024-11-01T00:00:00"):                     # All other November flights
+        wgs84_altitude_landing = 630   #Oberpfaffenhofen
+    elif ds.time[-1].values >= np.datetime64("2024-09-30T00:00:00") and ds.time[-1].values <= np.datetime64("2024-09-30T23:59:59"):                          # Transfer back from Barbados
+        wgs84_altitude_landing = 681   #Memmingen
+    return wgs84_altitude_landing
+
+
 def get_takeoff_landing(flight_id, ds):
     """
     Detect take-off and landing for the airport on Sal and Barbados
     which are located at about 89m and 8m above WGS84 respectively.
     """
     import numpy as np
-    # takeoff airport
-    if (ds.time[0].values < np.datetime64("2024-08-10T00:00:00") or                     # Transfer flight to Sal
-        (ds.time[0].values > np.datetime64("2024-11-01T00:00:00") and "b" in flight_id) # Two November flights
-        ):
-        airport_takeoff_wgs84 = 681   #Memmingen
-    elif ds.time[0].values > np.datetime64("2024-11-01T00:00:00"):                       # All other November flights
-        airport_takeoff_wgs84 = 630   #Oberpfaffenhofen
-    elif (ds.time[0].values >= np.datetime64("2024-08-10T00:00:00") and                  
-          ds.time[0].values < np.datetime64("2024-09-07T00:00:00")
-         ):
-        airport_takeoff_wgs84 = 90    #Sal
-    elif ds.time[0].values >= np.datetime64("2024-09-07T00:00:00"):
-        airport_takeoff_wgs84 = 9     #Barbados
-    
-    # landing airport
-    if ds.time[-1].values < np.datetime64("2024-09-05T00:00:00"):
-        airport_landing_wgs84 = 90    #Sal
-    elif (ds.time[-1].values >= np.datetime64("2024-09-05T00:00:00") and
-          ds.time[-1].values < np.datetime64("2024-09-29T00:00:00")
-         ):
-        airport_landing_wgs84 = 9     #Barbados
-    elif ds.time[-1].values > np.datetime64("2024-11-01T00:00:00"):                     # All other November flights
-        airport_landing_wgs84 = 630   #Oberpfaffenhofen
-    elif ds.time[-1].values >= np.datetime64("2024-09-30T00:00:00") and ds.time[-1].values <= np.datetime64("2024-09-30T23:59:59"):                          # Transfer back from Barbados
-        airport_landing_wgs84 = 681   #Memmingen
-    
-    takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
-    if len(ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)) == 0: # handle exception of missing BAHAMAS data at end of flight
+    takeoff_alt = wgs84_altitude_takeoff(flight_id, ds)
+    landing_alt = wgs84_altitude_landing(flight_id, ds)    
+    takeoff = ds["time"].where(ds.alt > takeoff_alt, drop=True)[0].values
+    if len(ds["time"].where((ds.alt <= landing_alt) & (ds.time > takeoff), drop=True)) == 0: # handle exception of missing BAHAMAS data at end of flight
         landing = ds["time"][-1].values
     else:
-        landing = ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)[0].values
+        landing = ds["time"].where((ds.alt <= landing_alt) & (ds.time > takeoff), drop=True)[0].values
     duration = (landing - takeoff).astype("timedelta64[m]").astype(int)
     return takeoff, landing, duration
 
