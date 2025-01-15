@@ -298,7 +298,7 @@ def get_takeoff_landing(flight_id, ds):
         airport_landing_wgs84 = 684   #Memmingen
     
     takeoff = ds["time"].where(ds.alt > airport_takeoff_wgs84, drop=True)[0].values
-    landing = ds["time"].where(ds.alt > airport_landing_wgs84, drop=True)[-1].values
+    landing = ds["time"].where((ds.alt <= airport_landing_wgs84) & (ds.time > takeoff), drop=True)[0].values
     duration = (landing - takeoff).astype("timedelta64[m]").astype(int)
     return takeoff, landing, duration
 
