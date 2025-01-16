@@ -226,7 +226,7 @@ seg14 = (
 
 seg15 = (
     slice("2024-08-22T18:35:19", "2024-08-22T18:36:14"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "potentially radar calibration (missing flight report)",
 )
 

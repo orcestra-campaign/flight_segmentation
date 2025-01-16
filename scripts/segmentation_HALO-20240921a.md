@@ -240,7 +240,7 @@ sl5 = (
 
 cal = (
     slice("2024-09-21 18:13:43", "2024-09-21 18:15:10"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "radar calibration",
 )
 

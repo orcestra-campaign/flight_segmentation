@@ -113,7 +113,7 @@ plt.legend();
 
 ## Interactive plots
 
-```python jupyter={"source_hidden": true}
+```python
 ds["alt"].hvplot()
 ```
 
@@ -121,7 +121,7 @@ ds["alt"].hvplot()
 ds["heading"].hvplot()
 ```
 
-```python jupyter={"source_hidden": true}
+```python
 ds["roll"].hvplot()
 ```
 
@@ -242,8 +242,8 @@ seg15 = (
 
 seg16 = (
     slice("2024-08-25T16:55:01", "2024-08-25T17:04:45"),
-    ["calibration"], #radiances but exact kind unclear
-    "calibration maneuver",
+    ["bacardi_calibration"], #radiances but exact kind unclear
+    "four_turns_calibration_maneuver",
     []
 )
 

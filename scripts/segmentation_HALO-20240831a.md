@@ -162,7 +162,7 @@ seg3 = (
 
 seg4 = (
     slice("2024-08-31T09:18:04", "2024-08-31T09:21:09"),
-    ["straight-leg", "ascent", "ec_track"],
+    ["straight_leg", "ascent", "ec_track"],
     "southward EC track",
     []
 )
@@ -275,7 +275,7 @@ seg19 = (
 
 seg20 = (
     slice("2024-08-31T17:05:10", "2024-08-31T17:07:39"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "Radar calibration maneuver",
     []
 )

@@ -215,7 +215,7 @@ ec1 = (
 
 cal = (
     slice("2024-09-19 17:58:30", "2024-09-19 18:00:58"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "radar calibration",
 )
 
