@@ -232,10 +232,10 @@ seg13 = (
 
 seg14 = (
     slice("2024-08-31T13:51:28", "2024-08-31T14:17:23"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "meteor_coordination"],
     "EC track through circle",
     ["irregularity: turbulence with up to plus/minus 4.6 degree roll angle deviation",
-    "includes one drop sonde launch"]
+    "includes one drop sonde launch", "includes meteor overpass"]
 )
 
 seg15 = (
@@ -254,14 +254,14 @@ seg16 = (
 
 seg17 = (
     slice("2024-08-31T15:32:30", "2024-08-31T16:01:15"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "atr_coordination"],
     "northward EC track through ATR cicle",
     ["contains EC underpass"]
 )
 
 seg18 = (
     slice("2024-08-31T16:08:10", "2024-08-31T16:24:05"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "atr_coordination"],
     "southward EC track through ATR circle",
     []
 )

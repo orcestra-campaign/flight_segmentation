@@ -172,7 +172,7 @@ seg5 = (
 
 seg6 = (
     slice("2024-08-21T14:09:58", "2024-08-21T15:06:16"),
-    ["circle", "circle_clockwise"],
+    ["circle", "circle_clockwise", "meteor_coordination"],
     "southern circle",
     ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation"]
 )

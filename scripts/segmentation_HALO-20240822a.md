@@ -156,9 +156,9 @@ seg3 = (
 
 seg4 = (
     slice("2024-08-22T12:50:11", "2024-08-22T13:46:03"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "southern circle",
-    ["potential Meteor overpass"]
+    ["bypassed Meteor at a distance of about 20km"]
 )
 
 seg5 = (
@@ -201,7 +201,7 @@ seg10 = (
 
 seg11 = (
     slice("2024-08-22T16:31:26", "2024-08-22T17:01:29"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "atr_coordination"],
     "ATR circle",
     ["potentially also of kind ATR_coordination (missing flight report)"],
 )
@@ -244,7 +244,7 @@ seg17 = (
 
 seg19 = (
     slice("2024-08-22T18:49:51", "2024-08-22T19:19:55"),
-    ["circle", "circle_clockwise"],
+    ["circle", "circle_clockwise", "atr_coordination"],
     "ATR circle",
     ["irregularity: descent starting at 2024-08-22 19:17:56",
     "potentially also of kind ATR_coordination (missing flight report)"]

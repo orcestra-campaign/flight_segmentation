@@ -143,20 +143,20 @@ ac1 = (
 
 c1 = (
     slice("2024-09-21 11:50:36", "2024-09-21 12:47:15"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_1",
     ["irregularity: ascent until 11:54:12"],
 )
 
 sl1a = (
     slice("2024-09-21 12:50:07", "2024-09-21 12:53:30"),
-    ["straight_leg"],
+    ["straight_leg", "meteor_coordination"],
     "straight_leg_1a",
 )
 
 sl1b = (
     slice("2024-09-21 12:53:48", "2024-09-21 12:57:37"),
-    ["straight_leg"],
+    ["straight_leg", "meteor_coordination"],
     "straight_leg_1b",
     ["irregularity: constant non-zero roll angle of about 1 deg",
      "includes meteor_overpass"],
@@ -164,7 +164,7 @@ sl1b = (
 
 sl1c = (
     slice("2024-09-21 12:59:09", "2024-09-21 13:02:24"),
-    ["straight_leg"],
+    ["straight_leg", "meteor_coordination"],
     "straight_leg_1c",
     ["irregularity: constant non-zero roll angle of about 1 deg",
     "includes one sonde drop"],
@@ -172,7 +172,7 @@ sl1c = (
 
 sl1d = (
     slice("2024-09-21 13:05:13", "2024-09-21 13:07:09"),
-    ["straight_leg"],
+    ["straight_leg", "meteor_coordination"],
     "straight_leg_1d",
 )
 
@@ -252,7 +252,7 @@ sl6 = (
 
 c5 = (
     slice("2024-09-21 18:26:16", "2024-09-21 19:24:15"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_5",
 )
 

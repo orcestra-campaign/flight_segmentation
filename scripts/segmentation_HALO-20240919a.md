@@ -147,7 +147,7 @@ ac1 = (
 
 sl1 = (
     slice("2024-09-19 11:33:39", "2024-09-19 12:32:40"),
-    ["straight_leg"],    
+    ["straight_leg", "meteor_coordination"],    
     "straight_leg_1",
     ["includes Meteor overpass"],
 )
@@ -161,14 +161,14 @@ c1 = (
 
 sl2 = (
     slice("2024-09-19 13:36:25", "2024-09-19 13:56:00"),
-    ["straight_leg"],
+    ["straight_leg", "meteor_coordination"],
     "leg crossing circle_2",
     ["includes Meteor overpass"],
 )     
 
 c2 = (
     slice("2024-09-19 13:58:32", "2024-09-19 14:53:20"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_2",
 )
 
