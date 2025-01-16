@@ -255,9 +255,15 @@ dc1 = (
 )
 
 dc2 = (
-    slice("2024-09-26T19:58:18", "2024-09-26T20:04:00"),
+    slice("2024-09-26T19:58:18", "2024-09-26T20:01:02"),
     ["straight_leg", "descent"],
     "descent_2",
+)
+
+cal2 = (
+    slice("2024-09-26T20:01:02", "2024-09-26T20:04:03"),
+    ["radar_calibration_dive"],
+    "radar calibration dive",
 )
 
 dc3 = (
@@ -267,7 +273,7 @@ dc3 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, ac2, sl3, c3, cal, ac3, sl4, c4, ec1, c5, sl5, sl6, sl7, dc1, dc2, dc3]]
+segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2, ac2, sl3, c3, cal, ac3, sl4, c4, ec1, c5, sl5, sl6, sl7, dc1, dc2, cal2, dc3]]
 
 ```
 
