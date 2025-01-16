@@ -348,8 +348,8 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-# Meteor overpass - not sure if this is really an overpass due to the large distance...
-get_overpass_track(ds, meteor_track)
+# Meteor overpass - looks more like a bypass due to the large distance...
+meteor_event(ds, meteor_track)
 ```
 
 ```python
@@ -360,18 +360,7 @@ get_overpass_point(ds, cvao.lat, cvao.lon)
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "Meteor overpass",
-     "kinds": ["meteor_overpass"],
-     "time": "2024-08-22T12:50:13",
-     "remarks": [],
-     "distance": 20008,
-    },
-    {"name": "CVAO overpass",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-22T18:23:35",
-     "remarks": [],
-     "distance": 93,
-    }
+    target_event(ds, "CVAO"),
 ]
 events
 ```

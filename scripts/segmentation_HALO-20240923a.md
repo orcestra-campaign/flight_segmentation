@@ -132,6 +132,10 @@ ds["alt"].hvplot()
 ds["roll"].hvplot()
 ```
 
+```python
+ds["heading"].hvplot()
+```
+
 ## Segments
 
 defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `remarks`.
