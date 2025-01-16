@@ -184,7 +184,8 @@ sl10 = (
 
 sl11 = (
     slice("2024-08-09T15:04:54", "2024-08-09T15:25:33"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"], "ferry_const_alt", 
+    ["bypass of CVAO at a distance of about 1.5km"],
 )
 
 sl12 = (
