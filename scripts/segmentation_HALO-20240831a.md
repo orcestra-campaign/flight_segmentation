@@ -370,6 +370,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
+    meteor_event(ds, meteor_track),
 ]
 events
 ```
