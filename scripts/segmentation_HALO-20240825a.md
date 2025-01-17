@@ -242,7 +242,7 @@ seg15 = (
 
 seg16 = (
     slice("2024-08-25T16:55:01", "2024-08-25T17:04:45"),
-    ["bacardi_calibration"], #radiances but exact kind unclear
+    ["smart_calibration"],
     "four_turns_calibration_maneuver",
     []
 )
