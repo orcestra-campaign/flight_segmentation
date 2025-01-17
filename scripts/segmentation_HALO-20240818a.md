@@ -218,7 +218,7 @@ sl5 = (
 
 rc1 = (
     slice("2024-08-18T18:20:31", "2024-08-18T18:21:55"),
-    ["radar_calibration"], "radar_calibration", [],
+    ["radar_calibration_wiggle"], "radar_calibration", [],
 )
 
 sl6 = (

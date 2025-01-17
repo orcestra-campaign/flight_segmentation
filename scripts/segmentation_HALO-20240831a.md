@@ -162,7 +162,7 @@ seg3 = (
 
 seg4 = (
     slice("2024-08-31T09:18:04", "2024-08-31T09:21:09"),
-    ["straight-leg", "ascent", "ec_track"],
+    ["straight_leg", "ascent", "ec_track"],
     "southward EC track",
     []
 )
@@ -232,10 +232,10 @@ seg13 = (
 
 seg14 = (
     slice("2024-08-31T13:51:28", "2024-08-31T14:17:23"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "meteor_coordination"],
     "EC track through circle",
     ["irregularity: turbulence with up to plus/minus 4.6 degree roll angle deviation",
-    "includes one drop sonde launch"]
+    "includes one drop sonde launch", "includes meteor overpass"]
 )
 
 seg15 = (
@@ -254,14 +254,14 @@ seg16 = (
 
 seg17 = (
     slice("2024-08-31T15:32:30", "2024-08-31T16:01:15"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "atr_coordination"],
     "northward EC track through ATR cicle",
     ["contains EC underpass"]
 )
 
 seg18 = (
     slice("2024-08-31T16:08:10", "2024-08-31T16:24:05"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "atr_coordination"],
     "southward EC track through ATR circle",
     []
 )
@@ -275,7 +275,7 @@ seg19 = (
 
 seg20 = (
     slice("2024-08-31T17:05:10", "2024-08-31T17:07:39"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "Radar calibration maneuver",
     []
 )
@@ -370,6 +370,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
+    meteor_event(ds, meteor_track),
 ]
 events
 ```

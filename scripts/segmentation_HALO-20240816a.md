@@ -209,7 +209,9 @@ sl3 = (
 
 catr = (
     slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
-    ["circle", "atr_coordination", "circle_clockwise"], "ATR_circle", [],
+    ["circle", "atr_coordination", "circle_clockwise"], 
+    "ATR_circle", 
+    [],
 )
 
 sl4 = (

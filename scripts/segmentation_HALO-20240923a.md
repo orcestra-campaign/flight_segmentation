@@ -132,6 +132,10 @@ ds["alt"].hvplot()
 ds["roll"].hvplot()
 ```
 
+```python
+ds["heading"].hvplot()
+```
+
 ## Segments
 
 defined as a tuple of time slice (`start`, `end`) , segment `kind`, `name`, `remarks`.
@@ -144,20 +148,20 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 # segment at roughly 930m altitude, but with two different roll angles -> maybe name it just "leg" and specify irreg?
 seg1 = (slice("2024-09-23T11:17:49", "2024-09-23T11:18:39"),
-        ["straight_leg"],
+        ["straight_leg", "meteor_coordination"],
         "heading towards Meteor",
         ["segment at roughly 930m altitude", "including 1st METEOR overpass and BCO bypass"],
        )
 
 # climbing circle (with Meteor overpass)
 seg2 = (slice("2024-09-23T11:21:42", "2024-09-23T11:54:32"),
-        ["ascent", "circle", "circle_clockwise"],
+        ["ascent", "circle", "circle_clockwise", "meteor_coordination"],
         "climbing circle",
         ["circle to climb up to FL410", "including 2nd METEOR overpass"],
        )
 # Meteor measurement circle (with Meteor overpass) on FL410
 seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
-        ["circle", "meteor_coordination", "circle_clockwise"],
+        ["circle", "meteor_coordination", "circle_clockwise", "meteor_coordination"],
         "Meteor circle",
         ["irregularity: roll angle deviations up to +-6 degree from segment start until 11:56:20 due to deep convection",
          "including 3rd METEOR overpass",
@@ -255,7 +259,7 @@ seg18 = (slice("2024-09-23T19:12:57", "2024-09-23T19:16:45"),
         )
 
 seg19 = (slice("2024-09-23T19:16:59", "2024-09-23T19:18:43"),
-        ["radar_calibration"],
+        ["radar_calibration_wiggle"],
         "radar calibration wiggle within c_west",
          ["pattern within circle west with 12 sondes"],
         )
@@ -286,7 +290,7 @@ seg21c = (slice("2024-09-23T19:42:37", "2024-09-23T19:46:56"),
 
 # straight leg overpassing Meteor at 2km height
 seg22 = (slice("2024-09-23T19:46:56", "2024-09-23T19:53:45"),
-         ["straight_leg"],
+         ["straight_leg", "meteor_coordination"],
          "straight leg overpassing Meteor at 2km height",
          ["only BAHAMAS instrument still running", "irregularity: roll angle deviations up to +-6.7 degree"],
         )

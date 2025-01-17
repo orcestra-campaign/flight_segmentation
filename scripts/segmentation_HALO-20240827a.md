@@ -236,7 +236,7 @@ seg16 = (
 
 seg17 = (
     slice("2024-08-27T15:59:45", "2024-08-27T16:16:37"),
-    ["straight leg", "ec_track"],
+    ["straight_leg", "ec_track"],
     "leg through northern circle",
     ["contains EC overpass"]
 )
@@ -260,7 +260,7 @@ seg19 = (
 # 3rd crossing over Meteor
 seg20 = (
     slice("2024-08-27T17:28:06", "2024-08-27T17:33:37"),
-    ["straight leg", "meteor_coordination"],
+    ["straight_leg", "meteor_coordination"],
     "leg 3 overpassing METEOR",
 )
 
@@ -272,7 +272,7 @@ seg21 = (
 
 seg22 = (
     slice("2024-08-27T17:43:57", "2024-08-27T18:19:07"),
-    ["circle", "ATR_coordination", "circle_counterclockwise"],
+    ["circle", "atr_coordination", "circle_counterclockwise"],
     "ATR circle",
     ["sonde failures"]
 )

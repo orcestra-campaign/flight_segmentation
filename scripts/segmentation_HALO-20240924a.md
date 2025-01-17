@@ -253,7 +253,7 @@ sl6 = (
 
 cal = (
     slice("2024-09-24T21:11:27", "2024-09-24T21:13:21"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "radar calibration",
     ["includes one drop sonde launch"],
 )

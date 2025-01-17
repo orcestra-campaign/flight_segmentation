@@ -251,7 +251,7 @@ seg17 = (
 
 seg18 = (
     slice("2024-08-29T19:09:18", "2024-08-29T19:46:09"),
-    ["circle", "ATR_coordination", "circle_clockwise"],
+    ["circle", "atr_coordination", "circle_clockwise"],
     "ATR circle",
 )
 
