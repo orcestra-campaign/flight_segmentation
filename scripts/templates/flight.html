@@ -42,7 +42,7 @@
     color: white;
 }
 
-.irregularity {
+.remark {
     background-color: orange;
     color: white;
 }
@@ -100,17 +100,10 @@
             {% endfor %}
         </ul>
         {% endif %}
-        {% if segment.irregularities %}
+        {% if segment.remarks %}
         <ul class="taglist">
-            {% for irregularity in segment.irregularities %}
-            <li class="tag irregularity">{{ irregularity }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% if segment.comments %}
-        <ul class="taglist">
-            {% for comments in segment.comments %}
-            <li class="tag irregularity">{{ comments }}</li>
+            {% for remark in segment.remarks %}
+            <li class="tag remark">{{ remark }}</li>
             {% endfor %}
         </ul>
         {% endif %}
