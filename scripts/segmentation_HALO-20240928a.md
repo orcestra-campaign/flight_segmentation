@@ -244,7 +244,7 @@ sl5a = (
 
 cal1 = (
     slice("2024-09-28T18:04:52", "2024-09-28T18:07:11"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "radar calibration wiggle",
 )
 
@@ -297,7 +297,7 @@ sl9 = (
 
 cal2 = (
     slice("2024-09-28T19:39:41", "2024-09-28T19:42:08"),
-    ["radar_calibration"],
+    ["radar_calibration_dive"],
     "radar calibration dive",
 )
 
@@ -412,7 +412,7 @@ kinds = set(k for s in segments for k in s["kinds"])
 ```python
 fig, ax = plt.subplots()
 
-for k, c in zip(['straight_leg', 'circle', "radar_calibration"], ["C0", "C1", "C3"]):
+for k, c in zip(['straight_leg', 'circle', "radar_calibration_wiggle", "radar_calibration_dive"], ["C0", "C1", "C3", "C4"]):
     for s in flight["segments"]:
         if k in s["kinds"]:
             t = slice(s["start"], s["end"])

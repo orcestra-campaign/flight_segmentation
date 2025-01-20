@@ -184,7 +184,8 @@ sl10 = (
 
 sl11 = (
     slice("2024-08-09T15:04:54", "2024-08-09T15:25:33"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"], "ferry_const_alt", 
+    ["includes CVAO overpass"],
 )
 
 sl12 = (
@@ -265,7 +266,13 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-events = []
+target_event(ds, target = "CVAO")
+```
+
+```python
+events = [
+    target_event(ds, target = "CVAO")
+]
 events
 ```
 

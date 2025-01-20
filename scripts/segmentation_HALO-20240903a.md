@@ -148,7 +148,7 @@ sl2 = (
 
 ec1 = (
     slice("2024-09-03T12:35:06", "2024-09-03T13:45:02"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "meteor_coordination"],
     "EC_track_southward_const_alt",
     ["irregularity: constant roll angle of +1.0deg from 2024-09-03T12:46:17 until 2024-09-03T13:00:43, before and after 0deg. Heading constant in whole segment.",
      "irregularity: minor turbulence 2024-09-03T13:09:37 - 2024-09-03T13:45:02",
@@ -181,14 +181,14 @@ ec4 = (
 
 c2 = (
     slice("2024-09-03T15:02:21", "2024-09-03 15:57:08"),
-    ["circle", "circle_counterclockwise"], "circle_mid",
+    ["circle", "circle_counterclockwise", "meteor_coordination"], "circle_mid",
     ["irregularity: turbulence 2024-09-03T15:17:40 - 2024-09-03T15:29:25",
      "irregularity: turbulence 2024-09-03T15:46:16 - 2024-09-03T15:46:25",],
 )
 
 ec5 = (
     slice("2024-09-03T16:02:00", "2024-09-03T16:34:03"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["straight_leg", "ec_track", "meteor_coordination"], "EC_track_northward_const_alt",
     ["includes ec_underpass", "includes meteor_overpass"],
 )
 

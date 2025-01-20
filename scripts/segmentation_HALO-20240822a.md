@@ -156,9 +156,9 @@ seg3 = (
 
 seg4 = (
     slice("2024-08-22T12:50:11", "2024-08-22T13:46:03"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "southern circle",
-    ["potential Meteor overpass"]
+    ["bypassed Meteor at a distance of about 20km"]
 )
 
 seg5 = (
@@ -201,7 +201,7 @@ seg10 = (
 
 seg11 = (
     slice("2024-08-22T16:31:26", "2024-08-22T17:01:29"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "atr_coordination"],
     "ATR circle",
     ["potentially also of kind ATR_coordination (missing flight report)"],
 )
@@ -226,7 +226,7 @@ seg14 = (
 
 seg15 = (
     slice("2024-08-22T18:35:19", "2024-08-22T18:36:14"),
-    ["radar_calibration"],
+    ["radar_calibration_wiggle"],
     "potentially radar calibration (missing flight report)",
 )
 
@@ -244,7 +244,7 @@ seg17 = (
 
 seg19 = (
     slice("2024-08-22T18:49:51", "2024-08-22T19:19:55"),
-    ["circle", "circle_clockwise"],
+    ["circle", "circle_clockwise", "atr_coordination"],
     "ATR circle",
     ["irregularity: descent starting at 2024-08-22 19:17:56",
     "potentially also of kind ATR_coordination (missing flight report)"]
@@ -348,8 +348,8 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-# Meteor overpass - not sure if this is really an overpass due to the large distance...
-get_overpass_track(ds, meteor_track)
+# Meteor overpass - looks more like a bypass due to the large distance...
+meteor_event(ds, meteor_track)
 ```
 
 ```python
@@ -360,18 +360,7 @@ get_overpass_point(ds, cvao.lat, cvao.lon)
 ```python
 events = [
     ec_event(ds, ec_track),
-    {"name": "Meteor overpass",
-     "kinds": ["meteor_overpass"],
-     "time": "2024-08-22T12:50:13",
-     "remarks": [],
-     "distance": 20008,
-    },
-    {"name": "CVAO overpass",
-     "kinds": ["cvao_overpass"],
-     "time": "2024-08-22T18:23:35",
-     "remarks": [],
-     "distance": 93,
-    }
+    target_event(ds, "CVAO"),
 ]
 events
 ```

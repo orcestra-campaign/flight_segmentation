@@ -158,7 +158,7 @@ sl2 = (
 
 c1 = (
     slice("2024-09-16T13:19:35", "2024-09-16T14:19:45"),
-    ["circle", "circle_counterclockwise"],
+    ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_middle",
     ["irregularity: turbulence 2024-09-16T13:19:35 - 2024-09-16T13:28:00 with roll angle deviation up to +-3.2 deg"],
 )
@@ -201,7 +201,7 @@ ec1a = (
 
 ec1b = (
     slice("2024-09-16T16:58:17", "2024-09-16T17:29:33"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "meteor_coordination"],
     "EC_track_with_meteor_overpass",
     ["irregularity: continuous roll angle decline from -0.23 to -1.7 deg and various spikes due to turbulence",
     "includes Meteor overpass", "includes two dropsonde launches"],
@@ -286,13 +286,14 @@ print(f"Dropsonde launch times: {ds_drops.time.sel(time=seg_drops).values}")
 ### Identify visually which straight_leg segments lie on PACE or EC track
 
 ```python
-seg = parse_segment(sl3c)
+seg = parse_segment(ec1a)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"),
          marker="*", ls=":", label="EC meeting point", zorder=20)
+plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 if pace_track: 
     plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":")
     plt.plot(ds.lon.sel(time=t_pace, method="nearest"), ds.lat.sel(time=t_pace, method="nearest"),
