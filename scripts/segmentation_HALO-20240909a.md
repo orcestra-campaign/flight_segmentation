@@ -181,7 +181,7 @@ c2 = (
 
 ec = (
     slice("2024-09-09T16:26:31", "2024-09-09T17:19:47"),
-    ["straight_leg", "ec_track", "ec_underpass"],
+    ["straight_leg", "ec_track"],
     "meeting EC",
 )
 
