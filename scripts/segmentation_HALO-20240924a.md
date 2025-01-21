@@ -277,8 +277,8 @@ dc2 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ac2, ac3, ac4, ac5, cal, dc1, dc2, sl1, sl2, sl3, sl4, sl5a, sl5b, sl6, sl7, ec1, ec2, c1, c2, c3]]
-
+segments = [parse_segment(s) for s in [
+    ac1, ac2, ac3, ac4, sl1, c1, sl2, ac5, sl3, sl4, ec1, ec2, sl5a, sl5b, c2, c3, sl6, cal, sl7, dc1, dc2]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece

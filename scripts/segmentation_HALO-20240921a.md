@@ -283,7 +283,7 @@ dc2 = (
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, ac2, ac3, dc1, dc2, cal, ec1, sl1a, sl1b, sl1c, sl1d, sl2, sl3, sl4, sl5, sl6, sl7a, sl7b, c1, c2, c3, c4, c5]]
+segments = [parse_segment(s) for s in [ac1, c1, sl1a, sl1b, sl1c, sl1d, ac2, sl2, c2, c3, sl3, ac3, sl4, c4, ec1, sl5, cal, sl6, c5, sl7a, sl7b, dc1, dc2]]
 
 ```
 

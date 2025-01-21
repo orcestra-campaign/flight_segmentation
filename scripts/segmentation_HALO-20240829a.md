@@ -196,7 +196,7 @@ seg9 = (
 )
 
 seg10 = (
-    slice("2024-08-29T15:34:34", "2024-08-29T16:12:00"),
+    slice("2024-08-29T15:34:34", "2024-08-29T16:12:09"),
     ["straight_leg", "ec_track"],
     "northward EC track",
     ["contains EC meeting point"],
@@ -283,7 +283,7 @@ segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7,
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg21)
+seg=parse_segment(seg10)
 add_previous_seg = False
 
 ###########################
