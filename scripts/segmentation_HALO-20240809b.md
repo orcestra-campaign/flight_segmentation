@@ -136,7 +136,8 @@ sl01 = (
 
 sl02 = (
     slice("2024-08-09T10:08:03", "2024-08-09T11:01:24"),
-    ["straight_leg"], "ferry_const_alt",
+    ["straight_leg"],
+    "ferry_constant_altitude",
     ["irregularity: roll angle spike 2024-08-09T10:21:17 - 2024-08-09T10:21:35",
      "irregularity: roll angle spike 2024-08-09T10:34:24 - 2024-08-09T10:34:45",
     ],
@@ -144,58 +145,79 @@ sl02 = (
 
 sl03 = (
     slice("2024-08-09T11:02:19", "2024-08-09T11:08:20"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl04 = (
     slice("2024-08-09T11:09:15", "2024-08-09T11:15:50"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl05 = (
     slice("2024-08-09T11:16:48", "2024-08-09T11:43:49"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl06 = (
     slice("2024-08-09T11:44:54", "2024-08-09T12:14:29"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+     "ferry_constant_altitude",
+     [],
 )
 
 sl07 = (
     slice("2024-08-09T12:15:25", "2024-08-09T13:07:31"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl08 = (
     slice("2024-08-09T13:08:40", "2024-08-09T13:24:24"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl09 = (
     slice("2024-08-09T13:26:29", "2024-08-09T13:58:35"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl10 = (
     slice("2024-08-09T14:02:36", "2024-08-09T15:03:37"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl11 = (
     slice("2024-08-09T15:04:54", "2024-08-09T15:25:33"),
-    ["straight_leg"], "ferry_const_alt", 
+    ["straight_leg"],
+    "ferry_constant_altitude", 
     ["includes CVAO overpass"],
 )
 
 sl12 = (
     slice("2024-08-09T15:28:28", "2024-08-09T15:33:06"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent",
+    [],
 )
 
 sl13 = (
     slice("2024-08-09T15:34:00", "2024-08-09T15:52:42"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

@@ -138,141 +138,148 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-22T11:26:37", "2024-08-22T11:29:11"),
     ["straight_leg", "ascent"],
-    "ascending ferry",
+    "ferry_ascent",
+    []
 )
 
 seg2 = (
     slice("2024-08-22T11:31:15", "2024-08-22T11:52:44"),
     ["straight_leg", "ascent", "ec_track"],
-    "southward ascent on EC track",
+    "ec_track_southward_ascent",
 )
 
 seg3 = (
     slice("2024-08-22T11:52:44", "2024-08-22T12:47:43"),
     ["straight_leg", "ec_track"],
-    "EC underpass leg",
+    "ec_track_southward",
     ["irregularity: turbulence 12:31:55 +3.0 deg roll angle deviation"]
 )
 
 seg4 = (
     slice("2024-08-22T12:50:11", "2024-08-22T13:46:03"),
     ["circle", "circle_counterclockwise", "meteor_coordination"],
-    "southern circle",
+    "circle_south",
     ["bypassed Meteor at a distance of about 20km"]
 )
 
 seg5 = (
     slice("2024-08-22T13:49:45", "2024-08-22T13:53:56"),
     ["straight_leg", "ascent", "ec_track"],
-    "northward ascent on EC track",
+    "ec_track_northward_ascent",
 )
 
 seg6 = (
     slice("2024-08-22T13:57:24", "2024-08-22T14:54:18"),
     ["circle", "circle_counterclockwise"],
-    "middle circle",
+    "circle_mid",
     ["irregularities: turbulence between 2024-08-22 14:19:07 and 2024-08-22 14:42:09"]
 )
 
 seg7 = (
     slice("2024-08-22T14:57:17", "2024-08-22T16:04:31"),
-    ["straight_leg"],
-    "northward leg on EC track",
-    ["irregularity: turbulence between 15:28:10 and 15:28:38 with +3.0 deg roll angle deviation", "includes EC meeting point"]
+    ["straight_leg", "ec_track"],
+    "ec_track_northward",
+    ["irregularity: turbulence between 15:28:10 and 15:28:38 with +3.0 deg roll angle deviation",
+    "includes EC meeting point"]
 )
 
 seg8 = (
     slice("2024-08-22T16:11:56", "2024-08-22T16:18:44"),
-    ["straight_leg"],
-    "southward leg on EC track",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward",
+    []
 )
 
 seg9 = (
     slice("2024-08-22T16:18:44", "2024-08-22T16:26:50"),
-    ["straight_leg", "descent"],
-    "southward descent on EC track",
+    ["straight_leg", "ec_track", "descent"],
+    "ec_track_southward_descent",
+    []
 )
 
 seg10 = (
     slice("2024-08-22T16:26:50", "2024-08-22T16:28:46"),
-    ["straight_leg"],
-    "southward leg on EC track",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward",
+    []
 )
 
 seg11 = (
     slice("2024-08-22T16:31:26", "2024-08-22T17:01:29"),
     ["circle", "circle_counterclockwise", "atr_coordination"],
-    "ATR circle",
+    "atr_circle",
     ["potentially also of kind ATR_coordination (missing flight report)"],
 )
 
 seg12 = (
     slice("2024-08-22T17:08:06", "2024-08-22T18:02:31"),
     ["circle", "circle_counterclockwise"],
-    "northern circle",
+    "circle_north",
+    []
 )
 
 seg13 = (
     slice("2024-08-22T18:04:28", "2024-08-22T18:24:12"),
     ["straight_leg"],
-    "CVAO overpass"
+    "cvao_overpass",
+    []
 )
 
 seg14 = (
     slice("2024-08-22T18:26:40", "2024-08-22T18:35:08"),
     ["straight_leg"],
-    "ferry away from CVAO"
+    "ferry_away_from_CVAO"
+    []
 )
 
 seg15 = (
     slice("2024-08-22T18:35:19", "2024-08-22T18:36:14"),
     ["radar_calibration_wiggle"],
-    "potentially radar calibration (missing flight report)",
+    "potentially_radar_calibration (missing flight report)",
+    []
 )
 
 seg16 = (
     slice("2024-08-22T18:38:46", "2024-08-22T18:45:50"),
     ["straight_leg", "descent"],
-    "descending ferry to ATR circle",
+    "ferry_descent_to_atr_circle",
+    []
 )
 
 seg17 = (
     slice("2024-08-22T18:45:50", "2024-08-22T18:47:03"),
     ["straight_leg"],
-    "ferry to ATR circle",
+    "ferry_to_atr_circle",
+    []
 )
 
 seg19 = (
     slice("2024-08-22T18:49:51", "2024-08-22T19:19:55"),
     ["circle", "circle_clockwise", "atr_coordination"],
-    "ATR circle",
+    "atr_circle",
     ["irregularity: descent starting at 2024-08-22 19:17:56",
     "potentially also of kind ATR_coordination (missing flight report)"]
 )
 
-# seg20 = (
-#     slice("2024-08-22T19:21:29", "2024-08-22T19:23:14"),
-#     ["half_circle"],
-#     "weird half circle",
-#     ["mini half circle during descent, probably no useful segment"]
-# )
-
 seg21 = (
     slice("2024-08-22T19:23:26", "2024-08-22T19:29:17"),
     ["straight_leg", "descent"],
-    "descending ferry",
+    "ferry_descent",
+    []
 )
 
 seg22 = (
     slice("2024-08-22T19:29:57", "2024-08-22T19:31:23"),
     ["straight_leg", "descent"],
-    "descending ferry",
+    "ferry_descent",
+    []
 )
 
 seg23 = (
     slice("2024-08-22T19:34:38", "2024-08-22T19:40:10"),
     ["straight_leg", "descent"],
-    "final descent for landing",
+    "ferry_descent",
+    []
 )
 
 # add all segments that you want to save to a yaml file later to the below list

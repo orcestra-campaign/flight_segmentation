@@ -137,114 +137,124 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-27T10:04:14", "2024-08-27 10:29:27"),
     ["straight_leg", "ascent"],
-    "ascending ferry to EC track",
+    "ferry_to_ec_track_ascent",
+    []
 )
 
 seg2 = (
     slice("2024-08-27T10:29:27", "2024-08-27T10:55:11"),
     ["straight_leg"],
-    "ferry to EC track",
+    "ferry_to_ec_track",
     ["irregularity: spike in roll angle at 10:39:42 by +4.5 degree"]
 )
 
 seg3 = (
     slice("2024-08-27T10:56:25", "2024-08-27T11:04:24"),
     ["straight_leg", "ec_track"],
-    "southward EC track",
+    "ec_track_southward",
+    []
 )
 
 seg4 = (
     slice("2024-08-27T11:04:24", "2024-08-27T11:06:27"),
     ["straight_leg", "ascent", "ec_track"],
-    "southward EC track",
+    "ec_track_southward",
+    []
 )
 
 seg5 = (
     slice("2024-08-27T11:06:27", "2024-08-27T11:18:02"),
     ["straight_leg", "ec_track"],
-    "southward EC track",
+    "ec_track_southward",
+    []
 )
 
 seg6 = (
     slice("2024-08-27T11:18:59", "2024-08-27T11:26:12"),
     ["straight_leg"],
-    "departure from EC track - leg 1",
+    "departure_from_ec_track_1",
+    []
 )
 
 seg7 = (
     slice("2024-08-27T11:26:33", "2024-08-27T11:28:34"),
     ["straight_leg"],
-    "departure from EC track - leg 2",
+    "departure_from_ec_track_2",
+    []
 )
 
 seg8 = (
     slice("2024-08-27T11:31:26", "2024-08-27T11:33:30"),
     ["straight_leg"],
-    "departure from EC track - leg 3",
+    "departure_from_ec_track_3",
+    []
 )
 
 seg9 = (
     slice("2024-08-27T11:33:58", "2024-08-27T11:35:56"),
     ["straight_leg"],
-    "departure from EC track - leg 4",
+    "departure_from_ec_track_4",
+    []
 )
 
 seg10 = (
     slice("2024-08-27T11:38:41", "2024-08-27T11:56:44"),
     ["straight_leg", "ec_track"],
-    "continued southward EC track", #any coordination? Why sonde?
+    "ec_track_southward", #any coordination? Why sonde?
     ["additional sonde dropped at 11:40:32"]
 )
 
 seg11 = (
     slice("2024-08-27T11:59:38", "2024-08-27T12:56:05"),
     ["circle", "circle_counterclockwise"],
-    "southern circle",
+    "circle_south",
 )
 
 seg12 = (
     slice("2024-08-27T12:59:25", "2024-08-27T13:03:17"),#05:41"),
     ["straight_leg", "ascent", "ec_track"],
-    "climbing higher on northward EC track",
+    "ec_track_northward_ascent",
+    []
 )
 seg13 = (
     slice("2024-08-27T13:03:17", "2024-08-27T13:05:41"),
     ["straight_leg", "ec_track"],
-    "northward EC track towards middle circle",
+    "ec_track_northward",
 )
 
 seg14 = (
     slice("2024-08-27T13:14:37", "2024-08-27T14:14:09"),
     ["circle", "circle_counterclockwise"],
-    "middle circle",
+    "circle_mid",
     ["irregularity: due to turbulences at 13:36:46-13:38:08 and 14:02:03-14:03:21"]
 )
 
 seg15 = (
     slice("2024-08-27T14:17:22", "2024-08-27T14:37:22"),
     ["straight_leg", "ec_track"],
-    "northward leg through middle circle",
+    "ec_track_northward_through_circle_mid",
     ["start of BAHAMAS measurement gap: 14:37:22"]
 )
 
 seg16 = (
     slice("2024-08-27T14:50:53", "2024-08-27T15:50:27"),
     ["circle", "circle_counterclockwise"],
-    "nothern circle",
+    "circle_north",
     ["end of BAHAMAS measurement gap: 14:57:20"]
 )
 
 seg17 = (
     slice("2024-08-27T15:59:45", "2024-08-27T16:16:37"),
     ["straight_leg", "ec_track"],
-    "leg through northern circle",
+    "ec_track_through_circle_north",
     ["contains EC overpass"]
 )
 # 1st crossing over Meteor
 seg18 = (
     slice("2024-08-27T16:21:25", "2024-08-27T17:03:06"),
     ["straight_leg", "meteor_coordination"],
-    "leg 1 overpassing METEOR",
+    "straight_leg_overpassing_meteor_1",
+    []
 )
 
 
@@ -252,7 +262,7 @@ seg18 = (
 seg19 = (
     slice("2024-08-27T17:09:09", "2024-08-27T17:21:24"),
     ["straight_leg", "meteor_coordination"],
-    "leg 2 (back track) overpassing METEOR",
+    "straight_leg_overpassing_meteor_2",
     ["sonde dropped at 17:13:41"]
 )
 
@@ -261,40 +271,40 @@ seg19 = (
 seg20 = (
     slice("2024-08-27T17:28:06", "2024-08-27T17:33:37"),
     ["straight_leg", "meteor_coordination"],
-    "leg 3 overpassing METEOR",
+    "straight_leg_overpassing_meteor_3",
+    []
 )
 
 seg21 = (
     slice("2024-08-27T17:33:37", "2024-08-27T17:39:30"),
     ["straight_leg", "descent"],
-    "descending leg to ATR circle",
+    "ferry_to_atr_circle_descent",
+    []
 )
 
 seg22 = (
     slice("2024-08-27T17:43:57", "2024-08-27T18:19:07"),
     ["circle", "atr_coordination", "circle_counterclockwise"],
-    "ATR circle",
+    "atr_circle",
     ["sonde failures"]
 )
-
-
 
 seg23 = (
     slice("2024-08-27T18:37:50", "2024-08-27T18:48:54"),
     ["straight_leg"],
-    "ferry to Sal",
+    "ferry_to_sal",
 )
 
 seg24 = (
     slice("2024-08-27T18:54:20", "2024-08-27T19:03:33"),
     ["straight_leg", "descent"],
-    "decending ferry to Sal",
+    "ferry_to_sal_descent",
 )
 
 seg25 = (
     slice("2024-08-27T19:04:09", "2024-08-27T19:08:18"),
     ["straight_leg", "descent"],
-    "final descent",
+    "ferry_to_sal_descent",
 )
 
 

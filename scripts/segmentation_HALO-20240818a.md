@@ -137,93 +137,120 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 sl1 = (
     slice("2024-08-18T10:09:30", "2024-08-18T10:36:16"),
-    ["straight_leg", "ascent"], "ferry_ascent", [],
+    ["straight_leg", "ascent"],
+    "ferry_ascent",
+    [],
 )
 
 sl2 = (
     slice("2024-08-18T10:36:16", "2024-08-18T10:41:08"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 sl3 = (
     slice("2024-08-18T10:42:21", "2024-08-18T10:57:57"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 ec1 = (
     slice("2024-08-18T10:59:40", "2024-08-18T11:18:10"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_constant_altitude",
+    [],
 )
 
 c1 = (
     slice("2024-08-18T11:24:25", "2024-08-18T12:18:04"),
-    ["circle", "circle_counterclockwise"], "circle_north", [],
+    ["circle", "circle_counterclockwise"],
+    "circle_north",
+    [],
 )
 
 ec2 = (
     slice("2024-08-18T12:23:52", "2024-08-18T12:48:00"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_constant_altitude",
     ["irregularity: turbulence"],
 )
 
 c2 = (
     slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
-    ["circle", "circle_clockwise"], "circle_mid",
+    ["circle", "circle_clockwise"],
+    "circle_mid",
     ["irregularity: turbulence"],
 )
 
 ec3 = (
     slice("2024-08-18T13:52:25", "2024-08-18T14:25:26"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_constant_altitude",
     ["irregularity: turbulence 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
 )
 
 c3 = (
     slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
-    ["circle", "circle_clockwise"], "circle_south", [],
+    ["circle", "circle_clockwise"],
+    "circle_south",
+    [],
 )
 
 ec4 = (
     slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
-    ["irregularity: minor turbulences",
-     "includes ec_underpass"],
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_constant_altitude",
+    ["irregularity: minor turbulences", "includes ec_underpass"],
 )
 
 c_bm1 = (
     slice("2024-08-18T16:35:28", "2024-08-18T16:57:56"),
-    ["circle", "c_pirouette", "circle_clockwise"], "C_pirouette_small", [],
+    ["circle", "c_pirouette", "circle_clockwise"],
+    "c_pirouette_small",
+    [],
 )
 
 c_bm2 = (
     slice("2024-08-18T17:02:11", "2024-08-18T17:33:23"),
-    ["circle", "c_pirouette", "circle_clockwise"], "C_pirouette_large",
+    ["circle", "c_pirouette", "circle_clockwise"],
+    "c_pirouette_large",
     ["irregularity: minor turbulences 2024-08-18T17:20:00 - 2024-08-18T17:33:23"],
 )
 
 sl4 = (
     slice("2024-08-18T17:35:35", "2024-08-18T17:40:29"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 ec5 = (
     slice("2024-08-18T17:43:52", "2024-08-18T17:54:26"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_constant_altitude",
+    [],
 )
 
 sl5 = (
     slice("2024-08-18T17:56:01", "2024-08-18T18:20:31"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_constant_altitude",
+    [],
 )
 
 rc1 = (
     slice("2024-08-18T18:20:31", "2024-08-18T18:21:55"),
-    ["radar_calibration_wiggle"], "radar_calibration", [],
+    ["radar_calibration_wiggle"],
+    "radar_calibration",
+    [],
 )
 
 sl6 = (
     slice("2024-08-18T18:30:22", "2024-08-18T18:58:17"),
-    ["straight_leg", "descent"], "ferry_descent",
+    ["straight_leg", "descent"],
+    "ferry_descent",
     ["irregularity: constant roll angle of -0.5deg from 2024-08-18T18:30:22 until 2024-08-18T18:36:58, before switching to 0deg. Heading constant in whole segment."],
 )
 
