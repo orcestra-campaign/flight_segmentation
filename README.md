@@ -110,6 +110,7 @@ For the first version of the segmentation of HALO research flights, one or more 
 | ec_underpass | events | assigned to events where the aircraft flew as close as possible under the EarthCARE satellite |
 | meteor_coordination | segments | assigned to segments during which HALO flew around or in the vicinity of the Meteor research vessel |
 | meteor_overpass | events | assigned to events where the aircraft flew roughly over the Meteor research vessel |
+| mim_overpass | events | assigned to events where the aircraft flew roughly over the Meteorological Institute in Munich |
 | pace_track | segments | assigned to straight legs during which the aircraft followed the PACE track; note that measurements taken in other segments may also be colocated with PACE due to the satellite's wide swath. |
 | pace_underpass | events | assigned to events where the aircraft flew as close as possible under the PACE satellite. |
 | radar_calibration_dive | segments | three consecutive stepwise descents with a total altitude decrease of about 1km within about 2.5min, performed during a descending straight leg |
