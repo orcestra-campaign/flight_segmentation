@@ -267,7 +267,7 @@ seg20 = (
 )
 
 seg21 = (
-    slice("2024-11-05T18:36:25", "2024-11-05T18:39:09"),
+    slice("2024-11-05T18:36:15", "2024-11-05T18:39:09"),
     ["straight_leg", "descent"],
     "final descent to airport",
     ["irregularity: light turbulence with roll angle deviations up to +-1.3deg"]
@@ -277,7 +277,7 @@ seg21 = (
 
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, 
-                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20]]
+                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
