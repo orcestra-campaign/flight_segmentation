@@ -178,7 +178,7 @@ sl1d = (
 
 ac2 = (
     slice("2024-09-21 13:07:09", "2024-09-21 13:11:36"),
-    ["straight_leg", "ascent"], [],
+    ["straight_leg", "ascent"], "straight_leg_ascent", [],
 )
 
 sl2 = (
@@ -358,8 +358,8 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
-    ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
+    ec_event(ds, ec_track),
 ]
 events
 ```

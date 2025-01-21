@@ -204,7 +204,7 @@ ec1b = (
     ["straight_leg", "ec_track", "meteor_coordination"],
     "EC_track_with_meteor_overpass",
     ["irregularity: continuous roll angle decline from -0.23 to -1.7 deg and various spikes due to turbulence",
-    "includes Meteor overpass", "includes two dropsonde launches"],
+    "includes Meteor overpass", "includes EC underpass", "includes two dropsonde launches"],
 )
 
 ec1c = (
@@ -317,9 +317,9 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
+    pace_event(ds, pace_track),
     ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
-    pace_event(ds, pace_track),
 ]
 events
 ```

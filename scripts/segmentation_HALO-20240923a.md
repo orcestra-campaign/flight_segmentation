@@ -397,18 +397,18 @@ The `event_id` will be added when saving it to YAML.
 The EC underpass event can be added to a list of events via the function `ec_event`.
 
 ```python
-events = [ec_event(ds, ec_track,
-                   ec_remarks=["sharp turn away from EC track right after meeting point due to deep convection"]),
+events = [target_event(ds_hres.sel(time=parse_segment(seg1)["slice"]), target="BCO",
+                      name="passing by BCO"),
           meteor_event(ds.sel(time=parse_segment(seg1)["slice"]), meteor_track,
-                              name="Meteor overpass 1"),
+                       name="Meteor overpass 1"),
           meteor_event(ds.sel(time=parse_segment(seg2)["slice"]), meteor_track,
                        name="Meteor overpass 2"),
           meteor_event(ds.sel(time=parse_segment(seg3)["slice"]), meteor_track,
                        name="Meteor overpass 3"),
+          ec_event(ds, ec_track,
+                   ec_remarks=["sharp turn away from EC track right after meeting point due to deep convection"]),
           meteor_event(ds.sel(time=parse_segment(seg22)["slice"]), meteor_track,
                        name="Meteor overpass 4"),
-          target_event(ds_hres.sel(time=parse_segment(seg1)["slice"]), target="BCO",
-                      name="passing by BCO"),
           target_event(ds_hres.sel(time=parse_segment(seg24)["slice"]), target="BCO",
                       name="BCO overpass 2"),
          ]
