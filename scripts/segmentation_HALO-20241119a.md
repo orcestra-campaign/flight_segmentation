@@ -359,8 +359,8 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
-    ec_event(ds.sel(time=parse_segment(seg9)["slice"]), ec_track, ec_remarks = ["first underpass on northward EC track"]),
-    ec_event(ds.sel(time=parse_segment(seg11)["slice"]), ec_track, ec_remarks = ["second underpass on southward EC track"]),
+    ec_event(ds, ec_track),
+    target_event(ds, target = "MIM")
 ]
 events
 ```
