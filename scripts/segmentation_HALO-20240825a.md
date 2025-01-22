@@ -139,91 +139,91 @@ seg1 = (
     slice("2024-08-25T09:18:00", "2024-08-25T09:44:45"),
     ["straight_leg", "ascent"],
     "ferry_southwestward_ascent",
-    []
+    [],
 )
 
 seg2 = (
     slice("2024-08-25T09:44:46", "2024-08-25T09:55:57"),
     ["straight_leg"],
     "ferry_southwestward",
-    []
+    [],
 )
 
 seg3 = (
     slice("2024-08-25T09:56:30", "2024-08-25T10:28:42"),
     ["straight_leg"],
     "ferry_southwestward",
-    []
+    [],
 )
 
 seg4 = (
     slice("2024-08-25T10:30:15", "2024-08-25T10:53:01"),
     ["straight_leg", "ec_track"],
     "ec_track_southward",
-    []
+    [],
 )
 
 seg5 = (
     slice("2024-08-25T10:54:07", "2024-08-25T11:10:40"),
     ["straight_leg", "ec_track"],
     "ec_track_southward",
-    []
+    [],
 )
 
 seg6 = (
     slice("2024-08-25T11:12:48", "2024-08-25T11:45:49"),
     ["straight_leg", "ec_track"],
-    "ec_track_through_circle_south",
-    ["irregularity: turbulence up to plus/minus 2.6 degree roll angle"]
+    "ec_track_southward_through_circle_south",
+    ["irregularity: turbulence up to plus/minus 2.6 degree roll angle"],
 )
 
 seg7 = (
     slice("2024-08-25T11:56:28", "2024-08-25T12:52:34"),
     ["circle", "circle_counterclockwise"],
     "circle_south",
-    []
+    [],
 )
 
 seg8 = (
     slice("2024-08-25T12:55:30", "2024-08-25T13:16:20"),
     ["straight_leg", "ec_track"],
-    "ec_track_through_circle_south",
-    []
+    "ec_track_northward_through_circle_south",
+    [],
 )
 
 seg9 = (
     slice("2024-08-25T13:18:30", "2024-08-25T14:14:36"),
     ["circle", "circle_counterclockwise"],
     "circle_mid",
-    []
+    [],
 )
 
 seg10 = (
     slice("2024-08-25T14:18:06", "2024-08-25T14:22:26"),
     ["straight_leg", "ec_track"],
-    "ec_track_through_circle_mid",
-    []
+    "ec_track_northward_through_circle_mid",
+    [],
 )
 
 seg11 = (
     slice("2024-08-25T14:22:26", "2024-08-25T14:27:07"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_through_circle_mid_ascent",
-    []
+    "ec_track_northward_through_circle_mid_ascent",
+    [],
 )
 
 seg12 = (
     slice("2024-08-25T14:27:07", "2024-08-25T14:39:07"),
     ["straight_leg", "ec_track"],
     "ec_track_northward",
-    []
+    [],
 )
 
 seg13 = (
     slice("2024-08-25T14:41:41", "2024-08-25T15:36:41"),
     ["circle", "circle_counterclockwise"],
     "circle_north",
-    []
+    [],
 )
 
 seg14 = (
@@ -231,63 +231,63 @@ seg14 = (
     ["straight_leg", "ec_track"],
     "ec_track_northward",
     ["irregularity: roll angle of about 1 degree between 15:45:28 and 15:53:13",
-    "includes EC meeting point"]
+    "includes EC meeting point"],
 )
 
 seg15 = (
     slice("2024-08-25T16:38:52", "2024-08-25T16:53:14"),
     ["straight_leg"],
     "ferry_eastward",
-    []
+    [],
 )
 
 seg16 = (
     slice("2024-08-25T16:55:01", "2024-08-25T17:04:45"),
     ["smart_calibration"],
-    "calibration_four_turns_maneuver",
-    []
+    "smart_calibration_four_turns_maneuver",
+    [],
 )
 
 seg17 = (
     slice("2024-08-25T17:06:00", "2024-08-25T17:33:58"),
     ["straight_leg"],
-    "ferry",
-    ["includes CVAO overpass"]
+    "straight_leg_overpassing_cvao",
+    ["includes CVAO overpass"],
 )
 
 seg18 = (
     slice("2024-08-25T17:34:47", "2024-08-25T17:42:49"),
     ["straight_leg"],
     "ferry_eastward",
-    []
+    [],
 )
 
 seg19 = (
     slice("2024-08-25T17:42:49", "2024-08-25T17:53:13"),
     ["straight_leg", "descent"],
-    "ferry_to_atr_circle_descent",
-    ["irregularity: slight heading adjustment between 17:46:40 and 17:48:31"]
+    "ferry_towards_atr_circle_descent",
+    ["irregularity: slight heading adjustment between 17:46:40 and 17:48:31"],
 )
 
 seg20 = (
     slice("2024-08-25T17:56:30", "2024-08-25T18:34:32"),
     ["circle", "atr_coordination", "circle_counterclockwise"],
     "atr_circle",
-    []
+    [],
 )
 
 seg21 = (
     slice("2024-08-25T18:39:32", "2024-08-25T18:53:35"),
     ["straight_leg", "descent"],
     "ferry_northward_descent",
-    []
+    [],
 )
 
 seg22 = (
     slice("2024-08-25T18:54:50", "2024-08-25T18:58:41"),
     ["straight_leg", "descent"],
     "ferry_descent",
-    ["irregularity: tubulence up to plus/minus 2.4 degree roll angle"]
+    ["irregularity: tubulence up to plus/minus 2.4 degree roll angle"],
 )
 
 

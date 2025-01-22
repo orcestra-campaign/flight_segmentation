@@ -144,66 +144,74 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl0 = (
     slice("2024-08-13T14:18:23", "2024-08-13T14:44:00"),
     ["straight_leg", "ascent"],
-    "ferry_ascent",
-    []
+    "ferry_northward_ascent",
+    [],
 )
+
 sl1 = (
     slice("2024-08-13T14:44:00", "2024-08-13T14:56:37"),
     ["straight_leg"],
-    "ferry_constant_altitude",
-    []
+    "ferry_northward",
+    [],
 )
+
 # EC track split into sub-segments
 ec1a = (
     slice("2024-08-13T15:04:14", "2024-08-13T15:18:00"),
     ["straight_leg", "ec_track"],
     "ec_track_southward",
-    []
+    [],
 )
+
 # in between those two segments there was a holding pattern to wait for EC
 # followed by the decision to descent to FL360 before meeting EC
 ec1b = (
     slice("2024-08-13T15:28:11", "2024-08-13T15:32:18"),
     ["straight_leg", "descent", "ec_track"],
-    "ec_track_descent_to_fl360",
-    []
+    "ec_track_southward_descent_to_fl360",
+    [],
 )
+
 # meeting EC on a low leg due to cirrus clouds
 ec1 = (
     slice("2024-08-13T15:32:18", "2024-08-13T15:52:22"),
     ["straight_leg", "ec_track"],
-    "ec_track_low_leg",
-    ["intentional low flight altitude to be below cirrus clouds", "includes EC underpass"]
+    "ec_track_southward_low_leg",
+    ["intentional low flight altitude to be below cirrus clouds",
+    "includes EC underpass"],
 )
+
 ec1c = (
     slice("2024-08-13T15:52:22", "2024-08-13T15:57:05"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_ascent_to_fl410",
-    []
+    "ec_track_southward_ascent_to_fl410",
+    [],
 )
+
 ec2 = (
     slice("2024-08-13T15:57:05", "2024-08-13T17:01:53"),
     ["straight_leg", "ec_track"],
-    "ec_track_mid_leg",
+    "ec_track_southward_mid_leg",
     ["includes one dropsonde launch"],
 )
 ec2a = (
     slice("2024-08-13T17:01:53", "2024-08-13T17:05:35"),
     ["straight_leg", "ec_track", "ascent"],
-    "ec_track_ascent_to_fl430",
-    []
+    "ec_track_southward_ascent_to_fl430",
+    [],
 )
+
 ec3 = (
     slice("2024-08-13T17:05:35", "2024-08-13T17:13:36"),
     ["straight_leg", "ec_track"],
-    "ec_track_high_leg",
-    []
+    "ec_track_southward_high_leg",
+    [],
 )
 
 sl_south = (
     slice("2024-08-13T17:16:49", "2024-08-13T17:19:35"),
     ["straight_leg"],
-    "straight_leg_south",
+    "ferry_towards_circle_south",
     ["irregularity: spikes with roll angle deviation up to +-3.6 deg"],
 )
 
@@ -217,21 +225,21 @@ c1 = (
 slc1c2a = (
     slice("2024-08-13T18:28:22", "2024-08-13T18:52:16"),
     ["straight_leg"],
-    "straight_leg_crossing_circle_south",
-    []
+    "straight_leg_through_circle_south",
+    [],
 )
 
 slc1c2b = (
     slice("2024-08-13T18:52:16", "2024-08-13T18:57:56"),
     ["straight_leg", "ascent"],
-    "straight_leg_ascent_crossing_circle_south",
-    []
+    "straight_leg_through_circle_south_ascent",
+    [],
 )
 
 slc1c2c = (
     slice("2024-08-13T18:57:56", "2024-08-13T19:12:49"),
     ["straight_leg"],
-    "straight_leg_to_circle_mid",
+    "ferry_towards_circle_mid",
     ["irregularity: turbulence with roll angle deviations up to +-4.5 deg"],
 )
 
@@ -239,26 +247,27 @@ c2 = (
     slice("2024-08-13T19:15:37", "2024-08-13T20:13:48"),
     ["circle", "circle_counterclockwise"],
     "circle_mid",
-    []
+    [],
 )
 
 slc2c3a = (
     slice("2024-08-13T20:17:49", "2024-08-13T20:27:56"),
     ["straight_leg"],
-    "straight_leg_crossing_circle_mid_1",
+    "straight_leg_through_circle_mid_1",
+    [],
 )
 
 slc2c3b = (
     slice("2024-08-13T20:28:18", "2024-08-13T20:33:12"),
     ["straight_leg"],
-    "straight_leg_crossing_circle_mid_2",
+    "straight_leg_through_circle_mid_2",
     ["irregularity: constant nonzero roll angle of about 1.3 deg"],
 )
 
 slc2c3c = (
     slice("2024-08-13T20:33:16", "2024-08-13T21:04:54"),
     ["straight_leg"],
-    "straight_leg_to_and_through_circle_north",
+    "straight_leg_towards_and_through_circle_north",
     ["irregularity: roll angle spikes between 20:47:19 - 20:47:49, at 20:57:20 and at 21:00:16"],
 )
 
@@ -274,15 +283,15 @@ c3 = (
 slc3catr = (
     slice("2024-08-13T22:09:37", "2024-08-13T22:17:51"),
     ["straight_leg"],
-    "straight_leg_to_atr_circle",
-    ["irregularity: roll angel deviation 22:12:41 - 22:13:13"]
+    "ferry_towards_atr_circle",
+    ["irregularity: roll angel deviation 22:12:41 - 22:13:13"],
 )
 
 catr = (
     slice("2024-08-13 22:21:00", "2024-08-13 22:59:14"),
     ["circle", "atr_coordination", "circle_counterclockwise"],
     "atr_circle",
-    []
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

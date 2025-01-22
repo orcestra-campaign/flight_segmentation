@@ -133,14 +133,14 @@ sl1 = (
 sl2 = (
     slice("2024-08-16T12:06:58", "2024-08-16T12:51:55"),
     ["straight_leg"],
-    "ferry_constant_altitude",
+    "ferry_towards_ec_track",
     ["irregularity: roll angle spike 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
 )
 
 ec1 = (
     slice("2024-08-16T12:53:26", "2024-08-16T13:11:30"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward_constant_altitude",
+    "ec_track_southward",
     [],
 )
 
@@ -154,7 +154,7 @@ ec2 = (
 ec3 = (
     slice("2024-08-16T13:13:31", "2024-08-16T13:40:56"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward_constant_altitude",
+    "ec_track_southward",
     ["irregularity: turbulence 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
 )
 
@@ -168,7 +168,7 @@ ec4 = (
 ec5 = (
     slice("2024-08-16T13:44:39", "2024-08-16T13:53:13"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward_constant_altitude",
+    "ec_track_southward",
     [],
 )
 
@@ -182,7 +182,7 @@ c1 = (
 ec6 = (
     slice("2024-08-16T14:54:54", "2024-08-16T15:03:59"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward_constant_altitude",
+    "ec_track_northward",
     [],
 )
 
@@ -210,7 +210,7 @@ ec7 = (
 ec8 = (
     slice("2024-08-16T16:12:30", "2024-08-16T16:51:04"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward_constant_altitude",
+    "ec_track_northward",
     ["ec_underpass"],
 )
 
@@ -224,7 +224,7 @@ c3 = (
 sl3 = (
     slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
     ["straight_leg"],
-    "ferry_constant_altitude",
+    "ferry_towards_atr_circle",
     ["irregularity: constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
 )
 
@@ -239,7 +239,7 @@ sl4 = (
     slice("2024-08-16T19:43:24", "2024-08-16T19:58:00"),
     ["straight_leg", "descent"],
     "ferry_descent",
-    []
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

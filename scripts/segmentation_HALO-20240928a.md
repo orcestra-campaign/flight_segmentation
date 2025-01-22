@@ -178,7 +178,7 @@ sl2 = (
 c2 = (
     slice("2024-09-28T13:42:16", "2024-09-28T14:37:51"),
     ["circle", "circle_clockwise"],
-    "cirlce_mid_east",
+    "circle_mid_east",
     ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
      "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
     ],

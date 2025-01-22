@@ -221,7 +221,7 @@ c5 = (
 sl4 = (
     slice("2024-09-19 19:06:00", "2024-09-19 19:14:25"),
     ["straight_leg"],
-    "straight_leg_4",
+    "straight_leg_through_circle_west",
     [],
 )
 
@@ -242,7 +242,7 @@ dc1 = (
 sl6 = (
     slice("2024-09-19 19:48:08", "2024-09-19 19:51:23"),
     ["straight_leg"],
-    "ferry_westward_towards_barbados_airport",
+    "ferry_westward_towards_airport",
     [],
 )
 

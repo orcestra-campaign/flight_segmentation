@@ -330,7 +330,7 @@ seg26 = (
 seg27 = (
     slice("2024-09-30T07:09:52", "2024-09-30T07:13:05"),
     ["straight_leg", "descent"],
-    "final_descent_to_memmingen_airport",
+    "final_descent_to_airport",
     ["irregularity: turbulence with roll angle deviations up to +-1.8 degree"]
 )
 

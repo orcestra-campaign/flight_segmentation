@@ -221,7 +221,7 @@ seg12 = (
 seg13 = (
     slice("2024-08-22T18:04:28", "2024-08-22T18:24:12"),
     ["straight_leg"],
-    "cvao_overpass",
+    "straight_leg_overpassing_cvao",
     []
 )
 
@@ -242,14 +242,14 @@ seg15 = (
 seg16 = (
     slice("2024-08-22T18:38:46", "2024-08-22T18:45:50"),
     ["straight_leg", "descent"],
-    "ferry_descent_to_atr_circle",
+    "ferry_towards_atr_circle_descent",
     []
 )
 
 seg17 = (
     slice("2024-08-22T18:45:50", "2024-08-22T18:47:03"),
     ["straight_leg"],
-    "ferry_to_atr_circle",
+    "ferry_towards_atr_circle",
     []
 )
 
@@ -264,21 +264,21 @@ seg19 = (
 seg21 = (
     slice("2024-08-22T19:23:26", "2024-08-22T19:29:17"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_towards_sal_descent",
     []
 )
 
 seg22 = (
     slice("2024-08-22T19:29:57", "2024-08-22T19:31:23"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_towards_sal_descent",
     []
 )
 
 seg23 = (
     slice("2024-08-22T19:34:38", "2024-08-22T19:40:10"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_towards_sal_descent",
     []
 )
 

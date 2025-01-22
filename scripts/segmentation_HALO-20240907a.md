@@ -261,7 +261,7 @@ seg18 = (
 seg19 = (
     slice("2024-09-07T20:36:50", "2024-09-07T20:40:31"),
     ["straight_leg", "descent"],
-    "final_descent",
+    "final_descent_to_airport",
     ["irregularities: turbulence with roll angles larger/smaller 1 degree"],
 )
 

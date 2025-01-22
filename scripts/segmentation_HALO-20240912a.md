@@ -251,7 +251,7 @@ seg16 = (
 seg17 = (
     slice("2024-09-12T20:01:29", "2024-09-12T20:05:05"),
     ["straight_leg", "descent"],
-    "final_descent",
+    "final_descent_to_airport",
     [],
 )
 

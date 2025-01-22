@@ -145,7 +145,7 @@ sl1 = (
 sl2 = (
     slice("2024-09-09T12:12:21", "2024-09-09T13:47:15"),
     ["straight_leg"],
-    "ferry_eastward_constant_altitude",
+    "ferry_eastward",
     ["irregularity: roll angle deviations up to +-2.7 degree around 12:22:44, 12:40:47, 12:54:38, and 13:00:46"],
 )
 
@@ -236,14 +236,14 @@ sl7 = (
 sl8 = (
     slice("2024-09-09T20:33:08", "2024-09-09T20:39:59"),
     ["straight_leg", "descent"],
-    "descent_towards_airport",
+    "ferry_towards_barbados_descent",
     [],
 )
 
 sl9 = (
     slice("2024-09-09T20:42:47", "2024-09-09T20:46:32"),
     ["straight_leg", "descent"],
-    "final_descent_towards_airport",
+    "final_descent_to_airport",
     ["irregularity: turbulence near surface with roll angle deviations up to +-2.3 degree"],
 )
 # add all segments that you want to save to a yaml file later to the below list

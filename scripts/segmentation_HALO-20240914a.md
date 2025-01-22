@@ -173,14 +173,14 @@ c1a = (
 slc1c2 = (
     slice("2024-09-14T14:34:24", "2024-09-14T14:44:31"),
     ["straight_leg"],
-    "ferry_towards_circle_south2",
-    ["test sonde before circle 2"],
+    "ferry_towards_circle_south_2",
+    ["test sonde before circle_south_2"],
 )
 
 c2 = (
     slice("2024-09-14T14:52:41", "2024-09-14T15:50:44"),
     ["circle", "circle_clockwise"],
-    "circle_south2",
+    "circle_south_2",
     [],
 )
 

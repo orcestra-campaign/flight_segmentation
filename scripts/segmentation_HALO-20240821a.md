@@ -142,7 +142,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-21T12:26:22", "2024-08-21T12:54:23"),
     ["straight_leg", "ascent"], 
-    "ferry_ascent_westward",
+    "ferry_westward_ascent",
     [],
 )
 

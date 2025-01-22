@@ -139,21 +139,22 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-29T12:24:02", "2024-08-29T12:48:08"),
     ["straight_leg", "ascent"],
-    "ferry_to_ec_track_ascent",
-    []
+    "ferry_towards_ec_track_ascent",
+    [],
 )
 
 seg2 = (
     slice("2024-08-29T12:49:30", "2024-08-29T13:19:00"),
     ["straight_leg", "ec_track"],
     "ec_track_southward",
-    ["irregularity: turbulence with roll angle deviations up to +-2.75 deg at 13:17:53"]
+    ["irregularity: turbulence with roll angle deviations up to +-2.75 deg at 13:17:53"],
 )
 
 seg3 = (
     slice("2024-08-29T13:19:00", "2024-08-29T13:21:01"),
     ["straight_leg", "ascent", "ec_track"],
     "ec_track_southward_ascent",
+    [],
 )
 
 seg4 = (
@@ -174,28 +175,28 @@ seg5 = (
 seg6 = (
     slice("2024-08-29T13:49:50", "2024-08-29T14:02:51"),
     ["straight_leg", "ec_track"],
-    "leg_to_circle_south",
-    []
+    "ec_track_southward",
+    [],
 )
 
 seg7 = (
     slice("2024-08-29T14:05:48", "2024-08-29T15:04:22"),
     ["circle", "circle_counterclockwise"],
     "circle_south",
-    []
+    [],
 )
 
 seg8 = (
     slice("2024-08-29T15:10:24", "2024-08-29T15:14:52"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_ascent",
-    ["irregularity: spike in roll angle of -3.3 deg at 15:12:46"]
+    "ec_track_southward_ascent",
+    ["irregularity: spike in roll angle of -3.3 deg at 15:12:46"],
 )
 
 seg9 = (
     slice("2024-08-29T15:14:52", "2024-08-29T15:28:55"),
     ["straight_leg", "ec_track"],
-    "ec_track_southernmost",
+    "ec_track_southward_towards_southernmost_point",
     ["sonde dropped at southmost point at 15:28:40"],
 )
 
@@ -219,67 +220,70 @@ seg12 = (
     slice("2024-08-29T17:25:19", "2024-08-29T17:36:43"),
     ["straight_leg", "ec_track"],
     "ec_track_northward",
-    []
+    [],
 )
 
 seg13 = (
     slice("2024-08-29T17:39:30", "2024-08-29T18:40:31"),
     ["circle", "circle_counterclockwise"],
     "circle_north",
-    []
+    [],
 )
 
 seg14 = (
     slice("2024-08-29T18:42:17", "2024-08-29T18:46:51"),
     ["straight_leg"],
-    "ferry_to_ec_track",
-    ["segment inside northern circle"]
+    "ferry_towards_ec_track",
+    ["segment inside northern circle"],
 )
 
 seg15 = (
     slice("2024-08-29T18:46:51", "2024-08-29T18:49:36"),
     ["straight_leg", "descent"],
-    "ferry_to_ec_track_descent",
-    []
+    "ferry_towards_ec_track_descent",
+    [],
 )
 
 seg16 = (
     slice("2024-08-29T18:50:33", "2024-08-29T18:53:43"),
     ["straight_leg", "descent", "ec_track"],
     "ec_track_northward_descent",
+    [],
 )
 
 seg17 = (
     slice("2024-08-29T18:53:43", "2024-08-29T19:06:30"),
     ["straight_leg", "ec_track"],
     "ec_track_northward",
-    ["irregularity: constains segments with nonzero mean roll angle ranging from -0.3 to 0.6 deg"]
+    ["irregularity: constains segments with nonzero mean roll angle ranging from -0.3 to 0.6 deg"],
 )
 
 seg18 = (
     slice("2024-08-29T19:09:18", "2024-08-29T19:46:09"),
     ["circle", "atr_coordination", "circle_clockwise"],
     "atr_circle",
+    [],
 )
 
 seg19 = (
     slice("2024-08-29T19:47:25", "2024-08-29T20:00:54"),
     ["straight_leg"],
-    "ferry_to_mindelo",
-    ["contains CVAO overpass"]
+    "ferry_towards_mindelo",
+    ["contains CVAO overpass"],
 )
 
 seg20 = (
     slice("2024-08-29T20:02:33", "2024-08-29T20:16:02"),
     ["straight_leg", "descent"],
-    "ferry_descent_to_sal",
-    ["irregularity: roll angle spike of 1.7 deg at 20:12:11"]
+    "ferry_towards_sal_descent",
+    ["irregularity: roll angle spike of 1.7 deg at 20:12:11"],
 )
 
 seg21 = (
     slice("2024-08-29T20:16:37", "2024-08-29T20:24:30"),
     ["straight_leg", "descent"],
-    "ferry_descent_to_sal",
+    "ferry_towards_sal_descent",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
