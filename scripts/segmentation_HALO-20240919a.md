@@ -142,117 +142,113 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-19 11:05:00", "2024-09-19 11:33:39"),
     ["straight_leg", "ascent"],
-    "ferry_ascent",
+    "ferry_eastward_ascent",
+    [],
 ) 
 
 sl1 = (
     slice("2024-09-19 11:33:39", "2024-09-19 12:32:40"),
     ["straight_leg", "meteor_coordination"],    
-    "straight_leg_1",
+    "ferry_eastward",
     ["includes Meteor overpass"],
 )
 
 c1 = (
     slice("2024-09-19 12:35:30", "2024-09-19 13:30:35"),
     ["circle", "circle_counterclockwise"],
-    "circle_1",
+    "circle_east",
     ["irregularity: turbulence 12:32:30 - 12:48:00 with up to +-25 deg roll angle deviation"],
 )
 
 sl2 = (
     slice("2024-09-19 13:36:25", "2024-09-19 13:56:00"),
     ["straight_leg", "meteor_coordination"],
-    "leg crossing circle_2",
+    "straight_leg_through_circle_mid",
     ["includes Meteor overpass"],
 )     
 
 c2 = (
     slice("2024-09-19 13:58:32", "2024-09-19 14:53:20"),
     ["circle", "circle_counterclockwise", "meteor_coordination"],
-    "circle_2",
+    "circle_mid",
+    [],
 )
 
 catr = (
     slice("2024-09-19 15:03:25", "2024-09-19 15:33:36"),
     ["circle", "circle_counterclockwise"],
-    "small circle",
-    [],
+    "circle_mid_small",
     ["smaller radius due to time limitations"],
 )
 
 sl3a = (
-    slice("2024-09-19 15:47:30", "2024-09-19 16:15:11"),
+    slice("2024-09-19 15:47:30", "2024-09-19 16:27:00"),
     ["straight_leg"],
-    "straight_leg_3a",
-)
-
-sl3b = (
-    slice("2024-09-19 16:15:11", "2024-09-19 16:21:16"),
-    ["straight_leg"],
-    "straight_leg_3b",
-    ["irregularity: constant non-zero roll angle of about 1 deg"],
-)
-
-sl3c= (
-    slice("2024-09-19 16:21:16", "2024-09-19 16:27:00"),
-    ["straight_leg"],
-    "pace track underpass",
-    ["meeting PACE at 16:23:21"],
+    "pace_track_northward",
+    ["irregularity: constant non-zero roll angle of about 1 deg between 16:15:11 and 16:21:16",
+    "includes PACE meeting point at 16:23:21"],
 )
 
 c4 = (
     slice("2024-09-19 16:30:13", "2024-09-19 17:25:15"),
     ["circle", "circle_clockwise"],
-    "circle_4",
+    "circle_north",
+    [],
 )
 
 ec1 = (
     slice("2024-09-19 17:30:00", "2024-09-19 17:58:00"),
     ["straight_leg", "ec_track"],
-    "EC_track_southward_const_alt",
-    ["irregularity: turbulence 17:36:30 - 17:38:00 with up to +-7.7 deg roll angle deviation"],
+    "ec_track_southward",
+    ["irregularity: turbulence 17:36:30 - 17:38:00 with up to +-7.7 deg roll angle deviation",
+     "includes EC meeting point"],
 )
 
 cal = (
     slice("2024-09-19 17:58:30", "2024-09-19 18:00:58"),
     ["radar_calibration_wiggle"],
-    "radar calibration",
+    "radar_calibration",
+    [],
 )
 
 c5 = (
     slice("2024-09-19 18:04:55", "2024-09-19 19:04:15"),
     ["circle", "circle_clockwise"],
-    "circle_5",
+    "circle_west",
+    [],
 )
 
 sl4 = (
     slice("2024-09-19 19:06:00", "2024-09-19 19:14:25"),
     ["straight_leg"],
     "straight_leg_4",
+    [],
 )
 
 sl5 = (
     slice("2024-09-19 19:15:00", "2024-09-19 19:24:20"),
     ["straight_leg"],
-    "straight_leg_5",
+    "ferry_westward",
+    [],
 )
 
 dc1 = (
     slice("2024-09-19 19:24:20", "2024-09-19 19:35:49"),
     ["straight_leg", "descent"],
-    "descent to Barbados",
+    "ferry_westward_descent",
+    [],
 )
 
 sl6 = (
     slice("2024-09-19 19:48:08", "2024-09-19 19:51:23"),
     ["straight_leg"],
-    "approach to Barbados airport",
+    "ferry_westward_towards_barbados_airport",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-#segments = [parse_segment(s) for s in [ac1, dc1, cal, ec1, sl1, sl2, sl3a, sl3b, sl3c, sl4, sl5, sl6, c1, c2, catr, c4, c5]]
 segments = [parse_segment(s) for s in [ac1, sl1, c1, sl2, c2,
-                                       catr, sl3a, sl3b, sl3c,
+                                       catr, sl3a,
                                        c4, ec1, cal, c5,
                                        sl4, sl5, dc1, sl6]]
 ```

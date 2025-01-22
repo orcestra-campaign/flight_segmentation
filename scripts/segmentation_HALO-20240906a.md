@@ -141,117 +141,126 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-09-06T10:43:06", "2024-09-06T11:05:05"),
     ["straight_leg", "ascent"],
-    "leg 1 ascending and heading south-west",
+    "ferry_southwestward_ascent",
     ["irregularity: roll angle deviation up to plus/minus 1.5 degree around 11:00:51"],
 )
 
 sl2 = (
     slice("2024-09-06T11:09:50", "2024-09-06T11:39:28"),
     ["straight_leg"],
-    "leg 2 heading south-west",
+    "straight_leg_southwestward",
+    [],
 )
 
 sl3 = (
     slice("2024-09-06T11:39:28", "2024-09-06T11:47:55"),
     ["straight_leg", "ascent"],
-    "leg 3 ascending and heading south-west",
+    "straight_leg_southwestward_ascent",
+    [],
 )
-
 
 sl4 = (
     slice("2024-09-06T11:47:55", "2024-09-06T12:18:27"),
     ["straight_leg"],
-    "leg 4 heading south-west",
+    "straight_leg_southwestward",
+    [],
 )
 
 sl5 = (
     slice("2024-09-06T12:20:04", "2024-09-06T12:26:40"),
     ["straight_leg"],
-    "leg 5 heading west",
+    "straight_leg_westward",
+    [],
 )
 
 sl6 = (
     slice("2024-09-06T12:28:00", "2024-09-06T12:37:19"),
     ["straight_leg"],
-    "leg 6 heading west",
+    "straight_leg_westward",
+    [],
 )
 
 sl7 = (
     slice("2024-09-06T12:44:14", "2024-09-06T12:58:09"),
     ["straight_leg"],
-    "leg 7 heading west",
+    "straight_leg_westward",
+    [],
 )
 
 sl8 = (
     slice("2024-09-06T13:01:59", "2024-09-06T13:07:03"),
     ["straight_leg", "meteor_coordination"],
-    "southmost leg 8 heading west",
-    ["contains METEOR overpass"]
+    "straight_leg_westward",
+    ["contains METEOR overpass"],
 )
 
 sl9 = (
     slice("2024-09-06T13:11:29", "2024-09-06T13:19:16"),
     ["straight_leg"],
-    "southern leg 9",
+    "straight_leg_westward",
+    [],
 )
 
 sl10 = (
     slice("2024-09-06T13:19:36", "2024-09-06T14:07:18"),
     ["straight_leg"],
-    "southern leg 10",
+    "straight_leg_westward",
+    [],
 )
 
 sl11 = (
     slice("2024-09-06T14:17:58", "2024-09-06T14:40:13"),
     ["straight_leg"],
-    "southern leg 11",
+    "straight_leg_westward",
+    [],
 )
 
 sl12 = (
     slice("2024-09-06T14:42:58", "2024-09-06T14:54:11"),
     ["straight_leg"],
-    "leg 12 heading north",
+    "straight_leg_northward",
+    [],
 )
 
 sl13_1 = (
     slice("2024-09-06T14:59:12", "2024-09-06T15:05:22"),
     ["straight_leg", "ascent"],
-    "ascending while heading north",
+    "straight_leg_northward_ascent",
+    [],
 )
 
 sl13_2 = (
     slice("2024-09-06T15:05:22", "2024-09-06T15:20:20"),
     ["straight_leg"],
-    "leg crossing circle",
+    "straight_leg_northward_through_circle_west",
+    [],
 )
 
 c1 = (
     slice("2024-09-06T15:23:12", "2024-09-06T16:21:35"),
     ["circle", "circle_counterclockwise"],
-    "circle west",
+    "circle_west",
+    [],
 )
-# c1_1 = (
-#     slice("2024-09-06T16:21:35", "2024-09-06T16:41:20"),
-#     [],
-#     "continued circling",
-# )
 
 sl14 = (
     slice("2024-09-06T16:44:26", "2024-09-06T17:30:05"),
     ["straight_leg"],
-    "leg 14 heading north-west",
+    "straight_leg_northwestward",
+    [],
 )
 sl15 = (
     slice("2024-09-06T17:30:05", "2024-09-06T17:41:44"),
     ["straight_leg", "descent"],
-    "leg 15 descending and heading north-west",
+    "straight_leg_northwestward_descent",
+    [],
 )
 
 sl16 = (
     slice("2024-09-06T17:42:39", "2024-09-06T17:50:55"),
     ["straight_leg", "descent"],
-    "leg 16 descending and heading west",
-    ["irregularity: roll angle deviation up to -3.2 degree at 17:49:54"]
+    "straight_leg_westward_descent",
+    ["irregularity: roll angle deviation up to -3.2 degree at 17:49:54"],
 )
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, sl5,

@@ -138,62 +138,56 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-09-14T11:35:22", "2024-09-14T11:42:01"),
     ["straight_leg", "ascent"],
-    "ascending leg heading south-east",
+    "ferry_southeastward_ascent",
+    [],
 )
 
 sl2 = (
     slice("2024-09-14T11:51:35", "2024-09-14T12:01:37"),
     ["straight_leg", "ascent"],
-    "ascending leg heading south-east",
+    "ferry_southeastward_ascent",
+    [],
 )
 
 sl3 = (
     slice("2024-09-14T12:01:37", "2024-09-14T12:31:55"),
     ["straight_leg"],
-    "leg (constant alt) heading south-east",
+    "ferry_southeastward",
+    [],
 )
 
 sl4 = (
     slice("2024-09-14T12:33:02", "2024-09-14T12:53:53"),
     ["straight_leg"],
-    "leg approaching circle 1",
+    "ferry_towards_circle_south",
     ["irregularity: roll angle deviation 12:43:54 - 12:47:37 up to 2.7 degree"],
 )
 
 c1a = (
     slice("2024-09-14T12:55:49", "2024-09-14T13:54:25"),#55:35
     ["circle", "circle_counterclockwise"],
-    "circle 1a",
-    ["heavy problems with dropsonde reck resulted in only three dropsonde profiles"]
+    "circle_south",
+    ["heavy problems with dropsonde reck resulted in only three dropsonde profiles"],
 )
 
-# should we even define kind=circle for the below segment?
-# c1b = (
-#    slice("2024-09-14T13:54:25", "2024-09-14T14:31:38"),
-#    ["circle"],
-#    "circle 1b",
-#    ["irregularity: early circle end after 2/3 of teh circle due to time limitations", 
-#     "no dropsondes due to continued problems with dropsonde reck",
-#    "irregularity: height level change between 12:55:35 - 14:00:14",
-#    ],
-# )
 slc1c2 = (
     slice("2024-09-14T14:34:24", "2024-09-14T14:44:31"),
     ["straight_leg"],
-    "leg from c1 to c2",
+    "ferry_towards_circle_south2",
     ["test sonde before circle 2"],
 )
 
 c2 = (
     slice("2024-09-14T14:52:41", "2024-09-14T15:50:44"),
     ["circle", "circle_clockwise"],
-    "circle 2",
+    "circle_south2",
+    [],
 )
 
 c3 = (
     slice("2024-09-14T15:54:54", "2024-09-14T16:54:20"),
     ["circle", "circle_clockwise"],
-    "circle 3",
+    "circle_mid",
     ["irregularity: roll angle deviations up to 3.4 degree at 16:12:32, 16:17:02, 16:48:04, and 16:50:04"],
 )
 
@@ -202,31 +196,34 @@ c3 = (
 ec = (
     slice("2024-09-14T17:14:36", "2024-09-14T17:32:09"),
     ["straight_leg", "ec_track"],
-    "EC track",
-    ["leg crossing circle 3 and meeting EC in the circle center"],
+    "ec_track_northward_through_circle_mid",
+    ["Contains EC meeting point in the circle center"],
 )
 ec2 = (
     slice("2024-09-14T17:32:21", "2024-09-14T17:37:54"),
     ["straight_leg", "ec_track"],
-    "tilted EC track",
+    "ec_track_tilted",
     ["leg with constant roll angle of 1.1 degree"],
 )
 c4 = (
     slice("2024-09-14T17:40:41", "2024-09-14T18:36:44"),
     ["circle", "circle_clockwise"],
-    "circle 4",
+    "circle_north",
+    [],
 )
 
 sl5 = (
     slice("2024-09-14T18:39:30", "2024-09-14T19:35:39"),
     ["straight_leg"],
-    "leg heading west",
+    "ferry_westward",
+    [],
 )
 
 sl6 = (
     slice("2024-09-14T19:44:20", "2024-09-14T19:57:46"),
     ["straight_leg", "descent"],
-    "descending and heading home",
+    "ferry_westward_descent",
+    [],
 )
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, sl3, sl4, c1a, slc1c2, c2, c3, ec, c4, sl5, sl6]]

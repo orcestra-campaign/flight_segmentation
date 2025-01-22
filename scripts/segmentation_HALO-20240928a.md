@@ -135,54 +135,50 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-28T10:49:42", "2024-09-28T11:19:46"),
     ["straight_leg", "ascent"],
-    "ascent",
+    "ferry_eastward_ascent",
+    [],
 )
 
 sl1a = (
-    slice("2024-09-28T11:19:46", "2024-09-28T12:14:51"),
+    slice("2024-09-28T11:19:46", "2024-09-28T12:22:42"),
     ["straight_leg"],
-    "straight_leg_1a",
-    ["irregularity: roll angle spike of -5.75 degree at 11:37:15"]
-)
-
-sl1b = (
-    slice("2024-09-28T12:14:51", "2024-09-28T12:22:42"),
-    ["straight_leg"],
-    "straight_leg_1b",
-    ["irregularity: constant nonzero roll angle of about 0.75 degree"]
+    "ferry_eastward",
+    ["irregularity: roll angle spike of -5.75 degree at 11:37:15",
+    "irregularity: constant nonzero roll angle of about 0.75 degree"]
 )
 
 ac2 = (
     slice("2024-09-28T12:22:42", "2024-09-28T12:26:46"),
     ["straight_leg", "ascent"],
-    "ascent 2",
+    "ferry_eastward_ascent",
     ["irregularity: constant nonzero roll angle of about 0.75 degree"]
 )
 
 sl1c = (
     slice("2024-09-28T12:26:46", "2024-09-28T12:32:49"),
     ["straight_leg"],
-    "straight_leg_1c",
-    ["irregularity: constant nonzero roll angle of about 0.75 degree"]
+    "ferry_eastward",
+    ["irregularity: constant nonzero roll angle of about 0.75 degree"],
 )
 
 c1 = (
     slice("2024-09-28T12:34:43", "2024-09-28T13:32:02"),
     ["circle", "circle_clockwise"],
-    "cirlce_1",
+    "circle_east",
     ["irregularity: early start due to first sonde. Roll angle stable after 12:35:03."],
 )
 
 sl2 = (
     slice("2024-09-28T13:35:30", "2024-09-28T13:39:35"),
     ["straight_leg"],
-    "straight_leg_2"
+    "ferry_towards_circle_mid_east",
+    [],
 )
 
 c2 = (
     slice("2024-09-28T13:42:16", "2024-09-28T14:37:51"),
     ["circle", "circle_clockwise"],
-    "cirlce_2",
+    "cirlce_mid_east",
     ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
      "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
     ],
@@ -191,47 +187,50 @@ c2 = (
 sl3a = (
     slice("2024-09-28T14:41:42", "2024-09-28T14:55:27"),
     ["straight_leg"],
-    "straight_leg_3",
+    "ferry_towards_circle_mid_west",
     ["irregularity: turbulence with roll angle deviations up to +-1.4 deg",
-     "includes two dropsonde launches"]
+     "includes two dropsonde launches"],
 )
 
 sl3b = (
     slice("2024-09-28T14:55:27", "2024-09-28T15:01:38"),
     ["straight_leg", "ascent"],
-    "straight_leg_3",
+    "ferry_towards_circle_mid_west_ascent",
+    [],
 )
 
 sl3c = (
     slice("2024-09-28T15:01:38", "2024-09-28T15:24:30"),
     ["straight_leg"],
-    "straight_leg_3",
-    ["includes three dropsonde launches"]
+    "ferry_towards_circle_mid_west",
+    ["includes three dropsonde launches"],
 )
 
 c3 = (
     slice("2024-09-28T15:27:44", "2024-09-28T16:23:17"),
     ["circle", "circle_clockwise"],
-    "cirlce_3",
+    "circle_mid_west",
+    [],
 )
 
 sl4 = (
     slice("2024-09-28T16:26:50", "2024-09-28T16:30:41"),
     ["straight_leg"],
-    "straight_leg_4"
+    "ferry_towards_circle_west",
+    [],
 )
 
 c4 = (
     slice("2024-09-28T16:33:57", "2024-09-28T17:28:58"),
     ["circle", "circle_clockwise"],
-    "cirlce_4 with pace underpass",
-    ["circle path crosses PACE track"]
+    "circle_mid_west_with_pace_underpass",
+    ["circle path crosses PACE track"],
 )
 
 ec1 = (
     slice("2024-09-28T17:31:22", "2024-09-28T17:55:11"),
     ["straight_leg", "ec_track"],
-    "EC_track_southward_const_alt",
+    "ec_track_southward",
     ["includes EC underpass",
      "includes one dropsonde launch near EC underpass"]
 )
@@ -239,82 +238,89 @@ ec1 = (
 sl5a = (
     slice("2024-09-28T17:58:30", "2024-09-28T18:04:43"),
     ["straight_leg"],
-    "straight_leg_5a",
+    "ferry_towards_circle_southwest",
+    [],
 )
 
 cal1 = (
     slice("2024-09-28T18:04:52", "2024-09-28T18:07:11"),
     ["radar_calibration_wiggle"],
-    "radar calibration wiggle",
+    "radar_calibration",
+    []
 )
 
 sl5b = (
     slice("2024-09-28T18:09:29", "2024-09-28T18:13:07"),
     ["straight_leg"],
-    "straight_leg_5b",
+    "ferry_towards_circle_southwest",
+    [],
 )
 
 c5 = (
     slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
     ["circle", "circle_clockwise"],
-    "circle_5",
-    ["circle path crosses PACE track"]
+    "circle_southwest",
+    ["circle path crosses PACE track"],
 )
 
 sl6 = (
     slice("2024-09-28T19:12:35", "2024-09-28T19:15:05"),
     ["straight_leg"],
-    "straight_leg_6 crossing circle_5",
-    ["includes one dropsonde launch inside circle_5"]
+    "ferry_northwestward_through_circle_southwest",
+    ["includes one dropsonde launch inside circle_southwest"]
 )
 
 sl7a = (
     slice("2024-09-28T19:16:11", "2024-09-28T19:24:49"),
     ["straight_leg"],
-    "straight_leg_7",
-    ["leg inside cirlce_5"]
+    "ferry_northwestward_through_circle_southwest",
+    ["leg inside circle_southwest"]
 )
 
 sl7b = (
     slice("2024-09-28T19:24:49", "2024-09-28T19:30:09"),
     ["straight_leg", "descent"],
-    "straight_leg_7b",
-    ["leg inside cirlce_5"]
+    "ferry_northwestward_through_circle_southwest_descent",
+    ["leg inside circle_southwest"]
 )
-
 
 sl8 = (
     slice("2024-09-28T19:30:09", "2024-09-28T19:33:47"),
     ["straight_leg"],
-    "straight_leg_8",
+    "ferry_northwestward",
+    [],
 )
 
 sl9 = (
     slice("2024-09-28T19:33:47", "2024-09-28T19:38:41"),
     ["straight_leg", "descent"],
-    "straight_leg_9",
+    "ferry_northwestward_descent",
+    [],
 )
 
 cal2 = (
     slice("2024-09-28T19:39:41", "2024-09-28T19:42:08"),
     ["radar_calibration_dive"],
-    "radar calibration dive",
+    "radar_calibration",
+    [],
 )
 
 sl10 = (
     slice("2024-09-28T19:42:08", "2024-09-28T19:47:34"),
     ["straight_leg", "descent"],
-    "straight_leg_10",
+    "ferry_northwestward_descent",
+    [],
 )
 
 sl11 = (
     slice("2024-09-28T19:48:08", "2024-09-28T19:53:48"),
     ["straight_leg", "descent"],
-    "straight_leg_11",
+    "ferry_northwestward_descent",
+    [],
 )
 # add all segments that you want to save to a yaml file later to the below list
 
-segments = [parse_segment(s) for s in [ac1, sl1a, sl1b, ac2, sl1c, c1, sl2, c2, sl3a, sl3b, sl3c, c3, sl4, c4,
+segments = [parse_segment(s) for s in [ac1, sl1a, ac2, sl1c, c1, sl2, c2, sl3a, sl3b, sl3c, c3, sl4, c4,
                                        ec1, sl5a, cal1, sl5b, c5, sl6, sl7a, sl7b, sl8,
                                        sl9, cal2, sl10, sl11]]
 ```

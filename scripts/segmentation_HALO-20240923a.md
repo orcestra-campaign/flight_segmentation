@@ -149,20 +149,22 @@ Alternatively, you can also define the segments as dictionaries which also allow
 # segment at roughly 930m altitude, but with two different roll angles -> maybe name it just "leg" and specify irreg?
 seg1 = (slice("2024-09-23T11:17:49", "2024-09-23T11:18:39"),
         ["straight_leg", "meteor_coordination"],
-        "heading towards Meteor",
-        ["segment at roughly 930m altitude", "including 1st METEOR overpass and BCO bypass"],
+        "ferry_towards_meteor",
+        ["segment at roughly 930m altitude",
+         "including first METEOR overpass and BCO bypass"],
        )
 
 # climbing circle (with Meteor overpass)
 seg2 = (slice("2024-09-23T11:21:42", "2024-09-23T11:54:32"),
         ["ascent", "circle", "circle_clockwise", "meteor_coordination"],
-        "climbing circle",
+        "circle_ascent",
         ["circle to climb up to FL410", "including 2nd METEOR overpass"],
        )
+
 # Meteor measurement circle (with Meteor overpass) on FL410
 seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
         ["circle", "meteor_coordination", "circle_clockwise", "meteor_coordination"],
-        "Meteor circle",
+        "circle_meteor",
         ["irregularity: roll angle deviations up to +-6 degree from segment start until 11:56:20 due to deep convection",
          "including 3rd METEOR overpass",
         ],
@@ -171,64 +173,73 @@ seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
 # heading to c_mid
 seg4a = (slice("2024-09-23T12:31:33", "2024-09-23T12:40:20"),
         ["straight_leg"],
-        "leg 1 towards circle c_mid",
+        "ferry_eastward_towards_circle_mid",
+        [],
        )
+
 seg4b = (slice("2024-09-23T12:40:20", "2024-09-23T12:44:10"),
         ["straight_leg", "ascent"],
-        "climb to FL430",
+        "ferry_eastward_ascent_to_fl430",
+        [],
        )
+
 seg4c = (slice("2024-09-23T12:44:10", "2024-09-23T13:08:51"),
         ["straight_leg"],
-        "leg 2 towards circle c_mid",
+        "ferry_eastward_towards_circle_mid",
+        [],
        )
 
 seg6 = (slice("2024-09-23T13:12:20", "2024-09-23T14:07:30"),
         ["circle", "circle_clockwise"],
-        "circle c_mid",
+        "circle_mid",
         ["irregularity: deviation from circular path due to deep convection with roll angle deviations up to +-28 degree between 13:21:57 - 13:31:10"],
        )
 
 seg7 = (slice("2024-09-23T14:11:01", "2024-09-23T14:26:28"),
         ["straight_leg"],
-        "leg crossing circle c_mid",
+        "ferry_eastward_through_circle_mid",
         ["irregularity: spike with roll angle deviation of -3 degree"],
        )
+
 seg8 = (slice("2024-09-23T14:26:28", "2024-09-23T14:31:32"),
-         ["straight_leg", "ascent"],
-         "climb towards FL450"
+        ["straight_leg", "ascent"],
+        "ferry_eastward_ascent_to_fl450",
+        [],
        )
+       
 # fl change 14:26:29 - 14:31:29 and again 14:35:43 - 14:37:34
 # straight_leg and circle start still with FL change
 
 seg9 = (slice("2024-09-23T14:37:34", "2024-09-23T15:32:20"),
         ["circle", "circle_clockwise"],
-        "circle around EC track",
-        ["irregularitiy: late start due to FL change, on circle roughly since 14:32:30", "irregularity: deviation from circular path due to deep convection with roll angle deviations up to +- 16 degree"]
+        "circle_around_ec_track",
+        ["irregularitiy: late start due to FL change, on circle roughly since 14:32:30",
+        "irregularity: deviation from circular path due to deep convection with roll angle deviations up to +- 16 degree"]
        )
 
 seg10 = (slice("2024-09-23T15:36:28", "2024-09-23T15:57:14"),
          ["straight_leg"],
-         "leg crossing circle c_ec",
-         ["irregularity: spike in rool angle up to -5.65deg between 15:42:23-15:42:36"]
+         "ferry_eastward_through_circle_around_ec_track",
+         ["irregularity: spike in rool angle up to -5.65deg between 15:42:23-15:42:36"],
         )
 
 seg11 = (slice("2024-09-23T16:00:47", "2024-09-23T16:55:23"),
          ["circle", "circle_counterclockwise"],
-         "circle south",
+         "circle_south",
          ["irregularity: deviation from circular path due to deep convection in southern half, 16:15:30 - 16:18:30, with roll angle deviations up to +-30 degree.",
-          "irregularity: deviation from circular path due to deep convection in northern half, from 16:47:06 until the segment ends, with roll angle deviations up to +-28 degree."]
+         "irregularity: deviation from circular path due to deep convection in northern half, from 16:47:06 until the segment ends, with roll angle deviations up to +-28 degree."],
         )
 
 seg12 = (slice("2024-09-23T16:57:01", "2024-09-23T17:12:15"),
          ["straight_leg"],
-         "leg towards EC track at ec_south",
+         "ferry_towards_ec_track_at_ec_south",
          ["irregularity: roll angle spike up to 5.1 degree"],
         )
 
 seg13 = (slice("2024-09-23T17:15:25", "2024-09-23T17:23:46"),
          ["straight_leg", "ec_track"],
-         "EC track northward",
-         ["irregularity: the EC track is very short due to very deep convection in the south and north but covers the meeting point"]
+         "ec_track_northward",
+         ["irregularity: the EC track is very short due to very deep convection in the south and north but covers the meeting point"],
         )
 
 # heavy deviations to navigate through deep concevtion towards next circle
@@ -236,21 +247,26 @@ seg13 = (slice("2024-09-23T17:15:25", "2024-09-23T17:23:46"),
 
 seg14 = (slice("2024-09-23T17:54:38", "2024-09-23T17:57:27"),
         ["straight_leg"],
-        "leg 1 towards circle c_west",
+        "ferry_towards_circle_west",
+        [],
         )
 
 seg15 = (slice("2024-09-23T17:57:27", "2024-09-23T18:03:16"),
         ["straight_leg", "ascent"],
-        "climb to FL470")
+        "ferry_towards_circle_west_ascent_to_fl470",
+        [],
+        )
 
 seg16 = (slice("2024-09-23T18:03:17", "2024-09-23T18:12:36"),
         ["straight_leg"],
-        "leg 2 towards circle c_west",
+        "ferry_towards_circle_west",
+        [],
         )
 
 seg17 = (slice("2024-09-23T18:15:51", "2024-09-23T19:10:36"),
         ["circle", "circle_clockwise"],
-        "circle west",
+        "circle_west",
+        [],
         )
 
 seg18 = (slice("2024-09-23T19:12:57", "2024-09-23T19:16:45"),
@@ -267,7 +283,8 @@ seg19 = (slice("2024-09-23T19:16:59", "2024-09-23T19:18:43"),
 # straight leg crossing c_west
 seg20 = (slice("2024-09-23T19:21:24", "2024-09-23T19:26:39"),
         ["straight_leg"],
-        "straight leg 2 crossing c_west",
+        "ferry_westward_through_c_west",
+        [],
         )
 
 # FL change down to ~2km consisting of 3 straight legs
@@ -275,24 +292,30 @@ seg20 = (slice("2024-09-23T19:21:24", "2024-09-23T19:26:39"),
 # FL change leg 1
 seg21a = (slice("2024-09-23T19:26:40", "2024-09-23T19:32:04"),
          ["straight_leg", "descent"],
-          "straight leg 1 on descent towards Meteor",
+          "ferry_westward_towards_meteor_descent",
+          [],
          )
+
 # FL change leg 2
 seg21b = (slice("2024-09-23T19:34:08", "2024-09-23T19:41:36"),
           ["straight_leg", "descent"],
-          "straight leg 2 on descent towards Meteor",
+          "ferry_westward_towards_meteor_descent",
+          [],
          )
+
 # FL change leg 3
 seg21c = (slice("2024-09-23T19:42:37", "2024-09-23T19:46:56"),
           ["straight_leg", "descent"],
-          "straight leg 3 on descent towards Meteor",
+          "ferry_westward_towards_meteor_descent",
+          [],
          )
 
 # straight leg overpassing Meteor at 2km height
 seg22 = (slice("2024-09-23T19:46:56", "2024-09-23T19:53:45"),
          ["straight_leg", "meteor_coordination"],
-         "straight leg overpassing Meteor at 2km height",
-         ["only BAHAMAS instrument still running", "irregularity: roll angle deviations up to +-6.7 degree"],
+         "straight_leg_overpassing_meteor_at_2km_altitude",
+         ["only BAHAMAS instrument still running",
+         "irregularity: roll angle deviations up to +-6.7 degree"],
         )
 # again FL change
 #seg23 = (slice("2024-09-23T19:53:44", "2024-09-23T19:56:41"),)
@@ -300,7 +323,7 @@ seg22 = (slice("2024-09-23T19:46:56", "2024-09-23T19:53:45"),
 # straight_leg passing by BCO at ~900m height at 19:56:57
 seg24 = (slice("2024-09-23T19:56:50", "2024-09-23T19:58:11"),
         ["straight_leg"],
-         "straight leg overpassing BCO at 900m height",
+         "straight_leg_overpassing_bco_at_900m_altitude",
          ["only BAHAMAS instrument still running"],
         )
 
