@@ -222,11 +222,10 @@ seg11 = (
     "ferry_towards_ec_track",
 )
 
-# some calibration missing here, get's currently clarified
 seg12 = (
-    slice("2024-11-19T11:59:32", "2024-11-19T12:02:45"),
-    ["some_calibration"],
-    "calibration_maneuver",
+    slice("2024-11-19T11:59:28", "2024-11-19T12:00:59"),
+    ["specmacs_calibration", "radar_calibration_wiggle"],
+    "specMACS_and_radar_calibration_maneuver_1",
 )
 
 seg13 = (
@@ -254,11 +253,10 @@ seg16 = (
     "straight_leg_8",
 )
 
-# some calibration missing here, get's currently clarified
 seg17 = (
-    slice("2024-11-19T13:10:12", "2024-11-19T13:13:56"),
-    ["some_calibration"],
-    "calibration_maneuver",
+    slice("2024-11-19T13:10:15", "2024-11-19T13:12:00"),
+    ["specmacs_calibration", "radar_calibration_wiggle"],
+    "specMACS_and_radar_calibration_maneuver_2",
 )
 
 seg18 = (
