@@ -123,26 +123,26 @@ plt.legend();
 ## Interactive plots
 
 ```python
-import holoviews as hv
-tko = hv.VLine(np.datetime64(takeoff)).opts(color='orange', line_width=1)
-ldn = hv.VLine(np.datetime64(landing)).opts(color='orange', line_width=1)
-segs = hv.VLine(np.datetime64("2024-11-19T09:57:05")).opts(color='blue', line_width=1)
-sege = hv.VLine(np.datetime64("2024-11-19T10:03:03")).opts(color='blue', line_width=1)
+# import holoviews as hv
+# tko = hv.VLine(np.datetime64(takeoff)).opts(color='orange', line_width=1)
+# ldn = hv.VLine(np.datetime64(landing)).opts(color='orange', line_width=1)
+# segs = hv.VLine(np.datetime64("2024-11-19T15:28:27")).opts(color='blue', line_width=1)
+# sege = hv.VLine(np.datetime64("2024-11-19T15:34:57")).opts(color='blue', line_width=1)
 ```
 
 ```python
 alt = ds["alt"].hvplot()
-alt * tko * ldn * segs * sege
+alt #* tko * ldn * segs * sege
 ```
 
 ```python
 roll = ds["roll"].hvplot()
-roll * tko * ldn * segs * sege
+roll #* tko * ldn * segs * sege
 ```
 
 ```python
 heading = ds["heading"].hvplot()
-heading * tko * ldn * segs * sege
+heading #* tko * ldn * segs * sege
 ```
 
 ## Segments
@@ -158,144 +158,175 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-11-19T09:30:11", "2024-11-19T09:33:29"),
     ["straight_leg", "ascent"],
-    "ascent 1",
+    "straight_leg_ascent_1",
 )
 
 seg2 = (
     slice("2024-11-19T09:36:01", "2024-11-19T09:39:42"),
     ["straight_leg", "ascent"],
-    "ascent 2",
+    "straight_leg_ascent_2",
 )
 
 seg3 = (
     slice("2024-11-19T09:41:41", "2024-11-19T09:45:37"),
     ["straight_leg", "ascent"],
-    "ascent 3",
+    "straight_leg_ascent_3",
 )
 
 seg4 = (
     slice("2024-11-19T09:49:13", "2024-11-19T09:54:11"),
     ["straight_leg"],
-    "leg 1",
+    "straight_leg_1",
 )
 
 seg5 = (
     slice("2024-11-19T09:57:05", "2024-11-19T10:03:03"),
     ["straight_leg"],
-    "leg 2",
+    "straight_leg_2",
+    ["contains first MIM overpass"]
 )
 
 seg6 = (
-    slice("2024-11-14T10:31:47", "2024-11-14T12:26:18"),
-    ["straight_leg", "ec_track"],
-    "northward leg 2 on EC track",
+    slice("2024-11-19T10:04:34", "2024-11-19T10:32:39"),
+    ["straight_leg"],
+    "straight_leg_3",
 )
 
 seg7 = (
-    slice("2024-11-14T12:26:18", "2024-11-14T12:29:30"),
-    ["straight_leg", "ascent", "ec_track"],
-    "ascending leg 3 on EC track",
+    slice("2024-11-19T10:33:39", "2024-11-19T10:36:01"),
+    ["straight_leg"],
+    "straight_leg_3",
 )
 
 seg8 = (
-    slice("2024-11-14T12:30:27", "2024-11-14T12:34:13"),
-    ["straight_leg", "ascent", "ec_track"],
-    "ascending leg 4 on EC track",
+    slice("2024-11-19T10:37:07", "2024-11-19T11:13:43"),
+    ["straight_leg"],
+    "straight_leg_4",
 )
 
 seg9 = (
-    slice("2024-11-14T12:34:13", "2024-11-14T14:02:38"),
-    ["straight_leg", "ec_track"],
-    "northward leg 5 on EC track",
+    slice("2024-11-19T11:14:41", "2024-11-19T11:18:02"),
+    ["straight_leg"],
+    "straight_leg_5",
 )
 
 seg10 = (
-    slice("2024-11-14T14:05:07", "2024-11-14T14:44:46"),
+    slice("2024-11-19T11:19:00", "2024-11-19T11:26:58"),
     ["straight_leg"],
-    "long westward leg",
+    "straight_leg_6",
 )
 
 seg11 = (
-    slice("2024-11-14T14:47:04", "2024-11-14T15:37:31"),
-    ["straight_leg", "ec_track"],
-    "southward EC track",
+    slice("2024-11-19T11:40:08", "2024-11-19T11:59:31"),
+    ["straight_leg"],
+    "ferry_towards_ec_track",
 )
 
 seg12 = (
-    slice("2024-11-14T15:45:18", "2024-11-14T16:32:05"),
-    ["straight_leg"],
-    "south-eastward leg 1",
+    slice("2024-11-19T12:07:30", "2024-11-19T12:08:57"),
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_ascent",
 )
 
 seg13 = (
-    slice("2024-11-14T16:32:47", "2024-11-14T16:39:15"),
-    ["straight_leg"],
-    "south-eastward leg 2",
+    slice("2024-11-19T12:08:57", "2024-11-19T12:52:48"),
+    ["straight_leg", "ec_track"],
+    "ec_track_southward",
+    ["contains EC underpass"]
 )
 
 seg14 = (
-    slice("2024-11-14T16:41:03", "2024-11-14T17:17:32"),
+    slice("2024-11-19T12:56:30", "2024-11-19T13:02:08"),
     ["straight_leg"],
-    "south-eastward leg 3",
+    "straight_leg_7",
 )
 
 seg15 = (
-    slice("2024-11-14T17:19:11", "2024-11-14T17:23:04"),
-    ["straight_leg", "ascent"],
-    "ascending south-eastward leg 4",
+    slice("2024-11-19T13:05:47", "2024-11-19T13:10:02"),
+    ["straight_leg"],
+    "straight_leg_8",
 )
 
 seg16 = (
-    slice("2024-11-14T17:23:04", "2024-11-14T17:35:21"),
+    slice("2024-11-19T13:14:21", "2024-11-19T13:39:37"),
     ["straight_leg"],
-    "south-eastward leg 5",
+    "straight_leg_9",
 )
 
 seg17 = (
-    slice("2024-11-14T17:36:48", "2024-11-14T17:56:14"),
+    slice("2024-11-19T13:40:43", "2024-11-19T13:49:22"),
     ["straight_leg"],
-    "south-eastward leg 6",
-    ["irregularity: roll angle spike of -1.4deg at 17:47:14"]
+    "straight_leg_10",
 )
 
-#not 100% sure whether to include this one due to change of heading...
 seg18 = (
-    slice("2024-11-14T17:57:17", "2024-11-14T18:04:44"),
-    ["straight_leg", "descent"],
-    "southward descent 1",
-    ["irregularity: roll angle spikes up to 1.4deg around 18:01:20", "irregularity: slight change of heading of about 8deg"]
+    slice("2024-11-19T13:50:13", "2024-11-19T13:54:13"),
+    ["straight_leg"],
+    "straight_leg_11",
 )
 
 seg19 = (
-    slice("2024-11-14T18:05:40", "2024-11-14T18:09:14"),
-    ["straight_leg", "descent"],
-    "descent 2",
+    slice("2024-11-19T13:55:06", "2024-11-19T14:11:27"),
+    ["straight_leg"],
+    "straight_leg_12",
+    ["irregularity: fairly rhythmic roll angle deviations of +-1.4deg between 14:05:22 and 14:08:57"]
 )
 
 seg20 = (
-    slice("2024-11-14T18:11:19", "2024-11-14T18:15:40"),
-    ["straight_leg", "descent"],
-    "southward descent 3",
-    ["irregularity: short horizontal section between 18:12:23 and 18:12:53"]
+    slice("2024-11-19T14:12:55", "2024-11-19T14:42:30"),
+    ["straight_leg"],
+    "straight_leg_13",
+    ["irregularity: roll angle deviations up to +-1.7deg"]
 )
 
 seg21 = (
-    slice("2024-11-14T18:16:32", "2024-11-14T18:29:02"),
-    ["straight_leg", "descent"],
-    "descent 4 towards Oberpfaffenhofen",
+    slice("2024-11-19T14:44:44", "2024-11-19T14:47:56"),
+    ["straight_leg", "ascent"],
+    "straight_leg_ascent_4",
 )
 
+seg22 = (
+    slice("2024-11-19T14:47:56", "2024-11-19T14:50:42"),
+    ["straight_leg"],
+    "straight_leg_14",
+)
 
+seg23 = (
+    slice("2024-11-19T14:51:27", "2024-11-19T15:06:45"),
+    ["straight_leg"],
+    "straight_leg_15",
+    ["irregularity: roll angle spikes up to +2.2deg"]
+)
+
+seg24 = (
+    slice("2024-11-19T15:07:42", "2024-11-19T15:10:31"),
+    ["straight_leg"],
+    "straight_leg_16",
+)
+
+seg25 = (
+    slice("2024-11-19T15:12:58", "2024-11-19T15:17:43"),
+    ["straight_leg"],
+    "straight_leg_17",
+    ["contains second MIM overpass"]
+)
+
+seg26 = (
+    slice("2024-11-19T15:28:27", "2024-11-19T15:34:57"),
+    ["straight_leg", "descent"],
+    "straight_leg_18",
+)
+     
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, 
-                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21]]
+                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, seg22, seg23, seg24, seg25, seg26]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg5)
+seg=parse_segment(seg26)
 add_previous_seg = False
 
 ###########################
@@ -335,7 +366,7 @@ print(f"Segment time: {seg["slice"].start} to {seg["slice"].stop}")
 ### Identify visually which straight_leg segments lie on EC track
 
 ```python
-seg = parse_segment(seg5)
+seg = parse_segment(seg26)
 plt.plot(ds.lon.sel(time=slice(takeoff, landing)), ds.lat.sel(time=slice(takeoff, landing)))
 plt.plot(ds.lon.sel(time=seg["slice"]), ds.lat.sel(time=seg["slice"]), color='red', label="selected segment", zorder=10)
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
@@ -360,7 +391,8 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 ```python
 events = [
     ec_event(ds, ec_track),
-    target_event(ds, target = "MIM")
+    target_event(ds, target = "MIM", name="first_mim_overpass"),
+    target_event(ds, target="MIM", seg=seg25, name="second_mim_overpass")
 ]
 events
 ```
