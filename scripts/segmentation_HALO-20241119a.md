@@ -222,96 +222,110 @@ seg11 = (
     "ferry_towards_ec_track",
 )
 
+# some calibration missing here, get's currently clarified
 seg12 = (
+    slice("2024-11-19T11:59:32", "2024-11-19T12:02:45"),
+    ["some_calibration"],
+    "calibration_maneuver",
+)
+
+seg13 = (
     slice("2024-11-19T12:07:30", "2024-11-19T12:08:57"),
     ["straight_leg", "ec_track"],
     "ec_track_southward_ascent",
 )
 
-seg13 = (
+seg14 = (
     slice("2024-11-19T12:08:57", "2024-11-19T12:52:48"),
     ["straight_leg", "ec_track"],
     "ec_track_southward",
     ["contains EC underpass"]
 )
 
-seg14 = (
+seg15 = (
     slice("2024-11-19T12:56:30", "2024-11-19T13:02:08"),
     ["straight_leg"],
     "straight_leg_7",
 )
 
-seg15 = (
+seg16 = (
     slice("2024-11-19T13:05:47", "2024-11-19T13:10:02"),
     ["straight_leg"],
     "straight_leg_8",
 )
 
-seg16 = (
+# some calibration missing here, get's currently clarified
+seg17 = (
+    slice("2024-11-19T13:10:12", "2024-11-19T13:13:56"),
+    ["some_calibration"],
+    "calibration_maneuver",
+)
+
+seg18 = (
     slice("2024-11-19T13:14:21", "2024-11-19T13:39:37"),
     ["straight_leg"],
     "straight_leg_9",
 )
 
-seg17 = (
+seg19 = (
     slice("2024-11-19T13:40:43", "2024-11-19T13:49:22"),
     ["straight_leg"],
     "straight_leg_10",
 )
 
-seg18 = (
+seg20 = (
     slice("2024-11-19T13:50:13", "2024-11-19T13:54:13"),
     ["straight_leg"],
     "straight_leg_11",
 )
 
-seg19 = (
+seg21 = (
     slice("2024-11-19T13:55:06", "2024-11-19T14:11:27"),
     ["straight_leg"],
     "straight_leg_12",
     ["irregularity: fairly rhythmic roll angle deviations of +-1.4deg between 14:05:22 and 14:08:57"]
 )
 
-seg20 = (
+seg22 = (
     slice("2024-11-19T14:12:55", "2024-11-19T14:42:30"),
     ["straight_leg"],
     "straight_leg_13",
     ["irregularity: roll angle deviations up to +-1.7deg"]
 )
 
-seg21 = (
+seg23 = (
     slice("2024-11-19T14:44:44", "2024-11-19T14:47:56"),
     ["straight_leg", "ascent"],
     "straight_leg_ascent_4",
 )
 
-seg22 = (
+seg24 = (
     slice("2024-11-19T14:47:56", "2024-11-19T14:50:42"),
     ["straight_leg"],
     "straight_leg_14",
 )
 
-seg23 = (
+seg25 = (
     slice("2024-11-19T14:51:27", "2024-11-19T15:06:45"),
     ["straight_leg"],
     "straight_leg_15",
     ["irregularity: roll angle spikes up to +2.2deg"]
 )
 
-seg24 = (
+seg26 = (
     slice("2024-11-19T15:07:42", "2024-11-19T15:10:31"),
     ["straight_leg"],
     "straight_leg_16",
 )
 
-seg25 = (
+seg27 = (
     slice("2024-11-19T15:12:58", "2024-11-19T15:17:43"),
     ["straight_leg"],
     "straight_leg_17",
     ["contains second MIM overpass"]
 )
 
-seg26 = (
+seg28 = (
     slice("2024-11-19T15:28:27", "2024-11-19T15:34:57"),
     ["straight_leg", "descent"],
     "straight_leg_18",
@@ -319,14 +333,15 @@ seg26 = (
      
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, 
-                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, seg22, seg23, seg24, seg25, seg26]]
+                                       seg12, seg13, seg14, seg15, seg16, seg17, seg18, seg19, seg20, seg21, 
+                                       seg22, seg23, seg24, seg25, seg26, seg27, seg28]]
 ```
 
 ### Quick plot for working your way through the segments piece by piece
 select the segment that you'd like to plot and optionally set the flag True for plotting the previous segment in your above specified list as well. The latter can be useful for the context if you have segments that are close or overlap in space, e.g. a leg crossing a circle.
 
 ```python
-seg=parse_segment(seg26)
+seg=parse_segment(seg8)
 add_previous_seg = False
 
 ###########################
