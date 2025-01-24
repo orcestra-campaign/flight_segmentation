@@ -195,7 +195,7 @@ c2 = (
 )
 
 c3 = (
-    slice("2024-09-21 14:52:00", "2024-09-21 15:54:00"),
+    slice("2024-09-21 14:52:00", "2024-09-21 15:51:50"),
     ["circle", "circle_counterclockwise"],
     "circle_3",
     ["irregularity: deviation from circular path 15:10:13 - 15:16:05 with roll angle deviation up tp +-19.2 deg"],

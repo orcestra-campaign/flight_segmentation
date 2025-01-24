@@ -182,9 +182,10 @@ seg6 = (
 )
 
 seg7 = (
-    slice("2024-09-12T14:18:20", "2024-09-12T15:10:37"),
+    slice("2024-09-12T14:14:40", "2024-09-12T15:10:37"),
     ["circle", "circle_counterclockwise"],
     "north-eastern circle",
+    ["early start of circle due to dropsonde", "stable roll angle after 14:18:20"],
 )
 
 seg8 = (

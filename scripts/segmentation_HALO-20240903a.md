@@ -221,13 +221,13 @@ sl5 = (
 
 catr1 = (
     slice("2024-09-03 19:01:06", "2024-09-03 19:06:37"),
-    ["circle", "atr_coordination", "circle_counterclockwise"],
+    ["atr_coordination"],
     "quarter_ATR_circle", ["quarter ATR circle: northeastern quadrant"],
 )
 
 sl6 = (
     slice("2024-09-03T19:14:00", "2024-09-03T19:22:58"),
-    ["straight_leg"], "southward_crossing_catr",
+    ["straight_leg", "atr_coordination"], "southward_crossing_catr",
     ["Crossing ATR circle along its full latitudinal extent"],
 )
     
