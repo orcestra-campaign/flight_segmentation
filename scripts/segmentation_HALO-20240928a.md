@@ -188,6 +188,8 @@ c2 = (
     ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
      "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
     ],
+    [str(ds_drops.sel(time="2024-09-28T14:48:34").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-28T14:55:26").sonde_id.values)],
 )
 
 sl3a = (
@@ -215,6 +217,9 @@ c3 = (
     slice("2024-09-28T15:27:44", "2024-09-28T16:23:17"),
     ["circle", "circle_clockwise"],
     "cirlce_3",
+    [],
+    [str(ds_drops.sel(time="2024-09-28T15:09:12").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-28T15:16:22").sonde_id.values)],
 )
 
 sl4 = (
@@ -260,7 +265,8 @@ c5 = (
     slice("2024-09-28T18:15:44", "2024-09-28T19:10:07"),
     ["circle", "circle_clockwise"],
     "circle_5",
-    ["circle path crosses PACE track"]
+    ["circle path crosses PACE track"],
+    [str(ds_drops.sel(time="2024-09-28T19:14:52").sonde_id.values)],
 )
 
 sl6 = (

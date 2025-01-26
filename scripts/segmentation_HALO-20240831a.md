@@ -227,7 +227,8 @@ seg13 = (
     slice("2024-08-31T12:52:25", "2024-08-31T13:48:01"),
     ["circle", "circle_counterclockwise"],
     "middle circle",
-    ["irregularity: turbulence with up to plus/minus 4.5 degree roll angle deviation"]
+    ["irregularity: turbulence with up to plus/minus 4.5 degree roll angle deviation"],
+    [str(ds_drops.sel(time="2024-08-31T14:05:21").sonde_id.values)],
 )
 
 seg14 = (

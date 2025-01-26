@@ -193,7 +193,12 @@ seg9 = (
     slice("2024-09-07T15:59:33", "2024-09-07T17:01:03"),
     ["circle", "circle_counterclockwise"],
     "middle circle",
-    ["irregularities: permission denied for some sondes which were then dropped on straight leg through circle instead"]
+    ["irregularities: permission denied for some sondes which were then dropped on straight leg through circle instead"],
+    [str(ds_drops.sel(time="2024-09-07T17:11:21").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:15:01").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:18:53").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:19:36").sonde_id.values)],
+
 )
 
 seg10 = (

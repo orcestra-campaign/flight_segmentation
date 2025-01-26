@@ -181,7 +181,8 @@ seg7 = (
     slice("2024-08-25T11:56:28", "2024-08-25T12:52:34"),
     ["circle", "circle_counterclockwise"],
     "southern circle",
-    []
+    [],
+    [str(ds_drops.sel(time="2024-08-25T13:02:54").sonde_id.values)],
 )
 
 seg8 = (

@@ -207,7 +207,11 @@ c4 = (
     slice("2024-09-26T16:06:15", "2024-09-26T17:05:10"),
     ["circle", "circle_clockwise"],
     "circle_4",
-    ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"]
+    ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"],
+    [str(ds_drops.sel(time="2024-09-26T17:23:25").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:28:03").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:32:37").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:37:25").sonde_id.values)],
 )
 
 ec1 = (
@@ -223,7 +227,9 @@ c5 = (
     slice("2024-09-26T18:25:26", "2024-09-26T19:17:46"),
     ["circle", "circle_clockwise"],
     "circle_5",
-    ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"]
+    ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"],
+    [str(ds_drops.sel(time="2024-09-26T19:23:39").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T19:28:17").sonde_id.values)],
 )
 
 sl5 = (

@@ -188,6 +188,8 @@ c2 = (
     slice("2024-09-14T14:52:41", "2024-09-14T15:50:44"),
     ["circle", "circle_clockwise"],
     "circle 2",
+    [],
+    [str(ds_drops.sel(time="2024-09-14T14:35:56").sonde_id.values)],
 )
 
 c3 = (

@@ -173,6 +173,7 @@ c2 = (
     ["circle", "circle_counterclockwise", "circle_clockwise"],
     "circle_south",
     ["irregularity: two half circles with straight leg in between, first half counterclockwise, second half clockwise"],
+    [str(ds_drops.sel(time="2024-09-16T16:01:56").sonde_id.values)],
 )
 
 sl3b = (

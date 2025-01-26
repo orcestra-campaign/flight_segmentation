@@ -170,6 +170,7 @@ c2 = (
     slice("2024-08-18T12:53:12", "2024-08-18T13:47:18"),
     ["circle", "circle_clockwise"], "circle_mid",
     ["irregularity: turbulence"],
+    [str(ds_drops.sel(time="2024-08-18T12:41:27").sonde_id.values)],
 )
 
 ec3 = (
@@ -180,7 +181,9 @@ ec3 = (
 
 c3 = (
     slice("2024-08-18T14:28:14", "2024-08-18T15:24:08"),
-    ["circle", "circle_clockwise"], "circle_south", [],
+    ["circle", "circle_clockwise"], "circle_south",
+    [],
+    [str(ds_drops.sel(time="2024-08-18T15:34:17").sonde_id.values)],
 )
 
 ec4 = (

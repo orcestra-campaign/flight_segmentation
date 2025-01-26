@@ -170,13 +170,15 @@ c2 = (
     slice("2024-09-19 13:58:32", "2024-09-19 14:53:20"),
     ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_2",
+    [],
+    [str(ds_drops.sel(time="2024-09-19T13:46:42").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-19T13:52:12").sonde_id.values)],
 )
 
 catr = (
     slice("2024-09-19 15:03:25", "2024-09-19 15:33:36"),
     ["circle", "circle_counterclockwise"],
     "small circle",
-    [],
     ["smaller radius due to time limitations"],
 )
 
@@ -204,6 +206,11 @@ c4 = (
     slice("2024-09-19 16:30:13", "2024-09-19 17:25:15"),
     ["circle", "circle_clockwise"],
     "circle_4",
+    [],
+    [str(ds_drops.sel(time="2024-09-19T16:10:29").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-19T16:19:36").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-19T17:34:14").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-19T17:41:46").sonde_id.values)],
 )
 
 ec1 = (
@@ -223,6 +230,9 @@ c5 = (
     slice("2024-09-19 18:04:55", "2024-09-19 19:04:15"),
     ["circle", "circle_clockwise"],
     "circle_5",
+    [],
+    [str(ds_drops.sel(time="2024-09-19T19:11:11").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-19T19:17:21").sonde_id.values)],
 )
 
 sl4 = (

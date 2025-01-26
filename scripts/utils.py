@@ -344,6 +344,8 @@ def parse_segment(segment):
             seg["name"] = segment[2]
         if len(segment) >= 4:
             seg["remarks"] = segment[3]
+        if len(segment) >= 5:
+            seg["extra_sondes"] = segment[4]
     elif isinstance(segment, dict):
         return segment
     else:

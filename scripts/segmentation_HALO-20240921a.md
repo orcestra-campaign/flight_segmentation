@@ -146,6 +146,7 @@ c1 = (
     ["circle", "circle_counterclockwise", "meteor_coordination"],
     "circle_1",
     ["irregularity: ascent until 11:54:12"],
+    [str(ds_drops.sel(time="2024-09-21T13:02:23").sonde_id.values)],
 )
 
 sl1a = (
