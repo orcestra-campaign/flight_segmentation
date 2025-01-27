@@ -49,7 +49,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -239,14 +239,14 @@ sl5 = (
 
 catr1 = (
     slice("2024-09-03 19:01:06", "2024-09-03 19:06:37"),
-    ["circle", "atr_coordination", "circle_counterclockwise"],
+    ["atr_coordination"],
     "quarter_atr_circle",
     ["quarter ATR circle: northeastern quadrant"],
 )
 
 sl6 = (
     slice("2024-09-03T19:14:00", "2024-09-03T19:22:58"),
-    ["straight_leg"],
+    ["straight_leg", "atr_coordination"],
     "straight_leg_through_atr_circle",
     ["Crossing ATR circle along its full latitudinal extent"],
 )
@@ -367,4 +367,31 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+```python
+
 ```

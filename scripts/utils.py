@@ -25,13 +25,21 @@ def get_sondes_l1(flight_id):
     import xarray as xr
     import numpy as np
     import pandas as pd
-    root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
+    #root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
+    root = "ipfs://QmVMtDX1fZfL3SgNaXXt1wtW3htnC2vFbzx2ENN1cxrzSx"
     day_folder = root + "/" + flight_id
-    fs = fsspec.filesystem(day_folder.split(":")[0])
+    protocol = day_folder.split(":")[0]
+    fs = fsspec.filesystem(protocol)
     filenames = fs.glob(day_folder + "/*.nc")
-    datasets = [xr.open_dataset(fsspec.open_local("simplecache::ipns://" + filename), engine="netcdf4")
-                for filename in filenames if fs.size("ipns://" + filename)]
-    return pd.to_datetime(np.array([d["launch_time"].values for d in datasets])).sort_values().values
+    datasets = []
+    for filename in filenames:
+        try:
+            datasets.append(xr.open_dataset(fsspec.open_local(f"simplecache::{protocol}://{filename}"), engine="netcdf4"))
+        except IOError:
+            print(f"cannot read {filename}.")
+    lt, sonde_id = zip(*[(d["launch_time"].values, d.attrs["SondeId"]) for d in datasets])
+    return xr.Dataset({"launch_time": (["sonde_id"], list(lt)),
+                       "sonde_id": (["sonde_id"], list(sonde_id))})
 
 def get_overpass_point(ds, target_lat, target_lon):
     import numpy as np
@@ -336,6 +344,8 @@ def parse_segment(segment):
             seg["name"] = segment[2]
         if len(segment) >= 4:
             seg["remarks"] = segment[3]
+        if len(segment) >= 5:
+            seg["extra_sondes"] = segment[4]
     elif isinstance(segment, dict):
         return segment
     else:

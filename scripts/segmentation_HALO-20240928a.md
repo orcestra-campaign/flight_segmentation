@@ -46,7 +46,9 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest") \
+             .swap_dims({"sonde_id": "time"}) \
+             .sortby("time")
 ```
 
 ### Defining takeoff and landing
@@ -182,6 +184,8 @@ c2 = (
     ["irregularity: early start due to first sonde. Roll angle stable after 13:42:38.",
      "irregularity: few height level jumps by up to 30m and concurrent roll angle change by about 1deg",
     ],
+    [str(ds_drops.sel(time="2024-09-28T14:48:34").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-28T14:55:26").sonde_id.values)],
 )
 
 sl3a = (
@@ -211,6 +215,8 @@ c3 = (
     ["circle", "circle_clockwise"],
     "circle_mid_west",
     [],
+    [str(ds_drops.sel(time="2024-09-28T15:09:12").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-28T15:16:22").sonde_id.values)],
 )
 
 sl4 = (
@@ -261,6 +267,7 @@ c5 = (
     ["circle", "circle_clockwise"],
     "circle_southwest",
     ["circle path crosses PACE track"],
+    [str(ds_drops.sel(time="2024-09-28T19:14:52").sonde_id.values)],
 )
 
 sl6 = (
@@ -412,7 +419,25 @@ yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
 
 ```python
 flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
-kinds = set(k for s in segments for k in s["kinds"])
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+Print circle segments with extra sondes
+
+```python
+[s for s in flight["segments"] if ("circle" in s["kinds"] and "extra_sondes" in s.keys())]
+```
+
+Plot all sondes related to a circle segment indetified by it's id
+
+```python
+seg = [s for s in flight["segments"] if s["segment_id"]=="HALO-20240928a_8cd2"][0]
+plt.scatter(ds_drops.sel(time=slice(seg["start"], seg["end"])).lon,
+         ds_drops.sel(time=slice(seg["start"], seg["end"])).lat)
+if "extra_sondes" in seg.keys():
+    plt.scatter(ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lon,
+                ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lat)
 ```
 
 ```python

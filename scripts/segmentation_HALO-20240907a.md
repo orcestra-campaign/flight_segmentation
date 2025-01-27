@@ -46,7 +46,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -193,6 +193,10 @@ seg9 = (
     ["circle", "circle_counterclockwise"],
     "circle_mid",
     ["irregularities: permission denied for some sondes which were then dropped on straight leg through circle instead"],
+    [str(ds_drops.sel(time="2024-09-07T17:11:21").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:15:01").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:18:53").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-07T17:19:36").sonde_id.values)],
 )
 
 seg10 = (
@@ -362,7 +366,25 @@ flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
 ```
 
 ```python
-kinds = set(k for s in segments for k in s["kinds"])
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+Print circle segments with extra sondes
+
+```python
+[s for s in flight["segments"] if ("circle" in s["kinds"] and "extra_sondes" in s.keys())]
+```
+
+Plot all sondes related to a circle segment indetified by it's id
+
+```python
+seg = [s for s in flight["segments"] if s["segment_id"]=="HALO-20240907a_0290"][0]
+plt.scatter(ds_drops.sel(time=slice(seg["start"], seg["end"])).lon,
+         ds_drops.sel(time=slice(seg["start"], seg["end"])).lat)
+if "extra_sondes" in seg.keys():
+    plt.scatter(ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lon,
+                ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lat)
 ```
 
 ```python
