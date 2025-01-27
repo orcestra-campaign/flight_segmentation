@@ -49,7 +49,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -181,7 +181,8 @@ seg7 = (
     slice("2024-08-25T11:56:28", "2024-08-25T12:52:34"),
     ["circle", "circle_counterclockwise"],
     "southern circle",
-    []
+    [],
+    [str(ds_drops.sel(time="2024-08-25T13:02:54").sonde_id.values)],
 )
 
 seg8 = (
@@ -380,6 +381,46 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+Print circle segments
+
+```python
+[s for s in flight["segments"] if "circle" in s["kinds"]]
+```
+
+Plot all sondes related to a circle segment indetified by it's id
+
+```python
+seg = [s for s in flight["segments"] if s["segment_id"]=="HALO-20240825a_7edc"][0]
+plt.scatter(ds_drops.sel(time=slice(seg["start"], seg["end"])).lon,
+         ds_drops.sel(time=slice(seg["start"], seg["end"])).lat)
+if "extra_sondes" in seg.keys():
+    plt.scatter(ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lon,
+                ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lat)
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
 ```
 
 ```python

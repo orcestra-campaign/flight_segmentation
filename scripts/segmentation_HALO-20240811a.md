@@ -49,7 +49,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -201,7 +201,7 @@ sl3 = (
 )
 
 catr = (
-    slice("2024-08-11T19:16:38", "2024-08-11T19:58:01"),
+    slice("2024-08-11T19:16:38", "2024-08-11T19:57:20"),
     ["circle", "atr_coordination", "circle_clockwise"], 
     "ATR_circle", 
     [],
@@ -300,6 +300,25 @@ yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           sort_keys=False)
 ```
 
-```python
+## Import YAML and test it
 
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', 'radar_calibration'], ["C0", "C1", "C2"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
 ```

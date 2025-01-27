@@ -49,7 +49,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -218,7 +218,7 @@ seg12 = (
 )
 
 seg13 = (
-    slice("2024-08-29T17:39:30", "2024-08-29T18:40:31"),
+    slice("2024-08-29T17:41:10", "2024-08-29T18:40:31"),#17:39:30
     ["circle", "circle_counterclockwise"],
     "northern circle",
 )
@@ -380,7 +380,8 @@ flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
 ```
 
 ```python
-kinds = set(k for s in segments for k in s["kinds"])
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
 ```
 
 ```python

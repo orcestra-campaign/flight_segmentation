@@ -49,7 +49,7 @@ ds = get_navdata_HALO(flight_id)
 
 ```python
 drops = get_sondes_l1(flight_id)
-ds_drops = ds.sel(time=drops, method="nearest")
+ds_drops = ds.sel(time=drops.launch_time, method="nearest").swap_dims({"sonde_id": "time"})
 ```
 
 ### Defining takeoff and landing
@@ -204,10 +204,14 @@ sl4 = (
 )
 
 c4 = (
-    slice("2024-09-26T16:06:15", "2024-09-26T17:12:00"),
+    slice("2024-09-26T16:06:15", "2024-09-26T17:05:10"),
     ["circle", "circle_clockwise"],
     "circle_4",
-    ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"]
+    ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"],
+    [str(ds_drops.sel(time="2024-09-26T17:23:25").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:28:03").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:32:37").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T17:37:25").sonde_id.values)],
 )
 
 ec1 = (
@@ -223,7 +227,9 @@ c5 = (
     slice("2024-09-26T18:25:26", "2024-09-26T19:17:46"),
     ["circle", "circle_clockwise"],
     "circle_5",
-    ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"]
+    ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"],
+    [str(ds_drops.sel(time="2024-09-26T19:23:39").sonde_id.values),
+     str(ds_drops.sel(time="2024-09-26T19:28:17").sonde_id.values)],
 )
 
 sl5 = (
@@ -357,4 +363,48 @@ events
 yaml.dump(to_yaml(platform, flight_id, ds, segments, events),
           open(f"../flight_segment_files/{flight_id}.yaml", "w"),
           sort_keys=False)
+```
+
+## Import YAML and test it
+
+```python
+flight = yaml.safe_load(open(f"../flight_segment_files/{flight_id}.yaml", "r"))
+```
+
+```python
+kinds = set(k for s in flight["segments"] for k in s["kinds"])
+kinds
+```
+
+Print circle segments with extra sondes
+
+```python
+[s for s in flight["segments"] if ("circle" in s["kinds"] and "extra_sondes" in s.keys())]
+```
+
+Plot all sondes related to a circle segment indetified by it's id
+
+```python
+seg = [s for s in flight["segments"] if s["segment_id"]=="HALO-20240926a_f31e"][0]
+plt.scatter(ds_drops.sel(time=slice(seg["start"], seg["end"])).lon,
+         ds_drops.sel(time=slice(seg["start"], seg["end"])).lat)
+if "extra_sondes" in seg.keys():
+    plt.scatter(ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lon,
+                ds_drops.swap_dims({"time": "sonde_id"}).sel(sonde_id=seg["extra_sondes"]).lat)
+```
+
+```python
+fig, ax = plt.subplots()
+
+for k, c in zip(['straight_leg', 'circle', ], ["C0", "C1"]):
+    for s in flight["segments"]:
+        if k in s["kinds"]:
+            t = slice(s["start"], s["end"])
+            ax.plot(ds.lon.sel(time=t), ds.lat.sel(time=t), c=c, label=s["name"])
+ax.set_xlabel("longitude / °")
+ax.set_ylabel("latitude / °");
+```
+
+```python
+
 ```
