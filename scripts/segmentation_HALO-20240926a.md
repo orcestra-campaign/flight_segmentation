@@ -138,75 +138,84 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-26T11:44:37", "2024-09-26T12:13:44"),
     ["straight_leg", "ascent"],
-    "ferry ascent",
+    "ferry_eastward_ascent",
+    [],
 )
 
 sl1 = (
     slice("2024-09-26T12:16:02", "2024-09-26T12:23:11"),
     ["straight_leg"],
-    "straight_leg_1",
-    ["irregularity: turbulence 12:20:39 - 12:20:55 with roll angle deviation up to 4 deg"]
+    "ferry_eastward",
+    ["irregularity: turbulence 12:20:39 - 12:20:55 with roll angle deviation up to 4 deg"],
 )
 
 c1 = (
     slice("2024-09-26T12:26:03", "2024-09-26T13:20:10"),
     ["circle", "circle_counterclockwise"],
-    "circle_1",
+    "circle_west_mid",
+    [],
 )
 
 sl2 = (
     slice("2024-09-26T13:24:40", "2024-09-26T13:28:30"),
     ["straight_leg"],
-    "straight_leg_2",
+    "ferry_towards_circle_east_north",
+    [],
 )
 
 c2 = (
     slice("2024-09-26T13:30:59", "2024-09-26T14:24:30"),
     ["circle", "circle_counterclockwise"],
-    "circle_2",
-    ["irregularity: roll angle deviation of +0.8 between 14:11:10 and 14:19:25"]
+    "circle_east_north",
+    ["irregularity: roll angle deviation of +0.8 between 14:11:10 and 14:19:25"],
 )
 
 ac2 = (
     slice("2024-09-26T14:25:24", "2024-09-26T14:29:00"),
     ["straight_leg", "ascent"],
-    "ascent_2",
+    "ferry_towards_circle_east_south_ascent",
+    [],
 )
 
 sl3 = (
     slice("2024-09-26T14:29:00", "2024-09-26T14:47:20"),
     ["straight_leg"],
-    "straight_leg_3",
+    "ferry_towards_circle_east_south",
+    [],
 )
 
 c3 = (
     slice("2024-09-26T14:49:50", "2024-09-26T15:46:40"),
     ["circle", "circle_counterclockwise"],
-    "circle_3",
+    "circle_east_south",
+    [],
 )
 
 cal = (
     slice("2024-09-26T15:49:24", "2024-09-26T15:52:15"),
     ["radar_calibration_wiggle"],
-    "radar calibration",
+    "radar_calibration_1",
+    [],
 )
 
 ac3 = (
     slice("2024-09-26T15:53:23", "2024-09-26T15:56:56"),
     ["straight_leg", "ascent"],
-    "ascent_3",
+    "ferry_towards_circle_west_south_ascent",
+    [],
 )
 
 sl4 = (
     slice("2024-09-26T15:56:56", "2024-09-26T16:05:10"),
     ["straight_leg"],
-    "straight_leg_4",
+    "ferry_towards_circle_west_south",
+    [],
 )
 
 c4 = (
     slice("2024-09-26T16:06:15", "2024-09-26T17:05:10"),
     ["circle", "circle_clockwise"],
-    "circle_4",
+    "circle_west_south",
     ["no permission to drop sondes in northern half of the circle, four sondes dropped inside circle instead"],
     [str(ds_drops.sel(time="2024-09-26T17:23:25").sonde_id.values),
      str(ds_drops.sel(time="2024-09-26T17:28:03").sonde_id.values),
@@ -217,16 +226,17 @@ c4 = (
 ec1 = (
     slice("2024-09-26T17:20:10", "2024-09-26T18:23:08"),
     ["straight_leg", "ec_track"],
-    "EC_track_northward_const_alt",
+    "ec_track_northward",
     ["irregularity: deviation from constant roll angle of +-3.2 deg 18:15:30 - 18:15:53",
     "irregularity: deviation from constant roll angle of +-2.6 deg 18:18:40 - 18:18:59",
-    "includes five drop sonde launches"]
+    "includes five drop sonde launches",
+    "includes EC meeting point"]
 )
 
 c5 = (
     slice("2024-09-26T18:25:26", "2024-09-26T19:17:46"),
     ["circle", "circle_clockwise"],
-    "circle_5",
+    "circle_west_north",
     ["irregularity: roll angle deviation of +0.8 between 18:30:42 and 18:37:22"],
     [str(ds_drops.sel(time="2024-09-26T19:23:39").sonde_id.values),
      str(ds_drops.sel(time="2024-09-26T19:28:17").sonde_id.values)],
@@ -235,47 +245,52 @@ c5 = (
 sl5 = (
     slice("2024-09-26T19:19:50", "2024-09-26T19:27:37"),
     ["straight_leg"],
-    "straight_leg_5 towards center of circle_5",
-    ["includes one drop sonde launch at half the radius of circle_5"],
+    "ferry_towards_center_of_circle_west_north",
+    ["includes one drop sonde launch at half the radius of circle west_north"],
 )
 
 sl6 = (
     slice("2024-09-26T19:28:16", "2024-09-26T19:50:10"),
     ["straight_leg"],
-    "straight_leg_6 from center to edge of circle 5",
+    "ferry_southwestward_1",
     ["irregularity: roll angle deviation up to 15 deg due to curve before 19:28:47", 
     "irregularity: various roll angle deviations up to +-5.3 deg",
-    "includes one drop sonde launch at center of circle_5"],
+    "includes one drop sonde launch at center of circle west_north"],
 )
 
 sl7 = (
     slice("2024-09-26T19:51:11", "2024-09-26T19:53:09"),
     ["straight_leg"],
-    "straight_leg_7",
+    "ferry_southwestward_2",
+    [],
 )
 
 dc1 = (
     slice("2024-09-26T19:53:10", "2024-09-26T19:56:50"),
     ["straight_leg", "descent"],
-    "descent_1",
+    "ferry_descent_1",
+    [],
 )
 
 dc2 = (
     slice("2024-09-26T19:58:18", "2024-09-26T20:01:02"),
     ["straight_leg", "descent"],
-    "descent_2",
+    "ferry_descent_2",
+    [],
 )
 
 cal2 = (
     slice("2024-09-26T20:01:02", "2024-09-26T20:04:03"),
     ["radar_calibration_dive"],
-    "radar calibration dive",
+    "radar_calibration_2",
+    [],
 )
 
 dc3 = (
     slice("2024-09-26T20:06:30", "2024-09-26T20:18:00"),
     ["straight_leg", "descent"],
-    "descent_3",
+    "ferry_descent_3",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

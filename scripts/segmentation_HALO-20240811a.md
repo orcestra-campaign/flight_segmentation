@@ -137,79 +137,101 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 sl1 = (
     slice("2024-08-11T12:01:57", "2024-08-11T12:22:54"),
-    ["straight_leg", "ascent"], "ferry_ascent", [],
+    ["straight_leg", "ascent"],
+    "ferry_ascent",
+    [],
 )
 
 ec1 = (
     slice("2024-08-11T12:24:12", "2024-08-11T12:29:59"),
-    ["straight_leg", "ascent", "ec_track"], "EC_track_southward_ascent", [],
+    ["straight_leg", "ascent", "ec_track"],
+    "ec_track_southward_ascent",
+    [],
 )
 
 ec2 = (
     slice("2024-08-11T12:29:59", "2024-08-11T14:03:40"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward",
     ["irregularity: turbulence 2024-08-11T13:02:15 - 2024-08-11T13:12:00",],
 )
 
 ec3 = (
     slice("2024-08-11T14:09:46", "2024-08-11T14:14:59"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_1",
+    [],
 )
 
 c1 = (
     slice("2024-08-11T14:17:00", "2024-08-11T15:16:17"),
-    ["circle", "circle_counterclockwise"], "circle_south", [],
+    ["circle", "circle_counterclockwise"],
+    "circle_south",
+    [],
 )
 
 ec4 = (
     slice("2024-08-11T15:22:34", "2024-08-11T16:09:29"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_2",
     ["irregularity: turbulence 2024-08-11T15:59:35 - 20240811T16:09:29",
      "includes ec_underpass"],
 )
 
 c2 = (
     slice("2024-08-11T16:15:02", "2024-08-11T17:12:53"),
-    ["circle", "circle_clockwise"], "circle_mid",
+    ["circle", "circle_clockwise"],
+    "circle_mid",
     ["uneven sonde spacing: sonde 11 is not evenly spaced between neighbouring sondes in northeastern circle quadrant"],
 )
 
 c3 = (
     slice("2024-08-11T17:22:35", "2024-08-11T18:18:33"),
-    ["circle", "circle_counterclockwise"], "circle_north",
+    ["circle", "circle_counterclockwise"],
+    "circle_north",
     ["sonde missing: eastern circle quadrant"],
 )
 
 ec5 = (
     slice("2024-08-11T18:20:06", "2024-08-11T18:56:07"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_3",
+    [],
 )
 
 ec6 = (
     slice("2024-08-11T18:56:07", "2024-08-11T19:00:49"),
-    ["straight_leg", "ec_track", "descent"], "EC_track_northward_descent", [],
+    ["straight_leg", "ec_track", "descent"],
+    "ec_track_northward_descent",
+    [],
 )
 
 sl2 = (
     slice("2024-08-11T19:01:56", "2024-08-11T19:05:20"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent_1",
+    [],
 )
 
 sl3 = (
     slice("2024-08-11T19:05:20", "2024-08-11T19:11:19"),
-    ["straight_leg"], "ferry_const_alt", [],
+    ["straight_leg"],
+    "ferry_towards_atr_circle",
+    [],
 )
 
 catr = (
     slice("2024-08-11T19:16:38", "2024-08-11T19:57:20"),
     ["circle", "atr_coordination", "circle_clockwise"], 
-    "ATR_circle", 
+    "atr_circle", 
     [],
 )
 
 sl4 = (
     slice("2024-08-11T20:03:28", "2024-08-11T20:30:34"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent_2",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

@@ -146,62 +146,70 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-09-29T21:58:50", "2024-09-29T22:28:33"),
     ["straight_leg", "ascent"],
-    "ascent from Barbados airport",
+    "straight_leg_ascent",
+    [],
 )
 
 seg2 = (
     slice("2024-09-29T22:28:33", "2024-09-29T23:16:37"),
     ["straight_leg"],
-    "long north-eastward leg 1",
+    "straight_leg_northeastward_1",
+    [],
 )
 
 seg3 = (
     slice("2024-09-29T23:17:40", "2024-09-29T23:37:55"),
     ["straight_leg"],
-    "primarily eastward leg 1",
+    "straight_leg_primarily_eastward_1",
+    [],
 )
 
 seg4 = (
     slice("2024-09-29T23:37:57", "2024-09-29T23:58:23"),
     ["straight_leg"],
-    "primarily eastward leg 2",
-    ["irregularity: constant nonzero roll angle of about 0.6 degree"]
+    "straight_leg_primarily_eastward_2",
+    ["irregularity: constant nonzero roll angle of about 0.6 degree"],
 )
 
 seg5 = (
     slice("2024-09-29T23:58:30", "2024-09-30T00:02:42"),
     ["straight_leg"],
-    "primarily eastward leg 3",
+    "straight_leg_primarily_eastward_3",
+    [],
 )
 
 seg6 = (
     slice("2024-09-30T00:03:44", "2024-09-30T00:41:27"),
     ["straight_leg"],
-    "long north-eastward leg 2",
+    "straight_leg_northeastward_2",
+    [],
 )
 
 seg7 = (
     slice("2024-09-30T00:42:38", "2024-09-30T00:47:55"),
     ["straight_leg"],
-    "short north-eastward leg 3",
+    "straight_leg_northeastward_3",
+    [],
 )
 
 seg8 = (
     slice("2024-09-30T00:48:58", "2024-09-30T02:08:47"),
     ["straight_leg"],
-    "long north-eastward leg 4",
+    "straight_leg_northeastward_4",
+    [],
 )
 
 seg9 = (
     slice("2024-09-30T02:09:53", "2024-09-30T02:36:39"),
     ["straight_leg"],
-    "north-eastward leg 5",
+    "straight_leg_northeastward_5",
+    [],
 )
 
 seg10 = (
     slice("2024-09-30T02:36:41", "2024-09-30T02:44:22"),
     ["straight_leg", "ascent"],
-    "short north-eastward ascending leg",
+    "straight_leg_northeastward_ascent",
     ["irregularity: constant nonzero roll angle of about 0.6 degree", 
      "irregularity: mix of constant altitude and ascent"]
 )
@@ -209,85 +217,98 @@ seg10 = (
 seg11 = (
     slice("2024-09-30T02:44:25", "2024-09-30T03:43:51"),
     ["straight_leg"],
-    "long north-eastward leg 6",
+    "straight_leg_northeastward_6",
+    [],
 )
 
 seg12 = (
     slice("2024-09-30T03:45:23" , "2024-09-30T04:28:07"),
     ["straight_leg"],
-    "north-eastward leg 7",
+    "straight_leg_northeastward_7",
+    [],
 )
 
 seg13 = (
     slice("2024-09-30T04:29:17", "2024-09-30T04:38:21"),
     ["straight_leg"],
-    "primarily eastward leg 4",
+    "straight_leg_primarily_eastward_4",
+    [],
 )
 
 seg14 = (
     slice("2024-09-30T04:38:50", "2024-09-30T04:42:20"),
     ["straight_leg", "ascent"],
-    "eastward ascending leg",
+    "straight_leg_eastward_ascent",
+    [],
 )
 
 seg15 = (
     slice("2024-09-30T04:42:20", "2024-09-30T05:20:06"),
     ["straight_leg"],
-    "long primarily eastward leg 5",
+    "straight_leg_primarily_eastward_5",
+    [],
 )
 
 seg16 = (
     slice("2024-09-30T05:24:44", "2024-09-30T05:28:30"),
     ["straight_leg"],
-    "short north-eastward leg 8",
+    "straight_leg_northeastward_8",
+    [],
 )
 
 seg17 = (
     slice("2024-09-30T05:29:59", "2024-09-30T05:52:24"),
     ["straight_leg"],
-    "primarily eastward leg 6",
+    "straight_leg_primarily_eastward_6",
+    [],
 )
 
 seg18 = (
     slice("2024-09-30T05:53:31", "2024-09-30T06:06:04"),
     ["straight_leg"],
-    "long north-eastward leg 9",
+    "straight_leg_northeastward_9",
+    [],
 )
 
 seg19 = (
     slice("2024-09-30T06:06:22", "2024-09-30T06:14:37"),
     ["straight_leg"],
-    "north-eastward leg 10",
+    "straight_leg_northeastward_10",
+    [],
 )
 
 seg20 = (
     slice("2024-09-30T06:16:24", "2024-09-30T06:22:15"),
     ["straight_leg"],
-    "north-eastward leg 11",
+    "straight_leg_northeastward_11",
+    [],
 )
 
 seg21 = (
     slice("2024-09-30T06:23:56", "2024-09-30T06:31:55"),
     ["straight_leg"],
-    "north-eastward leg 12",
+    "straight_leg_northeastward_12",
+    [],
 )
 
 seg22 = (
     slice("2024-09-30T06:34:56", "2024-09-30T06:38:56"),
     ["straight_leg", "descent"],
-    "descending north-eastward leg 1",
+    "straight_leg_northeastward_descent_1",
+    [],
 )
 
 seg23 = (
     slice("2024-09-30T06:44:00", "2024-09-30T06:46:22"),
     ["straight_leg"],
-    "descending north-eastward leg 2",
+    "straight_leg_northeastward_13",
+    [],
 )
 
 seg24 = (
     slice("2024-09-30T06:46:22", "2024-09-30T06:57:00"),
     ["straight_leg", "descent"],
-    "descending north-eastward leg 2",
+    "straight_leg_northeastward_descent_2",
     ["irregularity: turbulence with roll angle deviations up to +-1.3 degree", 
      "short section without descent between 06:48:57 and 06:50:16"]
 )
@@ -295,21 +316,21 @@ seg24 = (
 seg25 = (
     slice("2024-09-30T06:58:52", "2024-09-30T07:02:08"),
     ["straight_leg"],
-    "short north-eastward leg 13",
+    "straight_leg_northeastward_14",
     ["irregularity: turbulence with roll angle deviations up to +-1.7 degree"]
 )
 
 seg26 = (
     slice("2024-09-30T07:02:08", "2024-09-30T07:05:33"),
     ["straight_leg", "descent"],
-    "short descending north-eastward leg 3",
+    "straight_leg_northeastward_descent_3",
     ["irregularity: turbulence with roll angle deviations up to +-1.8 degree"]
 )
 
 seg27 = (
     slice("2024-09-30T07:09:52", "2024-09-30T07:13:05"),
     ["straight_leg", "descent"],
-    "final descent to Memmingen airport",
+    "final_descent_to_airport",
     ["irregularity: turbulence with roll angle deviations up to +-1.8 degree"]
 )
 

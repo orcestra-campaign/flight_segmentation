@@ -142,91 +142,91 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-31T08:53:55", "2024-08-31T09:03:33"),
     ["straight_leg", "ascent"],
-    "eastward ascending ferry",
+    "ferry_eastward_ascent",
     [],
 )
 
 seg2 = (
     slice("2024-08-31T09:05:37", "2024-08-31T09:08:20"),
     ["straight_leg", "ascent", "ec_track"],
-    "ascending EC track",
-    []
+    "ec_track_southward_ascent",
+    [],
 )
 
 seg3 = (
     slice("2024-08-31T09:08:30", "2024-08-31T09:17:39"),
     ["straight_leg", "ascent", "ec_track"],
-    "southward EC track",
-    ["irregularity: constant nonzero roll angle of -1.3 degree"]
+    "ec_track_southward_1",
+    ["irregularity: constant nonzero roll angle of -1.3 degree"],
 )
 
 seg4 = (
     slice("2024-08-31T09:18:04", "2024-08-31T09:21:09"),
     ["straight_leg", "ascent", "ec_track"],
-    "southward EC track",
-    []
+    "ec_track_southward_2",
+    [],
 )
 
 seg5 = (
     slice("2024-08-31T09:21:09", "2024-08-31T09:43:24"),
     ["straight_leg", "ec_track"],
-    "later EC underpass",
-    []
+    "ec_track_southward_3",
+    [],
 )
 
 seg6 = (
     slice("2024-08-31T09:45:02", "2024-08-31T11:05:50"),
     ["straight_leg", "ec_track"],
-    "long southward EC track",
-    ["includes one drop sonde launch at southmost point"]
+    "ec_track_southward_4",
+    ["includes one drop sonde launch at southmost point"],
 )
 
 seg7 = (
     slice("2024-08-31T11:11:50", "2024-08-31T11:16:34"),
     ["straight_leg", "ascent", "ec_track"],
-    "descending EC track",
-    []
+    "ec_track_northward_ascent",
+    [],
 )
 
 seg8 = (
     slice("2024-08-31T11:16:34", "2024-08-31T11:20:48"),
     ["straight_leg", "ec_track"],
-    "northward EC track",
-    []
+    "ec_track_northward_1",
+    [],
 )
 
 seg9 = (
     slice("2024-08-31T11:22:15", "2024-08-31T12:19:36"),
     ["circle", "circle_counterclockwise"],
-    "southern circle",
-    []
+    "circle_south",
+    [],
 )
 
 seg10 = (
     slice("2024-08-31T12:22:31", "2024-08-31T12:28:05"),
     ["straight_leg", "ec_track"],
-    "EC track inside circle",
-    []
+    "ec_track_northward_through_circle_south_1",
+    [],
 )
 
 seg11 = (
     slice("2024-08-31T12:28:23", "2024-08-31T12:33:34"),
     ["straight_leg", "ec_track"],
-    "EC track inside circle",
-    ["irregularity: constant nonzero roll angle of about 1.2 degree"]
+    "ec_track_northward_through_circle_south_2",
+    ["irregularity: constant nonzero roll angle of about 1.2 degree"],
 )
 
 seg12 = (
     slice("2024-08-31T12:34:03", "2024-08-31T12:49:34"),
     ["straight_leg", "ec_track"],
-    "northward EC track",
-    ["irregularity: turbulence with up to plus/minus 1.8 degree roll angle deviation"]
+    "ec_track_northward_2",
+    ["irregularity: turbulence with up to plus/minus 1.8 degree roll angle deviation"],
 )
 
 seg13 = (
     slice("2024-08-31T12:52:25", "2024-08-31T13:48:01"),
     ["circle", "circle_counterclockwise"],
-    "middle circle",
+    "circle_mid",
     ["irregularity: turbulence with up to plus/minus 4.5 degree roll angle deviation"],
     [str(ds_drops.sel(time="2024-08-31T14:05:21").sonde_id.values)],
 )
@@ -234,65 +234,65 @@ seg13 = (
 seg14 = (
     slice("2024-08-31T13:51:28", "2024-08-31T14:17:23"),
     ["straight_leg", "ec_track", "meteor_coordination"],
-    "EC track through circle",
+    "ec_track_northward_through_circle_mid",
     ["irregularity: turbulence with up to plus/minus 4.6 degree roll angle deviation",
-    "includes one drop sonde launch", "includes meteor overpass"]
+    "includes one drop sonde launch", "includes meteor overpass"],
 )
 
 seg15 = (
     slice("2024-08-31T14:19:59", "2024-08-31T15:16:01"),
     ["circle", "circle_counterclockwise"],
-    "northern circle",
-    []
+    "circle_north",
+    [],
 )
 
 seg16 = (
     slice("2024-08-31T15:19:37", "2024-08-31T15:32:30"),
     ["straight_leg", "descent", "ec_track"],
-    "EC track inside circle",
-    []
+    "ec_track_northward_through_circle_north",
+    [],
 )
 
 seg17 = (
     slice("2024-08-31T15:32:30", "2024-08-31T16:01:15"),
     ["straight_leg", "ec_track", "atr_coordination"],
-    "northward EC track through ATR cicle",
-    ["contains EC underpass"]
+    "ec_track_northward_through_atr_circle",
+    ["contains EC underpass"],
 )
 
 seg18 = (
     slice("2024-08-31T16:08:10", "2024-08-31T16:24:05"),
     ["straight_leg", "ec_track", "atr_coordination"],
-    "southward EC track through ATR circle",
-    []
+    "ec_track_southward_through_atr_circle",
+    [],
 )
 
 seg19 = (
     slice("2024-08-31T16:27:38", "2024-08-31T17:03:55"),
     ["circle", "atr_coordination", "circle_clockwise"],
-    "ATR circle",
-    []
+    "atr_circle",
+    [],
 )
 
 seg20 = (
     slice("2024-08-31T17:05:10", "2024-08-31T17:07:39"),
     ["radar_calibration_wiggle"],
-    "Radar calibration maneuver",
-    []
+    "radar_calibration",
+    [],
 )
 
 seg21 = (
     slice("2024-08-31T17:09:16", "2024-08-31T17:35:47"),
     ["straight_leg", "descent"],
-    "northward descending ferry",
-    []
+    "ferry_northward_descent",
+    [],
 )
 
 seg22 = (
     slice("2024-08-31T17:36:32", "2024-08-31T17:38:37"),
     ["straight_leg"],
-    "northward ferry",
-    []
+    "ferry_northward",
+    [],
 )
 
 
@@ -370,8 +370,8 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
-    ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
+    ec_event(ds, ec_track),
 ]
 events
 ```

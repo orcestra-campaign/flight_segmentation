@@ -146,108 +146,113 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-09-12T11:33:02", "2024-09-12T11:46:57"),
     ["straight_leg", "ascent"],
-    "eastward ascent after takeoff",
+    "ferry_eastward_ascent_1",
+    [],
 )
 
 seg2 = (
     slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
     ["straight_leg", "ascent"],
-    "eastward ascending ferry",
-
+    "ferry_eastward_ascent_2",
+    [],
 )
 
 seg3 = (
     slice("2024-09-12T12:01:28", "2024-09-12T12:35:09"),
     ["straight_leg"],
-    "long eastward ferry",
+    "ferry_eastward",
+    [],
 )
 
 seg4 = (
     slice("2024--09-12T12:36:26", "2024-09-12T13:02:59"),
     ["straight_leg"],
-    "leg to first circle"
+    "ferry_towards_circle_east",
+    [],
 )
 
 seg5 = (
     slice("2024-09-12T13:06:53", "2024-09-12T14:02:18"),
     ["circle", "circle_clockwise"],
-    "eastern circle",
+    "circle_east",
+    [],
 )
 
 seg6 = (
     slice("2024-09-12T14:06:42", "2024-09-12T14:12:06"),
     ["straight_leg"],
-    "leg to second circle",
+    "ferry_towards_circle_northeast",
     ["irregularity: roll angle deviation up to plus/minus 4 degree"],
 )
 
 seg7 = (
     slice("2024-09-12T14:14:40", "2024-09-12T15:10:37"),
     ["circle", "circle_counterclockwise"],
-    "north-eastern circle",
+    "circle_northeast",
     ["early start of circle due to dropsonde", "stable roll angle after 14:18:20"],
 )
 
 seg8 = (
     slice("2024-09-12T15:13:08", "2024-09-12T15:18:19"),
     ["straight_leg"],
-    "leg through circle",
+    "straight_leg_through_circle_northeast",
+    [],
 )
 
 seg9 = (
     slice("2024-09-12T15:22:30", "2024-09-12T15:45:40"),
     ["straight_leg"],
-    "leg to third circle",
+    "ferry_towards_circle_northwest",
+    [],
 )
-
-# seg10 = (
-#    slice("2024-09-12T15:46:03", "2024-09-12T15:51:48"),
-#    ["circle"],
-#    "counterclockwise holding pattern",
-#    ["small waiting circle"]
-# )
 
 seg11 = (
     slice("2024-09-12T16:03:30", "2024-09-12T17:03:44"),
     ["circle", "circle_counterclockwise"],
-    "north-western circle",
+    "circle_northwest",
+    [],
 )
 
 seg12 = (
     slice("2024-09-12T17:12:26", "2024-09-12T17:53:12"),
     ["straight_leg", "ec_track"],
-    "leg on EC track",
+    "ec_track_southward",
     ["contains EC underpass"],
 )
 
 seg13 = (
     slice("2024-09-12T17:56:13", "2024-09-12T18:55:00"),
     ["circle", "circle_clockwise"],
-    "western circle",
+    "circle_west",
+    [],
 )
 
 seg14 = (
     slice("2024-09-12T18:56:07", "2024-09-12T19:41:13"),
     ["straight_leg"],
-    "long westward ferry"
+    "ferry_westward",
+    [],
 )
 
 seg15 = (
     slice("2024-09-12T19:41:13", "2024-09-12T19:45:16"),
     ["straight_leg", "descent"],
-    "westward descending ferry",
+    "ferry_westward_descent_1",
+    [],
 )
 
 seg16 = (
     slice("2024-09-12T19:46:30", "2024-09-12T19:58:55"),
     ["straight_leg", "descent"],
-    "westward descending ferry"
+    "ferry_westward_descent_2",
+    [],
 )
 
 seg17 = (
     slice("2024-09-12T20:01:29", "2024-09-12T20:05:05"),
     ["straight_leg", "descent"],
-    "final descent",
+    "final_descent_to_airport",
+    [],
 )
 
 

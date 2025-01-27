@@ -125,98 +125,121 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 sl1 = (
     slice("2024-08-16T11:39:05", "2024-08-16T12:06:58"),
-    ["straight_leg", "ascent"], "ferry_ascent",
+    ["straight_leg", "ascent"],
+    "ferry_ascent",
     ["irregularity: turbulence 2024-08-16T11:55:55 - 2024-08-16T11:59:10"],
 )
 
 sl2 = (
     slice("2024-08-16T12:06:58", "2024-08-16T12:51:55"),
-    ["straight_leg"], "ferry_const_alt",
+    ["straight_leg"],
+    "ferry_towards_ec_track",
     ["irregularity: roll angle spike 2024-08-16T12:19:31 - 2024-08-16T12:19:47"],
 )
 
 ec1 = (
     slice("2024-08-16T12:53:26", "2024-08-16T13:11:30"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_1",
+    [],
 )
 
 ec2 = (
     slice("2024-08-16T13:11:30", "2024-08-16T13:13:31"),
-    ["straight_leg", "ec_track", "ascent"], "EC_track_southward_ascent", [],
+    ["straight_leg", "ec_track", "ascent"],
+    "ec_track_southward_ascent_1",
+    [],
 )
 
 ec3 = (
     slice("2024-08-16T13:13:31", "2024-08-16T13:40:56"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_2",
     ["irregularity: turbulence 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
 )
 
 ec4 = (
     slice("2024-08-16T13:40:56", "2024-08-16T13:44:39"),
-    ["straight_leg", "ec_track", "ascent"], "EC_track_southward_ascent", [],
+    ["straight_leg", "ec_track", "ascent"],
+    "ec_track_southward_ascent_2",
+    [],
 )
 
 ec5 = (
     slice("2024-08-16T13:44:39", "2024-08-16T13:53:13"),
-    ["straight_leg", "ec_track"], "EC_track_southward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_southward_3",
+    [],
 )
 
 c1 = (
     slice("2024-08-16T13:56:46", "2024-08-16T14:52:39"),
-    ["circle", "circle_counterclockwise"], "circle_south",
-    ["irregularity: turbulences up to plus/minus 4 degree roll angle deviation",
-    ],
+    ["circle", "circle_counterclockwise"],
+    "circle_south",
+    ["irregularity: turbulences up to plus/minus 4 degree roll angle deviation"],
 )
 
 ec6 = (
     slice("2024-08-16T14:54:54", "2024-08-16T15:03:59"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt", [],
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_1",
+    [],
 )
 
 c2 = (
     slice("2024-08-16T15:06:35", "2024-08-16T16:01:44"),
-    ["circle", "circle_clockwise"], "circle_mid", [],
+    ["circle", "circle_clockwise"],
+    "circle_mid",
+    [],
 )
 
 ec61 = (
     slice("2024-08-16T16:04:49", "2024-08-16T16:07:31"),
-    ["straight_leg", "ec_track"], "EC_track_northward",
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_2",
     [],
 )
 
 ec7 = (
     slice("2024-08-16T16:07:31", "2024-08-16T16:12:30"),
-    ["straight_leg", "ec_track", "ascent"], "EC_track_northward_ascent",
+    ["straight_leg", "ec_track", "ascent"],
+    "ec_track_northward_ascent",
     [],
 )
 
 ec8 = (
     slice("2024-08-16T16:12:30", "2024-08-16T16:51:04"),
-    ["straight_leg", "ec_track"], "EC_track_northward_const_alt",
+    ["straight_leg", "ec_track"],
+    "ec_track_northward_3",
     ["ec_underpass"],
 )
 
 c3 = (
     slice("2024-08-16T16:53:56", "2024-08-16T17:49:40"),
-    ["circle", "circle_clockwise"], "circle_north", [],
+    ["circle", "circle_clockwise"],
+    "circle_north",
+    [],
 )
 
 sl3 = (
     slice("2024-08-16T17:54:42", "2024-08-16T18:51:46"),
-    ["straight_leg"], "ferry_const_alt",
+    ["straight_leg"],
+    "ferry_towards_atr_circle",
     ["irregularity: constant roll angle of +0.5deg from 2024-08-16T17:55:51 until 2024-08-16T18:03:16, afterwards 0deg. Heading constant in whole segment.",],
 )
 
 catr = (
     slice("2024-08-16T19:05:28", "2024-08-16T19:40:18"),
     ["circle", "atr_coordination", "circle_clockwise"], 
-    "ATR_circle", 
+    "atr_circle", 
     [],
 )
 
 sl4 = (
     slice("2024-08-16T19:43:24", "2024-08-16T19:58:00"),
-    ["straight_leg", "descent"], "ferry_descent", []
+    ["straight_leg", "descent"],
+    "ferry_descent",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list

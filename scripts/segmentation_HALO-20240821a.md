@@ -142,101 +142,108 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-08-21T12:26:22", "2024-08-21T12:54:23"),
     ["straight_leg", "ascent"], 
-    "westward ascending ferry",
+    "ferry_westward_ascent",
+    [],
 )
 
 seg2 = (
     slice("2024-08-21T12:54:24", "2024-08-21T12:59:39"),
     ["straight_leg"],
-    "westward ferry",
+    "ferry_westward",
+    [],
 )
 
 seg3 = (
     slice("2024-08-21T13:01:44", "2024-08-21 13:28:01"),
     ["straight_leg"],
-    "southward leg",
+    "straight_leg_southward_1",
+    [],
 )
 
 seg4 = (
     slice("2024-08-21T13:28:02", "2024-08-21T13:30:01"),
     ["straight_leg", "ascent"],
-    "ascending southward leg",
+    "straight_leg_southward_ascent",
+    [],
 )
 
 seg5 = (
     slice("2024-08-21T13:30:02", "2024-08-21T14:07:08"),
     ["straight_leg"],
-    "southward leg",
+    "straight_leg_southward_2",
     ["irregularity: turbulences around 13:46:36 up to plus/minus 6 degree roll angle deviation"]
 )
 
 seg6 = (
     slice("2024-08-21T14:09:58", "2024-08-21T15:06:16"),
     ["circle", "circle_clockwise", "meteor_coordination"],
-    "southern circle",
+    "circle_south",
     ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation"]
 )
 
 seg7 = (
     slice("2024-08-21T15:10:35", "2024-08-21T15:12:53"),
     ["straight_leg"],
-    "short northward leg", 
+    "straight_leg_northward_1", 
 )
 
 seg8 = (
     slice("2024-08-21T15:15:38", "2024-08-21T16:12:19"),
     ["circle", "circle_counterclockwise"],
-    "middle circle",
+    "circle_mid",
     ["no sondes dropped due to air traffic", "irregularity: turbulence up to plus/minus 7 degree roll angle deviation"]
 )
 
 seg9 = (
     slice("2024-08-21T16:15:26", "2024-08-21T16:51:12"),
     ["straight_leg"],
-    "long northward leg", 
+    "straight_leg_northward_2",
+    [],
 )
 
 seg10 = (
     slice("2024-08-21T16:54:01", "2024-08-21T17:50:05"),
     ["circle", "circle_clockwise"],
-    "northern clockwise circle",
+    "circle_north_1",
     ["slight deviation from circular path between 17:41:12 and 17:45:54 with up to plus/minus 30 degree roll angle deviation"],
 )
 
 seg11 = (
     slice("2024-08-21T17:54:24", "2024-08-21T18:51:27"),
     ["circle", "circle_counterclockwise"],
-    "extra northmost circle",
+    "circle_north_2",
+    [],
 )
 
 seg12 = (
     slice("2024-08-21T18:55:08", "2024-08-21T19:05:17"),
     ["straight_leg"],
-    "northward leg", 
+    "straight_leg_northward_3",
+    [],
 )
 
 seg13 = (
     slice("2024-08-21T19:06:55", "2024-08-21T19:22:43"),
     ["straight_leg"],
-    "eastward ferry",
+    "ferry_eastward",
 )
 
 seg14 = (
     slice("2024-08-21T19:22:43", "2024-08-21T19:36:26"),
     ["straight_leg", "descent"],
-    "descending wastward ferry", 
+    "ferry_eastward_descent_1",
 )
 
 seg15 = (
     slice("2024-08-21T19:37:16", "2024-08-21T19:48:19"),
     ["straight_leg", "descent"],
-    "descending eastward ferry", 
+    "ferry_eastward_descent_2", 
 )
 
 seg16 = (
     slice("2024-08-21T19:49:28", "2024-08-21T19:52:38"),
     ["straight_leg", "descent"],
-    "final northward descent",  
+    "ferry_northward_descent",  
 )
 
 

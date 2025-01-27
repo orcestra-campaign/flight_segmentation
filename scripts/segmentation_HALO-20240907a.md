@@ -135,140 +135,138 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-09-07T12:56:12", "2024-09-07T13:22:03"),
     ["straight_leg", "ascent"],
-    "eastward ferry leg 1",
-    []
+    "ferry_eastward_ascent",
+    [],
 )
 
 seg2 = (
     slice("2024-09-07T13:22:03", "2024-09-07T13:53:07"),
     ["straight_leg"],
-    "eastward ferry leg 2",
-    []
+    "ferry_eastward",
+    [],
 )
 
 seg3 = (
     slice("2024-09-07T13:53:44", "2024-09-07T13:55:33"),
     ["straight_leg"],
-    "eastward ferry leg 3",
-    []
+    "ferry_eastward",
+    [],
 )
 
 seg4 = (
     slice("2024-09-07T13:56:21", "2024-09-07T14:27:45"),
     ["straight_leg"],
-    "approach first circle",
-    []
+    "ferry_towards_circle_south",
+    [],
 )
-
 
 seg5 = (
     slice("2024-09-07T14:35:21", "2024-09-07T14:38:38"),
     ["straight_leg"],
-    "leg inside circle",
-    ["searching for developing clouds for specMACS"]
+    "straight_leg_inside_circle_south_1",
+    ["searching for developing clouds for specMACS"],
 )
 
 seg6 = (
     slice("2024-09-07T14:43:35", "2024-09-07T14:51:22"),
     ["straight_leg"],
-    "leg inside circle",
-    []
+    "straight_leg_inside_circle_south_2",
+    [],
 )
 
 seg7 = (
     slice("2024-09-07T14:54:12", "2024-09-07T15:49:25"),
     ["circle", "circle_counterclockwise"],
-    "southern circle",
-    ["14 sondes, 2 last ones with only 23 sec time difference"]
+    "circle_south",
+    ["14 sondes, 2 last ones with only 23 sec time difference"],
 )
 
 seg8 = (
     slice("2024-09-07T15:53:28", "2024-09-07T15:55:18"),
     ["straight_leg", "ec_track"],
-    "northward ec track",
-    []
+    "ec_track_northward",
+    [],
 )
 
 seg9 = (
     slice("2024-09-07T15:59:33", "2024-09-07T17:01:03"),
     ["circle", "circle_counterclockwise"],
-    "middle circle",
+    "circle_mid",
     ["irregularities: permission denied for some sondes which were then dropped on straight leg through circle instead"],
     [str(ds_drops.sel(time="2024-09-07T17:11:21").sonde_id.values),
      str(ds_drops.sel(time="2024-09-07T17:15:01").sonde_id.values),
      str(ds_drops.sel(time="2024-09-07T17:18:53").sonde_id.values),
      str(ds_drops.sel(time="2024-09-07T17:19:36").sonde_id.values)],
-
 )
 
 seg10 = (
     slice("2024-09-07T17:05:28", "2024-09-07T17:08:09"),
     ["straight_leg", "ascent"],
-    "leg back to ec track",
-    []
+    "ferry_towards_ec_track",
+    [],
 )
 
 seg11 = (
     slice("2024-09-07T17:10:25", "2024-09-07T17:36:23"),
     ["straight_leg", "ec_track"],
-    "leg through circle",
-    ["sondes dropped inside circle"]
+    "ec_track_northward_through_circle_mid",
+    ["sondes dropped inside circle"],
 )
 
 seg12 = (
     slice("2024-09-07T17:51:40", "2024-09-07T18:59:37"),
     ["circle", "circle_clockwise"],
-    "northern circle",
-    ["more than full circle"]
+    "circle_north",
+    ["more than full circle"],
 )
 
 seg13 = (
     slice("2024-09-07T19:02:48", "2024-09-07T19:31:16"),
     ["straight_leg"],
-    "westward ferry",
-    []
+    "ferry_westward_1",
+    [],
 )
 
 seg14 = (
     slice("2024-09-07T19:32:37", "2024-09-07T19:36:31"),
     ["straight_leg"],
-    "westward ferry",
-    []
+    "ferry_westward_2",
+    [],
 )
 
 seg15 = (
     slice("2024-09-07T19:38:24", "2024-09-07T19:46:37"),
     ["straight_leg"],
-    "westward ferry",
-    []
+    "ferry_westward_3",
+    [],
 )
 
 seg16 = (
     slice("2024-09-07T19:47:48", "2024-09-07T20:14:41"),
     ["straight_leg"],
-    "westward ferry",
-    []
+    "ferry_westward_4",
+    [],
 )
 
 seg17 = (
     slice("2024-09-07T20:16:46", "2024-09-07T20:22:00"),
     ["straight_leg", "descent"],
-    "westward descending ferry",
-    []
+    "ferry_westward_descent_1",
+    [],
 )
 
 seg18 = (
     slice("2024-09-07T20:22:19", "2024-09-07T20:35:50"),
     ["straight_leg", "descent"],
-    "airport approach",
-    []
+    "ferry_westward_descent_2",
+    [],
 )
 
 seg19 = (
     slice("2024-09-07T20:36:50", "2024-09-07T20:40:31"),
     ["straight_leg", "descent"],
-    "final descent",
-    ["irregularities: turbulence with roll angles larger/smaller 1 degree"]
+    "final_descent_to_airport",
+    ["irregularities: turbulence with roll angles larger/smaller 1 degree"],
 )
 
 

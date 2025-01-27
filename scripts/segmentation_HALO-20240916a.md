@@ -141,31 +141,37 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ```python
 ac1 = (
     slice("2024-09-16T11:42:00", "2024-09-16T12:07:45"),
-    ["straight_leg", "ascent"], "ferry_ascent", [],
+    ["straight_leg", "ascent"],
+    "ferry_eastward_ascent",
+    [],
 )
 
 sl1 = (
     slice("2024-09-16T12:07:45", "2024-09-16T12:56:50"),
     ["straight_leg"],
-    "straight_leg_1",
+    "ferry_eastward_1",
     ["irregularity: turbulence 2024-09-16T12:46:30 - 2024-09-16T12:56:50 with roll angle deviations up to +-6.9 deg"],
 )
 
 sl2 = (
     slice("2024-09-16T12:58:00", "2024-09-16T13:16:30"),
-    ["straight_leg"], "straight_leg_2",
+    ["straight_leg"],
+    "ferry_eastward_2",
+    [],
 )
 
 c1 = (
     slice("2024-09-16T13:19:35", "2024-09-16T14:19:45"),
     ["circle", "circle_counterclockwise", "meteor_coordination"],
-    "circle_middle",
+    "circle_mid",
     ["irregularity: turbulence 2024-09-16T13:19:35 - 2024-09-16T13:28:00 with roll angle deviation up to +-3.2 deg"],
 )
 
 sl3a = (
     slice("2024-09-16T14:23:32", "2024-09-16T14:31:15"),
-    ["straight_leg"], "straight_leg_to_circle_2",
+    ["straight_leg"],
+    "ferry_towards_circle_south",
+    [],
 )
 
 c2 = (
@@ -178,40 +184,45 @@ c2 = (
 
 sl3b = (
     slice("2024-09-16T16:01:55", "2024-09-16T16:04:19"),
-    ["straight_leg", "ascent", "pace_track"], "pace_track_ascent",
+    ["straight_leg", "ascent", "pace_track"],
+    "pace_track_ascent",
     ["includes one dropsonde launch"],
 )
 
 sl3c = (
     slice("2024-09-16T16:04:19", "2024-09-16T16:15:38"),
-    ["straight_leg", "pace_track"], "pace_track_with_underpass",
+    ["straight_leg", "pace_track"],
+    "pace_track_with_underpass",
     ["includes pace underpass", "includes one dropsonde launch"],
 )
 
 sl4 = (
     slice("2024-09-16T16:25:30", "2024-09-16T16:43:00"),
-    ["straight_leg", "pace_track"], "pace_track_south",
+    ["straight_leg", "pace_track"],
+    "pace_track_southward",
+    [],
 )
 
 ec1a = (
     slice("2024-09-16T16:52:22", "2024-09-16T16:57:40"),
     ["straight_leg", "ec_track"],
-    "EC_track_southward_1",
-    ["irregularity: constant nonzero roll angle of about 0.4 deg", "includes one dropsonde launch"],
+    "ec_track_northward_1",
+    ["irregularity: constant nonzero roll angle of about 0.4 deg",
+    "includes one dropsonde launch"],
 )
 
 ec1b = (
     slice("2024-09-16T16:58:17", "2024-09-16T17:29:33"),
     ["straight_leg", "ec_track", "meteor_coordination"],
-    "EC_track_with_meteor_overpass",
+    "ec_track_northward_with_meteor_overpass",
     ["irregularity: continuous roll angle decline from -0.23 to -1.7 deg and various spikes due to turbulence",
-    "includes Meteor overpass", "includes two dropsonde launches"],
+    "includes Meteor overpass", "includes EC underpass", "includes two dropsonde launches"],
 )
 
 ec1c = (
     slice("2024-09-16T17:29:53", "2024-09-16T17:51:02"),
     ["straight_leg", "ec_track"],
-    "EC_track_southward_2",
+    "ec_track_northward_2",
     ["irregularity: constant nonzero roll angle of about 0.3 deg"],
 )
 
@@ -219,27 +230,32 @@ c3 = (
     slice("2024-09-16T17:54:25", "2024-09-16T19:10:50"),
     ["circle", "circle_clockwise"],
     "circle_north",
-    ["quarter circle without sondes followed by full circle"]
+    ["quarter circle without sondes followed by full circle"],
 )
 
 sl5 = (
     slice("2024-09-16T19:16:00", "2024-09-16T20:20:47"),
-    ["straight_leg"], "dropsonde_curtain",
-    ["includes twelve dropsonde launches"]
+    ["straight_leg"],
+    "dropsonde_curtain_westward",
+    ["includes twelve dropsonde launches"],
 )
 
 dc1 = (
     slice("2024-09-16T20:20:47", "2024-09-16T20:27:10"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent_1",
+    [],
 )
 
 dc2 = (
     slice("2024-09-16T20:28:30", "2024-09-16T20:44:16"),
-    ["straight_leg", "descent"], "ferry_descent", [],
+    ["straight_leg", "descent"],
+    "ferry_descent_2",
+    [],
 )
 
 # add all segments that you want to save to a yaml file later to the below list
-segments = [parse_segment(s) for s in [ac1, dc1, dc2, sl1, sl2, sl3a, sl3b, sl3c, sl4, ec1a, ec1b, ec1c, sl5, c1, c2, c3]]
+segments = [parse_segment(s) for s in [ac1, sl1, sl2, c1, sl3a, c2, sl3b, sl3c, sl4, ec1a, ec1b, ec1c, c3, sl5, dc1, dc2]]
 
 ```
 
@@ -318,9 +334,9 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
+    pace_event(ds, pace_track),
     ec_event(ds, ec_track),
     meteor_event(ds, meteor_track),
-    pace_event(ds, pace_track),
 ]
 events
 ```

@@ -138,104 +138,113 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-09-09T11:54:30", "2024-09-09T12:12:21"),
     ["straight_leg", "ascent"],
-    "climbing and heading east"
+    "ferry_eastward_ascent",
+    [],
 )
 
 sl2 = (
     slice("2024-09-09T12:12:21", "2024-09-09T13:47:15"),
     ["straight_leg"],
-    "heading east at constant alt",
-    ["irregularity: roll angle deviations up to +-2.7 degree around 12:22:44, 12:40:47, 12:54:38, and 13:00:46"]
+    "ferry_eastward",
+    ["irregularity: roll angle deviations up to +-2.7 degree around 12:22:44, 12:40:47, 12:54:38, and 13:00:46"],
 )
 
 c1 = (
     slice("2024-09-09T13:49:10", "2024-09-09T14:45:24"),
     ["circle", "circle_counterclockwise"],
-    "circle south",
+    "circle_south",
+    [],
 )
 
 slc1_1 = (
     slice("2024-09-09T14:50:04", "2024-09-09T14:53:18"),
     ["straight_leg", "ascent", "ec_track"],
-    "climbing while crossing circle south on EC track"
+    "ec_track_northward_through_circle_south_ascent",
+    [],
 )
 
 slc1_2 = (
     slice("2024-09-09T15:01:57", "2024-09-09T15:11:40"),
     ["straight_leg", "ec_track"],
-    "leg crossing circle south on EC track"
+    "ec_track_northward_through_circle_south",
+    [],
 )
 
 c2 = (
     slice("2024-09-09T15:13:57", "2024-09-09T16:09:04"),
     ["circle", "circle_counterclockwise"],
-    "circle mid",
+    "circle_mid",
+    [],
 )
-
-# should we even give it the "circle" attribute?
-#c_climb = (
-#    slice("2024-09-09T16:09:12", "2024-09-09T16:24:16"),
-#    ["circle", "ascent"],
-#    "climbing circle and holding pattern to wait for EC",
-#)
 
 ec = (
     slice("2024-09-09T16:26:31", "2024-09-09T17:19:47"),
     ["straight_leg", "ec_track"],
-    "meeting EC",
+    "ec_track_northward",
+    ["includes EC meeting point"],
 )
 
 ec_south = (
     slice("2024-09-09T17:26:25", "2024-09-09T17:32:34"),
     ["straight_leg", "ec_track"],
-    "leg southward on EC track"
+    "ec_track_southward",
+    [],
 )
 
 c3 = (
     slice("2024-09-09T17:35:00", "2024-09-09T18:30:50"),
     ["circle", "circle_counterclockwise"],
-    "circle north",
-    ["irregularity: early start of circle due to dropsondes, constant roll angle after 17:35:19"]
+    "circle_north",
+    ["irregularity: early start of circle due to dropsondes, constant roll angle after 17:35:19"],
 )
 
 sl3 = (
     slice("2024-09-09T18:33:32", "2024-09-09T18:55:04"),
     ["straight_leg"],
-    "leg heading west"
+    "ferry_westward_1",
+    [],
 )
+
 sl4 = (
     slice("2024-09-09T18:55:04", "2024-09-09T18:59:15"),
     ["straight_leg", "descent"],
-    "leg heading west and descending"
+    "ferry_westward_descent",
+    [],
 )
+
 sl5 = (
     slice("2024-09-09T18:59:15", "2024-09-09T20:14:03"),
     ["straight_leg"],
-    "long leg heading west"
+    "ferry_westward_2",
+    [],
 )
+
 sl6 = (
     slice("2024-09-09T20:15:49", "2024-09-09T20:20:59"),
     ["straight_leg", "descent"],
-    "leg descending towards Barbados"
+    "ferry_towards_barbados_descent_1",
+    [],
 )
 
 sl7 = (
     slice("2024-09-09T20:22:03", "2024-09-09T20:24:42"),
     ["straight_leg", "descent"],
-    "leg descending to Barbados"
+    "ferry_towards_barbados_descent_2",
+    [],
 )
 
 sl8 = (
     slice("2024-09-09T20:33:08", "2024-09-09T20:39:59"),
     ["straight_leg", "descent"],
-    "leg descending to airport"
+    "ferry_towards_barbados_descent_3",
+    [],
 )
 
 sl9 = (
     slice("2024-09-09T20:42:47", "2024-09-09T20:46:32"),
     ["straight_leg", "descent"],
-    "final descent to runway",
-    ["irregularity: turbulence near surface with roll angle deviations up to +-2.3 degree"]
+    "final_descent_to_airport",
+    ["irregularity: turbulence near surface with roll angle deviations up to +-2.3 degree"],
 )
 # add all segments that you want to save to a yaml file later to the below list
 segments = [parse_segment(s) for s in [sl1, sl2, c1, slc1_1, slc1_2, c2, ec, ec_south, c3, sl3, sl4, sl5, sl6, sl7, sl8, sl9]]
