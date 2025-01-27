@@ -171,8 +171,13 @@ def target_event(ds, target=None, target_lat=None, target_lon=None,
         target_name = "CVAO overpass"
         target_kinds = ["cvao_overpass"]
 
+    elif target=="MIM":
+        target_lat, target_lon = 48.14778, 11.57333
+        target_name = "MIM overpass"
+        target_kinds = ["mim_overpass"]
+
     elif (target is None) and ((target_lat is None) or (target_lon is None)):
-        print("You need to specify either a target, i.e. BCO or CVAO, or a target_lat and target_lon")
+        print("You need to specify either a target, i.e. BCO, CVAO, MIM or a target_lat and target_lon")
         return
     else:
         target_name = "target meeting point"

@@ -22,7 +22,7 @@ sonde_styles = {
     "GOOD": {"color": "green", "marker": "o"},
     "BAD": {"color": "red", "marker": "s"},
     "UGLY": {"color": "orange", "marker": "d"},
-    "UNKNOWN": {"color": "k", "marker": "x"},
+    "ALL_FLAGS": {"color": "k", "marker": "x"},
 }
 
 env = Environment(
@@ -211,7 +211,7 @@ def sonde_info_from_ipfs(flight_id):
         "launch_time": pd.Timestamp(d["launch_time"].values).to_pydatetime(warn=False),
         "platform": "HALO",
         "sonde_id": d.attrs["SondeId"],
-        "flag": "UNKNOWN",
+        "flag": "ALL_FLAGS",
     }
             for d in datasets]
 

@@ -49,17 +49,17 @@ class FlightChecker:
         if seg["name"] is None:
             yield "this segment is missing a name"
 
-        if "irregularities" in seg:
-            irregularities = seg["irregularities"]
-            if not isinstance(irregularities, list):
-                yield "irregularities is not a list"
-                del seg["irregularities"]
-                irregularities = []
+        if "remarks" in seg:
+            remarks = seg["remarks"]
+            if not isinstance(remarks, list):
+                yield "remarks is not a list"
+                del seg["remarks"]
+                remarks = []
             else:
-                if not all(isinstance(i, str) for i in irregularities):
-                    yield "irregularities is not a list of str"
-                    del seg["irregularities"]
-                    irregularities = []
+                if not all(isinstance(i, str) for i in remarks):
+                    yield "remarks is not a list of str"
+                    del seg["remarks"]
+                    remarks = []
         else:
-            yield "segment has no irregularities attribute"
-            irregularities = []
+            yield "segment has no remarks attribute"
+            remarks = []
