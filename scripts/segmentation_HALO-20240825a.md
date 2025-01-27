@@ -145,28 +145,28 @@ seg1 = (
 seg2 = (
     slice("2024-08-25T09:44:46", "2024-08-25T09:55:57"),
     ["straight_leg"],
-    "ferry_southwestward",
+    "ferry_southwestward_1",
     [],
 )
 
 seg3 = (
     slice("2024-08-25T09:56:30", "2024-08-25T10:28:42"),
     ["straight_leg"],
-    "ferry_southwestward",
+    "ferry_southwestward_2",
     [],
 )
 
 seg4 = (
     slice("2024-08-25T10:30:15", "2024-08-25T10:53:01"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     [],
 )
 
 seg5 = (
     slice("2024-08-25T10:54:07", "2024-08-25T11:10:40"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     [],
 )
 
@@ -215,7 +215,7 @@ seg11 = (
 seg12 = (
     slice("2024-08-25T14:27:07", "2024-08-25T14:39:07"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     [],
 )
 
@@ -229,7 +229,7 @@ seg13 = (
 seg14 = (
     slice("2024-08-25T15:40:17", "2024-08-25T16:36:51"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     ["irregularity: roll angle of about 1 degree between 15:45:28 and 15:53:13",
     "includes EC meeting point"],
 )
@@ -237,7 +237,7 @@ seg14 = (
 seg15 = (
     slice("2024-08-25T16:38:52", "2024-08-25T16:53:14"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_1",
     [],
 )
 
@@ -258,7 +258,7 @@ seg17 = (
 seg18 = (
     slice("2024-08-25T17:34:47", "2024-08-25T17:42:49"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_2",
     [],
 )
 

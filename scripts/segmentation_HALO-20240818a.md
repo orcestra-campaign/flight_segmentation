@@ -145,21 +145,21 @@ sl1 = (
 sl2 = (
     slice("2024-08-18T10:36:16", "2024-08-18T10:41:08"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_1",
     [],
 )
 
 sl3 = (
     slice("2024-08-18T10:42:21", "2024-08-18T10:57:57"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_2",
     [],
 )
 
 ec1 = (
     slice("2024-08-18T10:59:40", "2024-08-18T11:18:10"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     [],
 )
 
@@ -173,7 +173,7 @@ c1 = (
 ec2 = (
     slice("2024-08-18T12:23:52", "2024-08-18T12:48:00"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     ["irregularity: turbulence"],
 )
 
@@ -187,7 +187,7 @@ c2 = (
 ec3 = (
     slice("2024-08-18T13:52:25", "2024-08-18T14:25:26"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_3",
     ["irregularity: turbulence 2024-08-18T12:52:25 - 2024-08-18T14:09:55"],
 )
 
@@ -201,7 +201,7 @@ c3 = (
 ec4 = (
     slice("2024-08-18T15:37:14", "2024-08-18T16:28:37"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     ["irregularity: minor turbulences", "includes ec_underpass"],
 )
 
@@ -222,14 +222,14 @@ c_bm2 = (
 sl4 = (
     slice("2024-08-18T17:35:35", "2024-08-18T17:40:29"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_3",
     [],
 )
 
 ec5 = (
     slice("2024-08-18T17:43:52", "2024-08-18T17:54:26"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     [],
 )
 

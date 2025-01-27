@@ -156,28 +156,28 @@ seg2 = (
 seg3 = (
     slice("2024-08-31T09:08:30", "2024-08-31T09:17:39"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     ["irregularity: constant nonzero roll angle of -1.3 degree"],
 )
 
 seg4 = (
     slice("2024-08-31T09:18:04", "2024-08-31T09:21:09"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     [],
 )
 
 seg5 = (
     slice("2024-08-31T09:21:09", "2024-08-31T09:43:24"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_3",
     [],
 )
 
 seg6 = (
     slice("2024-08-31T09:45:02", "2024-08-31T11:05:50"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_4",
     ["includes one drop sonde launch at southmost point"],
 )
 
@@ -191,7 +191,7 @@ seg7 = (
 seg8 = (
     slice("2024-08-31T11:16:34", "2024-08-31T11:20:48"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     [],
 )
 
@@ -205,21 +205,21 @@ seg9 = (
 seg10 = (
     slice("2024-08-31T12:22:31", "2024-08-31T12:28:05"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward_through_circle_south",
+    "ec_track_northward_through_circle_south_1",
     [],
 )
 
 seg11 = (
     slice("2024-08-31T12:28:23", "2024-08-31T12:33:34"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward_through_circle_south",
+    "ec_track_northward_through_circle_south_2",
     ["irregularity: constant nonzero roll angle of about 1.2 degree"],
 )
 
 seg12 = (
     slice("2024-08-31T12:34:03", "2024-08-31T12:49:34"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     ["irregularity: turbulence with up to plus/minus 1.8 degree roll angle deviation"],
 )
 

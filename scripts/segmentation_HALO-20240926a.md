@@ -194,7 +194,7 @@ c3 = (
 cal = (
     slice("2024-09-26T15:49:24", "2024-09-26T15:52:15"),
     ["radar_calibration_wiggle"],
-    "radar_calibration",
+    "radar_calibration_1",
     [],
 )
 
@@ -246,7 +246,7 @@ sl5 = (
 sl6 = (
     slice("2024-09-26T19:28:16", "2024-09-26T19:50:10"),
     ["straight_leg"],
-    "ferry_southwestward",
+    "ferry_southwestward_1",
     ["irregularity: roll angle deviation up to 15 deg due to curve before 19:28:47", 
     "irregularity: various roll angle deviations up to +-5.3 deg",
     "includes one drop sonde launch at center of circle west_north"],
@@ -255,35 +255,35 @@ sl6 = (
 sl7 = (
     slice("2024-09-26T19:51:11", "2024-09-26T19:53:09"),
     ["straight_leg"],
-    "ferry_southwestward",
+    "ferry_southwestward_2",
     [],
 )
 
 dc1 = (
     slice("2024-09-26T19:53:10", "2024-09-26T19:56:50"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_1",
     [],
 )
 
 dc2 = (
     slice("2024-09-26T19:58:18", "2024-09-26T20:01:02"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_2",
     [],
 )
 
 cal2 = (
     slice("2024-09-26T20:01:02", "2024-09-26T20:04:03"),
     ["radar_calibration_dive"],
-    "radar_calibration",
+    "radar_calibration_2",
     [],
 )
 
 dc3 = (
     slice("2024-09-26T20:06:30", "2024-09-26T20:18:00"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_3",
     [],
 )
 

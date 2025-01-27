@@ -146,14 +146,14 @@ Alternatively, you can also define the segments as dictionaries which also allow
 seg1 = (
     slice("2024-09-12T11:33:02", "2024-09-12T11:46:57"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_1",
     [],
 )
 
 seg2 = (
     slice("2024-09-12T11:52:44", "2024-09-12T12:01:28"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_2",
     [],
 )
 
@@ -237,14 +237,14 @@ seg14 = (
 seg15 = (
     slice("2024-09-12T19:41:13", "2024-09-12T19:45:16"),
     ["straight_leg", "descent"],
-    "ferry_westward_descent",
+    "ferry_westward_descent_1",
     [],
 )
 
 seg16 = (
     slice("2024-09-12T19:46:30", "2024-09-12T19:58:55"),
     ["straight_leg", "descent"],
-    "ferry_westward_descent",
+    "ferry_westward_descent_2",
     [],
 )
 

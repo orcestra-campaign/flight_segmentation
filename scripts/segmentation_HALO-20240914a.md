@@ -138,14 +138,14 @@ Alternatively, you can also define the segments as dictionaries which also allow
 sl1 = (
     slice("2024-09-14T11:35:22", "2024-09-14T11:42:01"),
     ["straight_leg", "ascent"],
-    "ferry_southeastward_ascent",
+    "ferry_southeastward_ascent_1",
     [],
 )
 
 sl2 = (
     slice("2024-09-14T11:51:35", "2024-09-14T12:01:37"),
     ["straight_leg", "ascent"],
-    "ferry_southeastward_ascent",
+    "ferry_southeastward_ascent_2",
     [],
 )
 
@@ -159,14 +159,14 @@ sl3 = (
 sl4 = (
     slice("2024-09-14T12:33:02", "2024-09-14T12:53:53"),
     ["straight_leg"],
-    "ferry_towards_circle_south",
+    "ferry_towards_circle_south_1",
     ["irregularity: roll angle deviation 12:43:54 - 12:47:37 up to 2.7 degree"],
 )
 
 c1a = (
     slice("2024-09-14T12:55:49", "2024-09-14T13:54:25"),#55:35
     ["circle", "circle_counterclockwise"],
-    "circle_south",
+    "circle_south_1",
     ["heavy problems with dropsonde reck resulted in only three dropsonde profiles"],
 )
 

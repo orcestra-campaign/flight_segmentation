@@ -135,14 +135,14 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-28T10:49:42", "2024-09-28T11:19:46"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_1",
     [],
 )
 
 sl1a = (
     slice("2024-09-28T11:19:46", "2024-09-28T12:22:42"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_1",
     ["irregularity: roll angle spike of -5.75 degree at 11:37:15",
     "irregularity: constant nonzero roll angle of about 0.75 degree"]
 )
@@ -150,14 +150,14 @@ sl1a = (
 ac2 = (
     slice("2024-09-28T12:22:42", "2024-09-28T12:26:46"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_2",
     ["irregularity: constant nonzero roll angle of about 0.75 degree"]
 )
 
 sl1c = (
     slice("2024-09-28T12:26:46", "2024-09-28T12:32:49"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_2",
     ["irregularity: constant nonzero roll angle of about 0.75 degree"],
 )
 
@@ -187,7 +187,7 @@ c2 = (
 sl3a = (
     slice("2024-09-28T14:41:42", "2024-09-28T14:55:27"),
     ["straight_leg"],
-    "ferry_towards_circle_mid_west",
+    "ferry_towards_circle_mid_west_1",
     ["irregularity: turbulence with roll angle deviations up to +-1.4 deg",
      "includes two dropsonde launches"],
 )
@@ -202,7 +202,7 @@ sl3b = (
 sl3c = (
     slice("2024-09-28T15:01:38", "2024-09-28T15:24:30"),
     ["straight_leg"],
-    "ferry_towards_circle_mid_west",
+    "ferry_towards_circle_mid_west_2",
     ["includes three dropsonde launches"],
 )
 
@@ -238,21 +238,21 @@ ec1 = (
 sl5a = (
     slice("2024-09-28T17:58:30", "2024-09-28T18:04:43"),
     ["straight_leg"],
-    "ferry_towards_circle_southwest",
+    "ferry_towards_circle_southwest_1",
     [],
 )
 
 cal1 = (
     slice("2024-09-28T18:04:52", "2024-09-28T18:07:11"),
     ["radar_calibration_wiggle"],
-    "radar_calibration",
+    "radar_calibration_1",
     []
 )
 
 sl5b = (
     slice("2024-09-28T18:09:29", "2024-09-28T18:13:07"),
     ["straight_leg"],
-    "ferry_towards_circle_southwest",
+    "ferry_towards_circle_southwest_2",
     [],
 )
 
@@ -266,14 +266,14 @@ c5 = (
 sl6 = (
     slice("2024-09-28T19:12:35", "2024-09-28T19:15:05"),
     ["straight_leg"],
-    "ferry_northwestward_through_circle_southwest",
+    "ferry_northwestward_through_circle_southwest_1",
     ["includes one dropsonde launch inside circle_southwest"]
 )
 
 sl7a = (
     slice("2024-09-28T19:16:11", "2024-09-28T19:24:49"),
     ["straight_leg"],
-    "ferry_northwestward_through_circle_southwest",
+    "ferry_northwestward_through_circle_southwest_2",
     ["leg inside circle_southwest"]
 )
 
@@ -294,28 +294,28 @@ sl8 = (
 sl9 = (
     slice("2024-09-28T19:33:47", "2024-09-28T19:38:41"),
     ["straight_leg", "descent"],
-    "ferry_northwestward_descent",
+    "ferry_northwestward_descent_1",
     [],
 )
 
 cal2 = (
     slice("2024-09-28T19:39:41", "2024-09-28T19:42:08"),
     ["radar_calibration_dive"],
-    "radar_calibration",
+    "radar_calibration_2",
     [],
 )
 
 sl10 = (
     slice("2024-09-28T19:42:08", "2024-09-28T19:47:34"),
     ["straight_leg", "descent"],
-    "ferry_northwestward_descent",
+    "ferry_northwestward_descent_2",
     [],
 )
 
 sl11 = (
     slice("2024-09-28T19:48:08", "2024-09-28T19:53:48"),
     ["straight_leg", "descent"],
-    "ferry_northwestward_descent",
+    "ferry_northwestward_descent_3",
     [],
 )
 # add all segments that you want to save to a yaml file later to the below list

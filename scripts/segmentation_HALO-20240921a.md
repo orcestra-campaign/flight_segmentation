@@ -138,7 +138,7 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = (
     slice("2024-09-21 11:26:40", "2024-09-21 11:48:25"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_1",
     [],
 )
 
@@ -152,14 +152,14 @@ c1 = (
 sl1a = (
     slice("2024-09-21 12:50:07", "2024-09-21 12:53:30"),
     ["straight_leg", "meteor_coordination"],
-    "ferry_eastward",
+    "ferry_eastward_1",
     [],
 )
 
 sl1b = (
     slice("2024-09-21 12:53:48", "2024-09-21 12:57:37"),
     ["straight_leg", "meteor_coordination"],
-    "ferry_eastward",
+    "ferry_eastward_2",
     ["irregularity: constant non-zero roll angle of about 1 deg",
      "includes Meteor overpass"],
 )
@@ -167,7 +167,7 @@ sl1b = (
 sl1c = (
     slice("2024-09-21 12:59:09", "2024-09-21 13:02:24"),
     ["straight_leg", "meteor_coordination"],
-    "ferry_eastward",
+    "ferry_eastward_3",
     ["irregularity: constant non-zero roll angle of about 1 deg",
     "includes one sonde drop"],
 )
@@ -175,21 +175,21 @@ sl1c = (
 sl1d = (
     slice("2024-09-21 13:05:13", "2024-09-21 13:07:09"),
     ["straight_leg", "meteor_coordination"],
-    "ferry_eastward",
+    "ferry_eastward_4",
     [],
 )
 
 ac2 = (
     slice("2024-09-21 13:07:09", "2024-09-21 13:11:36"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_2",
     [],
 )
 
 sl2 = (
     slice("2024-09-21 13:11:36", "2024-09-21 13:52:23"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_5",
     [],
 )
 
@@ -210,7 +210,7 @@ c3 = (
 sl3 = (
     slice("2024-09-21 15:58:00", "2024-09-21 16:07:00"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_1",
     [],
 )
 
@@ -224,7 +224,7 @@ ac3 = (
 sl4 = (
     slice("2024-09-21 16:12:43", "2024-09-21 16:16:00"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_2",
     [],
 )
 
@@ -245,7 +245,7 @@ ec1 = (
 sl5 = (
     slice("2024-09-21 17:51:35", "2024-09-21 18:13:43"),
     ["straight_leg"],
-    "ferry_towards_circle_west_2",
+    "ferry_towards_circle_west_2_1",
     [],
 )
 
@@ -259,7 +259,7 @@ cal = (
 sl6 = (
     slice("2024-09-21 18:16:23", "2024-09-21 18:24:00"),
     ["straight_leg"],
-    "ferry_towards_circle_west_2",
+    "ferry_towards_circle_west_2_2",
     [],
 )
 
@@ -272,14 +272,14 @@ c5 = (
 sl7a = (
     slice("2024-09-21 19:27:23", "2024-09-21 19:31:15"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_3",
     ["irregularity: constant non-zero roll angle of about 1 deg"],
 )
 
 sl7b = (
     slice("2024-09-21 19:31:20", "2024-09-21 19:35:23"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_4",
     [],
 )
 

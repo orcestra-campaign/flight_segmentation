@@ -163,14 +163,14 @@ seg4 = (
 seg5 = (
     slice("2024-09-07T14:35:21", "2024-09-07T14:38:38"),
     ["straight_leg"],
-    "straight_leg_inside_circle_south",
+    "straight_leg_inside_circle_south_1",
     ["searching for developing clouds for specMACS"],
 )
 
 seg6 = (
     slice("2024-09-07T14:43:35", "2024-09-07T14:51:22"),
     ["straight_leg"],
-    "straight_leg_inside_circle_south",
+    "straight_leg_inside_circle_south_2",
     [],
 )
 
@@ -219,42 +219,42 @@ seg12 = (
 seg13 = (
     slice("2024-09-07T19:02:48", "2024-09-07T19:31:16"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_1",
     [],
 )
 
 seg14 = (
     slice("2024-09-07T19:32:37", "2024-09-07T19:36:31"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_2",
     [],
 )
 
 seg15 = (
     slice("2024-09-07T19:38:24", "2024-09-07T19:46:37"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_3",
     [],
 )
 
 seg16 = (
     slice("2024-09-07T19:47:48", "2024-09-07T20:14:41"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_4",
     [],
 )
 
 seg17 = (
     slice("2024-09-07T20:16:46", "2024-09-07T20:22:00"),
     ["straight_leg", "descent"],
-    "ferry_westward_descent",
+    "ferry_westward_descent_1",
     [],
 )
 
 seg18 = (
     slice("2024-09-07T20:22:19", "2024-09-07T20:35:50"),
     ["straight_leg", "descent"],
-    "ferry_westward_descent",
+    "ferry_westward_descent_2",
     [],
 )
 

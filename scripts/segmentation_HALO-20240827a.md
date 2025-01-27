@@ -151,21 +151,21 @@ seg2 = (
 seg3 = (
     slice("2024-08-27T10:56:25", "2024-08-27T11:04:24"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     [],
 )
 
 seg4 = (
     slice("2024-08-27T11:04:24", "2024-08-27T11:06:27"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     [],
 )
 
 seg5 = (
     slice("2024-08-27T11:06:27", "2024-08-27T11:18:02"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_3",
     [],
 )
 
@@ -200,7 +200,7 @@ seg9 = (
 seg10 = (
     slice("2024-08-27T11:38:41", "2024-08-27T11:56:44"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward", #any coordination? Why sonde?
+    "ec_track_southward_4", #any coordination? Why sonde?
     ["additional sonde dropped at 11:40:32"],
 )
 
@@ -298,14 +298,14 @@ seg23 = (
 seg24 = (
     slice("2024-08-27T18:54:20", "2024-08-27T19:03:33"),
     ["straight_leg", "descent"],
-    "ferry_towards_sal_descent",
+    "ferry_towards_sal_descent_1",
     [],
 )
 
 seg25 = (
     slice("2024-08-27T19:04:09", "2024-08-27T19:08:18"),
     ["straight_leg", "descent"],
-    "ferry_towards_sal_descent",
+    "ferry_towards_sal_descent_2",
     [],
 )
 

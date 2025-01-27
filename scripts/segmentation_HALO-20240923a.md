@@ -173,7 +173,7 @@ seg3 = (slice("2024-09-23T11:54:32", "2024-09-23T12:26:35"),
 # heading to c_mid
 seg4a = (slice("2024-09-23T12:31:33", "2024-09-23T12:40:20"),
         ["straight_leg"],
-        "ferry_eastward_towards_circle_mid",
+        "ferry_eastward_towards_circle_mid_1",
         [],
        )
 
@@ -185,7 +185,7 @@ seg4b = (slice("2024-09-23T12:40:20", "2024-09-23T12:44:10"),
 
 seg4c = (slice("2024-09-23T12:44:10", "2024-09-23T13:08:51"),
         ["straight_leg"],
-        "ferry_eastward_towards_circle_mid",
+        "ferry_eastward_towards_circle_mid_2",
         [],
        )
 
@@ -247,7 +247,7 @@ seg13 = (slice("2024-09-23T17:15:25", "2024-09-23T17:23:46"),
 
 seg14 = (slice("2024-09-23T17:54:38", "2024-09-23T17:57:27"),
         ["straight_leg"],
-        "ferry_towards_circle_west",
+        "ferry_towards_circle_west_1",
         [],
         )
 
@@ -259,7 +259,7 @@ seg15 = (slice("2024-09-23T17:57:27", "2024-09-23T18:03:16"),
 
 seg16 = (slice("2024-09-23T18:03:17", "2024-09-23T18:12:36"),
         ["straight_leg"],
-        "ferry_towards_circle_west",
+        "ferry_towards_circle_west_2",
         [],
         )
 
@@ -293,21 +293,21 @@ seg20 = (slice("2024-09-23T19:21:24", "2024-09-23T19:26:39"),
 # FL change leg 1
 seg21a = (slice("2024-09-23T19:26:40", "2024-09-23T19:32:04"),
          ["straight_leg", "descent"],
-          "ferry_westward_towards_meteor_descent",
+          "ferry_westward_towards_meteor_descent_1",
           [],
          )
 
 # FL change leg 2
 seg21b = (slice("2024-09-23T19:34:08", "2024-09-23T19:41:36"),
           ["straight_leg", "descent"],
-          "ferry_westward_towards_meteor_descent",
+          "ferry_westward_towards_meteor_descent_2",
           [],
          )
 
 # FL change leg 3
 seg21c = (slice("2024-09-23T19:42:37", "2024-09-23T19:46:56"),
           ["straight_leg", "descent"],
-          "ferry_westward_towards_meteor_descent",
+          "ferry_westward_towards_meteor_descent_3",
           [],
          )
 

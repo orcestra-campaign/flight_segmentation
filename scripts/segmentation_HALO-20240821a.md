@@ -156,7 +156,7 @@ seg2 = (
 seg3 = (
     slice("2024-08-21T13:01:44", "2024-08-21 13:28:01"),
     ["straight_leg"],
-    "straight_leg_southward",
+    "straight_leg_southward_1",
     [],
 )
 
@@ -170,7 +170,7 @@ seg4 = (
 seg5 = (
     slice("2024-08-21T13:30:02", "2024-08-21T14:07:08"),
     ["straight_leg"],
-    "straight_leg_southward",
+    "straight_leg_southward_2",
     ["irregularity: turbulences around 13:46:36 up to plus/minus 6 degree roll angle deviation"]
 )
 
@@ -184,7 +184,7 @@ seg6 = (
 seg7 = (
     slice("2024-08-21T15:10:35", "2024-08-21T15:12:53"),
     ["straight_leg"],
-    "straight_leg_northward", 
+    "straight_leg_northward_1", 
 )
 
 seg8 = (
@@ -197,7 +197,7 @@ seg8 = (
 seg9 = (
     slice("2024-08-21T16:15:26", "2024-08-21T16:51:12"),
     ["straight_leg"],
-    "straight_leg_northward",
+    "straight_leg_northward_2",
     [],
 )
 
@@ -218,7 +218,7 @@ seg11 = (
 seg12 = (
     slice("2024-08-21T18:55:08", "2024-08-21T19:05:17"),
     ["straight_leg"],
-    "straight_leg_northward",
+    "straight_leg_northward_3",
     [],
 )
 
@@ -231,13 +231,13 @@ seg13 = (
 seg14 = (
     slice("2024-08-21T19:22:43", "2024-08-21T19:36:26"),
     ["straight_leg", "descent"],
-    "ferry_eastward_descent",
+    "ferry_eastward_descent_1",
 )
 
 seg15 = (
     slice("2024-08-21T19:37:16", "2024-08-21T19:48:19"),
     ["straight_leg", "descent"],
-    "ferry_eastward_descent", 
+    "ferry_eastward_descent_2", 
 )
 
 seg16 = (

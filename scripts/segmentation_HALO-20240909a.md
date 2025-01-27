@@ -201,7 +201,7 @@ c3 = (
 sl3 = (
     slice("2024-09-09T18:33:32", "2024-09-09T18:55:04"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_1",
     [],
 )
 
@@ -215,28 +215,28 @@ sl4 = (
 sl5 = (
     slice("2024-09-09T18:59:15", "2024-09-09T20:14:03"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_2",
     [],
 )
 
 sl6 = (
     slice("2024-09-09T20:15:49", "2024-09-09T20:20:59"),
     ["straight_leg", "descent"],
-    "ferry_towards_barbados_descent",
+    "ferry_towards_barbados_descent_1",
     [],
 )
 
 sl7 = (
     slice("2024-09-09T20:22:03", "2024-09-09T20:24:42"),
     ["straight_leg", "descent"],
-    "ferry_towards_barbados_descent",
+    "ferry_towards_barbados_descent_2",
     [],
 )
 
 sl8 = (
     slice("2024-09-09T20:33:08", "2024-09-09T20:39:59"),
     ["straight_leg", "descent"],
-    "ferry_towards_barbados_descent",
+    "ferry_towards_barbados_descent_3",
     [],
 )
 

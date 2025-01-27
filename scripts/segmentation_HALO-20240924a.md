@@ -138,35 +138,36 @@ Alternatively, you can also define the segments as dictionaries which also allow
 ac1 = ( 
     slice("2024-09-24T15:42:30", "2024-09-24T15:48:15"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_1",
     []
 )
 
 ac2 = ( 
     slice("2024-09-24T15:49:00", "2024-09-24T15:55:15"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_2",
     [],
 )
 
 ac3 = ( 
     slice("2024-09-24T15:59:40", "2024-09-24T16:06:00"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_3",
     [],
 )
 
 ac4 = ( 
     slice("2024-09-24T16:07:00", "2024-09-24T16:10:00"),
     ["straight_leg", "ascent"],
-    "ferry_eastward_ascent",
+    "ferry_eastward_ascent_4",
+    [],
 )
 
 sl1 = (
     slice("2024-09-24T16:10:00", "2024-09-24T16:13:10"),
     ["straight_leg"],
     "ferry_eastward",
-    []
+    [],
 )
 
 c1 = (
@@ -179,7 +180,7 @@ c1 = (
 sl2 = (
     slice("2024-09-24T17:13:25", "2024-09-24T17:17:00"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_1",
     [],
 )
 
@@ -193,14 +194,14 @@ ac5 = (
 sl3 = (
     slice("2024-09-24T17:22:00", "2024-09-24T17:32:00"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_2",
     ["irregularity: constant non-zero roll angle of around 1 deg"],
 )
 
 sl4 = (
     slice("2024-09-24T17:32:30", "2024-09-24T17:41:30"),
     ["straight_leg"],
-    "ferry_towards_ec_track",
+    "ferry_towards_ec_track_3",
     ["includes one drop sonde launch"],
 )
 
@@ -246,7 +247,7 @@ c3 = (
 sl6 = (
     slice("2024-09-24T21:07:44", "2024-09-24T21:11:27"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_1",
     [],
 )
 
@@ -260,7 +261,7 @@ cal = (
 sl7 = (
     slice("2024-09-24T21:14:34", "2024-09-24T21:15:42"),
     ["straight_leg"],
-    "ferry_westward",
+    "ferry_westward_2",
     [],
 )
 

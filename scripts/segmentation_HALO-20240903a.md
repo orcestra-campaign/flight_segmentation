@@ -169,7 +169,7 @@ c1 = (
 ec2 = (
     slice("2024-09-03T14:45:38", "2024-09-03T14:48:19"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     [],
 )
 
@@ -183,7 +183,7 @@ ec3 = (
 ec4 = (
     slice("2024-09-03T14:51:36", "2024-09-03T15:00:08"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     [],
 )
 
@@ -198,7 +198,7 @@ c2 = (
 ec5 = (
     slice("2024-09-03T16:02:00", "2024-09-03T16:34:03"),
     ["straight_leg", "ec_track", "meteor_coordination"],
-    "ec_track_northward",
+    "ec_track_northward_3",
     ["includes ec_underpass", "includes meteor_overpass"],
 )
 
@@ -212,28 +212,28 @@ c3 = (
 ec6 = (
     slice("2024-09-03T17:38:53", "2024-09-03T17:54:52"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_4",
     ["irregularity: constant roll angle of +1.0deg from 2024-09-03T17:44:21 until 2024-09-03T17:50:54, before and after 0deg. Heading constant in whole segment."],
 )
 
 sl3 = (
     slice("2024-09-03T17:57:12", "2024-09-03T18:06:50"),
     ["straight_leg"],
-    "ferry_towards_atr_circle",
+    "ferry_towards_atr_circle_1",
     [],
 )
 
 sl4 = (
     slice("2024-09-03T18:07:07", "2024-09-03T18:19:11"),
     ["straight_leg"],
-    "ferry_towards_atr_circle",
+    "ferry_towards_atr_circle_2",
     [],
 )
 
 sl5 = (
     slice("2024-09-03T18:21:32", "2024-09-03T18:58:14"),
     ["straight_leg"],
-    "ferry_towards_atr_circle",
+    "ferry_towards_atr_circle_3",
     [],
 )
 
@@ -268,14 +268,14 @@ sl7 = (
 sl8 = (
     slice("2024-09-03T20:06:35", "2024-09-03T20:10:25"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_1",
     [],
 )
 
 sl9 = (
     slice("2024-09-03T20:11:30", "2024-09-03T20:19:24"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_2",
     [],
 )
 # add all segments that you want to save to a yaml file later to the below list

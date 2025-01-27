@@ -148,7 +148,7 @@ sl1 = (
 sl2 = (
     slice("2024-09-06T11:09:50", "2024-09-06T11:39:28"),
     ["straight_leg"],
-    "straight_leg_southwestward",
+    "straight_leg_southwestward_1",
     [],
 )
 
@@ -162,56 +162,56 @@ sl3 = (
 sl4 = (
     slice("2024-09-06T11:47:55", "2024-09-06T12:18:27"),
     ["straight_leg"],
-    "straight_leg_southwestward",
+    "straight_leg_southwestward_2",
     [],
 )
 
 sl5 = (
     slice("2024-09-06T12:20:04", "2024-09-06T12:26:40"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_1",
     [],
 )
 
 sl6 = (
     slice("2024-09-06T12:28:00", "2024-09-06T12:37:19"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_2",
     [],
 )
 
 sl7 = (
     slice("2024-09-06T12:44:14", "2024-09-06T12:58:09"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_3",
     [],
 )
 
 sl8 = (
     slice("2024-09-06T13:01:59", "2024-09-06T13:07:03"),
     ["straight_leg", "meteor_coordination"],
-    "straight_leg_westward",
+    "straight_leg_westward_4",
     ["contains METEOR overpass"],
 )
 
 sl9 = (
     slice("2024-09-06T13:11:29", "2024-09-06T13:19:16"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_5",
     [],
 )
 
 sl10 = (
     slice("2024-09-06T13:19:36", "2024-09-06T14:07:18"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_6",
     [],
 )
 
 sl11 = (
     slice("2024-09-06T14:17:58", "2024-09-06T14:40:13"),
     ["straight_leg"],
-    "straight_leg_westward",
+    "straight_leg_westward_7",
     [],
 )
 

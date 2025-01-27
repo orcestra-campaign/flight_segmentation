@@ -149,14 +149,14 @@ ac1 = (
 sl1 = (
     slice("2024-09-16T12:07:45", "2024-09-16T12:56:50"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_1",
     ["irregularity: turbulence 2024-09-16T12:46:30 - 2024-09-16T12:56:50 with roll angle deviations up to +-6.9 deg"],
 )
 
 sl2 = (
     slice("2024-09-16T12:58:00", "2024-09-16T13:16:30"),
     ["straight_leg"],
-    "ferry_eastward",
+    "ferry_eastward_2",
     [],
 )
 
@@ -205,7 +205,7 @@ sl4 = (
 ec1a = (
     slice("2024-09-16T16:52:22", "2024-09-16T16:57:40"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     ["irregularity: constant nonzero roll angle of about 0.4 deg",
     "includes one dropsonde launch"],
 )
@@ -221,7 +221,7 @@ ec1b = (
 ec1c = (
     slice("2024-09-16T17:29:53", "2024-09-16T17:51:02"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     ["irregularity: constant nonzero roll angle of about 0.3 deg"],
 )
 
@@ -242,14 +242,14 @@ sl5 = (
 dc1 = (
     slice("2024-09-16T20:20:47", "2024-09-16T20:27:10"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_1",
     [],
 )
 
 dc2 = (
     slice("2024-09-16T20:28:30", "2024-09-16T20:44:16"),
     ["straight_leg", "descent"],
-    "ferry_descent",
+    "ferry_descent_2",
     [],
 )
 

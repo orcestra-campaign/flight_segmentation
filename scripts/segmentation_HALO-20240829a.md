@@ -146,28 +146,28 @@ seg1 = (
 seg2 = (
     slice("2024-08-29T12:49:30", "2024-08-29T13:19:00"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     ["irregularity: turbulence with roll angle deviations up to +-2.75 deg at 13:17:53"],
 )
 
 seg3 = (
     slice("2024-08-29T13:19:00", "2024-08-29T13:21:01"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_southward_ascent",
+    "ec_track_southward_ascent_1",
     [],
 )
 
 seg4 = (
     slice("2024-08-29T13:21:01", "2024-08-29T13:31:45"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     ["irregularity: turbulence with roll angle spike of 2 deg at 13:30:50"],
 )
 
 seg5 = (
     slice("2024-08-29T13:34:03", "2024-08-29T13:46:37"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_3",
     ["irregularity: turbulence with roll angle deviations up to +-3.1 deg between 13:35:46 and 13:35:59",
     "includes sonde"],
 )
@@ -175,7 +175,7 @@ seg5 = (
 seg6 = (
     slice("2024-08-29T13:49:50", "2024-08-29T14:02:51"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_4",
     [],
 )
 
@@ -189,7 +189,7 @@ seg7 = (
 seg8 = (
     slice("2024-08-29T15:10:24", "2024-08-29T15:14:52"),
     ["straight_leg", "ascent", "ec_track"],
-    "ec_track_southward_ascent",
+    "ec_track_southward_ascent_2",
     ["irregularity: spike in roll angle of -3.3 deg at 15:12:46"],
 )
 
@@ -203,7 +203,7 @@ seg9 = (
 seg10 = (
     slice("2024-08-29T15:34:34", "2024-08-29T16:12:09"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     ["contains EC meeting point"],
 )
 
@@ -219,7 +219,7 @@ seg11 = (
 seg12 = (
     slice("2024-08-29T17:25:19", "2024-08-29T17:36:43"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     [],
 )
 
@@ -254,7 +254,7 @@ seg16 = (
 seg17 = (
     slice("2024-08-29T18:53:43", "2024-08-29T19:06:30"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_3",
     ["irregularity: constains segments with nonzero mean roll angle ranging from -0.3 to 0.6 deg"],
 )
 
@@ -275,14 +275,14 @@ seg19 = (
 seg20 = (
     slice("2024-08-29T20:02:33", "2024-08-29T20:16:02"),
     ["straight_leg", "descent"],
-    "ferry_towards_sal_descent",
+    "ferry_towards_sal_descent_1",
     ["irregularity: roll angle spike of 1.7 deg at 20:12:11"],
 )
 
 seg21 = (
     slice("2024-08-29T20:16:37", "2024-08-29T20:24:30"),
     ["straight_leg", "descent"],
-    "ferry_towards_sal_descent",
+    "ferry_towards_sal_descent_2",
     [],
 )
 

@@ -140,35 +140,35 @@ sl2 = (
 ec1 = (
     slice("2024-08-16T12:53:26", "2024-08-16T13:11:30"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_1",
     [],
 )
 
 ec2 = (
     slice("2024-08-16T13:11:30", "2024-08-16T13:13:31"),
     ["straight_leg", "ec_track", "ascent"],
-    "ec_track_southward_ascent",
+    "ec_track_southward_ascent_1",
     [],
 )
 
 ec3 = (
     slice("2024-08-16T13:13:31", "2024-08-16T13:40:56"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_2",
     ["irregularity: turbulence 2024-08-16T13:20:55 - 2024-08-16T13:24:10"],
 )
 
 ec4 = (
     slice("2024-08-16T13:40:56", "2024-08-16T13:44:39"),
     ["straight_leg", "ec_track", "ascent"],
-    "ec_track_southward_ascent",
+    "ec_track_southward_ascent_2",
     [],
 )
 
 ec5 = (
     slice("2024-08-16T13:44:39", "2024-08-16T13:53:13"),
     ["straight_leg", "ec_track"],
-    "ec_track_southward",
+    "ec_track_southward_3",
     [],
 )
 
@@ -182,7 +182,7 @@ c1 = (
 ec6 = (
     slice("2024-08-16T14:54:54", "2024-08-16T15:03:59"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_1",
     [],
 )
 
@@ -196,7 +196,7 @@ c2 = (
 ec61 = (
     slice("2024-08-16T16:04:49", "2024-08-16T16:07:31"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_2",
     [],
 )
 
@@ -210,7 +210,7 @@ ec7 = (
 ec8 = (
     slice("2024-08-16T16:12:30", "2024-08-16T16:51:04"),
     ["straight_leg", "ec_track"],
-    "ec_track_northward",
+    "ec_track_northward_3",
     ["ec_underpass"],
 )
 
