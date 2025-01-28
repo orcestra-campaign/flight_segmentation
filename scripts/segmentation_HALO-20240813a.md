@@ -39,7 +39,24 @@ flight_id = "HALO-20240813a"
 ### Get HALO position and attitude
 
 ```python
-ds = get_navdata_HALO(flight_id)
+ds0 = get_navdata_HALO(flight_id)
+```
+
+#### Get low-resolution BAHAMAS data
+the default 100Hz data is not available for the last 40min of the flight. We therefore use the QL data for the times that 100Hz data is missing, i.e. at the end of the flight. We only use it to determine the landing time but refrain from defining segments as variables such as roll angle are still uncorrected in the QL data and may not be trustworthy.
+
+```python
+import fsspec
+bahamas_lowres = "ipfs://QmRFJ3Hbh75fMoEVW6W6zbyibE9xCMKeznmFs17pSoHGbn/QL_HALO-20240813a_BAHAMAS_V01.nc"
+dslow = xr.open_dataset(fsspec.open_local(f"simplecache::{bahamas_lowres}"), engine="netcdf4") \
+        .rename({"TIME": "time", "IRS_ALT": "alt", "IRS_LAT": "lat", "IRS_LON": "lon", "IRS_HDG": "heading", "IRS_PHI": "roll", "IRS_THE": "pitch"}) \
+        .swap_dims({"tid": "time"}) \
+        .resample(time="1s").mean()
+dslow = dslow.drop_vars([v for v in list(dslow.keys()) if v not in ["time", "alt", "roll", "heading", "lat", "lon", "pitch"]])
+```
+
+```python
+ds = xr.concat([ds0, dslow.sel(time=slice(ds0.time[-1]+np.timedelta64(1, "s"), None))], dim="time")
 ```
 
 ### Get dropsonde launch times
@@ -58,6 +75,13 @@ print("Takeoff time: " + str(takeoff))
 print("Landing time: " + str(landing))
 print(f"Flight duration: {int(duration / 60)}:{int(duration % 60)}")
 ```
+
+<!-- #raw -->
+# Output from highres BAHAMAS for comparison
+Takeoff time: 2024-08-13T14:15:39.000000000
+Landing time: 2024-08-13T22:59:33.000000000
+Flight duration: 8:43
+<!-- #endraw -->
 
 ### Get EC track and EC meeting point
 
