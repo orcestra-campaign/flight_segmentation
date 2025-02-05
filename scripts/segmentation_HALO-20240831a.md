@@ -101,6 +101,10 @@ else:
     meteor_track = None
 ```
 
+```python
+meteor_track
+```
+
 ## Overview plot: HALO track, EC meeting point, and dropsonde locations
 
 ```python
@@ -109,7 +113,7 @@ plt.scatter(ds_drops.lon, ds_drops.lat, s=10, c="k", label="dropsondes")
 plt.plot(ec_track.lon, ec_track.lat, c='C1', ls='dotted')
 plt.plot(ds.lon.sel(time=t_ec, method="nearest"), ds.lat.sel(time=t_ec, method="nearest"), marker="*", ls=":", label="EC meeting point")
 if pace_track: plt.plot(pace_track.lon, pace_track.lat, c="C2", ls=":", label="PACE track")
-if meteor_track: plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
+meteor_track: plt.plot(meteor_track.lon, meteor_track.lat, c="C4", ls="-.", label="METEOR track")
 plt.xlabel("longitude / °")
 plt.ylabel("latitude / °")
 plt.legend();
@@ -176,9 +180,9 @@ seg5 = (
 
 seg6 = (
     slice("2024-08-31T09:45:02", "2024-08-31T11:05:50"),
-    ["straight_leg", "ec_track"],
+    ["straight_leg", "ec_track", "meteor_coordination"],
     "ec_track_southward_4",
-    ["includes one drop sonde launch at southmost point"],
+    ["includes one drop sonde launch at southmost point", "includes meteor overpass"],
 )
 
 seg7 = (
@@ -370,6 +374,7 @@ The EC underpass event can be added to a list of events via the function `ec_eve
 
 ```python
 events = [
+    meteor_event(ds, meteor_track, seg=seg6),
     meteor_event(ds, meteor_track),
     ec_event(ds, ec_track),
 ]
