@@ -101,10 +101,6 @@ else:
     meteor_track = None
 ```
 
-```python
-meteor_track
-```
-
 ## Overview plot: HALO track, EC meeting point, and dropsonde locations
 
 ```python
