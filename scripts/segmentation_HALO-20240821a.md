@@ -179,7 +179,7 @@ seg6 = (
     ["circle", "circle_clockwise", "meteor_coordination"],
     "circle_south",
     ["irregularity: turbulence up to plus/minues 4 degree roll angle deviation",
-    "remark: Meteor was located in northwester quadrant of the circle"]
+    "remark: Meteor was located in northwestern quadrant of the circle"]
 )
 
 seg7 = (
