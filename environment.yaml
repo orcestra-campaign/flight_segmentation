@@ -17,6 +17,7 @@ dependencies:
   - jupyter
   - pip
   - pyyaml
+  - panel
   - pip:
     - tqdm
     - orcestra
