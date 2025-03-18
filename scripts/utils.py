@@ -1,7 +1,7 @@
 # some untility functions for defining segments
 
 __all__ = [
-    "get_sondes_l1",
+    "get_sondes_l2",
     "get_overpass_point",
     "plot_overpass_point",
     "get_overpass_track",
@@ -19,27 +19,20 @@ __all__ = [
     "ransac_fit_circle",
 ]
 
-
-def get_sondes_l1(flight_id):
+def get_sondes_l2(flight_id):
     import fsspec
-    import xarray as xr
-    import numpy as np
+    import json
     import pandas as pd
-    #root = "ipns://latest.orcestra-campaign.org/products/HALO/dropsondes/Level_1"
-    root = "ipfs://QmVMtDX1fZfL3SgNaXXt1wtW3htnC2vFbzx2ENN1cxrzSx"
-    day_folder = root + "/" + flight_id
+    root = "ipfs://QmVX8jNDXSFYXju3BmiemvaUYs3VDF1iMCcKyPLQYe3FuG"
+    day_folder = root + "/Level_2/" + flight_id
     protocol = day_folder.split(":")[0]
     fs = fsspec.filesystem(protocol)
-    filenames = fs.glob(day_folder + "/*.nc")
-    datasets = []
-    for filename in filenames:
-        try:
-            datasets.append(xr.open_dataset(fsspec.open_local(f"simplecache::{protocol}://{filename}"), engine="netcdf4"))
-        except IOError:
-            print(f"cannot read {filename}.")
-    lt, sonde_id = zip(*[(d["launch_time"].values, d.attrs["SondeId"]) for d in datasets])
-    return xr.Dataset({"launch_time": (["sonde_id"], list(lt)),
-                       "sonde_id": (["sonde_id"], list(sonde_id))})
+    filenames = [fn.split("/")[-1] + "/.zattrs" for fn in fs.ls(day_folder, detail=False)]
+    m = fsspec.get_mapper(day_folder)
+    zattrs = [json.loads(v) for v in m.getitems(filenames).values()]
+    df = pd.DataFrame.from_records(zattrs)[["sonde_ID", "sonde_time"]]
+    df["sonde_time"] = pd.to_datetime(df["sonde_time"])
+    return df.sort_values("sonde_time").set_index("sonde_ID").to_xarray().rename({"sonde_ID": "sonde_id", "sonde_time": "launch_time"})
 
 def get_overpass_point(ds, target_lat, target_lon):
     import numpy as np
