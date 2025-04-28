@@ -116,6 +116,7 @@ For the first version of the segmentation of HALO research flights, one or more 
 | radar_calibration_dive | segments | three consecutive stepwise descents with a total altitude decrease of about 1km within about 2.5min, performed during a descending straight leg |
 | radar_calibration_wiggle | segments | flight maneuver typically conducted on a straight leg, where the aircraft's roll angle is alternated (typically) 2 times ±20&deg; with 1&deg; per second; the segment starts and ends at about 0&deg; roll angle.|
 | smart_calibration | segments | flight maneuver during which the aircraft takes four consecutive turns with about 25&deg roll angle; the maneuver is used to calibrate the SMART-HALO upper irradiance sensors and position stabilization |
+| specmacs_calibration | segments | flight maneuver identical to the radar_calibration_wiggle but typically just one alternation between +-20&deg; roll angle
 | straight_leg | segments | flight pattern with approximately constant heading and a roll angle close to 0&deg;; outstanding short-term roll angle deviations (approximately beyond ±2&deg;) due to turbulence are mentioned as irregularities in the remarks attribute|
 
 <!-- #region -->
