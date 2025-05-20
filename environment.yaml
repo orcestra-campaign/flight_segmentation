@@ -16,6 +16,7 @@ dependencies:
   - ipykernel
   - jupyter
   - pip
+  - python-frontmatter
   - pyyaml
   - panel
   - pip:
