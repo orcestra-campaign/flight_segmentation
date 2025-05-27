@@ -15,7 +15,7 @@ flight_segment_files/HALO%.yaml: scripts/segmentation_HALO%.md
 	mkdir -p flight_segment_files
 	jupytext --use-source-timestamp --execute $<
 
-reports/%.html: flight_segment_files/HALO%.yaml scripts/report.py scripts/templates/flight.html
+reports/%.html: flight_segment_files/%.yaml scripts/report.py scripts/templates/flight.html
 	mkdir -p reports
 	python3 scripts/report.py $< $@
 
