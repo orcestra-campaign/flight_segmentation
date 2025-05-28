@@ -21,6 +21,7 @@ jobs:
       - name: Get ATR segmentation
         run: |
           python3 scripts/get_atr_segments.py
+        shell: micromamba-shell {0}
 
       - name: Commit and push changes
         run: |
