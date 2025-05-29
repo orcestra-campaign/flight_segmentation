@@ -12,7 +12,7 @@ def __main__():
         with fsspec.open(file) as f:
             meta = yaml.safe_load(f)
             yaml.dump(meta, 
-                      open(f"../flight_segment_files/{meta["safire_flight_id"]}.yaml", "w"),
+                      open(f"./flight_segment_files/{meta["safire_flight_id"]}.yaml", "w"),
                       sort_keys=False,
                       )
 
