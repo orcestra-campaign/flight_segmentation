@@ -1,5 +1,8 @@
 name: Daily check for ATR segmentation changes
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   schedule:
