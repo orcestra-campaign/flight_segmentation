@@ -13,7 +13,7 @@ reports/all_flights.yaml: ${HALO_SEGMENT_FILES} ${ATR_SEGMENT_FILES}
 
 flight_segment_files/HALO%.yaml: scripts/segmentation_HALO%.md
 	mkdir -p flight_segment_files
-	jupytext --use-source-timestamp --execute $<
+	for i in $$(seq 1 5); do [ $$i -gt 1 ] && sleep 1; jupytext --use-source-timestamp --execute $< && s=0 && break || s=$$?; done; (exit $$s)
 
 reports/%.html: flight_segment_files/%.yaml scripts/report.py scripts/templates/flight.html
 	mkdir -p reports

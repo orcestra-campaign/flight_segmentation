@@ -50,7 +50,7 @@ jobs:
           touch ipfs.log  # ensure the file exists such that `tail` doesn't fail.
           ipfs daemon 2>ipfs.log | grep -i -o -m1 'Daemon is ready' & tail -f --pid=$! ipfs.log
       - name: compile segment files
-        run: "make"
+        run: "make -j"
         shell: micromamba-shell {0}
       - name: Archive build artifacts
         if: always()
