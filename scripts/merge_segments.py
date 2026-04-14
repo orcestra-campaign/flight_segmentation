@@ -10,7 +10,7 @@ def normalize_atr_segment(segment, flight_id):
         "name": segment["name"],
         "start": segment["start"],
         "end": segment["end"],
-        "kinds": segment["kind"],
+        "kinds": list([segment["kind"]]) if isinstance(segment["kind"], str) else segment["kind"],
         "remarks": segment.get("note") or [],
     }
 
